@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MainBottomNavigationViewStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">@dimen/bottom_navigation_text_size</item>
+    </style>
+
+</resources>
