@@ -3,4 +3,23 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#DFFF</color>
+    <color name="colorgray">#9e9e9e</color>
+    <color name="colorlightgray">#bfbfbf</color>
+    <color name="colortopaz">#19b6b6</color>
+    <color name="colorwhite">#FFFFFF</color>
+    <color name="colorblack">#000000</color>
+    <color name="colorblack200">#DFDFDF</color>
+    <color name="colorblack300">#BFBFBF</color>
+    <color name="colorblack400">#9F9F9F</color>
+    <color name="colorblack500">#808080</color>
+    <color name="colorblack600">#606060</color>
+    <color name="colorblack700">#404040</color>
+    <color name="colorblack800">#202020</color>
+    <color name="colortopaz200">#E2F6F6</color>
+    <color name="colortopaz300">#C6EDED</color>
+    <color name="colortopaz400">#A9E4E4</color>
+    <color name="colortopaz500">#8CDBDB</color>
+    <color name="colortopaz600">#6FD1D1</color>
+    <color name="colortopaz700">#53C8C8</color>
+    <color name="colortopaz800">#36BFBF</color>
 </resources>

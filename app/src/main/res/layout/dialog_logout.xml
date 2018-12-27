@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="MyPageViewModel"
+            type="dsm.android.v3.ui.mypage.MyPageViewModel">
+        </variable>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:background="@drawable/radius_dialog_white"
+        android:paddingTop="16dp"
+        android:paddingBottom="6dp"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/logout_dialog_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/logout_dialog_title_size"
+            android:textColor="@color/colorPrimary"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/mypage_logout_title"
+            android:fontFamily="@font/nanumsquarebold"/>
+
+        <TextView
+            android:id="@+id/logout_dialog_bold_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout_dialog_bold_content"
+            android:textColor="@color/colorblack"
+            android:textSize="@dimen/logout_dialog_bold_content_size"
+            android:fontFamily="@font/nanumsquareextrabold"
+            app:layout_constraintTop_toBottomOf="@id/logout_dialog_title_tv"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:id="@+id/mypage_logout_dialog_light_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout_dialog_light_content"
+            android:textSize="@dimen/logout_dialog_light_content_size"
+            android:textColor="@color/colorgray"
+            android:fontFamily="@font/nanumsquareregular"
+            app:layout_constraintTop_toBottomOf="@id/logout_dialog_bold_content_tv"
+            android:layout_marginTop="@dimen/vertical_margin_6"
+            android:lineSpacingExtra="1dp"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="20dp">
+
+            <TextView
+                android:onClick="@{()->MyPageViewModel.logoutClickCancel()}"
+                android:id="@+id/logout_dialog_cancel_tv"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout_dialog_cancel"
+                android:textColor="@color/colorblack600"
+                android:textSize="@dimen/logout_dialog_cancel_and_logout_size"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:onClick="@{()->MyPageViewModel.logoutClickLogout()}"
+                android:id="@+id/logout_dialog_logout_tv"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout_dialog_logout"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/logout_dialog_cancel_and_logout_size"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
