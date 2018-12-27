@@ -29,10 +29,12 @@ class ChangePasswordViewModel : ViewModel() {
         activityFinishLiveEvent.call()
     }
 
-    fun MutableLiveData<String>.isValueBlank() =
-        this.value.isNullOrBlank()
-
     fun onCloseBtnClicked(){
         activityFinishLiveEvent.call()
     }
+
+    fun MutableLiveData<String>.isValueBlank() =
+        this.value.isNullOrBlank()
+
+
 }
