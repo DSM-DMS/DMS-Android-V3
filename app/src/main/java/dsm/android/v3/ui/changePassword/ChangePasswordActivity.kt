@@ -17,6 +17,7 @@ class ChangePasswordActivity : DataBindingActivity<ActivityChangePasswordBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
+
         viewModel.activityFinishLiveEvent.observe(this, Observer {
             finish()
         })

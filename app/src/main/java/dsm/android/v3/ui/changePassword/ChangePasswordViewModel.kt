@@ -10,21 +10,18 @@ class ChangePasswordViewModel : ViewModel() {
     val newPassword = MutableLiveData<String>()
     val confirmPassword = MutableLiveData<String>()
     val activityFinishLiveEvent = SingleLiveEvent<Any>()
-    val statusMerger = MediatorLiveData<Boolean>().apply {
+    val inputStatus = MediatorLiveData<Boolean>().apply {
         addSource(originPassword) {
             this.value = !originPassword.isValueBlank() && newPassword.value == confirmPassword.value &&
                     !newPassword.isValueBlank() && !confirmPassword.isValueBlank()
-            Log.d("ChangePwViewModel", "value: ${this.value}")
         }
         addSource(newPassword) {
             this.value = !originPassword.isValueBlank() && newPassword.value == confirmPassword.value &&
                     !newPassword.isValueBlank() && !confirmPassword.isValueBlank()
-            Log.d("ChangePwViewModel", "value: ${this.value}")
         }
         addSource(confirmPassword) {
             this.value = !originPassword.isValueBlank() && newPassword.value == confirmPassword.value &&
                     !newPassword.isValueBlank() && !confirmPassword.isValueBlank()
-            Log.d("ChangePwViewModel", "value: ${this.value}")
         }
     }
 
@@ -34,4 +31,8 @@ class ChangePasswordViewModel : ViewModel() {
 
     fun MutableLiveData<String>.isValueBlank() =
         this.value.isNullOrBlank()
+
+    fun onCloseBtnClicked(){
+        activityFinishLiveEvent.call()
+    }
 }
