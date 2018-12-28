@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin"
-            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/vertical_margin_8"
             android:text="@string/navigation_food"
             app:layout_constraintLeft_toLeftOf="parent"
