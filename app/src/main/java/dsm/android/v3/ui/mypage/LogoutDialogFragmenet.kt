@@ -14,7 +14,6 @@ class LogoutDialogFragmenet: DataBindingDialogFragment<DialogLogoutBinding>(), M
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding.myPageViewModel = MyPageViewModel(this)
-        rootView = binding.root
         return rootView
     }
 

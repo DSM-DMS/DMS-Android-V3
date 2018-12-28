@@ -10,11 +10,10 @@ import dsm.android.v3.util.DataBindingDialogFragment
 
 class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionReportBinding>(), MyPageContract.InstitutionReportContract{
     override val layoutId: Int
-        get() = R.layout.dialog_logout
+        get() = R.layout.dialog_institution_report
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding.myPageViewModel = MyPageViewModel(this)
-        rootView = binding.root
         return rootView
     }
 

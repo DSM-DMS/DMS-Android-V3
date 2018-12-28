@@ -39,7 +39,7 @@
             android:background="@drawable/radius_edit_lightgray"
             android:layout_marginTop="22dp">
             <EditText
-                android:text="@{MyPageViewModel.BugTitleEditText}"
+                android:text="@{MyPageViewModel._bugTitleEditText}"
                 android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/bug_report_dialog_title_edit"
                 android:background="@null"
@@ -59,7 +59,7 @@
             android:background="@drawable/radius_edit_lightgray"
             android:layout_marginTop="8dp">
             <EditText
-                android:text="@{MyPageViewModel.BugContentEditText}"
+                android:text="@{MyPageViewModel._bugContentEditText}"
                 android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/bug_report_dialog_bug_edit"
                 android:background="@null"

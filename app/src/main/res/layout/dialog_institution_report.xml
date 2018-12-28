@@ -39,7 +39,7 @@
             android:background="@drawable/radius_edit_lightgray"
             android:layout_marginTop="25dp">
             <EditText
-                android:text="@{MyPageViewModel.InstitutionTitleEditText}"
+                android:text="@{MyPageViewModel._institutionTitleEditText}"
                 android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/institution_dialog_title_edit"
                 android:background="@null"
@@ -59,7 +59,7 @@
             android:background="@drawable/radius_edit_lightgray"
             android:layout_marginTop="12dp">
             <EditText
-                android:text="@{MyPageViewModel.InstitutionRoomNumberEditText}"
+                android:text="@{MyPageViewModel._institutionRoomNumberEditText}"
                 android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/institution_dialog_room_number_edit"
                 android:background="@null"
@@ -94,7 +94,7 @@
             android:background="@drawable/radius_edit_lightgray">
 
             <EditText
-                android:text="@{MyPageViewModel.InstitutionReportContentEditText}"
+                android:text="@{MyPageViewModel._institutionReportContentEditText}"
                 android:id="@+id/institution_dialog_report_content_edit"
                 android:background="@null"
                 android:layout_width="wrap_content"
