@@ -23,7 +23,7 @@
             android:id="@+id/bug_report_dialog_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/bug_report_dialog_title_size"
+            android:textSize="@dimen/text_size_20"
             android:textColor="@color/colorPrimary"
             android:lineSpacingExtra="2sp"
             android:text="@string/bug_report_dialog_title"
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/bug_report_dialog_edit_title"
-                android:textSize="@dimen/bug_report_dialog_edit_size"/>
+                android:textSize="@dimen/body2_text_size"/>
         </LinearLayout>
 
         <LinearLayout
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/bug_report_dialog_edit_bug"
-                android:textSize="@dimen/bug_report_dialog_edit_size"/>
+                android:textSize="@dimen/body2_text_size"/>
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/bug_report_dialog_cancel"
                 android:textColor="@color/colorblack600"
-                android:textSize="@dimen/bug_report_dialog_cancel_and_send_size"
+                android:textSize="@dimen/body1_text_size"
                 android:fontFamily="@font/nanumsquarebold"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/bug_report_dialog_send"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/bug_report_dialog_cancel_and_send_size"
+                android:textSize="@dimen/body1_text_size"
                 android:fontFamily="@font/nanumsquarebold"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
