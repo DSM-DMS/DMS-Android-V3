@@ -14,4 +14,15 @@
     <color name="colorGray700">#404040</color>
     <color name="colorGray800">#202020</color>
     <color name="colorGray900">#000</color>
+
+    <!-- color for colorPrimary scale-->
+    <color name="colorPrimary100">#FFF</color>
+    <color name="colorPrimary200">#EFF6F6</color>
+    <color name="colorPrimary300">#C6EDED</color>
+    <color name="colorPrimary400">#A9E4E4</color>
+    <color name="colorPrimary500">#8CDBDB</color>
+    <color name="colorPrimary600">#6FD1D1</color>
+    <color name="colorPrimary700">#53C8C8</color>
+    <color name="colorPrimary800">#36BFBF</color>
+
 </resources>
