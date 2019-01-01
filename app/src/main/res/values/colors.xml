@@ -3,4 +3,15 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#DFFF</color>
+
+    <!-- color for Grayscale-->
+    <color name="colorGray100">#FFF</color>
+    <color name="colorGray200">#DFDFDF</color>
+    <color name="colorGray300">#BFBFBF</color>
+    <color name="colorGray400">#9F9F9F</color>
+    <color name="colorGray500">#808080</color>
+    <color name="colorGray600">#606060</color>
+    <color name="colorGray700">#404040</color>
+    <color name="colorGray800">#202020</color>
+    <color name="colorGray900">#000</color>
 </resources>
