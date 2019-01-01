@@ -19,7 +19,7 @@
             app:layout_constraintVertical_weight="0.3"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            android:background="@color/colortopaz"
+            android:background="@color/colorTopaz900"
             android:padding="25dp">
             
             <TextView
@@ -28,8 +28,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{MyPageViewModel._nameText}"
                 android:fontFamily="@font/nanumsquareextrabold"
-                android:textSize="@dimen/title_text_size"
-                android:textColor="@color/colorwhite"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
     
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{MyPageViewModel._infoText}"
-                android:textSize="@dimen/body2_text_size"
+                android:textSize="@dimen/typo_body2"
                 android:fontFamily="@font/nanumsquarebold"
                 android:lineSpacingExtra="1sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterInstitutionReport()}">
     
                     <ImageView
-                        android:src="@mipmap/round_error_24_px"
+                        android:src="@mipmap/error_24_px"
                         android:id="@+id/mypage_error_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_error_report"
-                        android:textColor="@color/colorwhite"
+                        android:textColor="@color/colorWhite"
                         android:fontFamily="@font/nanumsquareregular"/>
     
                 </LinearLayout>
@@ -91,7 +91,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterQuestionResearch()}">
     
                     <ImageView
-                        android:src="@mipmap/round_edit_24_px"
+                        android:src="@mipmap/edit_24_px"
                         android:id="@+id/mypage_edit_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_research"
-                        android:textColor="@color/colorwhite"
+                        android:textColor="@color/colorWhite"
                         android:fontFamily="@font/nanumsquareregular"/>
                 </LinearLayout>
     
@@ -117,7 +117,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterBugReport()}">
     
                     <ImageView
-                        android:src="@mipmap/round_bug_report_24_px"
+                        android:src="@mipmap/bug_report_24_px"
                         android:id="@+id/mypage_bug_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_bug_report"
-                        android:textColor="@color/colorwhite"
+                        android:textColor="@color/colorWhite"
                         android:fontFamily="@font/nanumsquareregular"/>
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
@@ -142,7 +142,7 @@
             app:layout_constraintVertical_weight="0.6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
-            android:background="@color/colorwhite">
+            android:background="@color/colorWhite">
         </View>
     
         <LinearLayout
@@ -162,7 +162,7 @@
     
             <TextView
                 android:id="@+id/mypage_merit_tv"
-                android:textColor="@color/colorblack700"
+                android:textColor="@color/colorBlack700"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquarebold"
@@ -171,12 +171,12 @@
                 android:text="@{MyPageViewModel._meritText}"/>
     
             <TextView
-                android:textColor="@color/colorblack"
+                android:textColor="@color/colorBlack900"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquareregular"
                 android:text="@string/mypage_merit"
-                android:textSize="@dimen/body2_text_size"
+                android:textSize="@dimen/typo_body2"
                 android:lineSpacingExtra="2dp"/>
         </LinearLayout>
     
@@ -197,7 +197,7 @@
     
             <TextView
                 android:id="@+id/mypage_demerit_tv"
-                android:textColor="@color/colorblack700"
+                android:textColor="@color/colorBlack700"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquarebold"
@@ -206,12 +206,12 @@
                 android:text="@{MyPageViewModel._demeritText}"/>
     
             <TextView
-                android:textColor="@color/colorblack"
+                android:textColor="@color/colorBlack900"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquareregular"
                 android:text="@string/mypage_demerit"
-                android:textSize="@dimen/body2_text_size"
+                android:textSize="@dimen/typo_body2"
                 android:lineSpacingExtra="2dp"/>
         </LinearLayout>
     
@@ -225,9 +225,9 @@
             android:layout_marginTop="16dp"
             android:padding="10dp"
             android:background="@drawable/radius_view_topaz"
-            android:textColor="@color/colorwhite"
+            android:textColor="@color/colorWhite"
             android:gravity="center"
-            android:textSize="@dimen/body1_text_size"
+            android:textSize="@dimen/typo_body1"
             android:text="@{MyPageViewModel._adviceText}"
             android:fontFamily="@font/nanumsquarebold"
             android:lineSpacingExtra="1dp"
@@ -252,7 +252,7 @@
                         android:id="@+id/mypage_logout_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/subtitle_text_size"
+                        android:textSize="@dimen/typo_subtitle"
                         android:textColor="@color/colorPrimary"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/mypage_logout_title"
@@ -262,8 +262,8 @@
                         app:layout_constraintTop_toBottomOf="@id/mypage_logout_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/body2_text_size"
-                        android:textColor="@color/colorblack700"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorBlack700"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/mypage_logout_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -291,7 +291,7 @@
                         android:id="@+id/mypage_password_change_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/subtitle_text_size"
+                        android:textSize="@dimen/typo_subtitle"
                         android:textColor="@color/colorPrimary"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_password_change_title"
@@ -301,8 +301,8 @@
                         app:layout_constraintTop_toBottomOf="@id/mypage_password_change_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/body2_text_size"
-                        android:textColor="@color/colorblack700"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorBlack700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_password_change_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -330,7 +330,7 @@
                         android:id="@+id/mypage_merit_history_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/subtitle_text_size"
+                        android:textSize="@dimen/typo_subtitle"
                         android:textColor="@color/colorPrimary"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_merit_history_title"
@@ -340,8 +340,8 @@
                         app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/body2_text_size"
-                        android:textColor="@color/colorblack700"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorBlack700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_merit_history_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -369,7 +369,7 @@
                         android:id="@+id/mypage_intro_developers_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/subtitle_text_size"
+                        android:textSize="@dimen/typo_subtitle"
                         android:textColor="@color/colorPrimary"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/mypage_intro_developers_title"
@@ -379,8 +379,8 @@
                         app:layout_constraintTop_toBottomOf="@id/mypage_intro_developers_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/body2_text_size"
-                        android:textColor="@color/colorblack700"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorBlack700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_intro_developers_content"
                         android:fontFamily="@font/nanumsquareregular"

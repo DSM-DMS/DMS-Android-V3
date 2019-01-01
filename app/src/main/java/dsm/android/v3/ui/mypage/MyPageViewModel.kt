@@ -57,21 +57,21 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
     fun clickEnterIntroDevelopers() = contract?.intentintroDevelopers()
 
     fun bugClickCancel(){
-
+        BugReportContract.exitBugReport()
     }
     fun bugClickSend(){
 
     }
 
     fun institutionClickCancel(){
-
+        InstitutionReportContract.exitInstitutionReport()
     }
     fun institutionClickSend(){
 
     }
 
     fun logoutClickCancel(){
-
+        LogoutContract.exitLogut()
     }
     fun logoutClickLogout(){
 

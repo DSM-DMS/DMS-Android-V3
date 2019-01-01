@@ -22,7 +22,7 @@
             android:id="@+id/logout_dialog_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/subtitle_text_size"
+            android:textSize="@dimen/typo_subtitle"
             android:textColor="@color/colorPrimary"
             android:lineSpacingExtra="2sp"
             android:text="@string/mypage_logout_title"
@@ -33,8 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/logout_dialog_bold_content"
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/body1_text_size"
+            android:textColor="@color/colorBlack900"
+            android:textSize="@dimen/typo_body1"
             android:fontFamily="@font/nanumsquareextrabold"
             app:layout_constraintTop_toBottomOf="@id/logout_dialog_title_tv"
             android:layout_marginTop="25dp"/>
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/logout_dialog_light_content"
             android:textSize="@dimen/text_size_8"
-            android:textColor="@color/colorgray"
+            android:textColor="@color/colorGray400"
             android:fontFamily="@font/nanumsquareregular"
             app:layout_constraintTop_toBottomOf="@id/logout_dialog_bold_content_tv"
             android:layout_marginTop="@dimen/vertical_margin_6"
@@ -54,31 +54,34 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginHorizontal="20dp">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:onClick="@{()->MyPageViewModel.logoutClickCancel()}"
                 android:id="@+id/logout_dialog_cancel_tv"
-                android:padding="10dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="35dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/logout_dialog_cancel"
-                android:textColor="@color/colorblack600"
-                android:textSize="@dimen/body2_text_size"
+                android:textColor="@color/colorBlack600"
+                android:textSize="@dimen/typo_body2"
                 android:fontFamily="@font/nanumsquarebold"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/logout_dialog_logout_tv"/>
 
             <TextView
                 android:onClick="@{()->MyPageViewModel.logoutClickLogout()}"
                 android:id="@+id/logout_dialog_logout_tv"
-                android:padding="10dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/logout_dialog_logout"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/body2_text_size"
+                android:textSize="@dimen/typo_body2"
                 android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintStart_toEndOf="@id/logout_dialog_cancel_tv"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
