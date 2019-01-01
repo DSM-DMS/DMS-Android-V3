@@ -21,12 +21,12 @@
     <string name="logout_dialog_light_content">(현재 접속중인 계정에서 로그아웃을 진행합니다.)</string>
     <string name="logout_dialog_cancel">취소</string>
     <string name="logout_dialog_logout">로그아웃</string>
-    <string name="bug_report_dialog_title">버그 신고</string>
+    <string name="bug_report_dialog_title">버그신고</string>
     <string name="bug_report_dialog_edit_title">제목을 입력하세요</string>
     <string name="bug_report_dialog_edit_bug">버그을 입력하세요</string>
     <string name="bug_report_dialog_cancel">취소</string>
     <string name="bug_report_dialog_send">전송</string>
-    <string name="institution_dialog_title">시설 고장 신고</string>
+    <string name="institution_dialog_title">시설물 고장 신고</string>
     <string name="institution_dialog_edit_title">제목을 입력하세요</string>
     <string name="institution_dialog_edit_room_number">방 번호를 입력하세요</string>
     <string name="institution_dialog_edit_report_content">내용을 입력하세요</string>

@@ -3,23 +3,36 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#DFFF</color>
-    <color name="colorgray">#9e9e9e</color>
-    <color name="colorlightgray">#bfbfbf</color>
-    <color name="colortopaz">#19b6b6</color>
-    <color name="colorwhite">#FFFFFF</color>
-    <color name="colorblack">#000000</color>
-    <color name="colorblack200">#DFDFDF</color>
-    <color name="colorblack300">#BFBFBF</color>
-    <color name="colorblack400">#9F9F9F</color>
-    <color name="colorblack500">#808080</color>
-    <color name="colorblack600">#606060</color>
-    <color name="colorblack700">#404040</color>
-    <color name="colorblack800">#202020</color>
-    <color name="colortopaz200">#E2F6F6</color>
-    <color name="colortopaz300">#C6EDED</color>
-    <color name="colortopaz400">#A9E4E4</color>
-    <color name="colortopaz500">#8CDBDB</color>
-    <color name="colortopaz600">#6FD1D1</color>
-    <color name="colortopaz700">#53C8C8</color>
-    <color name="colortopaz800">#36BFBF</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <!-- color for Grayscale-->
+    <color name="colorGray100">#FFF</color>
+    <color name="colorGray200">#DFDFDF</color>
+    <color name="colorGray300">#BFBFBF</color>
+    <color name="colorGray400">#9F9F9F</color>
+    <color name="colorGray500">#808080</color>
+    <color name="colorGray600">#606060</color>
+    <color name="colorGray700">#404040</color>
+    <color name="colorGray800">#202020</color>
+    <color name="colorGray900">#000</color>
+
+    <!-- color for Blackscale-->
+    <color name="colorBlack200">#DFDFDF</color>
+    <color name="colorBlack300">#BFBFBF</color>
+    <color name="colorBlack400">#9F9F9F</color>
+    <color name="colorBlack500">#808080</color>
+    <color name="colorBlack600">#606060</color>
+    <color name="colorBlack700">#404040</color>
+    <color name="colorBlack800">#202020</color>
+    <color name="colorBlack900">#000000</color>
+
+    <!-- color for Topazscale-->
+    <color name="colorTopaz200">#E2F6F6</color>
+    <color name="colorTopaz300">#C6EDED</color>
+    <color name="colorTopaz400">#A9E4E4</color>
+    <color name="colorTopaz500">#8CDBDB</color>
+    <color name="colorTopaz600">#6FD1D1</color>
+    <color name="colorTopaz700">#53C8C8</color>
+    <color name="colorTopaz800">#36BFBF</color>
+    <color name="colorTopaz900">#19b6b6</color>
 </resources>
