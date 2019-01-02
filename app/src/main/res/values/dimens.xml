@@ -5,4 +5,5 @@
     <dimen name="vertical_margin_6">6dp</dimen>
     <dimen name="vertical_margin_8">8dp</dimen>
     <dimen name="bottom_navigation_text_size" tools:override="true">12sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

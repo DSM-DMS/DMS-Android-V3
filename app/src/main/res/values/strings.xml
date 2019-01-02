@@ -4,4 +4,7 @@
     <string name="navigation_submit">신청</string>
     <string name="navigation_notice">공지</string>
     <string name="navigation_mypage">마이페이지</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="et_signIn_id"><font size="10">아이디를 입력해주세요</font></string>
+    <string name="et_signIn_pw"><font size="10">비밀번호를 입력해주세요</font></string>
 </resources>
