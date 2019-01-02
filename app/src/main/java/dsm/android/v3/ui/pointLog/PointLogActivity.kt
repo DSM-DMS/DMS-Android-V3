@@ -1,0 +1,33 @@
+package dsm.android.v3.ui.pointLog
+
+import android.graphics.Color
+import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity;
+import dsm.android.v3.R
+
+import kotlinx.android.synthetic.main.activity_point_log.*
+import org.jetbrains.anko.support.v4.pagerTabStrip
+
+class PointLogActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_point_log)
+        setSupportActionBar(pointLog_toolbar)
+
+        pointLog_toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = "상벌점 내역 조회"
+        pointLog_toolbar.setNavigationOnClickListener {
+            finish()
+        }
+    }
+
+//    override fun onNavigateUp(): Boolean {
+//        finish()
+//        return super.onNavigateUp()
+//    }
+
+}
