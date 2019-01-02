@@ -26,7 +26,7 @@
                 android:id="@+id/mypage_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{MyPageViewModel._nameText}"
+                android:text="@{MyPageViewModel.nameText}"
                 android:fontFamily="@font/nanumsquareextrabold"
                 android:textSize="@dimen/typo_header"
                 android:textColor="@color/colorWhite"
@@ -38,7 +38,7 @@
                 style="?android:textAppearanceSmallInverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{MyPageViewModel._infoText}"
+                android:text="@{MyPageViewModel.infoText}"
                 android:textSize="@dimen/typo_body2"
                 android:fontFamily="@font/nanumsquarebold"
                 android:lineSpacingExtra="1sp"
@@ -168,7 +168,7 @@
                 android:fontFamily="@font/nanumsquarebold"
                 android:textSize="@dimen/text_size_24"
                 android:lineSpacingExtra="3dp"
-                android:text="@{MyPageViewModel._meritText}"/>
+                android:text="@{MyPageViewModel.meritText}"/>
     
             <TextView
                 android:textColor="@color/colorBlack900"
@@ -203,7 +203,7 @@
                 android:fontFamily="@font/nanumsquarebold"
                 android:textSize="@dimen/text_size_24"
                 android:lineSpacingExtra="3dp"
-                android:text="@{MyPageViewModel._demeritText}"/>
+                android:text="@{MyPageViewModel.demeritText}"/>
     
             <TextView
                 android:textColor="@color/colorBlack900"
@@ -228,7 +228,7 @@
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:textSize="@dimen/typo_body1"
-            android:text="@{MyPageViewModel._adviceText}"
+            android:text="@{MyPageViewModel.adviceText}"
             android:fontFamily="@font/nanumsquarebold"
             android:lineSpacingExtra="1dp"
             android:elevation="10dp"/>

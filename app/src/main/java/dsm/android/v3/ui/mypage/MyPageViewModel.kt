@@ -7,6 +7,7 @@ import android.databinding.ObservableField
 
 class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
 
+    private var initalTimeDialogFragment: Long = 0
     private lateinit var LogoutContract: MyPageContract.LogoutContract
     private lateinit var BugReportContract: MyPageContract.BugReportContract
     private lateinit var InstitutionReportContract: MyPageContract.InstitutionReportContract
@@ -39,12 +40,15 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
 
 
     constructor (contract: MyPageContract.LogoutContract) : this(contract = null){
+        this.initalTimeDialogFragment = initalTimeDialogFragment
         LogoutContract = contract
     }
     constructor (contract: MyPageContract.BugReportContract) : this(contract = null){
+        this.initalTimeDialogFragment = initalTimeDialogFragment
         BugReportContract = contract
     }
     constructor (contract: MyPageContract.InstitutionReportContract) : this(contract = null){
+        this.initalTimeDialogFragment = initalTimeDialogFragment
         InstitutionReportContract = contract
     }
 

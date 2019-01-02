@@ -1,6 +1,8 @@
 package dsm.android.v3.ui.mypage
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.View
 import dsm.android.v3.util.DataBindingFragment
 import android.view.LayoutInflater
@@ -13,7 +15,8 @@ class MyPageFragment() :DataBindingFragment<FragmentMypageBinding>(), MyPageCont
         get() = dsm.android.v3.R.layout.fragment_mypage
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding.myPageViewModel = MyPageViewModel(this)
+        val factory = MyPageViewModelFactory(this)
+        binding.myPageViewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
         return rootView
     }
 
