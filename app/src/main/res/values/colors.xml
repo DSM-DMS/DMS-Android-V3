@@ -25,4 +25,7 @@
     <color name="colorPrimary700">#53C8C8</color>
     <color name="colorPrimary800">#36BFBF</color>
 
+
+    <color name="cardview_shadow_start_color">#1419b6b6</color>
+    <color name="cardview_shadow_end_color">#03ffffff</color>
 </resources>
