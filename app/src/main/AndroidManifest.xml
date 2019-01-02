@@ -15,7 +15,6 @@
         </activity>
         <activity
                 android:name=".ui.pointLog.PointLogActivity"
-                android:label="@string/title_activity_point_log"
                 android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
