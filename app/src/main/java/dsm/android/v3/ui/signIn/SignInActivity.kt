@@ -26,8 +26,8 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
             R.anim.slide_up
         )
 
-        val const = findViewById<ConstraintLayout>(R.id.layout_signIn_constraintLayout)
-        const.startAnimation(slideUp)
+        val signInConstBack = findViewById<ConstraintLayout>(R.id.signIn_constraintLayout_layout)
+        signInConstBack.startAnimation(slideUp)
 
     }
 

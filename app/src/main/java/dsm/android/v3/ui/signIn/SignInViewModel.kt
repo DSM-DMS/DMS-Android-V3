@@ -24,6 +24,10 @@ class SignInViewModel : ViewModel()  {
 
     }
 
+    fun toSignUpBtn(){
+
+    }
+
     fun MutableLiveData<String>.isValueBlank() =
         this.value.isNullOrBlank()
 
