@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#159999</color>
     <color name="colorAccent">#DFFF</color>
 
+    <color name="colorRed">#ff5454</color>
+
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
     <color name="colorGray200">#DFDFDF</color>

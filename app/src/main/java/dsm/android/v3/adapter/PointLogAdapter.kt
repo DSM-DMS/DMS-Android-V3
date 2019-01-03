@@ -1,5 +1,6 @@
 package dsm.android.v3.adapter
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.model.PointLogItemModel
+import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.find
 
 class PointLogAdapter(val models: ArrayList<PointLogItemModel>): RecyclerView.Adapter<PointLogAdapter.PointLogViewHolder>(){
@@ -28,6 +30,8 @@ class PointLogAdapter(val models: ArrayList<PointLogItemModel>): RecyclerView.Ad
             title.text = model.title
             date.text = model.date
             point.text = model.point
+            if(model.isGoodPoint) point.setTextColor(ContextCompat.getColor(title.context, R.color.colorPrimary))
+            else point.setTextColor(ContextCompat.getColor(title.context, R.color.colorRed))
         }
     }
 }

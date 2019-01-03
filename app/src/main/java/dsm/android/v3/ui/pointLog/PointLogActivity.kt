@@ -4,7 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager
 import dsm.android.v3.R
+import dsm.android.v3.adapter.PointLogAdapter
+import dsm.android.v3.model.PointLogItemModel
 
 import kotlinx.android.synthetic.main.activity_point_log.*
 import org.jetbrains.anko.support.v4.pagerTabStrip
@@ -23,11 +26,8 @@ class PointLogActivity : AppCompatActivity() {
         pointLog_toolbar.setNavigationOnClickListener {
             finish()
         }
-    }
 
-//    override fun onNavigateUp(): Boolean {
-//        finish()
-//        return super.onNavigateUp()
-//    }
+        pointLog_list_rv.layoutManager = LinearLayoutManager(this)
+    }
 
 }

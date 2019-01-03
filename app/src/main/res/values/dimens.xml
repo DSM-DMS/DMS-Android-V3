@@ -10,6 +10,6 @@
     <dimen name="typo_subtitle">14sp</dimen>
     <dimen name="typo_body1">12sp</dimen>
     <dimen name="typo_body2">10sp</dimen>
-    
+
     <dimen name="bottom_navigation_text_size" tools:override="true">12sp</dimen>
 </resources>
