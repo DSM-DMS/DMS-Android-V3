@@ -4,52 +4,46 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import android.util.Log
+import org.jetbrains.anko.doFromSdk
 
 class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
 
     private var initalTimeDialogFragment: Long = 0
-    private lateinit var LogoutContract: MyPageContract.LogoutContract
-    private lateinit var BugReportContract: MyPageContract.BugReportContract
-    private lateinit var InstitutionReportContract: MyPageContract.InstitutionReportContract
+    private lateinit var logoutContract: MyPageContract.LogoutContract
+    private lateinit var bugReportContract: MyPageContract.BugReportContract
+    private lateinit var institutionReportContract: MyPageContract.InstitutionReportContract
 
-    private val _nameText = MutableLiveData<String>()
-    private val _infoText = MutableLiveData<String>()
-    private val _meritText = MutableLiveData<String>()
-    private val _demeritText = MutableLiveData<String>()
-    private val _adviceText = MutableLiveData<String>()
+    val nameText = MutableLiveData<String>()
+    val infoText = MutableLiveData<String>()
+    val meritText = MutableLiveData<String>()
+    val demeritText = MutableLiveData<String>()
+    val adviceText = MutableLiveData<String>()
 
-    val nameText: LiveData<String> get() = _nameText
-    val infoText: LiveData<String> get() = _infoText
-    val meritText : LiveData<String> get() = _meritText
-    val demeritText : LiveData<String> get() = _demeritText
-    val adviceText : LiveData<String> get() = _adviceText
+    val bugTitleEditText = MutableLiveData<String>()
+    val bugContentEditText = MutableLiveData<String>()
 
-    private val _bugTitleEditText = MutableLiveData<String>()
-    private val _bugContentEditText = MutableLiveData<String>()
+    val institutionTitleEditText = MutableLiveData<String>()
+    val institutionRoomNumberEditText = MutableLiveData<String>()
+    val institutionReportContentEditText = MutableLiveData<String>()
 
-    val bugTitleEditText : LiveData<String> get() = _bugTitleEditText
-    val bugContentEditText : LiveData<String> get() = _bugContentEditText
 
-    private val _institutionTitleEditText = MutableLiveData<String>()
-    private val _institutionRoomNumberEditText = MutableLiveData<String>()
-    private val _institutionReportContentEditText = MutableLiveData<String>()
-
-    val institutionTitleEditText : LiveData<String> get() = _institutionTitleEditText
-    val institutionRoomNumberEditText : LiveData<String> get() = _institutionRoomNumberEditText
-    val institutionReportContentEditText : LiveData<String> get() = _institutionReportContentEditText
-
+    init {
+        // TODO("나중에 통신하는 과정에서 Model 클래스 작성할 때 merit, demerit 넣어줌")
+        // contract?.startCountAnimation()
+    }
 
     constructor (contract: MyPageContract.LogoutContract) : this(contract = null){
         this.initalTimeDialogFragment = initalTimeDialogFragment
-        LogoutContract = contract
+        logoutContract = contract
     }
     constructor (contract: MyPageContract.BugReportContract) : this(contract = null){
         this.initalTimeDialogFragment = initalTimeDialogFragment
-        BugReportContract = contract
+        bugReportContract = contract
     }
     constructor (contract: MyPageContract.InstitutionReportContract) : this(contract = null){
         this.initalTimeDialogFragment = initalTimeDialogFragment
-        InstitutionReportContract = contract
+        institutionReportContract = contract
     }
 
     fun clickEnterInstitutionReport() = contract?.showDialogInstitutionReport()
@@ -60,24 +54,42 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
     fun clickEnterMeritHistory() = contract?.intentMeriteHistory()
     fun clickEnterIntroDevelopers() = contract?.intentintroDevelopers()
 
-    fun bugClickCancel(){
-        BugReportContract.exitBugReport()
-    }
+    fun bugClickCancel() = bugReportContract.exitBugReport()
     fun bugClickSend(){
+        if (bugTitleEditText.value.equals(null) || bugTitleEditText.value!!.isBlank())
+            bugReportContract.flagBugTitleBlankError()
 
+        else if (bugContentEditText.value.equals(null) || bugContentEditText.value!!.isBlank())
+            bugReportContract.flagBugContentBlankError()
+
+        else {
+            // TODO("버그 내용 서버에 보내는 동작")
+            bugReportContract.exitBugReport()
+        }
     }
 
-    fun institutionClickCancel(){
-        InstitutionReportContract.exitInstitutionReport()
-    }
+    fun institutionClickCancel() = institutionReportContract.exitInstitutionReport()
+
     fun institutionClickSend(){
+        if (institutionTitleEditText.value.equals(null) || institutionTitleEditText.value.toString().isBlank())
+            institutionReportContract.flagInstitutionTitleBlankError()
 
+        else if (institutionRoomNumberEditText.value.equals(null) || institutionRoomNumberEditText.value.toString().isBlank())
+            institutionReportContract.flagInstitutionRoomNumberBlankError()
+
+        else if (institutionReportContentEditText.value.equals(null) || institutionReportContentEditText.value.toString().isBlank())
+            institutionReportContract.flagInstitutionContentBlankError()
+
+        else{
+            // TODO("고장 내용 서버에 보내는 동작")
+            institutionReportContract.exitInstitutionReport()
+        }
     }
 
-    fun logoutClickCancel(){
-        LogoutContract.exitLogut()
-    }
-    fun logoutClickLogout(){
+    fun logoutClickCancel() = logoutContract.exitLogout()
 
+    fun logoutClickLogout() {
+        // TODO("로그아웃하는 동작")
+        logoutContract.exitLogout()
     }
 }

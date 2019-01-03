@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogInstitutionReportBinding
 import dsm.android.v3.util.DataBindingDialogFragment
+import kotlinx.android.synthetic.main.dialog_institution_report.*
 
 class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionReportBinding>(), MyPageContract.InstitutionReportContract{
+
     override val layoutId: Int
         get() = R.layout.dialog_institution_report
 
@@ -27,7 +29,9 @@ class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionRepo
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    override fun exitInstitutionReport() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun exitInstitutionReport() = dialog.dismiss()
+
+    override fun flagInstitutionTitleBlankError() { institution_dialog_title_edit.error = "제목을 입력하세요."}
+    override fun flagInstitutionRoomNumberBlankError() { institution_dialog_room_number_edit.error = "방 번호을 입력하세요." }
+    override fun flagInstitutionContentBlankError() { institution_dialog_report_content_edit.error = "내용를 입력하세요." }
 }

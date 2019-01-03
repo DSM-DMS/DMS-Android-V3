@@ -29,7 +29,5 @@ class LogoutDialogFragmenet: DataBindingDialogFragment<DialogLogoutBinding>(), M
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    override fun exitLogut() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun exitLogout() = dialog.dismiss()
 }

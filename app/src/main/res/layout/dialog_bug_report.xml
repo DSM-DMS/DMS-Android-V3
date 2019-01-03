@@ -43,23 +43,25 @@
             android:layout_marginTop="16dp"
             android:id="@+id/bug_report_dialog_edit_title_lay"
             app:layout_constraintTop_toBottomOf="@id/round_bug_logo_img"
+            app:layout_constraintBottom_toTopOf="@id/bug_report_dialog_content_lay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:layout_constraintTop_toBottomOf="@id/round_bug_logo_img"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content">
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@id/round_bug_logo_img"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:id="@+id/bug_report_dialog_title_edit">
 
                 <android.support.design.widget.TextInputEditText
-                        android:text="@{MyPageViewModel.bugTitleEditText}"
-                        android:fontFamily="@font/nanumsquarebold"
-                        android:id="@+id/bug_report_dialog_title_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/bug_report_dialog_edit_title"
-                        android:textSize="@dimen/typo_body1"/>
+                    android:text="@{MyPageViewModel.bugTitleEditText}"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bug_report_dialog_edit_title"
+                    android:textSize="@dimen/typo_body1"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -67,16 +69,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/bug_report_dialog_edit_title_lay"
+            app:layout_constraintBottom_toTopOf="@id/bug_report_dialog_cancel_send_lay"
             android:id="@+id/bug_report_dialog_content_lay"
             android:layout_marginTop="16dp">
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="280dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:id="@+id/bug_report_dialog_content_edit">
                 <android.support.design.widget.TextInputEditText
                     android:text="@{MyPageViewModel.bugContentEditText}"
                     android:fontFamily="@font/nanumsquarebold"
-                    android:id="@+id/bug_report_dialog_bug_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/bug_report_dialog_edit_bug"
@@ -85,6 +89,7 @@
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/bug_report_dialog_cancel_send_lay"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/bug_report_dialog_content_lay"
             android:layout_width="0dp"

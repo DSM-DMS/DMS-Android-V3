@@ -49,13 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/institution_dialog_title_edit"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
-                    android:text="@{MyPageViewModel.institutionTitleEditText}"
+                    android:text="@={MyPageViewModel.institutionTitleEditText}"
                     android:fontFamily="@font/nanumsquarebold"
-                    android:id="@+id/institution_dialog_title_edit"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,17 +71,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/institution_dialog_edit_title_lay"
+            app:layout_constraintBottom_toTopOf="@id/institution_dialog_edit_report_lay"
             android:id="@+id/institution_dialog_room_number_lay"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp">
             <android.support.design.widget.TextInputLayout
+                    android:id="@+id/institution_dialog_room_number_edit"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="280dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
-                        android:text="@{MyPageViewModel.institutionRoomNumberEditText}"
+                        android:text="@={MyPageViewModel.institutionRoomNumberEditText}"
                         android:fontFamily="@font/nanumsquarebold"
-                        android:id="@+id/institution_dialog_room_number_edit"
                         android:background="@null"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,11 +105,12 @@
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="280dp"
-                android:layout_height="140dp">
+                android:layout_height="140dp"
+                app:errorEnabled="true"
+                android:id="@+id/institution_dialog_report_content_edit">
                 <android.support.design.widget.TextInputEditText
                     android:gravity="top"
-                    android:text="@{MyPageViewModel.institutionReportContentEditText}"
-                    android:id="@+id/institution_dialog_report_content_edit"
+                    android:text="@={MyPageViewModel.institutionReportContentEditText}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/institution_dialog_edit_report_content"

@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogBugReportBinding
 import dsm.android.v3.util.DataBindingDialogFragment
+import kotlinx.android.synthetic.main.dialog_bug_report.*
 
 class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>(), MyPageContract.BugReportContract{
+
     override val layoutId: Int
         get() = R.layout.dialog_bug_report
 
@@ -27,7 +29,8 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    override fun exitBugReport() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun exitBugReport() = dialog.dismiss()
+
+    override fun flagBugTitleBlankError() { bug_report_dialog_title_edit.error = "제목을 입력하세요." }
+    override fun flagBugContentBlankError() { bug_report_dialog_content_edit.error = "내용을 입력하세요." }
 }
