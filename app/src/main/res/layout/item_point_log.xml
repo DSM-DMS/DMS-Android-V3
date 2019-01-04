@@ -4,9 +4,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="120dp"
         app:cardElevation="24dp"
-        android:layout_marginBottom="-56dp"
+        android:layout_marginTop="-28dp"
+        android:layout_marginBottom="-28dp"
         app:cardCornerRadius="16dp">
 
     <android.support.constraint.ConstraintLayout
@@ -41,7 +42,7 @@
         <TextView
                 android:id="@+id/pointLogItem_point_tv"
                 android:layout_width="wrap_content"
-                android:textSize="@dimen/typo_header"
+                android:textSize="20sp"
                 tools:text="+3"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
