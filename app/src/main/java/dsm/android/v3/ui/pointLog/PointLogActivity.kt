@@ -23,11 +23,26 @@ class PointLogActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "상벌점 내역 조회"
+
         pointLog_toolbar.setNavigationOnClickListener {
             finish()
         }
-
+        val models = arrayListOf(PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true),
+            PointLogItemModel("호실 내 음식물 반입","2019-01-01","+3",true)
+        )
         pointLog_list_rv.layoutManager = LinearLayoutManager(this)
+        pointLog_list_rv.adapter = PointLogAdapter(models)
+
+
     }
 
 }
