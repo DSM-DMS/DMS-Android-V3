@@ -11,7 +11,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,10 +21,9 @@ import android.support.v7.cardview.R.style;
 import android.support.v7.cardview.R.styleable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 
-public class SibalCardView extends FrameLayout {
+public class Api17CardView extends FrameLayout {
     private static final int[] COLOR_BACKGROUND_ATTR = new int[]{16842801};
     private static final CardViewImpl IMPL;
     private boolean mCompatPadding;
@@ -36,15 +34,15 @@ public class SibalCardView extends FrameLayout {
     final Rect mShadowBounds;
     private final CardViewDelegate mCardViewDelegate;
 
-    public SibalCardView(@NonNull Context context) {
+    public Api17CardView(@NonNull Context context) {
         this(context, (AttributeSet) null);
     }
 
-    public SibalCardView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public Api17CardView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, attr.cardViewStyle);
     }
 
-    public SibalCardView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Api17CardView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContentPadding = new Rect();
         this.mShadowBounds = new Rect();
@@ -53,29 +51,29 @@ public class SibalCardView extends FrameLayout {
 
             public void setCardBackground(Drawable drawable) {
                 this.mCardBackground = drawable;
-                SibalCardView.this.setBackgroundDrawable(drawable);
+                Api17CardView.this.setBackgroundDrawable(drawable);
             }
 
             public boolean getUseCompatPadding() {
-                return SibalCardView.this.getUseCompatPadding();
+                return Api17CardView.this.getUseCompatPadding();
             }
 
             public boolean getPreventCornerOverlap() {
-                return SibalCardView.this.getPreventCornerOverlap();
+                return Api17CardView.this.getPreventCornerOverlap();
             }
 
             public void setShadowPadding(int left, int top, int right, int bottom) {
-                SibalCardView.this.mShadowBounds.set(left, top, right, bottom);
-                SibalCardView.super.setPadding(left + SibalCardView.this.mContentPadding.left, top + SibalCardView.this.mContentPadding.top, right + SibalCardView.this.mContentPadding.right, bottom + SibalCardView.this.mContentPadding.bottom);
+                Api17CardView.this.mShadowBounds.set(left, top, right, bottom);
+                Api17CardView.super.setPadding(left + Api17CardView.this.mContentPadding.left, top + Api17CardView.this.mContentPadding.top, right + Api17CardView.this.mContentPadding.right, bottom + Api17CardView.this.mContentPadding.bottom);
             }
 
             public void setMinWidthHeightInternal(int width, int height) {
-                if (width > SibalCardView.this.mUserSetMinWidth) {
-                    SibalCardView.super.setMinimumWidth(width);
+                if (width > Api17CardView.this.mUserSetMinWidth) {
+                    Api17CardView.super.setMinimumWidth(width);
                 }
 
-                if (height > SibalCardView.this.mUserSetMinHeight) {
-                    SibalCardView.super.setMinimumHeight(height);
+                if (height > Api17CardView.this.mUserSetMinHeight) {
+                    Api17CardView.super.setMinimumHeight(height);
                 }
 
             }
@@ -85,7 +83,7 @@ public class SibalCardView extends FrameLayout {
             }
 
             public View getCardView() {
-                return SibalCardView.this;
+                return Api17CardView.this;
             }
         };
         TypedArray a = context.obtainStyledAttributes(attrs, styleable.CardView, defStyleAttr, style.CardView);
