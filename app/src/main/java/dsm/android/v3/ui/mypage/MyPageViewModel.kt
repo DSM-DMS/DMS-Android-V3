@@ -1,11 +1,7 @@
 package dsm.android.v3.ui.mypage
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
-import android.util.Log
-import org.jetbrains.anko.doFromSdk
 
 class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
 
@@ -56,10 +52,10 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
 
     fun bugClickCancel() = bugReportContract.exitBugReport()
     fun bugClickSend(){
-        if (bugTitleEditText.value.equals(null) || bugTitleEditText.value!!.isBlank())
+        if (bugTitleEditText.isNullOrBlank())
             bugReportContract.flagBugTitleBlankError()
 
-        else if (bugContentEditText.value.equals(null) || bugContentEditText.value!!.isBlank())
+        else if (bugContentEditText.isNullOrBlank())
             bugReportContract.flagBugContentBlankError()
 
         else {
@@ -71,13 +67,13 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
     fun institutionClickCancel() = institutionReportContract.exitInstitutionReport()
 
     fun institutionClickSend(){
-        if (institutionTitleEditText.value.equals(null) || institutionTitleEditText.value.toString().isBlank())
+        if (institutionTitleEditText.isNullOrBlank())
             institutionReportContract.flagInstitutionTitleBlankError()
 
-        else if (institutionRoomNumberEditText.value.equals(null) || institutionRoomNumberEditText.value.toString().isBlank())
+        else if (institutionRoomNumberEditText.isNullOrBlank())
             institutionReportContract.flagInstitutionRoomNumberBlankError()
 
-        else if (institutionReportContentEditText.value.equals(null) || institutionReportContentEditText.value.toString().isBlank())
+        else if (institutionReportContentEditText.isNullOrBlank())
             institutionReportContract.flagInstitutionContentBlankError()
 
         else{
@@ -92,4 +88,7 @@ class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
         // TODO("로그아웃하는 동작")
         logoutContract.exitLogout()
     }
+
+    fun MutableLiveData<String>.isNullOrBlank(): Boolean
+            = MutableLiveData<String>().value.toString().isNullOrBlank()
 }
