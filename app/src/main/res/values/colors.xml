@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#19b6b6</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorAccent">#DFFF</color>
 
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
@@ -35,4 +36,14 @@
     <color name="colorTopaz700">#53C8C8</color>
     <color name="colorTopaz800">#36BFBF</color>
     <color name="colorTopaz900">#19b6b6</color>
+
+    <!-- color for colorPrimary scale-->
+    <color name="colorPrimary100">#FFF</color>
+    <color name="colorPrimary200">#EFF6F6</color>
+    <color name="colorPrimary300">#C6EDED</color>
+    <color name="colorPrimary400">#A9E4E4</color>
+    <color name="colorPrimary500">#8CDBDB</color>
+    <color name="colorPrimary600">#6FD1D1</color>
+    <color name="colorPrimary700">#53C8C8</color>
+    <color name="colorPrimary800">#36BFBF</color>
 </resources>
