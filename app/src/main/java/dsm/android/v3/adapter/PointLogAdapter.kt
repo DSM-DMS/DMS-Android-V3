@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.model.PointLogItemModel
-import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.find
 
 class PointLogAdapter(val models: ArrayList<PointLogItemModel>): RecyclerView.Adapter<PointLogAdapter.PointLogViewHolder>(){
@@ -27,10 +26,10 @@ class PointLogAdapter(val models: ArrayList<PointLogItemModel>): RecyclerView.Ad
         val date = itemView.find<TextView>(R.id.pointLogItem_date_tv)
         val point = itemView.find<TextView>(R.id.pointLogItem_point_tv)
         fun bind(model: PointLogItemModel){
-            title.text = model.title
-            date.text = model.date
-            point.text = model.point
-            if(model.isGoodPoint) point.setTextColor(ContextCompat.getColor(title.context, R.color.colorPrimary))
+            title.text = model.reason
+            date.text = model.time
+            point.text = model.point.toString()
+            if(model.pointType) point.setTextColor(ContextCompat.getColor(title.context, R.color.colorPrimary))
             else point.setTextColor(ContextCompat.getColor(title.context, R.color.colorRed))
         }
     }
