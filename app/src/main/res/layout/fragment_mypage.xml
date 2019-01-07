@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
@@ -134,109 +134,123 @@
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
-    
+
         <View
-            android:id="@+id/mypage_list_lay"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintVertical_weight="0.6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
-            android:background="@color/colorWhite">
+                android:id="@+id/mypage_list_lay"
+                android:layout_width="match_parent"
+                android:layout_height="377dp"
+                app:layout_constraintVertical_weight="0.6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
+                android:background="@color/colorWhite">
         </View>
     
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:id="@+id/mypage_merit_lay"
-            android:elevation="10dp"
-            android:background="@drawable/radius_view_white"
+            app:cardCornerRadius="12dp"
             android:layout_width="140dp"
             android:layout_height="70dp"
-            android:orientation="vertical"
-            android:gravity="center"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/mypage_demerit_lay"
             app:layout_constraintTop_toBottomOf="@id/mypage_info_lay"
             app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            android:layout_marginEnd="5dp">
-    
-            <TextView
-                android:id="@+id/mypage_merit_tv"
-                android:textColor="@color/colorBlack700"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquarebold"
-                android:textSize="@dimen/text_size_24"
-                android:lineSpacingExtra="3dp"
-                android:text="@{MyPageViewModel.meritText}"/>
-    
-            <TextView
-                android:textColor="@color/colorBlack900"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareregular"
-                android:text="@string/mypage_merit"
-                android:textSize="@dimen/typo_body2"
-                android:lineSpacingExtra="2dp"/>
-        </LinearLayout>
-    
-        <LinearLayout
-            android:id="@+id/mypage_demerit_lay"
-            android:background="@drawable/radius_view_white"
-            android:elevation="10dp"
+            android:layout_marginEnd="5dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/mypage_merit_tv"
+                    android:textColor="@color/colorBlack700"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="@dimen/text_size_24"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@{MyPageViewModel.meritText}"/>
+
+                <TextView
+                    android:textColor="@color/colorBlack900"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareregular"
+                    android:text="@string/mypage_merit"
+                    android:textSize="@dimen/typo_body2"
+                    android:lineSpacingExtra="2dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="140dp"
             android:layout_height="70dp"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:id="@+id/mypage_demerit_lay"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@id/mypage_merit_lay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mypage_info_lay"
             app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            android:layout_marginStart="5dp">
-    
-            <TextView
-                android:id="@+id/mypage_demerit_tv"
-                android:textColor="@color/colorBlack700"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquarebold"
-                android:textSize="@dimen/text_size_24"
-                android:lineSpacingExtra="3dp"
-                android:text="@{MyPageViewModel.demeritText}"/>
-    
-            <TextView
-                android:textColor="@color/colorBlack900"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareregular"
-                android:text="@string/mypage_demerit"
-                android:textSize="@dimen/typo_body2"
-                android:lineSpacingExtra="2dp"/>
-        </LinearLayout>
-    
-        <TextView
-            android:id="@+id/mypage_advice_tv"
+            android:layout_marginStart="5dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/mypage_demerit_tv"
+                    android:textColor="@color/colorBlack700"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="@dimen/text_size_24"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@{MyPageViewModel.demeritText}"/>
+
+                <TextView
+                    android:textColor="@color/colorBlack900"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareregular"
+                    android:text="@string/mypage_demerit"
+                    android:textSize="@dimen/typo_body2"
+                    android:lineSpacingExtra="2dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/mypage_advice_cv"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mypage_merit_lay"
             android:layout_marginTop="16dp"
-            android:padding="10dp"
-            android:background="@drawable/radius_view_topaz"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"
-            android:textSize="@dimen/typo_body1"
-            android:text="@{MyPageViewModel.adviceText}"
-            android:fontFamily="@font/nanumsquarebold"
-            android:lineSpacingExtra="1dp"
-            android:elevation="10dp"/>
+            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/colorTopaz900"
+            app:cardElevation="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mypage_advice_tv"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textSize="@dimen/typo_body1"
+                android:text="@{MyPageViewModel.adviceText}"
+                android:fontFamily="@font/nanumsquarebold"
+                android:lineSpacingExtra="1dp"/>
+        </android.support.v7.widget.CardView>
     
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/mypage_advice_tv"
+            app:layout_constraintTop_toBottomOf="@id/mypage_advice_cv"
             android:layout_marginTop="22dp"
             android:orientation="vertical">
                 <android.support.constraint.ConstraintLayout
