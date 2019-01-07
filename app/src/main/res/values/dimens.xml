@@ -11,11 +11,9 @@
     <dimen name="typo_body1">12sp</dimen>
     <dimen name="typo_body2">10sp</dimen>
 
-    <dimen name="text_size_8">8dp</dimen>
-    <dimen name="text_size_20">20dp</dimen>
-    <dimen name="text_size_24">24dp</dimen>
+    <dimen name="text_size_8">8sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
 
     <dimen name="bottom_navigation_text_size">12sp</dimen>
-    
-    <dimen name="bottom_navigation_text_size" tools:override="true">12sp</dimen>
 </resources>

@@ -19,7 +19,7 @@
             app:layout_constraintVertical_weight="0.3"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            android:background="@color/colorTopaz900"
+            android:background="@color/colorPrimary"
             android:padding="25dp">
             
             <TextView
@@ -165,7 +165,7 @@
                 android:gravity="center">
                 <TextView
                     android:id="@+id/mypage_merit_tv"
-                    android:textColor="@color/colorBlack700"
+                    android:textColor="@color/colorGray700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarebold"
@@ -174,7 +174,7 @@
                     android:text="@{MyPageViewModel.meritText}"/>
 
                 <TextView
-                    android:textColor="@color/colorBlack900"
+                    android:textColor="@color/colorGray900"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquareregular"
@@ -204,7 +204,7 @@
                 android:gravity="center">
                 <TextView
                     android:id="@+id/mypage_demerit_tv"
-                    android:textColor="@color/colorBlack700"
+                    android:textColor="@color/colorGray700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarebold"
@@ -213,7 +213,7 @@
                     android:text="@{MyPageViewModel.demeritText}"/>
 
                 <TextView
-                    android:textColor="@color/colorBlack900"
+                    android:textColor="@color/colorGray900"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquareregular"
@@ -232,7 +232,7 @@
             app:layout_constraintTop_toBottomOf="@id/mypage_merit_lay"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="@color/colorTopaz900"
+            app:cardBackgroundColor="@color/colorPrimary"
             app:cardElevation="10dp">
             <TextView
                 android:layout_width="match_parent"
@@ -277,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
-                        android:textColor="@color/colorBlack700"
+                        android:textColor="@color/colorGray700"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/mypage_logout_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -316,7 +316,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
-                        android:textColor="@color/colorBlack700"
+                        android:textColor="@color/colorGray700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_password_change_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -355,7 +355,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
-                        android:textColor="@color/colorBlack700"
+                        android:textColor="@color/colorGray700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_merit_history_content"
                         android:fontFamily="@font/nanumsquareregular"
@@ -394,7 +394,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
-                        android:textColor="@color/colorBlack700"
+                        android:textColor="@color/colorGray700"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_intro_developers_content"
                         android:fontFamily="@font/nanumsquareregular"

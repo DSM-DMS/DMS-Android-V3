@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/institution_dialog_cancel"
-                android:textColor="@color/colorBlack600"
+                android:textColor="@color/colorGray600"
                 android:textSize="@dimen/typo_body1"
                 android:fontFamily="@font/nanumsquarebold"
                 app:layout_constraintStart_toStartOf="parent"/>
