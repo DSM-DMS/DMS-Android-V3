@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="MyPageViewModel"
+            type="dsm.android.v3.ui.mypage.MyPageViewModel">
+        </variable>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:background="@drawable/radius_dialog_white">
+
+        <ImageView
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/round_warning_logo_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/round_warning_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/institution_dialog_edit_title_lay"
+            app:layout_constraintStart_toEndOf="@id/round_warning_logo_img"
+            android:id="@+id/institution_dialog_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/typo_header"
+            android:textColor="@color/colorPrimary"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/institution_dialog_title"
+            android:fontFamily="@font/nanumsquarebold" />
+
+        <LinearLayout
+            android:id="@+id/institution_dialog_edit_title_lay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/round_warning_logo_img"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/institution_dialog_title_edit"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true">
+                <android.support.design.widget.TextInputEditText
+                    android:text="@={MyPageViewModel.institutionTitleEditText}"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/institution_dialog_edit_title"
+                    android:textSize="@dimen/typo_body1"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/institution_dialog_edit_title_lay"
+            app:layout_constraintBottom_toTopOf="@id/institution_dialog_edit_report_lay"
+            android:id="@+id/institution_dialog_room_number_lay"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp">
+            <android.support.design.widget.TextInputLayout
+                    android:id="@+id/institution_dialog_room_number_edit"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    app:errorEnabled="true">
+                <android.support.design.widget.TextInputEditText
+                        android:text="@={MyPageViewModel.institutionRoomNumberEditText}"
+                        android:fontFamily="@font/nanumsquarebold"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/institution_dialog_edit_room_number"
+                        android:textSize="@dimen/typo_body1"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/institution_dialog_edit_report_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/institution_dialog_room_number_lay"
+            app:layout_constraintBottom_toTopOf="@id/institution_dialog_cancel_and_send_lay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="16dp">
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="280dp"
+                android:layout_height="140dp"
+                app:errorEnabled="true"
+                android:id="@+id/institution_dialog_report_content_edit">
+                <android.support.design.widget.TextInputEditText
+                    android:gravity="top"
+                    android:text="@={MyPageViewModel.institutionReportContentEditText}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/institution_dialog_edit_report_content"
+                    android:textSize="@dimen/typo_body1"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/institution_dialog_cancel_and_send_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            app:layout_constraintTop_toBottomOf="@id/institution_dialog_edit_report_lay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:onClick="@{()->MyPageViewModel.institutionClickCancel()}"
+                android:id="@+id/institution_dialog_cancel_tv"
+                android:paddingVertical="11dp"
+                android:paddingHorizontal="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/institution_dialog_cancel"
+                android:textColor="@color/colorGray600"
+                android:textSize="@dimen/typo_body1"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:onClick="@{()->MyPageViewModel.institutionClickSend()}"
+                android:id="@+id/institution_dialog_send_tv"
+                android:paddingVertical="11dp"
+                android:paddingHorizontal="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/institution_dialog_send"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/typo_body1"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

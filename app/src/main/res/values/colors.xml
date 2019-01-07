@@ -3,6 +3,7 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#DFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
 
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
@@ -24,5 +25,4 @@
     <color name="colorPrimary600">#6FD1D1</color>
     <color name="colorPrimary700">#53C8C8</color>
     <color name="colorPrimary800">#36BFBF</color>
-
 </resources>
