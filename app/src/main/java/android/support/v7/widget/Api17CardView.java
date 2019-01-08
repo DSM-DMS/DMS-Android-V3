@@ -23,6 +23,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+/*
+* Api17CardView
+* - 기존 CardView 코드를 가져와 일부 수정한 커스텀뷰입니다.
+* - API 21 버전 이후부터 지원하지 않는 그림자 색깔 커스터마이징을 위하여 만들었습니다.
+* - 기존 카드뷰는 OS 버전 21 이상이면 Api21CardViewImpl, 17 ~ 21 사이면 Api17CardViewImpl을 사용합니다.
+* - 강제로 Api17CardViewImpl을 사용하게끔 만들어서 그림자 색깔을 커스터마이징 할 수 있게 만들었습니다.
+* - colors.xml의 cardview_shadow_start_color, cardview_shadow_end_color에 따라 그림자의 색이 변합니다.
+* */
+
 public class Api17CardView extends FrameLayout {
     private static final int[] COLOR_BACKGROUND_ATTR = new int[]{16842801};
     private static final CardViewImpl IMPL;
