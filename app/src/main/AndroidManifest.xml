@@ -16,6 +16,9 @@
         <activity
                 android:name=".ui.pointLog.PointLogActivity"
                 android:theme="@style/AppTheme">
+        </activity>
+
+        <activity android:name=".ui.changePassword.ChangePasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

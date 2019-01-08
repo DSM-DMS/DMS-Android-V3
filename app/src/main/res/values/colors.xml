@@ -3,6 +3,7 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#159999</color>
     <color name="colorAccent">#DFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
 
     <color name="colorRed">#ff5454</color>
 
@@ -26,7 +27,6 @@
     <color name="colorPrimary600">#6FD1D1</color>
     <color name="colorPrimary700">#53C8C8</color>
     <color name="colorPrimary800">#36BFBF</color>
-
 
     <color name="cardview_shadow_start_color">#1419b6b6</color>
     <color name="cardview_shadow_end_color">#03ffffff</color>
