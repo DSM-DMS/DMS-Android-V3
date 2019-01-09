@@ -33,6 +33,15 @@
     <string name="institution_dialog_report_title">고장 내용</string>
     <string name="institution_dialog_cancel">취소</string>
     <string name="institution_dialog_send">전송</string>
+    <string name="apply_going_title">외출을 신청하세요</string>
+    <string name="apply_going_explanation">외출증 시스템의 변화로 DMS에서 외출 신청서를 작성 후 사감실에 본인 확인을 하고 외출을 할 수 있습니다.</string>
+    <string name="apply_going_saturday_title">토요외출</string>
+    <string name="apply_going_saturday_explanation">토요일 12시 30분부터 점심식사를 한 후 외출이 가능합니다. 주말 급식을 신청하지 않은 학생은 바로 외출이 가능합니다. 외출한 학생들은 예외 상황이 아닌 이상 17시 30분까지 귀사하여 점호 후 저녁 식사를 해야 합니다.</string>
+    <string name="apply_going_sunday_title">일요외출</string>
+    <string name="apply_going_sunday_explanation">일요일 12시 30분부터 점심식사를 한 후 외출이 가능합니다. 주말 급식을 신청하지 않은 학생은 바로 외출이 가능합니다. 외출한 학생들은 예외 상황이 아닌 이상 17시 30분까지 귀사하여 점호 후 저녁 식사를 해야 합니다.</string>
+    <string name="apply_going_workday_title">평일외출</string>
+    <string name="apply_going_workday_explanation">평일에 하는 외출이 아닌 예외 상황인 평일 (예: 시험 끝난 후)에 가능한 외출입니다. 부모님 허락을 맡은 후 선생님이 확인하시면 외출이 가능합니다.</string>
+    <string name="apply_going_btn_text">신청</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
