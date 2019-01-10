@@ -5,6 +5,8 @@
     <string name="navigation_notice">공지</string>
     <string name="navigation_mypage">마이페이지</string>
     <string name="title_activity_sign_in">SignInActivity</string>
-    <string name="et_signIn_id"><font size="10">아이디를 입력해주세요</font></string>
-    <string name="et_signIn_pw"><font size="10">비밀번호를 입력해주세요</font></string>
+    <string name="id_et"><font size="14">아이디를 입력해주세요</font></string>
+    <string name="pw_et"><font size="14">비밀번호를 입력해주세요</font></string>
+    <string name="code_et"><font size="14">확인코드를 입력해주세요</font></string>
+    <string name="confirm_et"><font size="14">비밀번호를 확인해주세요</font></string>
 </resources>

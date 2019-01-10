@@ -5,4 +5,6 @@
     <color name="colorAccent">#DFFF</color>
     <color name="colorTextHint">#e0e0e0</color>
     <color name="colorSignInBtnUnCliked">#dfdfdf</color>
+    <color name="colorTvUnCliked">#9f9f9f</color>
+    <color name="colorConstBack">#14000000</color>
 </resources>

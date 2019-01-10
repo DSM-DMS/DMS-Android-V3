@@ -1,5 +1,8 @@
 package dsm.android.v3.ui.signIn
 
+import android.view.View
+
 interface SignInNavigator{
-    fun showToast(result: String)
+    fun intentToRegister()
+    fun confirmEditText(v : View)
 }

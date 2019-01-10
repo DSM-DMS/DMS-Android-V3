@@ -2,21 +2,29 @@ package dsm.android.v3.ui.signIn
 
 import android.arch.lifecycle.*
 import android.arch.lifecycle.ViewModel
+import android.databinding.BindingAdapter
 import android.util.Log
+import android.view.View
+import android.widget.EditText
+import android.widget.Toast
+import dsm.android.v3.util.SingleLiveEvent
 
-class SignInViewModel : ViewModel()  {
+
+class SignInViewModel(val navigator: SignInNavigator) : ViewModel()  {
 
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
+    var setIdBoolean = MediatorLiveData<Boolean>()
+    var setPwBoolean = MediatorLiveData<Boolean>()
+
+    val idLiveEvent = MutableLiveData<Boolean>()
 
     val btnColorSet = MediatorLiveData<Boolean>().apply {
         addSource(signInId) {
             this.value = !signInId.isValueBlank() && !signInPw.isValueBlank()
-
         }
         addSource(signInPw) {
             this.value = !signInId.isValueBlank() && !signInPw.isValueBlank()
-
         }
     }
 
@@ -24,8 +32,13 @@ class SignInViewModel : ViewModel()  {
 
     }
 
-    fun toSignUpBtn(){
+    fun onClickEdit(v : View) {
+        navigator.confirmEditText(v)
+//        idLiveEvent.value = true
+    }
 
+    fun toSignUpBtn(){
+        navigator.intentToRegister()
     }
 
     fun MutableLiveData<String>.isValueBlank() =
