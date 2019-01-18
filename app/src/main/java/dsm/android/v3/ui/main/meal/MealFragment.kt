@@ -16,6 +16,7 @@ import dsm.android.v3.databinding.FragmentMealBinding
 import dsm.android.v3.model.MealModel
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.find
+import org.jetbrains.anko.support.v4.onPageChangeListener
 import org.jetbrains.anko.support.v4.toast
 
 class MealFragment : DataBindingFragment<FragmentMealBinding>() {
@@ -23,7 +24,7 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_meal
 
-    val viewModel by lazy{ ViewModelProviders.of(this)[MealFragmentViewModel::class.java] }
+    val viewModel by lazy { ViewModelProviders.of(this)[MealFragmentViewModel::class.java] }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,14 +33,18 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.vm = viewModel
 
-        viewModel.pageStatusLiveData.observe(this, Observer{
+        viewModel.pageStatusLiveData.observe(this, Observer {
             toast("ㅋㅋ이게되네 $it")
         })
-        val view = inflater.inflate(R.layout.fragment_meal, container, false)
         val list = arrayListOf("수수밥", "맑은무채국", "비엔나푸실리볶음", "조기구이", "사과", "배추겉절이")
-        val meal = arrayListOf(MealModel(list, list, list), MealModel(list, list, list))
-        view.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(meal)
-        return view
+        val meal = arrayListOf(
+            MealModel(list, list, list),
+            MealModel(list, list, list),
+            MealModel(list, list, list),
+            MealModel(list, list, list)
+        )
+        rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(meal)
+        return rootView
     }
 
 

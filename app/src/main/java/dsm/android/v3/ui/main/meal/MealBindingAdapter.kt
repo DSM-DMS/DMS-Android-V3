@@ -14,34 +14,21 @@ import org.jetbrains.anko.support.v4.onPageChangeListener
 @BindingAdapter("pageChange")
 fun ViewPager.setPageChange(data: MutableLiveData<Int>) {
     Log.d("MealBindingAdapter", "Page is $currentItem")
-    currentItem = data.value!!
+    if (currentItem != data.value)
+        currentItem = data.value!!
 }
 
 @InverseBindingAdapter(attribute = "pageChange")
-fun ViewPager.getPageChange(): Int{
+fun ViewPager.getPageChange(): Int {
     return currentItem
 }
 
 
 @BindingAdapter("pageChangeAttrChanged")
 fun ViewPager.setPageChangeListener(listener: InverseBindingListener) {
-    addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
-        override fun onPageScrollStateChanged(p0: Int) {
-
-        }
-
-        override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
-
-        }
-
-        override fun onPageSelected(p0: Int) {
+    onPageChangeListener {
+        onPageSelected {
             listener.onChange()
         }
-
-    })
-//    onPageChangeListener {
-//        onPageSelected {
-//            listener.onChange()
-//        }
-//    }
+    }
 }
