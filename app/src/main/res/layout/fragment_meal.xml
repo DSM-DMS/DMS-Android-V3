@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/typo_header"
-                android:textColor="#64000000"
+                android:textColor="#AA000000"
                 android:layout_marginTop="36dp"
                 android:text="@{vm.dateMerger}"
                 tools:text="2018년 03월 01일"

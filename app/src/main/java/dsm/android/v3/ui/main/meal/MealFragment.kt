@@ -33,9 +33,6 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.vm = viewModel
 
-        viewModel.pageStatusLiveData.observe(this, Observer {
-            toast("ㅋㅋ이게되네 $it")
-        })
         val list = arrayListOf("수수밥", "맑은무채국", "비엔나푸실리볶음", "조기구이", "사과", "배추겉절이")
         val meal = arrayListOf(
             MealModel(list, list, list),

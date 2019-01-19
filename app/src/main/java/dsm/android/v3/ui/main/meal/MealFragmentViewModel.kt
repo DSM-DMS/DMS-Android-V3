@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MealFragmentViewModel : ViewModel() {
-    
+
     val pageStatusLiveData = MutableLiveData<Int>().apply { value = 0 }
 
     val dateMerger = Transformations.map(pageStatusLiveData) {
