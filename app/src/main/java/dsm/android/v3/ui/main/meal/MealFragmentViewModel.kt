@@ -9,20 +9,26 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MealFragmentViewModel : ViewModel() {
+    
     val pageStatusLiveData = MutableLiveData<Int>().apply { value = 0 }
-    val siballom = MutableLiveData<String>().apply { value = "Sibal" }
+
     val dateMerger = Transformations.map(pageStatusLiveData) {
-        val date = Date(System.currentTimeMillis())
-        SimpleDateFormat("yyyy년 mm월 dd일").format(date)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, it)
+        SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(calendar.time)
+    }
+
+    val weekMerger = Transformations.map(pageStatusLiveData) {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, it)
+        SimpleDateFormat("EEEE", Locale.KOREA).format(calendar.time)
     }
 
     fun nextIndex() {
-        Log.d("MealFragmentViewModel","nextIndex() called")
         pageStatusLiveData.value = pageStatusLiveData.value!! + 1
     }
 
     fun previousIndex() {
-        Log.d("MealFragmentViewModel","previousIndex() called")
-        pageStatusLiveData.value = pageStatusLiveData.value!! + 1
+        pageStatusLiveData.value = pageStatusLiveData.value!! - 1
     }
 }

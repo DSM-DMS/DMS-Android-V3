@@ -46,6 +46,7 @@
                 android:textColor="#64000000"
                 android:layout_marginTop="36dp"
                 android:text="@{vm.dateMerger}"
+                tools:text="2018년 03월 01일"
                 app:layout_constraintStart_toEndOf="@+id/mealFragment_previous_iv"
                 app:layout_constraintEnd_toStartOf="@+id/mealFragment_next_iv"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -57,6 +58,8 @@
                 android:textSize="@dimen/typo_header"
                 android:textColor="@color/colorGray900"
                 android:layout_marginTop="8dp"
+                android:text="@{vm.weekMerger}"
+                tools:text="월요일"
                 app:layout_constraintStart_toEndOf="@+id/mealFragment_previous_iv"
                 app:layout_constraintEnd_toStartOf="@+id/mealFragment_next_iv"
                 app:layout_constraintTop_toBottomOf="@id/mealFragment_date_tv"/>
