@@ -15,13 +15,13 @@ class MealFragmentViewModel : ViewModel() {
 
     val pageStatusLiveData = MutableLiveData<Int>().apply { value = 0 }
 
-    val dateMerger = Transformations.map(pageStatusLiveData) {
+    val dateLiveData = Transformations.map(pageStatusLiveData) {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, it)
         SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(calendar.time)
     }
 
-    val weekMerger = Transformations.map(pageStatusLiveData) {
+    val weekLiveData = Transformations.map(pageStatusLiveData) {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, it)
         SimpleDateFormat("EEEE", Locale.KOREA).format(calendar.time)
