@@ -33,14 +33,16 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.vm = viewModel
 
-        val list = arrayListOf("수수밥", "맑은무채국", "비엔나푸실리볶음", "조기구이", "사과", "배추겉절이")
-        val meal = arrayListOf(
-            MealModel(list, list, list),
-            MealModel(list, list, list),
-            MealModel(list, list, list),
-            MealModel(list, list, list)
-        )
-        rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(meal)
+        viewModel.getMeal()
+
+        viewModel.pageStatusLiveData.observe(this, Observer {
+            toast("$it")
+        })
+
+        viewModel.meals.observe(this, Observer {
+            rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!)
+        })
+
         return rootView
     }
 
