@@ -24,6 +24,7 @@ class MyPageFragment() :DataBindingFragment<FragmentMypageBinding>(), MyPageCont
     private val institutionDialogFragment: InstitutionDialogFragment by lazy { InstitutionDialogFragment() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val factory = MyPageViewModelFactory(this)
         binding.myPageViewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
         return rootView
