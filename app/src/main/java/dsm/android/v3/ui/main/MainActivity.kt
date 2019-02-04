@@ -11,15 +11,12 @@ class MainActivity : AppCompatActivity() {
     private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_food -> {
-                message.setText(R.string.navigation_food)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_submit -> {
-                message.setText(R.string.navigation_submit)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notice -> {
-                message.setText(R.string.navigation_notice)
                 return@OnNavigationItemSelectedListener true
             }
         }
