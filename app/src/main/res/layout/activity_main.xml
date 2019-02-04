@@ -8,8 +8,8 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-    <fragment
-            android:id="@+id/fragment"
+    <FrameLayout
+            android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:name="dsm.android.v3.ui.main.putIn.PutInFragment"
@@ -18,16 +18,16 @@
             app:layout_constraintBottom_toTopOf="@+id/navigation"/>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        style="@style/MainBottomNavigationViewStyle"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@drawable/selector_navigation"
-        app:itemTextColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+            android:id="@+id/navigation"
+            style="@style/MainBottomNavigationViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@drawable/selector_navigation"
+            app:itemTextColor="#FFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/navigation"/>
 
 </android.support.constraint.ConstraintLayout>

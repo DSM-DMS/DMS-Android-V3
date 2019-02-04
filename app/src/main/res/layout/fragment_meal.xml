@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="vm"
+                type="dsm.android.v3.ui.main.meal.MealFragmentViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.meal.MealFragment">
+
+        <ImageView
+                android:id="@+id/mealFragment_previous_iv"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_left"
+                android:layout_marginStart="44dp"
+                android:onClick="@{() -> vm.previousIndex()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mealFragment_date_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/mealFragment_week_tv"/>
+
+        <ImageView
+                android:id="@+id/mealFragment_next_iv"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_marginEnd="44dp"
+                android:onClick="@{() -> vm.nextIndex()}"
+                app:layout_constraintTop_toTopOf="@+id/mealFragment_date_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/mealFragment_week_tv"/>
+
+        <TextView
+                android:id="@+id/mealFragment_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_header"
+                android:textColor="#AA000000"
+                android:layout_marginTop="36dp"
+                android:text="@{vm.dateLiveData}"
+                tools:text="2018년 03월 01일"
+                app:layout_constraintStart_toEndOf="@+id/mealFragment_previous_iv"
+                app:layout_constraintEnd_toStartOf="@+id/mealFragment_next_iv"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/mealFragment_week_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorGray900"
+                android:layout_marginTop="8dp"
+                android:text="@{vm.weekLiveData}"
+                tools:text="월요일"
+                app:layout_constraintStart_toEndOf="@+id/mealFragment_previous_iv"
+                app:layout_constraintEnd_toStartOf="@+id/mealFragment_next_iv"
+                app:layout_constraintTop_toBottomOf="@id/mealFragment_date_tv"/>
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/mealFragment_meal_vp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="36dp"
+                app:pageChange="@={vm.pageStatusLiveData}"
+                app:layout_constraintTop_toBottomOf="@+id/mealFragment_week_tv"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
