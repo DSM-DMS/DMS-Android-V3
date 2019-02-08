@@ -33,6 +33,7 @@
     <string name="institution_dialog_report_title">고장 내용</string>
     <string name="institution_dialog_cancel">취소</string>
     <string name="institution_dialog_send">전송</string>
+    <string name="apply_going_appbar_title">외출 신청</string>
     <string name="apply_going_title">외출을 신청하세요</string>
     <string name="apply_going_explanation">외출증 시스템의 변화로 DMS에서 외출 신청서를 작성 후 사감실에 본인 확인을 하고 외출을 할 수 있습니다.</string>
     <string name="apply_going_saturday_title">토요외출</string>
@@ -42,6 +43,17 @@
     <string name="apply_going_workday_title">평일외출</string>
     <string name="apply_going_workday_explanation">평일에 하는 외출이 아닌 예외 상황인 평일 (예: 시험 끝난 후)에 가능한 외출입니다. 부모님 허락을 맡은 후 선생님이 확인하시면 외출이 가능합니다.</string>
     <string name="apply_going_btn_text">신청</string>
+    <string name="apply_going_log_explanation">외출 신청서는 요일당 최대 5개까지 가능합니다.</string>
+    <string name="apply_going_log_card_title">외출신청서</string>
+    <string name="apply_going_log_delete_btn">취소</string>
+    <string name="apply_going_doc_going_title">외출</string>
+    <string name="apply_going_doc_date_hint">날짜</string>
+    <string name="apply_going_doc_time_hint">일시</string>
+    <string name="apply_going_doc_return_title">귀가</string>
+    <string name="apply_going_doc_reason_title">사유</string>
+    <string name="apply_going_doc_reason_hint">사유 입력</string>
+    <string name="apply_going_doc_with_hint">동행인</string>
+    <string name="apply_going_doc_with_title">같이 가는 사람</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

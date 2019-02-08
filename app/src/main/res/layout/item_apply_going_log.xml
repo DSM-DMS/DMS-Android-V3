@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Api17CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:shadowColor="@color/colorPrimary"
+        app:cardCornerRadius="16dp">
+    <LinearLayout
+            android:id="@+id/applyGoing_log_card_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+        <TextView
+                android:id="@+id/applyGoing_log_card_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGray700"
+                android:textSize="@dimen/typo_header"
+                android:fontFamily="@font/nanumsquarebold"
+                android:text="@string/apply_going_log_card_title"/>
+
+        <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/applyGoing_log_card_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_body1"
+                android:textColor="@color/colorGray600"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="2sp"/>
+
+        <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/applyGoing_log_card_reason_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_body1"
+                android:textColor="@color/colorGray400"
+                android:lineSpacingExtra="1sp"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.Api17CardView>

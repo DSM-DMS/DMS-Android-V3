@@ -6,8 +6,6 @@
         <variable
                 name="applyGoingViewModel"
                 type="dsm.android.v3.ui.applyGoing.ApplyGoingViewModel"/>
-
-        <import type="android.arch.lifecycle.MutableLiveData"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,7 +17,7 @@
                 android:id="@+id/appBarLayout">
 
             <android.support.v7.widget.Toolbar
-                    android:id="@+id/applyGoing_toolbar"
+                    android:id="@+id/applyGoing_log_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
@@ -29,6 +27,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <ImageView
+                            android:onClick="@{()->applyGoingViewModel.applyGoingLogClickBack()}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@mipmap/round_arrow_back_24_px"/>
@@ -38,7 +37,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:lineSpacingExtra="2sp"
-                            android:text="@string/apply_going_appbar_title"
+                            android:text="@={applyGoingViewModel.logTitle}"
                             android:textSize="@dimen/text_size_16"
                             android:fontFamily="@font/nanumsquarebold"
                             android:textColor="@color/colorWhite"/>
@@ -47,22 +46,22 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.constraint.ConstraintLayout
-                android:id="@+id/applyGoing_explanation_lay"
+                android:id="@+id/applyGoing_log_explanation_lay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/appBarLayout"
                 android:paddingHorizontal="16dp"
-                android:paddingTop="26dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="36dp"
+                android:paddingBottom="28dp">
             <TextView
-                    android:id="@+id/applyGoing_title_tv"
+                    android:id="@+id/applyGoing_log_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="외출을 신청하세요"
+                    android:text="@={applyGoingViewModel.logTitle}"
                     android:textSize="@dimen/text_size_24"
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
@@ -72,47 +71,44 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorGray600"
                     android:textSize="@dimen/typo_subtitle"
-                    android:text="@string/apply_going_explanation"
+                    android:text="@string/apply_going_log_explanation"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/nanumsquareregular"
                     android:letterSpacing="0.02"
                     android:lineSpacingExtra="10sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_title_tv"/>
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_log_title_tv"/>
 
         </android.support.constraint.ConstraintLayout>
 
-        <Button
-                android:onClick="@{()->applyGoingViewModel.applyGoingClickDoc()}"
-                android:id="@+id/applyGoing_apply_btn"
+        <android.support.v7.widget.RecyclerView
                 android:layout_marginHorizontal="16dp"
-                android:background="@drawable/radius_view_primary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/applyGoing_apply_list_pager"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center"
-                android:text="@string/apply_going_btn_text"
-                android:textSize="@dimen/typo_header"
-                android:textColor="@color/colorWhite"
-                android:fontFamily="@font/nanumsquareregular"/>
-
-        <android.support.v4.view.ViewPager
-                android:paddingHorizontal="50dp"
-                android:clipToPadding="false"
-                android:id="@+id/applyGoing_apply_list_pager"
+                android:id="@+id/applyGoing_apply_record_rv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/applyGoing_explanation_lay"
-                app:layout_constraintBottom_toTopOf="@id/applyGoing_apply_btn"/>
+                app:layout_constraintTop_toBottomOf="@id/applyGoing_log_explanation_lay"
+                app:layout_constraintBottom_toBottomOf="parent">
 
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+                android:onClick="@{()->applyGoingViewModel.applyGoingClickDelete()}"
+                android:id="@+id/applyGoing_apply_delete_btn"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/radius_view_red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:text="@string/apply_going_log_delete_btn"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquareregular"/>
 
     </android.support.constraint.ConstraintLayout>
 

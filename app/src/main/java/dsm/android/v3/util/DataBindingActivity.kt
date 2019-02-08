@@ -1,5 +1,9 @@
 package dsm.android.v3.util
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.LifecycleService
+import android.arch.lifecycle.OnLifecycleEvent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -12,9 +16,49 @@ abstract class DataBindingActivity<T : ViewDataBinding> : AppCompatActivity() {
 
     abstract val layoutId: Int
 
+    private val lifecycleOwner= LifecycleOwner()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.setLifecycleOwner(this)
     }
+
+    override fun onStart() {
+        super.onStart()
+        notifyEvent(Lifecycle.Event.ON_START)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        notifyEvent(Lifecycle.Event.ON_RESUME)
+    }
+
+    override fun onPause() {
+        notifyEvent(Lifecycle.Event.ON_PAUSE)
+        super.onPause()
+    }
+
+    override fun onStop() {
+        notifyEvent(Lifecycle.Event.ON_STOP)
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        notifyEvent(Lifecycle.Event.ON_DESTROY)
+        super.onDestroy()
+    }
+
+    fun register(callback : LifecycleCallback) {
+        lifecycleOwner.register(callback)
+    }
+
+    fun unregister(callback : LifecycleCallback) {
+        lifecycleOwner.unregister(callback)
+    }
+
+    private fun notifyEvent(event : Lifecycle.Event) {
+        lifecycleOwner.notifyEvent(event)
+    }
+
 }
