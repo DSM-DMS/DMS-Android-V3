@@ -13,6 +13,12 @@ interface ApplyGoingContract{
 
     interface ApplyGoingDocContract{
         fun backApplyGoing()
+        fun setErrorApplyGoingGoDate()
+        fun setErrorApplyGoingGoTime()
+        fun setErrorApplyGoingBackDate()
+        fun setErrorApplyGoingBackTime()
+        fun setErrorApplyGoingReason()
+        fun createListFullWarningToast()
     }
 
     interface ApplyGoingLogRv{

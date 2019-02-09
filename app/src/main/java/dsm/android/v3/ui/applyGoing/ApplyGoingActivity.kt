@@ -1,12 +1,12 @@
 package dsm.android.v3.ui.applyGoing
 
-import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.view.PagerAdapter
 import android.support.v7.widget.Api17CardView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -17,14 +17,12 @@ import dsm.android.v3.databinding.ActivityApplyGoingBinding
 import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_going.*
-import kotlinx.android.synthetic.main.item_apply_going.*
 import kotlinx.android.synthetic.main.item_apply_going.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),ApplyGoingContract {
+class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  ApplyGoingContract {
 
     override val layoutId: Int
         get() = R.layout.activity_apply_going
@@ -46,8 +44,7 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),Appl
         applyGoing_apply_list_pager.currentItem = 0
     }
 
-    override fun intentApplyGoingDoc() = startActivity<ApplyGoingDocActivity>()
-
+    override fun intentApplyGoingDoc() = startActivity<ApplyGoingDocActivity>("currentItem" to applyGoing_apply_list_pager.currentItem)
 
     inner class ApplyPageAdapter(val models: ArrayList<ApplyGoingModel>) : PagerAdapter() {
 

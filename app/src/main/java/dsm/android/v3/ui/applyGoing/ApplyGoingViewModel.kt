@@ -15,12 +15,13 @@ class ApplyGoingViewModel(): ViewModel(), LifecycleCallback{
     private var applyGoingLogContract: ApplyGoingContract.ApplyGoingLogContract? = null
     private var applyGoingDocContract: ApplyGoingContract.ApplyGoingDocContract? = null
 
+    val nowCurrentItem = MutableLiveData<Int>()
     val logTitle = MutableLiveData<String>()
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
-    val applyGoingBackDate = MutableLiveData<String>()
-    val applyGoingBackTime = MutableLiveData<String>()
+    val applyGoingReturnDate = MutableLiveData<String>()
+    val applyGoingReturnTime = MutableLiveData<String>()
     val applyGoingReason = MutableLiveData<String>()
     val applyGoingWith = MutableLiveData<String>()
 
@@ -48,8 +49,9 @@ class ApplyGoingViewModel(): ViewModel(), LifecycleCallback{
         }
     }
 
-    constructor(contract: ApplyGoingContract.ApplyGoingDocContract): this(){
+    constructor(contract: ApplyGoingContract.ApplyGoingDocContract, currentItem: Int): this(){
         applyGoingDocContract = contract
+        nowCurrentItem.value = currentItem
     }
 
     fun settingViewPager()
@@ -58,10 +60,55 @@ class ApplyGoingViewModel(): ViewModel(), LifecycleCallback{
     fun applyGoingClickDoc() = applyGoingContract?.intentApplyGoingDoc()
 
     fun applyGoingDocClickApply(){
-        
-
-        // TODO("신청한 거 추가되게 해야 함")
-        applyGoingDocContract?.backApplyGoing()
+        if(applyGoingGoDate.value.isNullOrBlank()){
+            applyGoingDocContract?.setErrorApplyGoingGoDate()
+        }
+        else if(applyGoingGoTime.value.isNullOrBlank()){
+            applyGoingDocContract?.setErrorApplyGoingGoTime()
+        }
+        else if(applyGoingReturnDate.value.isNullOrBlank()){
+            applyGoingDocContract?.setErrorApplyGoingBackDate()
+        }
+        else if(applyGoingReturnTime.value.isNullOrBlank()){
+            applyGoingDocContract?.setErrorApplyGoingBackTime()
+        }
+        else if (applyGoingReason.value.isNullOrBlank()){
+            applyGoingDocContract?.setErrorApplyGoingReason()
+        }
+        // 동행인 없어도 됨 나중에 서버에 넘겨줄 때 없이 넘겨주면 됨
+        else {
+            // 서버 통신 필요
+            when(nowCurrentItem.value){
+                0 -> {
+                    if (saturdayItemList.size != 5){
+                        saturdayItemList.add(
+                            ApplyGoingLogItemModel(
+                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}"))
+                    } else {
+                        applyGoingDocContract?.createListFullWarningToast()
+                    }
+                }
+                1 -> {
+                    if (sundayItemList.size != 5){
+                        sundayItemList.add(
+                            ApplyGoingLogItemModel(
+                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}"))
+                    } else {
+                        applyGoingDocContract?.createListFullWarningToast()
+                    }
+                }
+                2 -> {
+                    if (workdayItemList.size != 5){
+                        workdayItemList.add(
+                            ApplyGoingLogItemModel(
+                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}"))
+                    } else {
+                        applyGoingDocContract?.createListFullWarningToast()
+                    }
+                }
+            }
+            applyGoingDocContract?.backApplyGoing()
+        }
     }
 
     fun applyGoingDocClickBack() {
@@ -73,7 +120,7 @@ class ApplyGoingViewModel(): ViewModel(), LifecycleCallback{
     }
 
     fun applyGoingClickDelete() {
-        Log.e("지워지는 데이터", "$deleteData")
+        // 서버 통신 필요
         when(logTitle.value){
             "토요외출" -> saturdayItemList.removeAll(deleteData)
             "일요외출" -> sundayItemList.removeAll(deleteData)
