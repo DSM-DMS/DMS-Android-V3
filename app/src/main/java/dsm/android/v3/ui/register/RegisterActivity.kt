@@ -39,17 +39,6 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
         val registerPw = findViewById<TextView>(R.id.register_pw_tv)
         val registerPwConfirm = findViewById<TextView>(R.id.register_pw_again_tv)
         val etRegisterCode = findViewById<EditText>(R.id.register_code_et)
-        etRegisterCode.onFocusChangeListener = View.OnFocusChangeListener { view, idHasFocus : Boolean ->
-            if (idHasFocus) {
-                registerCode.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                registerCode.setHint("")
-            }
-            else {
-                registerId.setTextColor(ContextCompat.getColor(this, R.color.colorTvUnCliked))
-                registerPw.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                registerPw.setHint("")
-            }
-        }
 
     }
 

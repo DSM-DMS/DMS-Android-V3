@@ -73,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:text="확인코드 입력"
                     android:textSize="16sp"
+                    android:textColor="@color/colorTvUnCliked"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="46dp"
                     android:layout_marginTop="36dp" app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +98,7 @@
                     android:layout_height="wrap_content"
                     android:text="아이디"
                     android:textSize="16sp"
+                    android:textColor="@color/colorTvUnCliked"
                     app:layout_constraintTop_toBottomOf="@+id/register_code_et" android:layout_marginEnd="46dp"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="46dp"
@@ -116,7 +118,9 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="비밀번호"
-                      android:textSize="16sp" app:layout_constraintTop_toBottomOf="@+id/register_id_et"
+                      android:textSize="16sp"
+                      android:textColor="@color/colorTvUnCliked"
+                      app:layout_constraintTop_toBottomOf="@+id/register_id_et"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="24dp"
                       app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
@@ -139,7 +143,7 @@
                     android:textSize="14sp" android:id="@+id/register_pw_et"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="비밀번호 재입력"
+                      android:text="비밀번호 재입력"   android:textColor="@color/colorTvUnCliked"
                       android:id="@+id/register_pw_again_tv"
                       android:textSize="16sp" app:layout_constraintTop_toBottomOf="@+id/register_pw_et"
                       app:layout_constraintEnd_toEndOf="parent"
@@ -165,17 +169,18 @@
         <Button
                 android:id="@+id/register_btn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
                 android:text="회원가입"
                 android:textSize="16sp"
                 android:textColor="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:onClick="@{() -> vm.inputData()}"
                 android:clickable="@{vm.btnColorSet}"
-                android:background="@{vm.btnColorSet == false ? @color/colorSignInBtnUnCliked : @color/colorPrimary}"
+                android:background="@{vm.btnColorSet == false ? @drawable/back_btn_unclicked : @drawable/back_btn_clicked}"
                 android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" android:layout_marginStart="16dp" android:layout_marginBottom="16dp"/>
 
 
     </android.support.constraint.ConstraintLayout>

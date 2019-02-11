@@ -14,10 +14,6 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel()  {
 
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
-    var setIdBoolean = MediatorLiveData<Boolean>()
-    var setPwBoolean = MediatorLiveData<Boolean>()
-
-    val idLiveEvent = MutableLiveData<Boolean>()
 
     val btnColorSet = MediatorLiveData<Boolean>().apply {
         addSource(signInId) {
@@ -34,7 +30,6 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel()  {
 
     fun onClickEdit(v : View) {
         navigator.confirmEditText(v)
-//        idLiveEvent.value = true
     }
 
     fun toSignUpBtn(){

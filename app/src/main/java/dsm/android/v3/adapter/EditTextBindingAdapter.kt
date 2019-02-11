@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.EditText
 
 class EditTextBindingAdapter {
-
     companion object {
         @BindingAdapter("onFocus")
         fun onFocusChange(editText: EditText, listener : View.OnFocusChangeListener) {
