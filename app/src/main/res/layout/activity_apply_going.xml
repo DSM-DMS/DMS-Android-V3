@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="외출을 신청하세요"
+                    android:text="@string/apply_going_title"
                     android:textSize="@dimen/text_size_24"
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
