@@ -1,7 +1,6 @@
 package dsm.android.v3.ui.applyGoing
 
 import android.arch.lifecycle.*
-import android.util.Log
 import dsm.android.v3.model.ApplyGoingLogItemModel
 import dsm.android.v3.ui.applyGoing.ApplyGoingLogData.deleteData
 import dsm.android.v3.ui.applyGoing.ApplyGoingLogData.saturdayItemList
