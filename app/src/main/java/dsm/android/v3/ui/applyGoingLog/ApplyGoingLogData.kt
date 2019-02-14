@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.applyGoing
+package dsm.android.v3.ui.applyGoingLog
 
 import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.model.ApplyGoingLogItemModel

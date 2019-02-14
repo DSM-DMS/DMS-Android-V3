@@ -9,13 +9,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.model.ApplyGoingLogItemModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingContract
+import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textColorResource
 
-class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingLogItemModel>, val applyGoingLogRv: ApplyGoingContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
+class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingLogItemModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ApplyGoingLogViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_apply_going_log, p0, false)

@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.applyGoing
+package dsm.android.v3.ui.applyGoingLog
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,19 +8,22 @@ import dsm.android.v3.R
 import dsm.android.v3.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
 import dsm.android.v3.model.ApplyGoingLogItemModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingLogData.deleteData
+import dsm.android.v3.ui.applyGoing.ApplyGoingContract
+import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteData
+import dsm.android.v3.ui.applyGoing.ApplyGoingViewModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 
-class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>(), ApplyGoingContract.ApplyGoingLogContract, ApplyGoingContract.ApplyGoingLogRv{
+class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>(), ApplyGoingLogContract, ApplyGoingLogContract.ApplyGoingLogRv {
 
     override val layoutId: Int
         get() = R.layout.activity_apply_going_log
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ApplyGoingViewModelFactory(this, intent.getStringExtra("title"))
+        val factory = ApplyGoingLogViewModelFactory(this, intent.getStringExtra("title"))
         binding.applyGoingApplyRecordRv.layoutManager = LinearLayoutManager(this)
-        binding.applyGoingViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingViewModel::class.java)
+        binding.applyGoingLogViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingLogViewModel::class.java)
         invisibleDeleteBtn()
     }
 

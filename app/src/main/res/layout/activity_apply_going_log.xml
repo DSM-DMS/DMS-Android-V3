@@ -4,13 +4,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-                name="applyGoingViewModel"
-                type="dsm.android.v3.ui.applyGoing.ApplyGoingViewModel"/>
+                name="applyGoingLogViewModel"
+                type="dsm.android.v3.ui.applyGoingLog.ApplyGoingLogViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <android.support.design.widget.AppBarLayout
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:theme="@style/AppTheme.AppBarOverlay"
@@ -27,7 +28,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <ImageView
-                            android:onClick="@{()->applyGoingViewModel.applyGoingLogClickBack()}"
+                            android:onClick="@{()->applyGoingLogViewModel.applyGoingLogClickBack()}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@mipmap/round_arrow_back_24_px"/>
@@ -37,7 +38,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:lineSpacingExtra="2sp"
-                            android:text="@={applyGoingViewModel.logTitle}"
+                            android:text="@={applyGoingLogViewModel.logTitle}"
                             android:textSize="@dimen/text_size_16"
                             android:fontFamily="@font/nanumsquarebold"
                             android:textColor="@color/colorWhite"/>
@@ -61,7 +62,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="@={applyGoingViewModel.logTitle}"
+                    android:text="@={applyGoingLogViewModel.logTitle}"
                     android:textSize="@dimen/text_size_24"
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
@@ -94,7 +95,7 @@
         </android.support.v7.widget.RecyclerView>
 
         <Button
-                android:onClick="@{()->applyGoingViewModel.applyGoingClickDelete()}"
+                android:onClick="@{()->applyGoingLogViewModel.applyGoingClickDelete()}"
                 android:id="@+id/applyGoing_apply_delete_btn"
                 android:layout_marginHorizontal="16dp"
                 android:background="@drawable/radius_view_red"

@@ -3,26 +3,7 @@ package dsm.android.v3.ui.applyGoing
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 
-class ApplyGoingViewModelFactory(private var applyGoingContract: ApplyGoingContract?): ViewModelProvider.Factory{
-
-    private var applyGoingLogContract: ApplyGoingContract.ApplyGoingLogContract? = null
-    private var applyGoingDocContract: ApplyGoingContract.ApplyGoingDocContract? = null
-    private var title: String? = null
-    private var currentItem: Int? = null
-
-    constructor(contract: ApplyGoingContract.ApplyGoingLogContract, title: String): this(applyGoingContract = null){
-        applyGoingLogContract = contract
-        this.title = title
-    }
-
-    constructor(contract: ApplyGoingContract.ApplyGoingDocContract, currentItem: Int): this(applyGoingContract = null){
-        applyGoingDocContract = contract
-        this.currentItem = currentItem
-    }
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (applyGoingContract != null) return modelClass.getConstructor(ApplyGoingContract::class.java).newInstance(applyGoingContract)
-        else if(applyGoingLogContract != null) return modelClass.getConstructor(ApplyGoingContract.ApplyGoingLogContract::class.java, String::class.java).newInstance(applyGoingLogContract, title)
-        else return modelClass.getConstructor(ApplyGoingContract.ApplyGoingDocContract::class.java, Int::class.java).newInstance(applyGoingDocContract, currentItem)
-    }
+class ApplyGoingViewModelFactory(val contract: ApplyGoingContract): ViewModelProvider.Factory{
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T
+            = modelClass.getConstructor(ApplyGoingContract::class.java).newInstance(contract)
 }

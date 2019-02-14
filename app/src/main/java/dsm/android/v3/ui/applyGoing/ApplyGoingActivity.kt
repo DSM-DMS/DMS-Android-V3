@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.view.PagerAdapter
 import android.support.v7.widget.Api17CardView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -15,6 +14,8 @@ import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingBinding
 import dsm.android.v3.model.ApplyGoingModel
+import dsm.android.v3.ui.applyGoingDoc.ApplyGoingDocActivity
+import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogActivity
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_going.*
 import kotlinx.android.synthetic.main.item_apply_going.view.*
