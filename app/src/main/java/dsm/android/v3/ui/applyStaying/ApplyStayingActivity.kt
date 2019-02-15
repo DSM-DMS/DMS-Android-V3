@@ -66,8 +66,8 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val layoutInflater = LayoutInflater.from(baseContext)
             val view = layoutInflater.inflate(R.layout.item_apply_staying, container, false)
-            view.find<TextView>(R.id.item_applyStaying_title_tv).text = models.get(position).week
-            view.find<TextView>(R.id.item_applyStaying_explanation_tv).text = models.get(position).description
+            view.find<TextView>(R.id.item_applyStaying_title_tv).text = models[position].week
+            view.find<TextView>(R.id.item_applyStaying_explanation_tv).text = models[position].description
             container.addView(view)
             return view
         }

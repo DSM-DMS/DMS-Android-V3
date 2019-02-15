@@ -1,9 +1,7 @@
 package dsm.android.v3.ui.applyGoing
 
 import android.arch.lifecycle.ViewModelProviders
-import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v7.widget.Api17CardView
@@ -22,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_apply_going.*
 import kotlinx.android.synthetic.main.item_apply_going.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.textColor
 
 
 class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  ApplyGoingContract {
@@ -89,18 +88,18 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
         fun changeColor(view: View){
             view .item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
-            view.item_applyGoing_title_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-            view.item_applyGoing_explanation_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-            view.item_applyGoing_count_tv.setBackground(getDrawable(R.drawable.radius_circle_white))
-            view.item_applyGoing_count_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+            view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
+            view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
+            view.item_applyGoing_count_tv.background = getDrawable(R.drawable.radius_circle_white)
+            view.item_applyGoing_count_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
         }
 
         fun originalColor(view: View){
             view.item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-            view.item_applyGoing_title_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
-            view.item_applyGoing_explanation_tv.setTextColor(ContextCompat.getColor(applicationContext,R.color.colorGray600))
-            view.item_applyGoing_count_tv.setBackground(getDrawable(R.drawable.radius_circle_primary))
-            view.item_applyGoing_count_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+            view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
+            view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(applicationContext,R.color.colorGray600)
+            view.item_applyGoing_count_tv.background = getDrawable(R.drawable.radius_circle_primary)
+            view.item_applyGoing_count_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
         }
     }
 }
