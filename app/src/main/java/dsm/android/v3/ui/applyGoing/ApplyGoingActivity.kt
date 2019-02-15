@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v7.widget.Api17CardView
 import android.view.LayoutInflater
@@ -55,7 +56,6 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
         override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
 
-        @RequiresApi(Build.VERSION_CODES.M)
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val layoutInflater = LayoutInflater.from(baseContext)
             val view = layoutInflater.inflate(R.layout.item_apply_going, container, false)
@@ -87,22 +87,20 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
             }
         }
 
-        @RequiresApi(Build.VERSION_CODES.M)
         fun changeColor(view: View){
-            view .item_applyGoing_card.setCardBackgroundColor(getColor(R.color.colorPrimary))
-            view.item_applyGoing_title_tv.setTextColor(getColor(R.color.colorWhite))
-            view.item_applyGoing_explanation_tv.setTextColor(getColor(R.color.colorWhite))
+            view .item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+            view.item_applyGoing_title_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+            view.item_applyGoing_explanation_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
             view.item_applyGoing_count_tv.setBackground(getDrawable(R.drawable.radius_circle_white))
-            view.item_applyGoing_count_tv.setTextColor(getColor(R.color.colorPrimary))
+            view.item_applyGoing_count_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
         }
 
-        @RequiresApi(Build.VERSION_CODES.M)
         fun originalColor(view: View){
-            view.item_applyGoing_card.setCardBackgroundColor(getColor(R.color.colorWhite))
-            view.item_applyGoing_title_tv.setTextColor(getColor(R.color.colorPrimary))
-            view.item_applyGoing_explanation_tv.setTextColor(getColor(R.color.colorGray600))
+            view.item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+            view.item_applyGoing_title_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+            view.item_applyGoing_explanation_tv.setTextColor(ContextCompat.getColor(applicationContext,R.color.colorGray600))
             view.item_applyGoing_count_tv.setBackground(getDrawable(R.drawable.radius_circle_primary))
-            view.item_applyGoing_count_tv.setTextColor(getColor(R.color.colorWhite))
+            view.item_applyGoing_count_tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         }
     }
 }
