@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Api17CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardElevation="24dp"
+        android:layout_marginTop="-28dp"
+        android:layout_marginBottom="-28dp"
+        app:cardCornerRadius="16dp">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/pointLogItem_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="기숙사 도우미 활동"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorGray700"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/pointLogItem_date_tv"
+                app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+                android:id="@+id/pointLogItem_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2019-01-01"
+                android:textSize="@dimen/typo_body1"
+                android:textColor="@color/colorGray600"
+                app:layout_constraintStart_toStartOf="@+id/pointLogItem_title_tv"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/pointLogItem_title_tv"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/pointLogItem_point_tv"
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                tools:text="+3"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.Api17CardView>

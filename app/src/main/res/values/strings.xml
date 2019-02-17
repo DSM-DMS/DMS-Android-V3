@@ -9,4 +9,36 @@
     <string name="pw_et"><font size="14">비밀번호를 입력해주세요</font></string>
     <string name="code_et"><font size="14">확인코드를 입력해주세요</font></string>
     <string name="confirm_et"><font size="14">비밀번호를 확인해주세요</font></string>
+    <string name="mypage_error_report">시설 고장 신고</string>
+    <string name="mypage_research">설문 조사</string>
+    <string name="mypage_merit">상점</string>
+    <string name="mypage_bug_report">버그 신고</string>
+    <string name="mypage_demerit">벌점</string>
+    <string name="mypage_logout_title">로그아웃</string>
+    <string name="mypage_password_change_title">비밀번호 변경</string>
+    <string name="mypage_merit_history_title">상 / 벌점 내역</string>
+    <string name="mypage_intro_developers_title">개발자 소개</string>
+    <string name="mypage_logout_content">기기내 계정에서 로그아웃합니다.</string>
+    <string name="mypage_password_change_content">DMS 계정의 비밀번호를 변경합니다.</string>
+    <string name="mypage_merit_history_content">우정관 상 / 벌점 내역을 확인랍니다.</string>
+    <string name="mypage_intro_developers_content">DMS팀의 개발자를 소개합니다.</string>
+    <string name="logout_dialog_bold_content">DMS 계정에서 로그아웃 하시겠습니까?</string>
+    <string name="logout_dialog_light_content">(현재 접속중인 계정에서 로그아웃을 진행합니다.)</string>
+    <string name="logout_dialog_cancel">취소</string>
+    <string name="logout_dialog_logout">로그아웃</string>
+    <string name="bug_report_dialog_title">버그신고</string>
+    <string name="bug_report_dialog_edit_title">제목</string>
+    <string name="bug_report_dialog_edit_bug">버그</string>
+    <string name="bug_report_dialog_cancel">취소</string>
+    <string name="bug_report_dialog_send">전송</string>
+    <string name="institution_dialog_title">시설물 고장 신고</string>
+    <string name="institution_dialog_edit_title">제목</string>
+    <string name="institution_dialog_edit_room_number">방 번호</string>
+    <string name="institution_dialog_edit_report_content">내용</string>
+    <string name="institution_dialog_report_title">고장 내용</string>
+    <string name="institution_dialog_cancel">취소</string>
+    <string name="institution_dialog_send">전송</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

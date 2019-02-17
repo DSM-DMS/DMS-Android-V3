@@ -16,4 +16,7 @@ interface API {
     @Headers("Content-Type: application/json")
     fun signUp(@Body body: Any?): Call<Void>
 
+    @GET("meal/{day}")
+    fun getMeal(@Path("day") day: String): Call<MealModel>
+
 }

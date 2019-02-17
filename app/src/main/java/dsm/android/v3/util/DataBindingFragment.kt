@@ -1,5 +1,7 @@
 package dsm.android.v3.util
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -10,7 +12,7 @@ import android.view.ViewGroup
 
 abstract class DataBindingFragment<T : ViewDataBinding> : Fragment() {
 
-    lateinit var rootVIew: View
+    lateinit var rootView: View
     lateinit var binding: T
 
     abstract val layoutId: Int
@@ -19,7 +21,7 @@ abstract class DataBindingFragment<T : ViewDataBinding> : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.setLifecycleOwner(this)
-        rootVIew = binding.root
-        return rootVIew
+        rootView = binding.root
+        return rootView
     }
 }
