@@ -22,12 +22,17 @@ import org.jetbrains.anko.startActivity
 import java.util.regex.Matcher
 
 class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavigator {
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
     override val layoutId: Int
         get() = R.layout.activity_sign_in
 
     private val factory = SignInViewModelFactory(this)
-    private val viewModel: SignInViewModel by lazy { ViewModelProviders.of(this, factory).get(SignInViewModel::class.java) }
+    private val viewModel: SignInViewModel by lazy {
+        ViewModelProviders.of(this, factory).get(SignInViewModel::class.java)
+    }
 
     @SuppressLint("ResourceType", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,29 +47,43 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
         val signInConstBack = findViewById<ConstraintLayout>(R.id.signIn_constraintLayout_layout)
         signInConstBack.startAnimation(slideUp)
 
+        signIn_id_et.setOnFocusChangeListener { v, hasFocus ->
+            signIn_id_tv.clicked()
+            signIn_pw_tv.unClicked()
+            signIn_id_et.hint = ""
+            signIn_pw_et.setHint(R.string.pw_et)
+        }
+        signIn_pw_et.setOnFocusChangeListener { v, hasFocus ->
+            signIn_id_tv.unClicked()
+            signIn_pw_tv.clicked()
+            signIn_id_et.setHint(R.string.id_et)
+            signIn_pw_et.hint = ""
+        }
+
+
     }
 
     override fun intentToRegister() {
         startActivity<RegisterActivity>()
     }
 
-    override fun confirmEditText(v: View) {
-        when(v){
-            signIn_id_et -> {
-                Log.d("SignInViewModel", "Confirm2")
-                signIn_id_tv.clicked()
-                signIn_pw_tv.unClicked()
-                signIn_id_et.hint = ""
-                signIn_pw_et.setHint(R.string.pw_et)
-            }
-            signIn_pw_et -> {
-                signIn_id_tv.unClicked()
-                signIn_pw_tv.clicked()
-                signIn_id_et.setHint(R.string.id_et)
-                signIn_pw_et.hint = ""
-            }
-        }
-    }
+//    override fun confirmEditText(v: View) {
+//        when(v){
+//            signIn_id_et -> {
+//                Log.d("SignInViewModel", "Confirm2")
+//                signIn_id_tv.clicked()
+//                signIn_pw_tv.unClicked()
+//                signIn_id_et.hint = ""
+//                signIn_pw_et.setHint(R.string.pw_et)
+//            }
+//            signIn_pw_et -> {
+//                signIn_id_tv.unClicked()
+//                signIn_pw_tv.clicked()
+//                signIn_id_et.setHint(R.string.id_et)
+//                signIn_pw_et.hint = ""
+//            }
+//        }
+//    }
 
     fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorPrimary))
     fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorTvUnCliked))

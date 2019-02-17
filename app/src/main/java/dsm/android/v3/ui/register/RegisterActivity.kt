@@ -12,6 +12,8 @@ import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityRegisterBinding
 import dsm.android.v3.ui.signIn.SignInActivity
 import dsm.android.v3.util.DataBindingActivity
+import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
 
 class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), RegisterNavigator {
@@ -34,16 +36,34 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
         val registerConstBack = findViewById<ConstraintLayout>(R.id.register_constraint)
         registerConstBack.startAnimation(slideUp)
 
-        val registerCode = findViewById<TextView>(R.id.register_code_tv)
-        val registerId = findViewById<TextView>(R.id.register_id_tv)
-        val registerPw = findViewById<TextView>(R.id.register_pw_tv)
-        val registerPwConfirm = findViewById<TextView>(R.id.register_pw_again_tv)
-        val etRegisterCode = findViewById<EditText>(R.id.register_code_et)
-
+        register_code_et.setOnFocusChangeListener { v, hasFocus ->
+            register_code_tv.clicked()
+            register_id_tv.unClicked()
+            register_pw_tv.unClicked()
+            register_pw_again_tv.unClicked()
+        }
+        register_id_et.setOnFocusChangeListener { v, hasFocus ->
+            register_code_tv.unClicked()
+            register_id_tv.clicked()
+            register_pw_tv.unClicked()
+            register_pw_again_tv.unClicked()
+        }
+        register_pw_et.setOnFocusChangeListener { v, hasFocus ->
+            register_code_tv.unClicked()
+            register_id_tv.unClicked()
+            register_pw_tv.clicked()
+            register_pw_again_tv.unClicked()
+        }
+        register_pw_again_et.setOnFocusChangeListener { v, hasFocus ->
+            register_code_tv.unClicked()
+            register_id_tv.unClicked()
+            register_pw_tv.unClicked()
+            register_pw_again_tv.clicked()
+        }
     }
 
-    fun clicked() = ContextCompat.getColor(this, R.color.colorPrimary)
-    fun unClicked() = ContextCompat.getColor(this, R.color.colorTvUnCliked)
+    fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimary))
+    fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@RegisterActivity, R.color.colorTvUnCliked))
 
     override fun success(message: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
