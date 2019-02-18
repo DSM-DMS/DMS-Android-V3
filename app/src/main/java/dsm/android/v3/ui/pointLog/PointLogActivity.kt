@@ -4,11 +4,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
+import com.google.gson.JsonObject
 import dsm.android.v3.R
 import dsm.android.v3.adapter.PointLogAdapter
+import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.PointLogItemModel
+import dsm.android.v3.model.PointLogResponseModel
+import dsm.android.v3.util.getToken
+import dsm.android.v3.util.saveToken
 
 import kotlinx.android.synthetic.main.activity_point_log.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PointLogActivity : AppCompatActivity() {
 
@@ -25,22 +33,21 @@ class PointLogActivity : AppCompatActivity() {
         pointLog_toolbar.setNavigationOnClickListener {
             finish()
         }
-        val models = arrayListOf(PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,true),
-            PointLogItemModel("호실 내 음식물 반입","2019-01-01",3,false)
-        )
-        pointLog_list_rv.layoutManager = LinearLayoutManager(this)
-        pointLog_list_rv.adapter = PointLogAdapter(models)
 
+        saveToken(applicationContext, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTA0NzA4MDcsIm5iZiI6MTU1MDQ3MDgwNywianRpIjoiNDMxZmI2YjctODE0Zi00MjhlLThjZjUtZGJhYzFhMmE2YjJmIiwiZXhwIjoxNTUwNDc0NDA3LCJpZGVudGl0eSI6ImhlbGxvIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.uEBuVJzK9_4TKN8yjmxIkal5dUtYP_zLEZj7mskFSZs")
+        Connecter.api.getPointLog(getToken(applicationContext)).enqueue(object : Callback<PointLogResponseModel> {
+            override fun onResponse(call: Call<PointLogResponseModel>, response: Response<PointLogResponseModel>) {
+                val body = response.body()
+                pointLog_list_rv.layoutManager = LinearLayoutManager(this@PointLogActivity)
+                pointLog_list_rv.adapter = body?.pointHistory?.let { PointLogAdapter(it) }
+
+            }
+
+            override fun onFailure(call: Call<PointLogResponseModel>, t: Throwable) {
+
+            }
+
+        })
 
     }
-
 }
