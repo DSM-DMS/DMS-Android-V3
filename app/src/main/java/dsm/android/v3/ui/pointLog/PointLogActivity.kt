@@ -33,8 +33,7 @@ class PointLogActivity : AppCompatActivity() {
         pointLog_toolbar.setNavigationOnClickListener {
             finish()
         }
-
-        saveToken(applicationContext, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTA0NzA4MDcsIm5iZiI6MTU1MDQ3MDgwNywianRpIjoiNDMxZmI2YjctODE0Zi00MjhlLThjZjUtZGJhYzFhMmE2YjJmIiwiZXhwIjoxNTUwNDc0NDA3LCJpZGVudGl0eSI6ImhlbGxvIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.uEBuVJzK9_4TKN8yjmxIkal5dUtYP_zLEZj7mskFSZs")
+        
         Connecter.api.getPointLog(getToken(applicationContext)).enqueue(object : Callback<PointLogResponseModel> {
             override fun onResponse(call: Call<PointLogResponseModel>, response: Response<PointLogResponseModel>) {
                 val body = response.body()
