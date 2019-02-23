@@ -192,7 +192,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{(v)-> vm.inputData(v)}"
+                android:onClick="@{(v)-> vm.doSignIn(v)}"
                 android:clickable="@{vm.btnColorSet}"
                 android:background="@{vm.btnColorSet == false ? @drawable/back_btn_unclicked : @drawable/back_btn_clicked}"
                 android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"

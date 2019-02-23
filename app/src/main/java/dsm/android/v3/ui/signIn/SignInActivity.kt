@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import dsm.android.v3.adapter.EditTextBindingAdapter
+import dsm.android.v3.ui.main.MainActivity
 import dsm.android.v3.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
@@ -65,6 +66,10 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
 
     override fun intentToRegister() {
         startActivity<RegisterActivity>()
+    }
+
+    override fun intentToMain() {
+        startActivity<MainActivity>()
     }
 
 //    override fun confirmEditText(v: View) {

@@ -1,7 +1,7 @@
 package dsm.android.v3.ui.signIn
 
-interface SignInNavigator{
+interface SignInNavigator {
     fun intentToRegister()
-    fun showToast(message : String)
-//    fun confirmEditText(v : View)
+    fun intentToMain()
+    fun showToast(message: String)
 }
