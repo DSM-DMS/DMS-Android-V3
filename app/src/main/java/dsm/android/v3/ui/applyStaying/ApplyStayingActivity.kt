@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import dsm.android.v3.model.ApplyStayingModel
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.item_apply_staying.view.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.textColor
 
 class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), ApplyStayingContract{
     override val layoutId: Int
@@ -31,18 +33,16 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
 
     override fun getCurrentItem(): Int = binding.applyStayingApplyListPager.currentItem
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun changeColor(view: View){
-        view.item_applyStaying_card.setCardBackgroundColor(getColor(R.color.colorPrimary))
-        view.item_applyStaying_title_tv.setTextColor(getColor(R.color.colorWhite))
-        view.item_applyStaying_explanation_tv.setTextColor(getColor(R.color.colorWhite))
+        view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        view.item_applyStaying_title_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
+        view.item_applyStaying_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun originalColor(view: View){
-        view.item_applyStaying_card.setCardBackgroundColor(getColor(R.color.colorWhite))
-        view.item_applyStaying_title_tv.setTextColor(getColor(R.color.colorPrimary))
-        view.item_applyStaying_explanation_tv.setTextColor(getColor(R.color.colorGray600))
+        view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+        view.item_applyStaying_title_tv.textColor = ContextCompat.getColor(this, R.color.colorPrimary)
+        view.item_applyStaying_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorGray600)
     }
 
     fun setPager(){
