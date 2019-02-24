@@ -73,7 +73,7 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun signUpPost() {
+    override fun intentToLogin() {
         startActivity<SignInActivity>()
     }
 

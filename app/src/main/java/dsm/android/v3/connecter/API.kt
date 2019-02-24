@@ -9,13 +9,11 @@ interface API {
 
     //로그인
     @POST("account/auth")
-    @Headers("Content-Type: application/json")
     fun signIn(@Body body: JsonObject): Call<AuthModel>
 
     //회원가입
     @POST("account/signup")
-    @Headers("Content-Type: application/json")
-    fun signUp(@Body body: JsonObject): Call<Void>
+    fun signUp(@Body body: JsonObject): Call<JsonObject>
 
     @GET("meal/{day}")
     fun getMeal(@Path("day") day: String): Call<MealModel>

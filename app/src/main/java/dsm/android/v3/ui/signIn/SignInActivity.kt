@@ -72,24 +72,6 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
         startActivity<MainActivity>()
     }
 
-//    override fun confirmEditText(v: View) {
-//        when(v){
-//            signIn_id_et -> {
-//                Log.d("SignInViewModel", "Confirm2")
-//                signIn_id_tv.clicked()
-//                signIn_pw_tv.unClicked()
-//                signIn_id_et.hint = ""
-//                signIn_pw_et.setHint(R.string.pw_et)
-//            }
-//            signIn_pw_et -> {
-//                signIn_id_tv.unClicked()
-//                signIn_pw_tv.clicked()
-//                signIn_id_et.setHint(R.string.id_et)
-//                signIn_pw_et.hint = ""
-//            }
-//        }
-//    }
-
     fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorPrimary))
     fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorTvUnCliked))
 

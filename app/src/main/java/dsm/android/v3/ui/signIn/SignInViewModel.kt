@@ -46,8 +46,6 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
                         Toast.makeText(view.context, "로그인 성공", Toast.LENGTH_SHORT).show()
                         saveToken(view.context,response.body()!!.token)
                         saveToken(view.context, response.body()!!.refreshToken!!, false)
-                        Log.e("accessToken", response.body()!!.token)
-                        Log.e("refreshToken", response.body()!!.refreshToken)
                         activityFinishLiveEvent.call()
                         navigator.intentToMain()
                     }
@@ -58,7 +56,7 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
                 }
             }
             override fun onFailure(call: Call<AuthModel>, t: Throwable) {
-                Toast.makeText(view.context, "로그인 실패", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show()
                 activityFinishLiveEvent.call()
             }
 
