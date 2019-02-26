@@ -44,7 +44,7 @@ class RegisterViewModel(val registerNavigator: RegisterNavigator) : ViewModel() 
     }
 
     fun doSignUp(view: View) {
-        if (registerPw == registerPwComfirm) {
+        if (registerPw.value == registerPwComfirm.value) {
             val json = JsonObject().apply {
                 addProperty("uuid", registerConfirmCode.value)
                 addProperty("id", registerId.value)
