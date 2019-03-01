@@ -7,12 +7,10 @@ import android.view.View
 import dsm.android.v3.R
 import dsm.android.v3.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
-import dsm.android.v3.model.ApplyGoingLogItemModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingContract
-import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteData
-import dsm.android.v3.ui.applyGoing.ApplyGoingViewModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingViewModelFactory
+import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
+import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteDataList
 import dsm.android.v3.util.DataBindingActivity
+import org.jetbrains.anko.toast
 
 class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>(), ApplyGoingLogContract, ApplyGoingLogContract.ApplyGoingLogRv {
 
@@ -27,20 +25,20 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
         invisibleDeleteBtn()
     }
 
-    override fun logItemClickTrue(model: ApplyGoingLogItemModel) {
-        deleteData.remove(model)
-        if(deleteData.isEmpty()){
-            invisibleDeleteBtn()
-        }
+    override fun logItemClickTrue(model: ApplyGoingDataModel.ApplyGoingDataModel) {
+        deleteDataList.remove(model)
+        if(deleteDataList.isEmpty()) invisibleDeleteBtn()
     }
 
-    override fun logItemClickFalse(model: ApplyGoingLogItemModel) {
-        deleteData.add(model)
+    override fun logItemClickFalse(model: ApplyGoingDataModel.ApplyGoingDataModel) {
+        deleteDataList.add(model)
         visibleDeleteBtn()
     }
 
+    override fun createShortToast(text: String) = toast(text).show()
 
-    override fun setApplyList(models: ArrayList<ApplyGoingLogItemModel>) {
+
+    override fun setApplyList(models: ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>) {
         binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(models, this)
     }
 

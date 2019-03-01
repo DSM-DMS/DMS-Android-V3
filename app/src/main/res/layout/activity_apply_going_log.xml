@@ -95,7 +95,7 @@
         </android.support.v7.widget.RecyclerView>
 
         <Button
-                android:onClick="@{()->applyGoingLogViewModel.applyGoingClickDelete()}"
+                android:onClick="@{(view)->applyGoingLogViewModel.applyGoingClickDelete(view)}"
                 android:id="@+id/applyGoing_apply_delete_btn"
                 android:layout_marginHorizontal="16dp"
                 android:background="@drawable/radius_view_red"

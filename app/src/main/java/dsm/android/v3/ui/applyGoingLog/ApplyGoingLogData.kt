@@ -1,29 +1,13 @@
 package dsm.android.v3.ui.applyGoingLog
 
-import android.arch.lifecycle.MutableLiveData
-import dsm.android.v3.model.ApplyGoingLogItemModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
 
 object ApplyGoingLogData{
-    val saturdayItemList: ArrayList<ApplyGoingLogItemModel> = arrayListOf(
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "외출에 이유가 있나요?"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마1"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마2"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마3"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마4"))
+    var saturdayItemList = ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>()
 
-    val sundayItemList: ArrayList<ApplyGoingLogItemModel> = arrayListOf(
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "외출에 이유가 있나요?"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마1"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마2"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마3"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마4"))
+    var sundayItemList = ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>()
 
-    val workdayItemList: ArrayList<ApplyGoingLogItemModel> = arrayListOf(
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "외출에 이유가 있나요?"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마1"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마2"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마3"),
-        ApplyGoingLogItemModel("03월 17일 12:30 ~ 17:30", "탈대마4"))
+    var workdayItemList = ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>()
 
-    val deleteData = ArrayList<ApplyGoingLogItemModel>()
+    val deleteDataList = ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>()
 }
