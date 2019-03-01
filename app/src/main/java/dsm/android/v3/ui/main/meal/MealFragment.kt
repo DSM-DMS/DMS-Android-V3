@@ -35,10 +35,6 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
 
         viewModel.getMeal()
 
-        viewModel.pageStatusLiveData.observe(this, Observer {
-            toast("$it")
-        })
-
         viewModel.meals.observe(this, Observer {
             rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!)
         })
