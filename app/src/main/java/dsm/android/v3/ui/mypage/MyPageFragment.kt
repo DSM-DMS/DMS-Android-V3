@@ -11,7 +11,7 @@ import dsm.android.v3.databinding.FragmentMypageBinding
 import android.animation.ValueAnimator
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
-import dsm.android.v3.ui.logOutDialog.LogoutDialogFragmenet
+import dsm.android.v3.ui.logOutDialog.LogoutDialogFragment
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.toast
 
@@ -22,7 +22,7 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
         get() = dsm.android.v3.R.layout.fragment_mypage
 
     private val fm: FragmentManager? by lazy { fragmentManager }
-    private val logoutDialogFragment: LogoutDialogFragmenet by  lazy { LogoutDialogFragmenet() }
+    private val logoutDialogFragment: LogoutDialogFragment by  lazy { LogoutDialogFragment() }
     private val bugReportDialogFragment: BugReportDialogFragment by lazy { BugReportDialogFragment() }
     private val institutionDialogFragment: InstitutionDialogFragment by lazy { InstitutionDialogFragment() }
 
