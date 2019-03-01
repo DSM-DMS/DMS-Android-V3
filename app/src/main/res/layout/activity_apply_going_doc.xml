@@ -58,7 +58,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_date_hint"
-                            android:textSize="@dimen/typo_body1"/>
+                            android:textSize="@dimen/typo_body1"
+                            android:inputType="numberSigned"
+                            android:digits="0123456789-"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -84,7 +86,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_time_hint"
-                            android:textSize="@dimen/typo_body1"/>
+                            android:textSize="@dimen/typo_body1"
+                            android:inputType="time"
+                            android:digits="0123456789:"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -122,7 +126,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_date_hint"
-                            android:textSize="@dimen/typo_body1"/>
+                            android:textSize="@dimen/typo_body1"
+                            android:inputType="numberSigned"
+                            android:digits="0123456789-"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -148,7 +154,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_time_hint"
-                            android:textSize="@dimen/typo_body1"/>
+                            android:textSize="@dimen/typo_body1"
+                            android:inputType="time"
+                            android:digits="0123456789:"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -190,48 +198,10 @@
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
-            <TextView
-                    android:id="@+id/applyGoing_doc_with_title"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_reason_content_lay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/apply_going_doc_with_title"
-                    android:textSize="@dimen/typo_header"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/nanumsquareextrabold"
-                    android:layout_marginTop="14dp"/>
-
-            <LinearLayout
-                    android:id="@+id/applyGoing_doc_with_content_lay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_with_title"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                        android:id="@+id/applyGoing_doc_with_content_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:errorEnabled="true">
-                    <android.support.design.widget.TextInputEditText
-                            android:text="@={applyGoingDocViewModel.applyGoingWith}"
-                            android:fontFamily="@font/nanumsquarebold"
-                            android:background="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="동행인"
-                            android:textSize="@dimen/typo_body1"/>
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{()->applyGoingDocViewModel.applyGoingDocClickApply()}"
+                android:onClick="@{(view)->applyGoingDocViewModel.applyGoingDocClickApply(view)}"
                 android:id="@+id/applyGoing_apply_btn"
                 android:background="@drawable/radius_view_primary"
                 android:layout_width="match_parent"

@@ -7,5 +7,5 @@ interface ApplyGoingDocContract{
     fun setErrorApplyGoingBackDate()
     fun setErrorApplyGoingBackTime()
     fun setErrorApplyGoingReason()
-    fun createListFullWarningToast()
+    fun createShortToast(text: String)
 }

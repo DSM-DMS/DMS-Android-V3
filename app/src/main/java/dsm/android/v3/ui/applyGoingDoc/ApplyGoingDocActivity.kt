@@ -4,8 +4,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingDocBinding
-import dsm.android.v3.ui.applyGoing.ApplyGoingViewModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_going_doc.*
 import org.jetbrains.anko.toast
@@ -17,12 +15,11 @@ class ApplyGoingDocActivity: DataBindingActivity<ActivityApplyGoingDocBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory =
-            ApplyGoingDocViewModelFactory(this, intent.getIntExtra("currentItem", 0))
+        val factory = ApplyGoingDocViewModelFactory(this)
         binding.applyGoingDocViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingDocViewModel::class.java)
     }
 
-    override fun createListFullWarningToast() { toast("외출신청 수의 초과로 산청할 수 없습니다.") }
+    override fun createShortToast(text: String) = toast(text).show()
 
     override fun backApplyGoing() = finish()
 

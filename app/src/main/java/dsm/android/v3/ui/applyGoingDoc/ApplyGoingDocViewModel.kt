@@ -2,76 +2,52 @@ package dsm.android.v3.ui.applyGoingDoc
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import dsm.android.v3.model.ApplyGoingLogItemModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingContract
-import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData
+import android.view.View
+import dsm.android.v3.connecter.api
+import dsm.android.v3.util.getToken
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract, val currentItem: Int): ViewModel(){
+class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
     val applyGoingReturnDate = MutableLiveData<String>()
     val applyGoingReturnTime = MutableLiveData<String>()
     val applyGoingReason = MutableLiveData<String>()
-    val applyGoingWith = MutableLiveData<String>()
 
-    fun applyGoingDocClickApply(){
-        if(applyGoingGoDate.value.isNullOrBlank()){
-            contract.setErrorApplyGoingGoDate()
-        }
-        else if(applyGoingGoTime.value.isNullOrBlank()){
-            contract.setErrorApplyGoingGoTime()
-        }
-        else if(applyGoingReturnDate.value.isNullOrBlank()){
-            contract.setErrorApplyGoingBackDate()
-        }
-        else if(applyGoingReturnTime.value.isNullOrBlank()){
-            contract.setErrorApplyGoingBackTime()
-        }
-        else if (applyGoingReason.value.isNullOrBlank()){
-            contract.setErrorApplyGoingReason()
-        }
-        // 동행인 없어도 됨 나중에 서버에 넘겨줄 때 없이 넘겨주면 됨
+    fun applyGoingDocClickApply(view: View){
+
+        if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
+        else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
+        else if(applyGoingReturnDate.value.isNullOrBlank()) contract.setErrorApplyGoingBackDate()
+        else if(applyGoingReturnTime.value.isNullOrBlank()) contract.setErrorApplyGoingBackTime()
+        else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason()
+
         else {
-            // 서버 통신 필요
-            when(currentItem){
-                0 -> {
-                    if (ApplyGoingLogData.saturdayItemList.size != 5){
-                        ApplyGoingLogData.saturdayItemList.add(
-                            ApplyGoingLogItemModel(
-                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}")
-                        )
-                    } else {
-                        contract.createListFullWarningToast()
-                    }
+            api.applyGoingOutDoc(getToken(view.context), hashMapOf(
+                "goOutDate" to "${applyGoingGoDate.value} ${applyGoingGoTime.value}"
+                , "returnDate" to "${applyGoingReturnDate.value} ${applyGoingReturnTime.value}"
+                , "reason" to "${applyGoingReason.value}")).enqueue(object: Callback<Unit>{
+
+                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                    contract.createShortToast(
+                        when(response.code()){
+                            201 -> "외출신청에 성공했습니다."
+                            204 -> "외출신청 가능시간이 아닙니다."
+                            403 -> "외출신청 권한이 없습니다."
+                            else -> "오류코드: ${response.code()}"
+                    })
+                    contract.backApplyGoing()
                 }
-                1 -> {
-                    if (ApplyGoingLogData.sundayItemList.size != 5){
-                        ApplyGoingLogData.sundayItemList.add(
-                            ApplyGoingLogItemModel(
-                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}")
-                        )
-                    } else {
-                        contract.createListFullWarningToast()
-                    }
+
+                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                    contract.createShortToast("오류가 발생했습니다.")
                 }
-                2 -> {
-                    if (ApplyGoingLogData.workdayItemList.size != 5){
-                        ApplyGoingLogData.workdayItemList.add(
-                            ApplyGoingLogItemModel(
-                                "${applyGoingGoDate.value} ${applyGoingGoTime.value} ~ ${applyGoingReturnTime.value}", "${applyGoingReason.value}")
-                        )
-                    } else {
-                        contract.createListFullWarningToast()
-                    }
-                }
-            }
-            contract.backApplyGoing()
+            })
         }
     }
 
-    fun applyGoingDocClickBack() {
-        contract.backApplyGoing()
-    }
-
+    fun applyGoingDocClickBack() = contract.backApplyGoing()
 }
