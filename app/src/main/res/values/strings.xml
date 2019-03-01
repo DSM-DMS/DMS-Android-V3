@@ -52,8 +52,6 @@
     <string name="apply_going_doc_return_title">귀가</string>
     <string name="apply_going_doc_reason_title">사유</string>
     <string name="apply_going_doc_reason_hint">사유 입력</string>
-    <string name="apply_going_doc_with_hint">동행인</string>
-    <string name="apply_going_doc_with_title">같이 가는 사람</string>
     <string name="apply_staying_appbar_title">잔류 신청</string>
     <string name="apply_staying_title">잔류신청을 해주세요</string>
     <string name="apply_staying_explanation">금요일 밤부터 일요일 밤까지의 상태를 정합니다. 학생들은 목요일 10시까지 잔류 신청을 완료해야 합니다.</string>
@@ -66,6 +64,21 @@
     <string name="apply_staying_staying_title">잔류</string>
     <string name="apply_staying_staying_explanation">잔류를 신청하신 경우 주말동안 기숙사에 남게 됩니다. 잔류를 신청하시겠습니까?</string>
     <string name="apply_staying_btn_text">신청</string>
+    <string name="apply_extension_study_eleven_text">11시</string>
+    <string name="apply_extension_study_twelve_text">12시</string>
+    <string name="apply_extension_study_gaonsil_text">가온실</string>
+    <string name="apply_extension_study_naonsil_text">나온실</string>
+    <string name="apply_extension_study_daonsil_text">다온실</string>
+    <string name="apply_extension_study_raonsil_text">라온실</string>
+    <string name="apply_extension_study_second_floor_text">2층 독서실</string>
+    <string name="apply_extension_study_third_floor_text">3층 독서실</string>
+    <string name="apply_extension_study_fourth_floor_text">4층 독서실</string>
+    <string name="apply_extension_study_fifth_floor_text">5층 독서실</string>
+    <string name="apply_extension_study_cancel_btn">취소</string>
+    <string name="apply_extension_study_apply_btn">신청</string>
+    <string name="apply_extension_study_board_text">칠판</string>
+    <string name="apply_extension_study_window_text">창문</string>
+    <string name="apply_extension_study_hallway_text">복도</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
