@@ -2,26 +2,57 @@ package dsm.android.v3.ui.applyStaying
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
 import android.view.View
+import dsm.android.v3.connecter.api
+import dsm.android.v3.util.getToken
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ApplyStayingViewModel(val contract: ApplyStayingContract): ViewModel(){
 
-    private val clickedView = MutableLiveData<View>()
+    private val selectedView = MutableLiveData<View>()
+    val pageStatusLiveData = MutableLiveData<Int>().apply { value = 0 }
 
-    init {
-        // 서버에서 신청된 거 요일 가져와서
-        // clickedView에 넣어주고 changeColor()해주면 됨
+    init { getStayInfo() }
+
+    fun applyBtnClick(view: View) {
+        api.applyStay(getToken(view.context), hashMapOf("value" to pageStatusLiveData.value!! + 1)).enqueue(object: Callback<Unit>{
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                contract.createShortToast(
+                    when(response.code()){
+                        201 -> "잔류신청에 성공했습니다."
+                        204 -> "잔류신청 가능시간이 아닙니다."
+                        403 -> "잔류신청 권한이 없습니다."
+                        else -> "오류코드: ${response.code()}"
+                })
+                getStayInfo()
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                contract.createShortToast("오류가 발생했습니다.")
+            }
+        })
     }
 
-    fun applyBtnClick(){
-        val view = contract.viewGroup.getChildAt(contract.getCurrentItem())
-        if(view != clickedView.value){
-            if(clickedView.value != null){
-                contract.originalColor(clickedView.value!!)
+    fun getStayInfo(){
+        api.getStayInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyStayingModel> {
+            override fun onResponse(call: Call<ApplyStayingModel>, response: Response<ApplyStayingModel>) {
+                when(response.code()){
+                    200 -> setStayingData(response.body()!!.value - 1)
+                    403 -> contract.createShortToast("잔류신청 조회 권한이 없습니다.")
+                    else -> contract.createShortToast("오류코드: ${response.code()}")
+                }
             }
-            clickedView.value = view
-            contract.changeColor(view)
-            // 서버에 신청하기 보냄 뭘 신청하는지는 CurrentItem으로 구분
-        }
+            override fun onFailure(call: Call<ApplyStayingModel>, t: Throwable) { contract.createShortToast("오류가 발생했습니다.") }
+        })
+    }
+
+    fun setStayingData(currentItem: Int){
+        selectedView.value?.let { contract.originalColor(it) }
+        selectedView.value = contract.viewGroup.getChildAt(currentItem)
+        pageStatusLiveData.value = currentItem
+        contract.changeColor(selectedView.value!!)
     }
 }

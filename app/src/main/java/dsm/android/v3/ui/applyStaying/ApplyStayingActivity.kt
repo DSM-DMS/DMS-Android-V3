@@ -1,9 +1,7 @@
 package dsm.android.v3.ui.applyStaying
 
 import android.arch.lifecycle.ViewModelProviders
-import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
@@ -12,13 +10,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
-import dsm.android.v3.model.ApplyStayingModel
+import dsm.android.v3.model.ApplyStayingPagerModel
 import dsm.android.v3.util.DataBindingActivity
+import kotlinx.android.synthetic.main.activity_apply_staying.*
 import kotlinx.android.synthetic.main.item_apply_staying.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
+import org.jetbrains.anko.toast
 
 class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), ApplyStayingContract{
+
     override val layoutId: Int
         get() = R.layout.activity_apply_staying
 
@@ -31,7 +32,7 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
         setPager()
     }
 
-    override fun getCurrentItem(): Int = binding.applyStayingApplyListPager.currentItem
+    override fun createShortToast(text: String) = toast(text).show()
 
     override fun changeColor(view: View){
         view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
@@ -46,16 +47,17 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
     }
 
     fun setPager(){
-        binding.applyStayingApplyListPager.adapter = ApplyPageAdapter(
+        applyStaying_apply_list_pager.adapter = ApplyPageAdapter(
             arrayListOf(
-            ApplyStayingModel(getString(R.string.apply_staying_staying_title), getString(R.string.apply_staying_staying_explanation))
-            , ApplyStayingModel(getString(R.string.apply_staying_friday_title), getString(R.string.apply_staying_friday_explanation))
-            , ApplyStayingModel(getString(R.string.apply_staying_saturday_go_title), getString(R.string.apply_staying_saturday_go_explanation))
-            , ApplyStayingModel(getString(R.string.apply_staying_saturday_back_title), getString(R.string.apply_staying_saturday_back_explanation))
+            ApplyStayingPagerModel(getString(R.string.apply_staying_friday_title), getString(R.string.apply_staying_friday_explanation))
+            , ApplyStayingPagerModel(getString(R.string.apply_staying_saturday_go_title), getString(R.string.apply_staying_saturday_go_explanation))
+            , ApplyStayingPagerModel(getString(R.string.apply_staying_saturday_back_title), getString(R.string.apply_staying_saturday_back_explanation))
+            , ApplyStayingPagerModel(getString(R.string.apply_staying_staying_title), getString(R.string.apply_staying_staying_explanation))
             ))
+        applyStaying_apply_list_pager.offscreenPageLimit = 3
     }
 
-    inner class ApplyPageAdapter(val models: ArrayList<ApplyStayingModel>): PagerAdapter(){
+    inner class ApplyPageAdapter(val models: ArrayList<ApplyStayingPagerModel>): PagerAdapter(){
 
         override fun isViewFromObject(p0: View, p1: Any): Boolean = p0 == p1
 

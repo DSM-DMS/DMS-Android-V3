@@ -14,7 +14,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:theme="@style/AppTheme.AppBarOverlay"
-                android:id="@+id/appBarLayout">
+                android:id="@+id/appBarLayout"
+                app:layout_constraintTop_toTopOf="parent">
 
             <android.support.v7.widget.Toolbar
                     android:id="@+id/applyStaying_toolbar"
@@ -82,7 +83,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{()->applyStayingViewModel.applyBtnClick()}"
+                android:onClick="@{(view)->applyStayingViewModel.applyBtnClick(view)}"
                 android:id="@+id/applyStaying_apply_btn"
                 android:layout_marginHorizontal="16dp"
                 android:background="@drawable/radius_view_primary"
@@ -106,10 +107,12 @@
                 android:id="@+id/applyStaying_apply_list_pager"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:pageChange="@={applyStayingViewModel.pageStatusLiveData}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/applyStaying_explanation_lay"
                 app:layout_constraintBottom_toTopOf="@id/applyStaying_apply_btn"/>
+
 
 
     </android.support.constraint.ConstraintLayout>

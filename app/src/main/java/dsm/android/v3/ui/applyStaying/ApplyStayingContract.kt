@@ -6,7 +6,8 @@ import android.view.ViewGroup
 interface  ApplyStayingContract {
 
     var viewGroup: ViewGroup
-    fun getCurrentItem(): Int
+
     fun changeColor(view: View)
     fun originalColor(view: View)
+    fun createShortToast(text: String)
 }
