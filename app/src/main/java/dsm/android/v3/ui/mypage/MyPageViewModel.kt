@@ -1,94 +1,71 @@
 package dsm.android.v3.ui.mypage
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
+import dsm.android.v3.connecter.api
+import dsm.android.v3.util.LifecycleCallback
+import dsm.android.v3.util.getToken
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MyPageViewModel(private val contract: MyPageContract?): ViewModel() {
-
-    private var initalTimeDialogFragment: Long = 0
-    private lateinit var logoutContract: MyPageContract.LogoutContract
-    private lateinit var bugReportContract: MyPageContract.BugReportContract
-    private lateinit var institutionReportContract: MyPageContract.InstitutionReportContract
+class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewModel(), LifecycleCallback{
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
-    val meritText = MutableLiveData<String>()
-    val demeritText = MutableLiveData<String>()
     val adviceText = MutableLiveData<String>()
 
-    val bugTitleEditText = MutableLiveData<String>()
-    val bugContentEditText = MutableLiveData<String>()
+    override fun apply(event: Lifecycle.Event) {
+        when(event){
+            Lifecycle.Event.ON_START -> {
+                api.getBasicInfo(getToken(context)).enqueue(object: Callback<MyPageInfoModel> {
+                    override fun onResponse(call: Call<MyPageInfoModel>, response: Response<MyPageInfoModel>) {
+                        when(response.code()){
+                            200 -> {
+                                nameText.value = response.body()!!.name
+                                infoText.value = createStudentNumber(response.body()!!.number)
+                                contract.startCountAnimation(response.body()!!.goodPoint, response.body()!!.badPoint)
+                                adviceText.value = "윤재가 아직 안줬어열......"
+                            }
+                            403 -> contract.createShortToast("마이페이지 조회 권한이 없습니다.")
+                            else -> contract.createShortToast("오류코드: ${response.code()}")
+                        }
+                    }
 
-    val institutionTitleEditText = MutableLiveData<String>()
-    val institutionRoomNumberEditText = MutableLiveData<String>()
-    val institutionReportContentEditText = MutableLiveData<String>()
-
-
-    init {
-        // TODO("나중에 통신하는 과정에서 Model 클래스 작성할 때 merit, demerit 넣어줌")
-        // contract?.startCountAnimation()
-    }
-
-    constructor (contract: MyPageContract.LogoutContract) : this(contract = null){
-        this.initalTimeDialogFragment = initalTimeDialogFragment
-        logoutContract = contract
-    }
-    constructor (contract: MyPageContract.BugReportContract) : this(contract = null){
-        this.initalTimeDialogFragment = initalTimeDialogFragment
-        bugReportContract = contract
-    }
-    constructor (contract: MyPageContract.InstitutionReportContract) : this(contract = null){
-        this.initalTimeDialogFragment = initalTimeDialogFragment
-        institutionReportContract = contract
-    }
-
-    fun clickEnterInstitutionReport() = contract?.showDialogInstitutionReport()
-    fun clickEnterQuestionResearch() = contract?.intentQuestionResearch()
-    fun clickEnterBugReport() = contract?.showDialogBugReport()
-    fun clickEnterLogout() = contract?.showDialogLogout()
-    fun clickEnterPasswordChange() = contract?.intentPasswordChange()
-    fun clickEnterMeritHistory() = contract?.intentMeriteHistory()
-    fun clickEnterIntroDevelopers() = contract?.intentintroDevelopers()
-
-    fun bugClickCancel() = bugReportContract.exitBugReport()
-    fun bugClickSend(){
-        if (bugTitleEditText.isNullOrBlank())
-            bugReportContract.flagBugTitleBlankError()
-
-        else if (bugContentEditText.isNullOrBlank())
-            bugReportContract.flagBugContentBlankError()
-
-        else {
-            // TODO("버그 내용 서버에 보내는 동작")
-            bugReportContract.exitBugReport()
+                    override fun onFailure(call: Call<MyPageInfoModel>, t: Throwable) {
+                        contract.createShortToast("오류가 발생했습니다.")
+                    }
+                })
+            }
         }
     }
 
-    fun institutionClickCancel() = institutionReportContract.exitInstitutionReport()
-
-    fun institutionClickSend(){
-        if (institutionTitleEditText.isNullOrBlank())
-            institutionReportContract.flagInstitutionTitleBlankError()
-
-        else if (institutionRoomNumberEditText.isNullOrBlank())
-            institutionReportContract.flagInstitutionRoomNumberBlankError()
-
-        else if (institutionReportContentEditText.isNullOrBlank())
-            institutionReportContract.flagInstitutionContentBlankError()
-
-        else{
-            // TODO("고장 내용 서버에 보내는 동작")
-            institutionReportContract.exitInstitutionReport()
+    fun createStudentNumber(num: Int): String{
+        val numString = num.toString()
+        if (numString.length == 4){
+            val studentGrade = numString.substring(0, 1)
+            val studentClass = numString.substring(1, 2)
+            val studentNumber = numString.substring(2,4).toInt().toString()
+            return "${studentGrade}학년 ${studentClass}반 ${studentNumber}번"
+        } else {
+            return "학번: $num"
         }
     }
 
-    fun logoutClickCancel() = logoutContract.exitLogout()
+    fun clickEnterInstitutionReport() = contract.showDialogInstitutionReport()
 
-    fun logoutClickLogout() {
-        // TODO("로그아웃하는 동작")
-        logoutContract.exitLogout()
-    }
+    fun clickEnterQuestionResearch() = contract.intentQuestionResearch()
 
-    fun MutableLiveData<String>.isNullOrBlank(): Boolean
-            = MutableLiveData<String>().value.toString().isNullOrBlank()
+    fun clickEnterBugReport() = contract.showDialogBugReport()
+
+    fun clickEnterLogout() = contract.showDialogLogout()
+
+    fun clickEnterPasswordChange() = contract.intentPasswordChange()
+
+    fun clickEnterMeritHistory() = contract.intentMeriteHistory()
+
+    fun clickEnterIntroDevelopers() = contract.intentintroDevelopers()
+
 }

@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="MyPageViewModel"
-            type="dsm.android.v3.ui.mypage.MyPageViewModel">
+            name="InstitutionReportViewModel"
+            type="dsm.android.v3.ui.institutionReportDialog.InstitutionReportViewModel">
         </variable>
     </data>
 
@@ -55,7 +55,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
-                    android:text="@={MyPageViewModel.institutionTitleEditText}"
+                    android:text="@={InstitutionReportViewModel.institutionTitle}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:background="@null"
                     android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
-                        android:text="@={MyPageViewModel.institutionRoomNumberEditText}"
+                        android:text="@={InstitutionReportViewModel.institutionRoomNumber}"
                         android:fontFamily="@font/nanumsquarebold"
                         android:background="@null"
                         android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:id="@+id/institution_dialog_report_content_edit">
                 <android.support.design.widget.TextInputEditText
                     android:gravity="top"
-                    android:text="@={MyPageViewModel.institutionReportContentEditText}"
+                    android:text="@={InstitutionReportViewModel.institutionReportContent}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/institution_dialog_edit_report_content"
@@ -129,7 +129,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:onClick="@{()->MyPageViewModel.institutionClickCancel()}"
+                android:onClick="@{()->InstitutionReportViewModel.institutionClickCancel()}"
                 android:id="@+id/institution_dialog_cancel_tv"
                 android:paddingVertical="11dp"
                 android:paddingHorizontal="50dp"
@@ -142,7 +142,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:onClick="@{()->MyPageViewModel.institutionClickSend()}"
+                android:onClick="@{(view)->InstitutionReportViewModel.institutionClickSend(view)}"
                 android:id="@+id/institution_dialog_send_tv"
                 android:paddingVertical="11dp"
                 android:paddingHorizontal="50dp"
