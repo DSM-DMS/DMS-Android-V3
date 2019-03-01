@@ -1,9 +1,6 @@
 package dsm.android.v3.util
 
 import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LifecycleService
-import android.arch.lifecycle.OnLifecycleEvent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -16,7 +13,7 @@ abstract class DataBindingActivity<T : ViewDataBinding> : AppCompatActivity() {
 
     abstract val layoutId: Int
 
-    private val lifecycleOwner= LifecycleOwner()
+    private val lifecycleOwner = LifecycleOwner()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

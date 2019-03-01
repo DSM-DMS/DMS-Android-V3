@@ -16,6 +16,5 @@ class LifecycleOwner {
 
     fun notifyEvent(event : Lifecycle.Event) {
         callbacks.forEach { it.apply(event) }
-
     }
 }
