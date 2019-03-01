@@ -5,4 +5,5 @@ import dsm.android.v3.model.ApplyGoingLogItemModel
 interface ApplyGoingContract{
     fun setViewPager(saturdayCount: Int, sundayCount: Int, workdayCount: Int)
     fun intentApplyGoingDoc()
+    fun createShortToast(text: String)
 }
