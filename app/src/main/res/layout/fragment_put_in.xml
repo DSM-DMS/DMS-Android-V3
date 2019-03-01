@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="vm"
+                type="dsm.android.v3.ui.main.putIn.PutInViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.putIn.PutInFragment">
+
+
+        <TextView
+                android:id="@+id/putIn_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="신청"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/putIn_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGray500"
+                android:textSize="@dimen/typo_subtitle"
+                android:text="연장 신청, 잔류 신청, 외출 신청, 기상 음악 신청을 할 수 있습니다."
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/putIn_title_tv"
+                app:layout_constraintStart_toStartOf="@+id/putIn_title_tv"/>
+
+        <android.support.v7.widget.Api17CardView
+                android:id="@+id/putIn_extension_cv"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:onClick="@{() -> vm.extensionEventCall()}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/putIn_content_tv"
+                app:layout_constraintStart_toStartOf="@+id/putIn_guideLine_left"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/putIn_stay_cv"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintEnd_toStartOf="@+id/putIn_guideLine_right">
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/putIn_extension_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="연장 신청"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/putIn_extension_content_tv"
+                        app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                        android:id="@+id/putIn_extension_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body1"
+                        android:layout_marginTop="4dp"
+                        android:text="학과시간 이후에 추가적으로 연장학습을 할 수 있습니다."
+                        app:layout_constraintTop_toBottomOf="@+id/putIn_extension_title_tv"
+                        app:layout_constraintStart_toStartOf="@+id/putIn_extension_title_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.Api17CardView>
+
+        <android.support.v7.widget.Api17CardView
+                android:id="@+id/putIn_stay_cv"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:onClick="@{() -> vm.stayEventCall()}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/putIn_extension_cv"
+                app:layout_constraintStart_toStartOf="@+id/putIn_guideLine_left"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/putIn_music_cv"
+                app:layout_constraintEnd_toStartOf="@+id/putIn_guideLine_right">
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/putIn_stay_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="잔류 신청"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/putIn_stay_content_tv"
+                        app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                        android:id="@+id/putIn_stay_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body1"
+                        android:layout_marginTop="4dp"
+                        android:text="금요일부터 일요일 저녁까지의 상태를 신청합니다."
+                        app:layout_constraintTop_toBottomOf="@+id/putIn_stay_title_tv"
+                        app:layout_constraintStart_toStartOf="@+id/putIn_stay_title_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.Api17CardView>
+
+        <android.support.v7.widget.Api17CardView
+                android:id="@+id/putIn_music_cv"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:onClick="@{() -> vm.musicEventCall()}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/putIn_stay_cv"
+                app:layout_constraintStart_toStartOf="@+id/putIn_guideLine_left"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/putIn_goingOut_cv"
+                app:layout_constraintEnd_toStartOf="@+id/putIn_guideLine_right">
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/putIn_music_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기상음악 신청"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/putIn_music_content_tv"
+                        app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                        android:id="@+id/putIn_music_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body1"
+                        android:layout_marginTop="4dp"
+                        android:text="아침에 틀 노래를 신청할 수 있습니다."
+                        app:layout_constraintTop_toBottomOf="@+id/putIn_music_title_tv"
+                        app:layout_constraintStart_toStartOf="@+id/putIn_music_title_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.Api17CardView>
+
+
+        <android.support.v7.widget.Api17CardView
+                android:id="@+id/putIn_goingOut_cv"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:onClick="@{() -> vm.goingOutEventCall()}"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/putIn_music_cv"
+                app:layout_constraintStart_toStartOf="@+id/putIn_guideLine_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/putIn_guideLine_right">
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/putIn_goingOut_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="외출 신청"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/putIn_goingOut_content_tv"
+                        app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                        android:id="@+id/putIn_goingOut_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body1"
+                        android:layout_marginTop="4dp"
+                        android:text="주말과 예외상황시 외출신청서를 작성하여 외출할 수 있습니다."
+                        app:layout_constraintTop_toBottomOf="@+id/putIn_goingOut_title_tv"
+                        app:layout_constraintStart_toStartOf="@+id/putIn_goingOut_title_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.Api17CardView>
+
+        <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/putIn_guideLine_left"
+                app:layout_constraintGuide_begin="12dp"
+                android:orientation="vertical"/>
+
+        <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/putIn_guideLine_right"
+                app:layout_constraintGuide_end="12dp"
+                android:orientation="vertical"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

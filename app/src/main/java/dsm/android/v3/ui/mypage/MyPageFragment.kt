@@ -9,11 +9,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.databinding.FragmentMypageBinding
 import android.animation.ValueAnimator
-import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
-import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
-import dsm.android.v3.ui.logOutDialog.LogoutDialogFragmenet
+import dsm.android.v3.ui.changePassword.ChangePasswordActivity
+import dsm.android.v3.ui.pointLog.PointLogActivity
 import kotlinx.android.synthetic.main.fragment_mypage.*
-import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContract {
@@ -28,7 +27,7 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val factory = MyPageViewModelFactory(this, context!!)
+        val factory = MyPageViewModelFactory(this)
         binding.myPageViewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
         register(binding.myPageViewModel!!)
         return rootView
@@ -62,11 +61,11 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
     }
 
     override fun intentPasswordChange() {
-        // startActivity<>() 비밀번호 전환 액티비티로 전환
+         startActivity<ChangePasswordActivity>() // 비밀번호 전환 액티비티로 전환
     }
 
     override fun intentMeriteHistory() {
-        // startActivity<>() 상벌점 내역 액티비티로 전환
+         startActivity<PointLogActivity>()
     }
 
     override fun intentintroDevelopers() {
