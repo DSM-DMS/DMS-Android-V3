@@ -12,11 +12,13 @@ object Connecter {
     init {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val client = OkHttpClient.Builder().addInterceptor(interceptor)
+            .addInterceptor(SecretHeaderInterceptor())
+            .build()
 
         retrofit = Retrofit
             .Builder()
-            .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com/api/")
+            .baseUrl("http://ec2.istruly.sexy:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

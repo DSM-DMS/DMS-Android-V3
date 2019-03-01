@@ -184,3 +184,5 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/android,androidstudio
+app/src/main/java/dsm/android/v3/util/SecretHeaderGenerator.kt
+app/src/main/java/dsm/android/v3/connecter/SecretHeaderInterceptor.kt
