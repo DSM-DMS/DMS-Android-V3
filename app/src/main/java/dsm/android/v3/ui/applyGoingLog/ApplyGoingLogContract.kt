@@ -1,14 +1,14 @@
 package dsm.android.v3.ui.applyGoingLog
 
-import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingModel
 
 interface ApplyGoingLogContract{
-    fun setApplyList(models: ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>)
+    fun setApplyList(models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>)
     fun backApplyGoing()
     fun createShortToast(text: String)
 
     interface ApplyGoingLogRv{
-        fun logItemClickTrue(model: ApplyGoingDataModel.ApplyGoingDataModel)
-        fun logItemClickFalse(model: ApplyGoingDataModel.ApplyGoingDataModel)
+        fun logItemClickTrue(model: ApplyGoingModel.ApplyGoingDataModel)
+        fun logItemClickFalse(model: ApplyGoingModel.ApplyGoingDataModel)
     }
 }

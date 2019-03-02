@@ -7,7 +7,7 @@ import android.view.View
 import dsm.android.v3.R
 import dsm.android.v3.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
-import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteDataList
 import dsm.android.v3.util.DataBindingActivity
 import org.jetbrains.anko.toast
@@ -25,12 +25,12 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
         invisibleDeleteBtn()
     }
 
-    override fun logItemClickTrue(model: ApplyGoingDataModel.ApplyGoingDataModel) {
+    override fun logItemClickTrue(model: ApplyGoingModel.ApplyGoingDataModel) {
         deleteDataList.remove(model)
         if(deleteDataList.isEmpty()) invisibleDeleteBtn()
     }
 
-    override fun logItemClickFalse(model: ApplyGoingDataModel.ApplyGoingDataModel) {
+    override fun logItemClickFalse(model: ApplyGoingModel.ApplyGoingDataModel) {
         deleteDataList.add(model)
         visibleDeleteBtn()
     }
@@ -38,7 +38,7 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
     override fun createShortToast(text: String) = toast(text).show()
 
 
-    override fun setApplyList(models: ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>) {
+    override fun setApplyList(models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>) {
         binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(models, this)
     }
 

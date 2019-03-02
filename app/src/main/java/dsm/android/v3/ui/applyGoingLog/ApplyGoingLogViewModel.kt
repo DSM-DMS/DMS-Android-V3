@@ -27,7 +27,6 @@ class ApplyGoingLogViewModel(val contract: ApplyGoingLogContract, val title: Str
 
     fun applyGoingClickDelete(view: View) {
         for(deleteData in deleteDataList){
-            Log.e("dsgsdgdsg", "${deleteData.id}")
             api.deleteGoingOut(getToken(view.context), hashMapOf("applyId" to deleteData.id)).enqueue(object: Callback<Unit>{
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     contract.createShortToast(when(response.code()){

@@ -1,7 +1,7 @@
 package dsm.android.v3.connecter
 
 import dsm.android.v3.ui.applyExtensionStudy.ExtensionModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingModel
 import dsm.android.v3.ui.applyStaying.ApplyStayingModel
 import dsm.android.v3.ui.mypage.MyPageInfoModel
 import retrofit2.Call
@@ -30,7 +30,7 @@ interface API {
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingDataModel>
+    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")

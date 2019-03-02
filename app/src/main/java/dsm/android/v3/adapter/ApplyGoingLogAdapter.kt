@@ -10,11 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
-import dsm.android.v3.ui.applyGoing.ApplyGoingDataModel
+import dsm.android.v3.ui.applyGoing.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
 import org.jetbrains.anko.*
 
-class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingDataModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
+class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ApplyGoingLogViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_apply_going_log, p0, false)
@@ -32,7 +32,7 @@ class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingDataModel.ApplyGoing
         val cardLayout = itemView.find<Api17CardView>(R.id.applyGoing_log_card_lay)
         var clicked: Boolean = false
 
-        fun bind(model: ApplyGoingDataModel.ApplyGoingDataModel){
+        fun bind(model: ApplyGoingModel.ApplyGoingDataModel){
             timeLimit.text = "${model.goOutDate} ~ ${model.returnDate}"
             reason.text = model.reason
             itemView.setOnClickListener {

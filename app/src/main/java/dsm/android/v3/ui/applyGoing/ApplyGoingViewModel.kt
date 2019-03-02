@@ -19,8 +19,8 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
     override fun apply(event: Lifecycle.Event) {
         when(event) {
             Lifecycle.Event.ON_RESUME -> {
-                api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingDataModel>{
-                    override fun onResponse(call: Call<ApplyGoingDataModel>, response: Response<ApplyGoingDataModel>) {
+                api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingModel>{
+                    override fun onResponse(call: Call<ApplyGoingModel>, response: Response<ApplyGoingModel>) {
                         when(response.code()){
                             200 -> setApplyGoingData(response.body()!!)
                             204 -> contract.createShortToast("외출신청 정보가 없습니다.")
@@ -29,7 +29,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
                         }
                     }
 
-                    override fun onFailure(call: Call<ApplyGoingDataModel>, t: Throwable) {
+                    override fun onFailure(call: Call<ApplyGoingModel>, t: Throwable) {
                         saturdayItemList = ArrayList()
                         sundayItemList = ArrayList()
                         workdayItemList = ArrayList()
@@ -41,7 +41,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
         }
     }
 
-    fun setApplyGoingData(applyGoingList: ApplyGoingDataModel) {
+    fun setApplyGoingData(applyGoingList: ApplyGoingModel) {
         saturdayItemList = applyGoingList.saturdayList
         sundayItemList = applyGoingList.sundayList
         workdayItemList = applyGoingList.workdayList
