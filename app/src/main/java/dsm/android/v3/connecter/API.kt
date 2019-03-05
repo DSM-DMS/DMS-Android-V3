@@ -8,6 +8,9 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface API {
+    @GET("meal/{day}")
+    fun getMeal(@Path("day") day: String): Call<MealModel>
+
     @GET("/apply/extension/map/{time}/{class_num}")
     @Headers("Content-Type: application/json")
     fun getMap(@Path("time") time: Int, @Path("class_num") classNum: Int): Call<ExtensionModel>

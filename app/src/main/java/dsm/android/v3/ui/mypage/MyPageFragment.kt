@@ -62,11 +62,11 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
     }
 
     override fun intentPasswordChange() {
-        // startActivity<>() 비밀번호 전환 액티비티로 전환
+         startActivity<ChangePasswordActivity>() // 비밀번호 전환 액티비티로 전환
     }
 
     override fun intentMeriteHistory() {
-        // startActivity<>() 상벌점 내역 액티비티로 전환
+         startActivity<PointLogActivity>()
     }
 
     override fun intentintroDevelopers() {
