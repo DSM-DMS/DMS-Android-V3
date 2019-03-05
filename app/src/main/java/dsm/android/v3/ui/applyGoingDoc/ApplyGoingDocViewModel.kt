@@ -8,8 +8,13 @@ import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
+
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+    private val timeFormat = SimpleDateFormat("hh:mm")
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
@@ -17,8 +22,15 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
     val applyGoingReturnTime = MutableLiveData<String>()
     val applyGoingReason = MutableLiveData<String>()
 
-    fun applyGoingDocClickApply(view: View){
+    init {
+        val date = Date(System.currentTimeMillis())
+        applyGoingGoDate.value = dateFormat.format(date)
+        applyGoingReturnDate.value = dateFormat.format(date)
+        applyGoingGoTime.value = timeFormat.format(date)
+        applyGoingReturnTime.value = timeFormat.format(date)
+    }
 
+    fun applyGoingDocClickApply(view: View){
         if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
         else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
         else if(applyGoingReturnDate.value.isNullOrBlank()) contract.setErrorApplyGoingBackDate()

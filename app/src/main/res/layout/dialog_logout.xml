@@ -35,7 +35,7 @@
             android:text="@string/logout_dialog_bold_content"
             android:textColor="@color/colorGray900"
             android:textSize="@dimen/typo_body1"
-            android:fontFamily="@font/nanumsquareextrabold"
+            android:fontFamily="@font/nanumsquarebold"
             app:layout_constraintTop_toBottomOf="@id/logout_dialog_title_tv"
             android:layout_marginTop="25dp"/>
 

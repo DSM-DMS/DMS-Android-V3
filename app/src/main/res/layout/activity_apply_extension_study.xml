@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_close"
-                android:background="@drawable/radius_circle_gray"/>
+                android:background="@drawable/radius_close_gray"/>
 
         <ImageView
                 android:src="@mipmap/logo"
@@ -33,41 +33,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-        <TextView
-                android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickTime(view, 12)}"
-                android:background="@drawable/radius_grayline_view"
-                android:id="@+id/applyExtension_twelve_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/apply_extension_study_twelve_text"
-                android:fontFamily="@font/nanumsquarebold"
-                android:textSize="@dimen/typo_body2"
-                android:textColor="@color/colorGray400"
-                app:layout_constraintTop_toBottomOf="@id/applyExtension_close_btn"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:paddingVertical="6dp"
-                android:paddingHorizontal="16dp"/>
+            <TextView
+                    android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickTime(view, 12)}"
+                    android:background="@drawable/radius_grayline_view"
+                    android:id="@+id/applyExtension_twelve_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/apply_extension_study_twelve_text"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="@dimen/typo_body2"
+                    android:textColor="@color/colorGray400"
+                    app:layout_constraintTop_toBottomOf="@id/applyExtension_close_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingVertical="6dp"
+                    android:paddingHorizontal="16dp"/>
 
-        <TextView
-                android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickTime(view, 11)}"
-                android:background="@drawable/radius_grayline_view"
-                android:id="@+id/applyExtension_eleven_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/apply_extension_study_eleven_text"
-                android:textSize="@dimen/typo_body2"
-                android:fontFamily="@font/nanumsquarebold"
-                android:textColor="@color/colorGray400"
-                app:layout_constraintTop_toBottomOf="@id/applyExtension_close_btn"
-                app:layout_constraintEnd_toStartOf="@id/applyExtension_twelve_tv"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:paddingVertical="6dp"
-                android:paddingHorizontal="16dp"/>
+            <TextView
+                    android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickTime(view, 11)}"
+                    android:background="@drawable/radius_grayline_view"
+                    android:id="@+id/applyExtension_eleven_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/apply_extension_study_eleven_text"
+                    android:textSize="@dimen/typo_body2"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textColor="@color/colorGray400"
+                    app:layout_constraintTop_toBottomOf="@id/applyExtension_close_btn"
+                    app:layout_constraintEnd_toStartOf="@id/applyExtension_twelve_tv"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:paddingVertical="6dp"
+                    android:paddingHorizontal="16dp"/>
 
         <HorizontalScrollView
                 android:id="@+id/applyExtension_location_scrv"
