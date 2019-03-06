@@ -21,7 +21,7 @@
             android:id="@+id/round_warning_logo_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/round_warning_logo"
+            android:background="@drawable/ic_waring_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 

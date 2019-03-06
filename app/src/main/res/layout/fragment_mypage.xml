@@ -64,7 +64,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterInstitutionReport()}">
     
                     <ImageView
-                        android:src="@mipmap/error_24_px"
+                        android:src="@drawable/ic_round_error_24_px"
                         android:id="@+id/mypage_error_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterQuestionResearch()}">
     
                     <ImageView
-                        android:src="@mipmap/edit_24_px"
+                        android:src="@drawable/ic_round_edit_24_px"
                         android:id="@+id/mypage_edit_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterBugReport()}">
     
                     <ImageView
-                        android:src="@mipmap/bug_report_24_px"
+                        android:src="@drawable/ic_round_bug_report_24_px"
                         android:id="@+id/mypage_bug_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
                         android:layout_marginTop="6dp"/>
     
                     <ImageView
-                        android:src="@mipmap/enter_arrow_gray"
+                        android:src="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -330,7 +330,7 @@
                         android:layout_marginTop="6dp"/>
     
                     <ImageView
-                        android:src="@mipmap/enter_arrow_gray"
+                        android:src="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -369,7 +369,7 @@
                         android:layout_marginTop="6dp"/>
     
                     <ImageView
-                        android:src="@mipmap/enter_arrow_gray"
+                        android:src="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -408,7 +408,7 @@
                         android:layout_marginTop="6dp"/>
     
                     <ImageView
-                        android:src="@mipmap/enter_arrow_gray"
+                        android:src="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
