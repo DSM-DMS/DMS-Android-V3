@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
-import dsm.android.v3.ui.applyGoing.ApplyGoingModel
+import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
 import org.jetbrains.anko.*
 
