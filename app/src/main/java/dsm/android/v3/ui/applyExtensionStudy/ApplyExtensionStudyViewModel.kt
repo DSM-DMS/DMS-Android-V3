@@ -2,12 +2,11 @@ package dsm.android.v3.ui.applyExtensionStudy
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.content.Context
 import android.view.View
 import android.widget.TextView
 import dsm.android.v3.connecter.Connecter.api
+import dsm.android.v3.model.ExtensionModel
 import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

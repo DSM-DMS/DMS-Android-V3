@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.view.View
 import dsm.android.v3.connecter.api
+import dsm.android.v3.model.ApplyStayingModel
 import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback

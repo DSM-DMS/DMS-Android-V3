@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.applyStaying
+package dsm.android.v3.model
 
 import com.google.gson.annotations.SerializedName
 

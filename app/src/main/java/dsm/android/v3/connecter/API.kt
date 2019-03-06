@@ -1,8 +1,8 @@
 package dsm.android.v3.connecter
 
-import dsm.android.v3.ui.applyExtensionStudy.ExtensionModel
-import dsm.android.v3.ui.applyGoing.ApplyGoingModel
-import dsm.android.v3.ui.applyStaying.ApplyStayingModel
+import dsm.android.v3.model.ExtensionModel
+import dsm.android.v3.model.ApplyGoingModel
+import dsm.android.v3.model.ApplyStayingModel
 import dsm.android.v3.ui.mypage.MyPageInfoModel
 import retrofit2.Call
 import retrofit2.http.*

@@ -3,13 +3,13 @@ package dsm.android.v3.ui.applyGoing
 import android.arch.lifecycle.*
 import android.content.Context
 import dsm.android.v3.connecter.api
+import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteDataList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.saturdayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.sundayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.workdayItemList
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -7,7 +7,7 @@ import android.view.View
 import dsm.android.v3.R
 import dsm.android.v3.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
-import dsm.android.v3.ui.applyGoing.ApplyGoingModel
+import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteDataList
 import dsm.android.v3.util.DataBindingActivity
 import org.jetbrains.anko.toast

@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.applyExtensionStudy
+package dsm.android.v3.model
 
 import com.google.gson.annotations.SerializedName
 

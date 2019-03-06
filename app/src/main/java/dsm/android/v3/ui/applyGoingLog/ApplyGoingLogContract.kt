@@ -1,6 +1,6 @@
 package dsm.android.v3.ui.applyGoingLog
 
-import dsm.android.v3.ui.applyGoing.ApplyGoingModel
+import dsm.android.v3.model.ApplyGoingModel
 
 interface ApplyGoingLogContract{
     fun setApplyList(models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>)
