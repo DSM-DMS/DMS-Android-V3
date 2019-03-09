@@ -9,5 +9,5 @@ object ApplyGoingLogData{
 
     var workdayItemList = ArrayList<ApplyGoingModel.ApplyGoingDataModel>()
 
-    val deleteDataList = ArrayList<ApplyGoingModel.ApplyGoingDataModel>()
+    lateinit var deleteItem: ApplyGoingModel.ApplyGoingDataModel
 }

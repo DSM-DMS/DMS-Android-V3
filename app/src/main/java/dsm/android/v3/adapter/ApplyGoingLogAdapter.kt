@@ -1,9 +1,5 @@
 package dsm.android.v3.adapter
 
-import android.content.Context
-import android.graphics.Color
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.Api17CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +9,7 @@ import dsm.android.v3.R
 import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
 import org.jetbrains.anko.*
+import java.text.SimpleDateFormat
 
 class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
 
@@ -26,41 +23,14 @@ class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingData
     override fun onBindViewHolder(p0: ApplyGoingLogViewHolder, p1: Int) = p0.bind(models[p1])
 
     inner class ApplyGoingLogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val title = itemView.find<TextView>(R.id.applyGoing_log_card_title_tv)
+        private val dateFormat = SimpleDateFormat("MM월 dd일 hh:mm ~ hh:mm")
         val timeLimit = itemView.find<TextView>(R.id.applyGoing_log_card_time_tv)
         val reason = itemView.find<TextView>(R.id.applyGoing_log_card_reason_tv)
-        val cardLayout = itemView.find<Api17CardView>(R.id.applyGoing_log_card_lay)
-        var clicked: Boolean = false
 
         fun bind(model: ApplyGoingModel.ApplyGoingDataModel){
-            timeLimit.text = "${model.goOutDate} ~ ${model.returnDate}"
+            timeLimit.text = dateFormat.format(model.goOutDate)
             reason.text = model.reason
-            itemView.setOnClickListener {
-                if (clicked) {
-                    itemClickedTrue()
-                    applyGoingLogRv.logItemClickTrue(model)
-                }
-                else {
-                    itemClickedFalse()
-                    applyGoingLogRv.logItemClickFalse(model)
-                }
-            }
-        }
-
-        fun itemClickedTrue(){
-            clicked = false
-            title.textColorResource =  R.color.colorGray700
-            timeLimit.textColorResource = R.color.colorGray600
-            reason.textColorResource = R.color.colorGray400
-            cardLayout.setCardBackgroundColor(ContextCompat.getColor(applyGoingLogRv as Context, R.color.colorWhite))
-        }
-
-        fun itemClickedFalse(){
-            clicked = true
-            title.textColorResource = R.color.colorWhite
-            timeLimit.textColor = Color.parseColor("#c6eded")
-            reason.textColor = Color.parseColor("#8cdbdb")
-            cardLayout.setCardBackgroundColor(ContextCompat.getColor(applyGoingLogRv as Context, R.color.colorPrimary))
+            itemView.setOnClickListener { applyGoingLogRv.logItemClick(model) }
         }
     }
 }

@@ -94,23 +94,6 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <Button
-                android:onClick="@{(view)->applyGoingLogViewModel.applyGoingClickDelete(view)}"
-                android:id="@+id/applyGoing_apply_delete_btn"
-                android:layout_marginHorizontal="16dp"
-                android:background="@drawable/radius_view_red"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center"
-                android:text="@string/apply_going_log_delete_btn"
-                android:textSize="@dimen/typo_header"
-                android:textColor="@color/colorWhite"
-                android:fontFamily="@font/nanumsquareregular"/>
-
     </android.support.constraint.ConstraintLayout>
 
 </layout>
