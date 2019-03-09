@@ -1,9 +1,6 @@
 package dsm.android.v3.connecter
 
-import dsm.android.v3.model.ExtensionModel
-import dsm.android.v3.model.ApplyGoingModel
-import dsm.android.v3.model.ApplyStayingModel
-import dsm.android.v3.ui.mypage.MyPageInfoModel
+import dsm.android.v3.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -38,6 +35,10 @@ interface API {
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")
     fun applyGoingOutDoc(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+
+    @PATCH("/apply/goingout")
+    @Headers("Content-Type: application/json")
+    fun editGoingOut(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
 
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")

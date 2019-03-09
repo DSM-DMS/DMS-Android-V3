@@ -79,6 +79,8 @@
     <string name="apply_extension_study_board_text">칠판</string>
     <string name="apply_extension_study_window_text">창문</string>
     <string name="apply_extension_study_hallway_text">복도</string>
+    <string name="apply_going_edit_cancel_btn">취소</string>
+    <string name="apply_going_edit_edit_btn">수정</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
