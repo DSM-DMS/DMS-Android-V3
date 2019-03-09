@@ -4,8 +4,6 @@ interface ApplyGoingDocContract{
     fun backApplyGoing()
     fun setErrorApplyGoingGoDate()
     fun setErrorApplyGoingGoTime()
-    fun setErrorApplyGoingBackDate()
-    fun setErrorApplyGoingBackTime()
     fun setErrorApplyGoingReason()
     fun createShortToast(text: String)
 }

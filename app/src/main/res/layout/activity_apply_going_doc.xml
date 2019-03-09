@@ -93,76 +93,8 @@
             </LinearLayout>
 
             <TextView
-                    android:id="@+id/applyGoing_doc_return_title"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_going_date_lay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/apply_going_doc_return_title"
-                    android:textSize="@dimen/typo_header"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/nanumsquareextrabold"
-                    android:layout_marginTop="14dp"/>
-
-            <LinearLayout
-                    android:id="@+id/applyGoing_doc_return_date_lay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/applyGoing_doc_return_time_lay"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_return_title"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                        android:id="@+id/applyGoing_doc_return_date_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:errorEnabled="true">
-                    <android.support.design.widget.TextInputEditText
-                            android:text="@={applyGoingDocViewModel.applyGoingReturnDate}"
-                            android:fontFamily="@font/nanumsquarebold"
-                            android:background="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/apply_going_doc_date_hint"
-                            android:textSize="@dimen/typo_body1"
-                            android:inputType="numberSigned"
-                            android:digits="0123456789-"/>
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                    android:id="@+id/applyGoing_doc_return_time_lay"
-                    app:layout_constraintStart_toEndOf="@id/applyGoing_doc_return_date_lay"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_return_title"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                        android:id="@+id/applyGoing_doc_return_time_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:errorEnabled="true">
-                    <android.support.design.widget.TextInputEditText
-                            android:text="@={applyGoingDocViewModel.applyGoingReturnTime}"
-                            android:fontFamily="@font/nanumsquarebold"
-                            android:background="@null"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/apply_going_doc_time_hint"
-                            android:textSize="@dimen/typo_body1"
-                            android:inputType="time"
-                            android:digits="0123456789:"/>
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <TextView
                     android:id="@+id/applyGoing_doc_reason_title"
-                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_return_date_lay"
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_doc_going_date_lay"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

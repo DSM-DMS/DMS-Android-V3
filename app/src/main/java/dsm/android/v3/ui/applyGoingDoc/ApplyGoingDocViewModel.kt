@@ -13,34 +13,29 @@ import java.util.*
 
 class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
 
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-    private val timeFormat = SimpleDateFormat("hh:mm")
+    private val dateFormat = SimpleDateFormat("MM/dd")
+    private val timeFormat = SimpleDateFormat("hh:mm ~ hh:mm")
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
-    val applyGoingReturnDate = MutableLiveData<String>()
-    val applyGoingReturnTime = MutableLiveData<String>()
     val applyGoingReason = MutableLiveData<String>()
 
     init {
         val date = Date(System.currentTimeMillis())
         applyGoingGoDate.value = dateFormat.format(date)
-        applyGoingReturnDate.value = dateFormat.format(date)
         applyGoingGoTime.value = timeFormat.format(date)
-        applyGoingReturnTime.value = timeFormat.format(date)
     }
 
     fun applyGoingDocClickApply(view: View){
-        if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
-        else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
-        else if(applyGoingReturnDate.value.isNullOrBlank()) contract.setErrorApplyGoingBackDate()
-        else if(applyGoingReturnTime.value.isNullOrBlank()) contract.setErrorApplyGoingBackTime()
+        if(applyGoingGoDate.value.isNullOrBlank() && applyGoingGoDate.value == dateFormat.format(applyGoingGoDate.value))
+            contract.setErrorApplyGoingGoDate()
+        else if(applyGoingGoTime.value.isNullOrBlank() && applyGoingGoTime.value == timeFormat.format(applyGoingGoTime.value))
+            contract.setErrorApplyGoingGoTime()
         else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason()
 
         else {
             api.applyGoingOutDoc(getToken(view.context), hashMapOf(
-                "goOutDate" to "${applyGoingGoDate.value} ${applyGoingGoTime.value}"
-                , "returnDate" to "${applyGoingReturnDate.value} ${applyGoingReturnTime.value}"
+                "goOutDate" to "${applyGoingGoDate.value} ${applyGoingGoTime}"
                 , "reason" to "${applyGoingReason.value}")).enqueue(object: Callback<Unit>{
 
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

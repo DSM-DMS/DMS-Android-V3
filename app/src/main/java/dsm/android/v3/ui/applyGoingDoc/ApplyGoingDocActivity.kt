@@ -23,13 +23,9 @@ class ApplyGoingDocActivity: DataBindingActivity<ActivityApplyGoingDocBinding>()
 
     override fun backApplyGoing() = finish()
 
-    override fun setErrorApplyGoingGoDate() { applyGoing_doc_going_date_edit.error = "날짜를 입력하세요." }
+    override fun setErrorApplyGoingGoDate() { applyGoing_doc_going_date_edit.error = "MM/DD 형식에 맞게 입력하세요." }
 
-    override fun setErrorApplyGoingGoTime() { applyGoing_doc_going_time_edit.error = "일시를 입력하세요." }
-
-    override fun setErrorApplyGoingBackDate() { applyGoing_doc_return_date_edit.error = "날짜를 입력하세요." }
-
-    override fun setErrorApplyGoingBackTime() { applyGoing_doc_return_time_edit.error = "일시를 입력하세요." }
+    override fun setErrorApplyGoingGoTime() { applyGoing_doc_going_time_edit.error = "HH/MM ~ HH/MM 형식에 맞게 입력하세요." }
 
     override fun setErrorApplyGoingReason() { applyGoing_doc_reason_content_edit.error = "사유를 입력하세요." }
 }
