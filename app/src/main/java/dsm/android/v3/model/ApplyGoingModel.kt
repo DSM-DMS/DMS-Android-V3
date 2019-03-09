@@ -20,9 +20,6 @@ data class ApplyGoingModel(
         var id: Int,
 
         @SerializedName("reason")
-        var reason: String,
-
-        @SerializedName("return_date")
-        var returnDate: String
+        var reason: String
     )
 }

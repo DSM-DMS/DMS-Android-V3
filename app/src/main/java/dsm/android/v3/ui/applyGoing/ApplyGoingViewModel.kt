@@ -4,7 +4,6 @@ import android.arch.lifecycle.*
 import android.content.Context
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.ApplyGoingModel
-import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteDataList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.saturdayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.sundayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.workdayItemList
@@ -18,7 +17,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
 
     override fun apply(event: Lifecycle.Event) {
         when(event) {
-            Lifecycle.Event.ON_RESUME -> {
+            Lifecycle.Event.ON_START -> {
                 api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingModel>{
                     override fun onResponse(call: Call<ApplyGoingModel>, response: Response<ApplyGoingModel>) {
                         when(response.code()){
@@ -36,7 +35,6 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
                         contract.setViewPager(saturdayItemList.size, sundayItemList.size ,workdayItemList.size)
                     }
                 })
-                deleteDataList.clear()
             }
         }
     }
