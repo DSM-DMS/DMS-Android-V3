@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import dsm.android.v3.connecter.api
+import dsm.android.v3.model.MyPageInfoModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
 import retrofit2.Call
@@ -45,9 +46,9 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
     fun createStudentNumber(num: Int): String{
         val numString = num.toString()
         if (numString.length == 4){
-            val studentGrade = numString.substring(0, 1)
-            val studentClass = numString.substring(1, 2)
-            val studentNumber = numString.substring(2,4).toInt().toString()
+            val studentGrade = numString.substring(0..1)
+            val studentClass = numString.substring(1..2)
+            val studentNumber = numString.substring(2..4).toInt().toString()
             return "${studentGrade}학년 ${studentClass}반 ${studentNumber}번"
         } else {
             return "학번: $num"

@@ -10,9 +10,12 @@ import android.view.ViewGroup
 import dsm.android.v3.databinding.FragmentMypageBinding
 import android.animation.ValueAnimator
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
+import dsm.android.v3.ui.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.logOutDialog.LogoutDialogFragment
+import dsm.android.v3.ui.pointLog.PointLogActivity
 import kotlinx.android.synthetic.main.fragment_mypage.*
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
 
