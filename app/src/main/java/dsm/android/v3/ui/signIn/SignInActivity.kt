@@ -2,25 +2,19 @@ package dsm.android.v3.ui.signIn
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
-import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivitySignInBinding
 import dsm.android.v3.util.DataBindingActivity
 import android.support.constraint.ConstraintLayout
 import android.support.v4.content.ContextCompat
-import android.util.Log
-import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import dsm.android.v3.adapter.EditTextBindingAdapter
 import dsm.android.v3.ui.main.MainActivity
 import dsm.android.v3.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
-import java.util.regex.Matcher
 
 class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavigator {
     override fun showToast(message: String) {

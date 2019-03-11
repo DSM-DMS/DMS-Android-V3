@@ -100,6 +100,7 @@
                     android:fontFamily="@font/nanumsquareregular"
                     android:text="@={vm.signInId}"
                     android:textColor="#000000"
+                    android:singleLine="true"
                     android:textColorHint="@color/colorTextHint"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -135,6 +136,7 @@
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
                     android:layout_marginTop="10dp" android:hint="비밀번호를 입력해주세요"
                     android:text="@={vm.signInPw}"
+                    android:singleLine="true"
                     android:textColor="#000000"
                     android:textColorHint="@color/colorTextHint"
                     android:textSize="14sp"/>

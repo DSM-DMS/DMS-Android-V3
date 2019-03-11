@@ -1,23 +1,17 @@
 package dsm.android.v3.ui.signIn
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.*
 import android.arch.lifecycle.ViewModel
-import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.gson.JsonObject
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.AuthModel
 import dsm.android.v3.util.SingleLiveEvent
-import dsm.android.v3.util.getToken
 import dsm.android.v3.util.saveToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
 
@@ -52,14 +46,13 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
                     401 -> {
                         Toast.makeText(view.context, "로그인 실패", Toast.LENGTH_SHORT).show()
                         activityFinishLiveEvent.call()
-                    }
+                    } else -> Toast.makeText(view.context, "오류코드: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<AuthModel>, t: Throwable) {
                 Toast.makeText(view.context, "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show()
                 activityFinishLiveEvent.call()
             }
-
         })
     }
 
@@ -69,6 +62,5 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
 
     fun MutableLiveData<String>.isValueBlank() =
         this.value.isNullOrBlank()
-
 
 }

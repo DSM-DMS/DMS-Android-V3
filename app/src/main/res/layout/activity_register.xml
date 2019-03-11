@@ -95,6 +95,7 @@
                       android:text="@={vm.registerConfirmCode}"
                       android:textColor="#000000"
                       android:textColorHint="@color/colorTextHint"
+                      android:singleLine="true"
                       android:textSize="14sp"/>
             <TextView
                     android:id="@+id/register_id_tv"
@@ -119,6 +120,7 @@
                       android:fontFamily="@font/nanumsquareregular"
                       android:textColor="#000000"
                       android:text="@={vm.registerId}"
+                      android:singleLine="true"
                       android:textColorHint="@color/colorTextHint"
                       android:textSize="14sp"/>
 
@@ -147,6 +149,7 @@
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="10dp"
                     app:layout_constraintVertical_bias="0.0" android:layout_marginStart="46dp"
                     android:layout_marginEnd="46dp"
+                    android:singleLine="true"
                     android:textSize="14sp" android:id="@+id/register_pw_et"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -169,6 +172,7 @@
                     android:layout_marginTop="10dp" android:hint="비밀번호를 확인해주세요"
                     android:text="@={vm.registerPwComfirm}"
                     android:textColor="#000000"
+                    android:singleLine="true"
                     android:textColorHint="@color/colorTextHint"
                     android:textSize="14sp"/>
 
