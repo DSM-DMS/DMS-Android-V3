@@ -1,23 +1,33 @@
 package dsm.android.v3.ui.applyExtensionStudy
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
 import android.view.View
 import android.widget.TextView
 import dsm.android.v3.connecter.Connecter.api
 import dsm.android.v3.model.ExtensionModel
+import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
+import dsm.android.v3.util.saveToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract): ViewModel(){
+class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract): ViewModel(), LifecycleCallback{
 
     private val time = MutableLiveData<Int>()
     private val classNum = MutableLiveData<Int>()
 
     private val clickedTimeView = MutableLiveData<View>()
     private val clickedClassView = MutableLiveData<View>()
+
+    override fun apply(event: Lifecycle.Event) {
+        when(event){
+            Lifecycle.Event.ON_START -> loadMap()
+        }
+    }
 
     fun applyExtensionStudyClickBack() = contract.backApplyMenu()
 
@@ -50,6 +60,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract): V
                                 200 -> "연장취소에 성공했습니다."
                                 403 -> "연장취소 권한이 없습니다."
                                 409 -> "연장취소 가능시간이 아닙니다."
+                                500 -> "로그인이 필요합니다."
                                 else -> "오류코드: ${response.code()}"
                         })
                         loadMap()
@@ -72,6 +83,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract): V
                                 205 -> "신청 불가 지역입니다."
                                 403 -> "연장신청 권한이 없습니다."
                                 409 -> "연장신청 가능시간이 아닙니다."
+                                500 -> "로그인이 필요합니다."
                                 else -> "오류 코드: ${response.code()}"
                         })
                         loadMap()

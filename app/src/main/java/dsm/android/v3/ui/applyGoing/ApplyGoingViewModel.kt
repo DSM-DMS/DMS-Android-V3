@@ -26,6 +26,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
                             200 -> setApplyGoingData(response.body()!!)
                             204 -> contract.createShortToast("외출신청 정보가 없습니다.")
                             403 -> contract.createShortToast("외출신청 정보 조회 권한이 없습니다.")
+                            500 -> "로그인이 필요합니다."
                             else -> contract.createShortToast("오류코드: ${response.code()}")
                         }
                     }

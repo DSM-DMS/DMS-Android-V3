@@ -37,15 +37,13 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
         return rootView
     }
 
-    override fun createShortToast(text: String) = toast(text).show()
-
     override fun startCountAnimation(merit: Int, demerit: Int) {
 
         val meritAnimator = ValueAnimator.ofInt(0, merit)
         val demeritAnimator = ValueAnimator.ofInt(0, demerit)
 
-        meritAnimator.duration = 1000
-        demeritAnimator.duration = 1000
+        meritAnimator.duration = 500
+        demeritAnimator.duration = 500
 
         meritAnimator.addUpdateListener { animation -> mypage_merit_tv.setText(animation.animatedValue.toString()) }
         demeritAnimator.addUpdateListener { animation -> mypage_demerit_tv.setText(animation.animatedValue.toString()) }

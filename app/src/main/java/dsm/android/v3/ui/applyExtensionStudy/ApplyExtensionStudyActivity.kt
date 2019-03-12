@@ -29,6 +29,7 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
         super.onCreate(savedInstanceState)
         val factory = ApplyExtensionStudyViewModelFactory(this)
         binding.applyExtensionStudyViewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
+        register(binding.applyExtensionStudyViewModel!!)
     }
 
     override fun createShortToast(text: String) = toast(text).show()

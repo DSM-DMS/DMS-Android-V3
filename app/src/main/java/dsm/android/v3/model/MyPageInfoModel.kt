@@ -11,6 +11,8 @@ data class MyPageInfoModel(
     var name: String,
     @SerializedName("number")
     var number: Int,
+    @SerializedName("advice")
+    var advice: String,
     @SerializedName("penaltyLevel")
     var penaltyLevel: Int,
     @SerializedName("penaltyStatus")

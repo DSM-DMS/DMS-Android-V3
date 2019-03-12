@@ -109,6 +109,7 @@
                 app:errorEnabled="true"
                 android:id="@+id/institution_dialog_report_content_edit">
                 <android.support.design.widget.TextInputEditText
+                    android:fontFamily="@font/nanumsquarebold"
                     android:gravity="top"
                     android:text="@={InstitutionReportViewModel.institutionReportContent}"
                     android:layout_width="match_parent"

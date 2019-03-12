@@ -40,6 +40,7 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
                 contract.createShortToast(when(response.code()){
                     200 -> "외출신청 취소에 성공했습니다."
                     204 -> "존재하지 않는 외출신청입니다."
+                    500 -> "로그인이 필요합니다."
                     else -> "오류코드: ${response.code()}"
                 })
                 contract.backApplyGoing()
@@ -69,6 +70,7 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
                             201 -> "외출신청 수정에 성공했습니다."
                             204 -> "외출신청 수정 가능시간이 아닙니다."
                             403 -> "외출신청 수정 권한이 없습니다."
+                            500 -> "로그인이 필요합니다."
                             else -> "오류코드: ${response.code()}"
                         })
                     contract.backApplyGoing()
