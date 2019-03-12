@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/customView"
+        >
+
+    <android.support.v7.widget.Api17CardView
+            android:id="@+id/customview_bottom_cv"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="24dp"
+            />
+
+    <android.support.v7.widget.Api17CardView
+            android:id="@+id/customview_middle_cv"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="24dp"
+            />
+
+    <android.support.v7.widget.Api17CardView
+            android:id="@+id/customview_top_cv"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="24dp"
+            >
+
+        <TextView
+                android:id="@+id/customview_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="공지사항"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                />
+
+        <TextView
+                android:id="@+id/customview_description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="43dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorGray800"
+                android:text="사감부에서 게시한 공지사항을 열람합니다"
+                />
+
+        <ImageView
+                android:id="@+id/customview_button_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_arrow_right"
+                />
+    </android.support.v7.widget.Api17CardView>
+</FrameLayout>

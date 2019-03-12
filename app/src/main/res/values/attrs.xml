@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="count" format="integer"/>
+        <attr name="title" format="reference|string"/>
+        <attr name="description" format="reference|string"/>
+        <attr name="button" format="reference"/>
+    </declare-styleable>
+</resources>
