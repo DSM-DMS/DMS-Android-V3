@@ -33,6 +33,16 @@
     <string name="institution_dialog_report_title">고장 내용</string>
     <string name="institution_dialog_cancel">취소</string>
     <string name="institution_dialog_send">전송</string>
+    <string name="notice_title">대마고\n기숙사\n안내사항</string>
+    <string name="notice_description_highlight">DMS</string>
+    <string name="notice_description">는 대덕 소프트웨어 마이스터고등학교</string>
+    <string name="notice_description2">기숙사 생활에 필요한 유용한 정보를 제공합니다.</string>
+    <string name="notice_notice_title">공지사항</string>
+    <string name="notice_notice_description">사감부에서 게시한 공지사항을 열람합니다.</string>
+    <string name="notice_rules_title">기숙사 규정</string>
+    <string name="notice_rules_description">기숙사 규정을 열람합니다.</string>
+    <string name="notice_question_title">자주하는 질문</string>
+    <string name="notice_question_description">자주하는 질문을 열람합니다.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
