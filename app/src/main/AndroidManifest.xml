@@ -26,22 +26,23 @@
 
         </activity>
         <activity android:name=".ui.applyGoing.ApplyGoingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.applyGoingLog.ApplyGoingLogActivity" />
 
         <activity android:name=".ui.applyGoingDoc.ApplyGoingDocActivity"/>
 
+        <activity android:name=".ui.applyGoingEdit.ApplyGoingEditActivity"/>
+
         <activity android:name=".ui.applyStaying.ApplyStayingActivity">
         </activity>
 
         <activity android:name=".ui.applyExtensionStudy.ApplyExtensionStudyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-
         </activity>
     </application>
 

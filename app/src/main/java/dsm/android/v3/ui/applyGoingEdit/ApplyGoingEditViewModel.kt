@@ -15,7 +15,8 @@ import java.util.*
 class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel(){
 
     private val dateFormat = SimpleDateFormat("MM/dd")
-    private val timeFormat = SimpleDateFormat("hh:mm ~ hh:mm")
+    private val sendDateFormat = SimpleDateFormat("MM-dd")
+    private val timeFormat = SimpleDateFormat("HH:mm ~ HH:mm")
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
@@ -24,10 +25,14 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     init { setDataText() }
 
     private fun setDataText(){
-        applyGoingGoDate.value = dateFormat.format(deleteItem.goOutDate)
-        applyGoingGoTime.value = timeFormat.format(deleteItem.goOutDate)
+        val idx = deleteItem.date.indexOf(" ")
+        applyGoingGoDate.value = createSetDateString(deleteItem.date.substring(0..idx-1))
+        applyGoingGoTime.value = deleteItem.date.substring(idx+1)
         applyGoingReason.value = deleteItem.reason
     }
+
+    private fun createSendDateString(date: String): String = sendDateFormat.format(dateFormat.parse(date))
+    private fun createSetDateString(date: String): String = dateFormat.format(sendDateFormat.parse(date))
 
     fun applyGoingEditClickCancel(view: View){
         api.deleteGoingOut(getToken(view.context), hashMapOf("applyId" to deleteItem.id)).enqueue(object: Callback<Unit>{
@@ -47,16 +52,15 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     }
 
    fun applyGoingEditClickEdit(view: View){
-        if(applyGoingGoDate.value.isNullOrBlank() && applyGoingGoDate.value == dateFormat.format(applyGoingGoDate.value))
-            contract.setErrorApplyGoingGoDate()
-        else if(applyGoingGoTime.value.isNullOrBlank() && applyGoingGoTime.value == timeFormat.format(applyGoingGoTime.value))
-            contract.setErrorApplyGoingGoTime()
+        if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
+        else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
         else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason()
 
         else {
             api.editGoingOut(
                 getToken(view.context), hashMapOf(
-                    "goOutDate" to "${applyGoingGoDate.value} ${applyGoingGoTime.value}"
+                    "applyId" to deleteItem.id
+                    , "date" to "${createSendDateString(applyGoingGoDate.value!!)} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}")).enqueue(object: Callback<Unit> {
 
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

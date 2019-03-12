@@ -9,6 +9,8 @@ import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.sundayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.workdayItemList
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
+import dsm.android.v3.util.saveToken
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +19,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
 
     override fun apply(event: Lifecycle.Event) {
         when(event) {
-            Lifecycle.Event.ON_START -> {
+            Lifecycle.Event.ON_RESUME -> {
                 api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingModel>{
                     override fun onResponse(call: Call<ApplyGoingModel>, response: Response<ApplyGoingModel>) {
                         when(response.code()){
@@ -29,12 +31,10 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
                     }
 
                     override fun onFailure(call: Call<ApplyGoingModel>, t: Throwable) {
-                        saturdayItemList = ArrayList()
-                        sundayItemList = ArrayList()
-                        workdayItemList = ArrayList()
-                        contract.setViewPager(saturdayItemList.size, sundayItemList.size ,workdayItemList.size)
+                        contract.createShortToast("오류가 발생했습니다.")
                     }
                 })
+                contract.setViewPager(saturdayItemList.size, sundayItemList.size ,workdayItemList.size)
             }
         }
     }

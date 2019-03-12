@@ -13,8 +13,8 @@ data class ApplyGoingModel(
     var workdayList: ArrayList<ApplyGoingDataModel>
 ) {
     data class ApplyGoingDataModel(
-        @SerializedName("go_out_date")
-        var goOutDate: String,
+        @SerializedName("date")
+        var date: String,
 
         @SerializedName("id")
         var id: Int,

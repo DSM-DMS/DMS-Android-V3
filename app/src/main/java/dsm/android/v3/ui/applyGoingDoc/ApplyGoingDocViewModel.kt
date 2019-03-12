@@ -2,6 +2,7 @@ package dsm.android.v3.ui.applyGoingDoc
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import android.view.View
 import dsm.android.v3.connecter.api
 import dsm.android.v3.util.getToken
@@ -14,7 +15,8 @@ import java.util.*
 class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
 
     private val dateFormat = SimpleDateFormat("MM/dd")
-    private val timeFormat = SimpleDateFormat("hh:mm ~ hh:mm")
+    private val sendDateFormat = SimpleDateFormat("MM-dd")
+    private val timeFormat = SimpleDateFormat("HH:mm ~ HH:mm")
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
@@ -26,16 +28,16 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
         applyGoingGoTime.value = timeFormat.format(date)
     }
 
+    private fun createDateString(): String = sendDateFormat.format(dateFormat.parse(applyGoingGoDate.value))
+
     fun applyGoingDocClickApply(view: View){
-        if(applyGoingGoDate.value.isNullOrBlank() && applyGoingGoDate.value == dateFormat.format(applyGoingGoDate.value))
-            contract.setErrorApplyGoingGoDate()
-        else if(applyGoingGoTime.value.isNullOrBlank() && applyGoingGoTime.value == timeFormat.format(applyGoingGoTime.value))
-            contract.setErrorApplyGoingGoTime()
+        if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
+        else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
         else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason()
 
         else {
             api.applyGoingOutDoc(getToken(view.context), hashMapOf(
-                "goOutDate" to "${applyGoingGoDate.value} ${applyGoingGoTime}"
+                "date" to "${createDateString()} ${applyGoingGoTime.value}"
                 , "reason" to "${applyGoingReason.value}")).enqueue(object: Callback<Unit>{
 
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

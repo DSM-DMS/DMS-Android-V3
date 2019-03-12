@@ -10,6 +10,7 @@ import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
 import org.jetbrains.anko.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
 
@@ -23,14 +24,21 @@ class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingData
     override fun onBindViewHolder(p0: ApplyGoingLogViewHolder, p1: Int) = p0.bind(models[p1])
 
     inner class ApplyGoingLogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val dateFormat = SimpleDateFormat("MM월 dd일 hh:mm ~ hh:mm")
+        private val stringFormat = SimpleDateFormat("MM월 dd일 HH:mm")
+        private val dateFormat = SimpleDateFormat("MM-dd HH:mm")
         val timeLimit = itemView.find<TextView>(R.id.applyGoing_log_card_time_tv)
         val reason = itemView.find<TextView>(R.id.applyGoing_log_card_reason_tv)
 
         fun bind(model: ApplyGoingModel.ApplyGoingDataModel){
-            timeLimit.text = dateFormat.format(model.goOutDate)
+            timeLimit.text = "${createFrontDate(model.date)} ${createBackDate(model.date)}"
             reason.text = model.reason
             itemView.setOnClickListener { applyGoingLogRv.logItemClick(model) }
+        }
+
+        fun createFrontDate(date: String): String = stringFormat.format(dateFormat.parse(date))
+        fun createBackDate(date: String): String {
+            val idx = date.indexOf("~")
+            return date.substring(idx)
         }
     }
 }
