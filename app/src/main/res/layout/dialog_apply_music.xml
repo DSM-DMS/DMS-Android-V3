@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="applyMusicDialogViewModel"
+            type="ApplyMusicDialogViewModel">
+        </variable>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_dialog_white"
+        android:paddingBottom="8dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/round_music_logo_img"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bug_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/music_dialog_edit_title_lay"
+            app:layout_constraintStart_toEndOf="@id/round_music_logo_img"
+            android:id="@+id/music_dialog_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/typo_header"
+            android:textColor="@color/colorPrimary"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/bug_report_dialog_title"
+            android:fontFamily="@font/nanumsquarebold"/>
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/music_dialog_edit_title_lay"
+            app:layout_constraintTop_toBottomOf="@id/round_music_logo_img"
+            app:layout_constraintBottom_toTopOf="@id/music_dialog_content_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@id/round_music_logo_img"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:id="@+id/music_dialog_title_edit">
+
+                <android.support.design.widget.TextInputEditText
+                    android:text="@={applyMusicDialogViewModel.musicTitleEditText}"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bug_report_dialog_edit_title"
+                    android:textSize="@dimen/typo_body1"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/music_dialog_edit_title_lay"
+            app:layout_constraintBottom_toTopOf="@id/music_dialog_cancel_send_lay"
+            android:id="@+id/music_dialog_content_lay"
+            android:layout_marginTop="16dp">
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:id="@+id/music_dialog_content_edit">
+                <android.support.design.widget.TextInputEditText
+                    android:text="@={applyMusicDialogViewModel.musicArtistEditText}"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bug_report_dialog_edit_bug"
+                    android:textSize="@dimen/typo_body1"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/music_dialog_cancel_send_lay"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/music_dialog_content_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:onClick="@{()->applyMusicDialogViewModel.musicClickCancel()}"
+                android:id="@+id/music_dialog_cancel_tv"
+                android:paddingVertical="11dp"
+                android:paddingHorizontal="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_dialog_cancel"
+                android:textColor="@color/colorGray600"
+                android:textSize="@dimen/typo_body1"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:onClick="@{(view)->applyMusicDialogViewModel.musicClickSend(view)}"
+                android:id="@+id/music_dialog_send_tv"
+                android:paddingVertical="11dp"
+                android:paddingHorizontal="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bug_report_dialog_send"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/typo_body1"
+                android:fontFamily="@font/nanumsquarebold"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

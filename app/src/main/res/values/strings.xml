@@ -81,6 +81,30 @@
     <string name="apply_extension_study_hallway_text">복도</string>
     <string name="apply_going_edit_cancel_btn">취소</string>
     <string name="apply_going_edit_edit_btn">수정</string>
+    <string name="apply_music_app_title">기상음악 신청</string>
+    <string name="apply_music_title">기상음악 신청해주세요</string>
+    <string name="apply_music_explanation">월요일부터 금요일 아침까지 기상시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능합니다.</string>
+    <string name="apply_music_sunday_title">일요일</string>
+    <string name="apply_music_sunday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_monday_title">일요일</string>
+    <string name="apply_music_monday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_tuesday_title">일요일</string>
+    <string name="apply_music_tuesday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_wednesday_title">일요일</string>
+    <string name="apply_music_wednesday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_thursday_title">일요일</string>
+    <string name="apply_music_Thursday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_friday_title">일요일</string>
+    <string name="apply_music_friday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_saturday_title">일요일</string>
+    <string name="apply_music_saturday_explanation">일요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
+    <string name="apply_music_apply_btn">신청</string>
+    <string name="apply_music_delete_btn">취소</string>
+    <string name="apply_music_dialog_title_text">요일 노래 신청</string>
+    <string name="apply_music_dialog_music_title_hint">노래 제목</string>
+    <string name="apply_music_dialog_music_artist_hint">아티스트</string>
+    <string name="apply_music_dialog_music_cancel_text">취소</string>
+    <string name="apply_music_dialog_music_apply_text">신청</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
