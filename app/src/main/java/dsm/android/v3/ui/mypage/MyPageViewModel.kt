@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.mypage
 
+import android.animation.ValueAnimator
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
@@ -18,6 +19,8 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
+    val goodPointText = MutableLiveData<String>().apply { value = "0" }
+    val badPointText = MutableLiveData<String>().apply { value = "0" }
     val adviceText = MutableLiveData<String>()
 
     init {
@@ -33,8 +36,8 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
                             200 -> {
                                 nameText.value = response.body()!!.name
                                 infoText.value = createStudentNumber(response.body()!!.number)
-                                contract.startCountAnimation(response.body()!!.goodPoint, response.body()!!.badPoint)
                                 adviceText.value = response.body()!!.advice
+                                startCountAnimation(response.body()!!.goodPoint, response.body()!!.badPoint)
                             }
                             403 -> adviceText.value = "마이페이지 조회 권한이 없습니다."
                             500 -> adviceText.value = "로그인이 필요합니다."
@@ -48,6 +51,18 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
                 })
             }
         }
+    }
+
+    fun startCountAnimation(merit: Int, demerit: Int) {
+        val meritAnimator = ValueAnimator.ofInt(0, merit)
+        val demeritAnimator = ValueAnimator.ofInt(0, demerit)
+        meritAnimator.duration = 500
+        demeritAnimator.duration = 500
+
+        meritAnimator.addUpdateListener { animation -> goodPointText.value = animation.animatedValue.toString() }
+        demeritAnimator.addUpdateListener { animation -> badPointText.value = animation.animatedValue.toString() }
+        meritAnimator.start()
+        demeritAnimator.start()
     }
 
     fun createStudentNumber(num: Int): String{

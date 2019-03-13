@@ -173,7 +173,7 @@
                     android:fontFamily="@font/nanumsquarebold"
                     android:textSize="@dimen/text_size_24"
                     android:lineSpacingExtra="3dp"
-                    android:text="0"/>
+                    android:text="@={MyPageViewModel.goodPointText}"/>
 
                 <TextView
                     android:layout_marginTop="4dp"
@@ -215,7 +215,7 @@
                     android:fontFamily="@font/nanumsquarebold"
                     android:textSize="@dimen/text_size_24"
                     android:lineSpacingExtra="3dp"
-                    android:text="0"/>
+                    android:text="@={MyPageViewModel.badPointText}"/>
 
                 <TextView
                     android:layout_marginTop="4dp"

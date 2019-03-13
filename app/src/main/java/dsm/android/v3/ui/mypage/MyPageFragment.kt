@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.databinding.FragmentMypageBinding
 import android.animation.ValueAnimator
+import android.support.annotation.UiThread
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.logOutDialog.LogoutDialogFragment
 import dsm.android.v3.ui.pointLog.PointLogActivity
 import kotlinx.android.synthetic.main.fragment_mypage.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.support.v4.runOnUiThread
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
@@ -35,21 +38,6 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
         binding.myPageViewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
         register(binding.myPageViewModel!!)
         return rootView
-    }
-
-    override fun startCountAnimation(merit: Int, demerit: Int) {
-
-        val meritAnimator = ValueAnimator.ofInt(0, merit)
-        val demeritAnimator = ValueAnimator.ofInt(0, demerit)
-
-        meritAnimator.duration = 500
-        demeritAnimator.duration = 500
-
-        meritAnimator.addUpdateListener { animation -> mypage_merit_tv.setText(animation.animatedValue.toString()) }
-        demeritAnimator.addUpdateListener { animation -> mypage_demerit_tv.setText(animation.animatedValue.toString()) }
-
-        meritAnimator.start()
-        demeritAnimator.start()
     }
 
     override fun showDialogInstitutionReport() = institutionDialogFragment.show(fm, "institution")
