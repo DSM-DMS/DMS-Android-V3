@@ -68,7 +68,6 @@
                 android:id="@+id/mealFragment_meal_vp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="36dp"
                 app:pageChange="@={vm.pageStatusLiveData}"
                 app:layout_constraintTop_toBottomOf="@+id/mealFragment_week_tv"
                 app:layout_constraintBottom_toBottomOf="parent"/>
