@@ -21,8 +21,10 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
     override val layoutId: Int
         get() = R.layout.activity_register
 
-    private val factory =RegisterViewModelFactory(this)
-    private val viewModel: RegisterViewModel by lazy { ViewModelProviders.of(this, factory).get(RegisterViewModel::class.java) }
+    private val factory = RegisterViewModelFactory(this)
+    private val viewModel: RegisterViewModel by lazy {
+        ViewModelProviders.of(this, factory).get(RegisterViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,18 +67,9 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
     fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimary))
     fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@RegisterActivity, R.color.colorTvUnCliked))
 
-    override fun success(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun fail(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun intentToLogin() {
         startActivity<SignInActivity>()
     }
-
 
 
 }

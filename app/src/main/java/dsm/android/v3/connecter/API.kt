@@ -13,7 +13,7 @@ interface API {
 
     //회원가입
     @POST("account/signup")
-    fun signUp(@Body body: JsonObject): Call<JsonObject>
+    fun signUp(@Body body: JsonObject): Call<Void>
 
     @GET("meal/{day}")
     fun getMeal(@Path("day") day: String): Call<MealModel>

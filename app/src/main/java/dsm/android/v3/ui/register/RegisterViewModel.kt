@@ -15,13 +15,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisterViewModel(val registerNavigator: RegisterNavigator) : ViewModel()  {
+class RegisterViewModel(val registerNavigator: RegisterNavigator) : ViewModel() {
 
     val registerConfirmCode = MutableLiveData<String>()
     val registerId = MutableLiveData<String>()
     val registerPw = MutableLiveData<String>()
     val registerPwComfirm = MutableLiveData<String>()
-    val activityFinishLiveEvent = SingleLiveEvent<Any>()
 
     val btnColorSet = MediatorLiveData<Boolean>().apply {
         addSource(registerConfirmCode) {
@@ -50,30 +49,27 @@ class RegisterViewModel(val registerNavigator: RegisterNavigator) : ViewModel() 
                 addProperty("id", registerId.value)
                 addProperty("password", registerPw.value)
             }
-            Connecter.api.signUp(json).enqueue(object : Callback<JsonObject> {
-                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+            Connecter.api.signUp(json).enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when (response.code()) {
                         201 -> {
                             Toast.makeText(view.context, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                            activityFinishLiveEvent.call()
                             registerNavigator.intentToLogin()
                         }
                         204 -> {
                             Toast.makeText(view.context, "유효하지 않은 uuid", Toast.LENGTH_SHORT).show()
-                            activityFinishLiveEvent.call()
                         }
                         205 -> {
                             Toast.makeText(view.context, "중복된 ID", Toast.LENGTH_SHORT).show()
-                            activityFinishLiveEvent.call()
                         }
                     }
                 }
-                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
                     Toast.makeText(view.context, "회원가입 실패", Toast.LENGTH_SHORT).show()
-                    activityFinishLiveEvent.call()
                 }
             })
-        } else{
+        } else {
             Toast.makeText(view.context, "비밀번호가 서로 다릅니다", Toast.LENGTH_SHORT).show()
         }
     }
