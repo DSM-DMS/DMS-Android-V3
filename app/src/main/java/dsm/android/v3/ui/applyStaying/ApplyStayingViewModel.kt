@@ -26,8 +26,8 @@ class ApplyStayingViewModel(val contract: ApplyStayingContract): ViewModel(){
                 contract.createShortToast(
                     when(response.code()){
                         201 -> "잔류신청에 성공했습니다."
-                        204 -> "잔류신청 가능시간이 아닙니다."
                         403 -> "잔류신청 권한이 없습니다."
+                        409 -> "잔류신청 가능시간이 아닙니다."
                         else -> "오류코드: ${response.code()}"
                 })
                 getStayInfo()

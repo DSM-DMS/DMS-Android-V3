@@ -29,7 +29,8 @@ class InstitutionReportViewModel(val contract: InstitutionReportContract): ViewM
             contract.flagInstitutionContentBlankError()
 
         else{
-            api.reportInstitution(getToken(view.context), hashMapOf("room" to institutionRoomNumber.value!!.toInt(), "content" to institutionReportContent.value))
+            api.reportInstitution(getToken(view.context), hashMapOf("room" to institutionRoomNumber.value!!.toInt()
+                , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
                 .enqueue(object: Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                         contract.createShortToast(

@@ -1,11 +1,8 @@
 package dsm.android.v3.ui.applyExtensionStudy
 
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v7.widget.Api17CardView
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
@@ -27,7 +24,7 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ApplyExtensionStudyViewModelFactory(this)
+        val factory = ApplyExtensionStudyViewModelFactory(this, applyExtension_gaonsil_tv as View, applyExtension_eleven_tv as View)
         binding.applyExtensionStudyViewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
         register(binding.applyExtensionStudyViewModel!!)
     }
@@ -37,7 +34,7 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
     override fun backApplyMenu() = finish()
 
     override fun changeTextViewColor(view: TextView){
-        view.backgroundResource = R.drawable.radius_primaryline_view
+        view.backgroundResource = R.drawable.radius_primaryline_primary_view
         view.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
     }
     override fun originTextViewColor(view: TextView){
@@ -65,12 +62,14 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
                                 is Double -> {
                                     if (seat > 0) {
                                         textView {
+                                            text = seat.toInt().toString()
                                             layoutParams = layoutParam
                                             setTextView(this, seat)
                                             onClick {
                                                 if (clickedSeat != this@textView){
                                                     clickedSeat?.let { clickedSeat!!.backgroundResource = R.drawable.radius_circle_gray }
-                                                    this@textView.backgroundResource = R.drawable.radius_circle_primary
+                                                    this@textView.backgroundResource = R.drawable.radius_primaryline_gray_view
+                                                    this@textView.text = seat.toInt().toString()
                                                     clickedSeat = this@textView
                                                     selectSeatIndex = seat.toInt()
                                                 }

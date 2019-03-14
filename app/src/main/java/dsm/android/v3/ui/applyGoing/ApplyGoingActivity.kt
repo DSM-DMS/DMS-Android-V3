@@ -66,12 +66,8 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
             view.find<TextView>(R.id.item_applyGoing_count_tv).text = models[position].cnt.toString()
             view.find<Api17CardView>(R.id.item_applyGoing_card).setOnTouchListener { v, event ->
                 when(event.action){
-                    MotionEvent.ACTION_DOWN ->changeColor(view)
-                    MotionEvent.ACTION_CANCEL -> {
-                        originalColor(view)
-                    }
                     MotionEvent.ACTION_UP -> {
-                        originalColor(view)
+                        changeColor(view)
                         intentApplyGoingLog(position)
                     }
                 }

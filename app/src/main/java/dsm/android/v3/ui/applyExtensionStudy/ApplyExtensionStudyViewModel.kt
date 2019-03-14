@@ -15,13 +15,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract): ViewModel(), LifecycleCallback{
+class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, classView: View, timeView: View): ViewModel(), LifecycleCallback{
 
     private val time = MutableLiveData<Int>()
     private val classNum = MutableLiveData<Int>()
 
     private val clickedTimeView = MutableLiveData<View>()
     private val clickedClassView = MutableLiveData<View>()
+
+    init {
+        applyExtensionStudyClickClass(classView, 1)
+        applyExtensionStudyClickTime(timeView, 11)
+    }
 
     override fun apply(event: Lifecycle.Event) {
         when(event){

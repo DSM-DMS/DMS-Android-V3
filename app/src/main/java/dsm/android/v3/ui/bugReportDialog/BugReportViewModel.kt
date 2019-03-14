@@ -22,7 +22,7 @@ class BugReportViewModel(val contract: BugReportContract): ViewModel(){
         else if (bugContentEditText.value.isNullOrBlank())
             contract.flagBugContentBlankError()
         else {
-            api.reportBug(getToken(view.context), hashMapOf("content" to bugContentEditText.value))
+            api.reportBug(getToken(view.context), hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
                 .enqueue(object : Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                         contract.createShortToast(
