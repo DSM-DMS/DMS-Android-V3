@@ -17,6 +17,7 @@ import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.NoticeListModel
 import dsm.android.v3.ui.customView.CustomCardView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_notice_list.*
 import kotlinx.android.synthetic.main.fragment_notice_main.*
 import org.jetbrains.anko.startActivity
 import retrofit2.Call
@@ -30,23 +31,26 @@ class NoticeFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_notice_main, container, false) as View
 
         view.findViewById<CustomCardView>(R.id.notice_notice_customview).setOnClickListener {
-            getNoticeListData()
+
+            notice_list_rv
+//            getNoticeListData() // TODO("RetorfitButton")
             context!!.startActivity(Intent(context, NoticeActivity::class.java))
         }
 
         return view
     }
 
-    fun getNoticeListData () {
-        Connecter.api.getNoticeList().enqueue(object : Callback<Array<NoticeListModel>> {
-
-            override fun onResponse(call: Call<Array<NoticeListModel>>, response: Response<Array<NoticeListModel>>) {
-
-            }
-
-            override fun onFailure(call: Call<Array<NoticeListModel>>, t: Throwable) {
-
-            }
-        })
-    }
+    // TODO("Retorfit")
+//    fun getNoticeListData () {
+//        Connecter.api.getNoticeList().enqueue(object : Callback<Array<NoticeListModel>> {
+//
+//            override fun onResponse(call: Call<Array<NoticeListModel>>, response: Response<Array<NoticeListModel>>) {
+//
+//            }
+//
+//            override fun onFailure(call: Call<Array<NoticeListModel>>, t: Throwable) {
+//
+//            }
+//        })
+//    }
 }
