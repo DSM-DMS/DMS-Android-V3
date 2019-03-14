@@ -17,7 +17,6 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
 
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
-    val activityFinishLiveEvent = SingleLiveEvent<Any>()
 
     val btnColorSet = MediatorLiveData<Boolean>().apply {
         addSource(signInId) {
@@ -40,18 +39,15 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
                         Toast.makeText(view.context, "로그인 성공", Toast.LENGTH_SHORT).show()
                         saveToken(view.context,response.body()!!.token)
                         saveToken(view.context, response.body()!!.refreshToken!!, false)
-                        activityFinishLiveEvent.call()
                         navigator.intentToMain()
                     }
                     401 -> {
                         Toast.makeText(view.context, "로그인 실패", Toast.LENGTH_SHORT).show()
-                        activityFinishLiveEvent.call()
                     } else -> Toast.makeText(view.context, "오류코드: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<AuthModel>, t: Throwable) {
                 Toast.makeText(view.context, "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show()
-                activityFinishLiveEvent.call()
             }
         })
     }
