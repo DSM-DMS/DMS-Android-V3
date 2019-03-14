@@ -5,38 +5,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/customView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         >
 
     <android.support.v7.widget.Api17CardView
             android:id="@+id/customview_bottom_cv"
             android:layout_width="match_parent"
-            android:layout_height="164dp"
+            android:layout_height="120dp"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="24dp"
+            app:cardElevation="12dp"
             />
 
     <android.support.v7.widget.Api17CardView
             android:id="@+id/customview_middle_cv"
             android:layout_width="match_parent"
-            android:layout_height="164dp"
+            android:layout_height="120dp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="24dp"
+            app:cardElevation="12dp"
             />
 
     <android.support.v7.widget.Api17CardView
             android:id="@+id/customview_top_cv"
             android:layout_width="match_parent"
-            android:layout_height="164dp"
+            android:layout_height="120dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="24dp"
+            app:cardElevation="12dp"
             >
 
         <TextView
@@ -69,7 +71,7 @@
                 android:layout_gravity="right|top"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="24dp"
-                android:src="@drawable/ic_arrow_right"
+                android:background="@drawable/ic_arrow_right"
                 />
     </android.support.v7.widget.Api17CardView>
 </FrameLayout>

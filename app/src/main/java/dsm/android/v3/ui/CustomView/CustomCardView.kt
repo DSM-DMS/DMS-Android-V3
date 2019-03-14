@@ -2,8 +2,8 @@ package dsm.android.v3.ui.customView
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -44,7 +44,7 @@ class CustomCardView : FrameLayout {
     }
 
     private fun setTypedArray(typedArray: TypedArray) {
-        val button = typedArray.getResourceId(R.styleable.CustomView_button, R.drawable.ic_arrow_left)
+        val button = typedArray.getResourceId(R.styleable.CustomView_button, R.drawable.ic_arrow_right)
         customview_button_iv.setBackgroundResource(button)
 
         val title: String = typedArray.getString(R.styleable.CustomView_title)
@@ -53,9 +53,20 @@ class CustomCardView : FrameLayout {
         val description = typedArray.getString(R.styleable.CustomView_description)
         customview_description_tv.text = description
 
-        val count = typedArray.getInteger(R.styleable.CustomView_count, 3)
-        Log.d("CustomCardView", count.toString())
+        val count = typedArray.getInteger(R.styleable.CustomView_count, 0)
         setCustomCount(count)
+
+        val titleColor = typedArray.getColor(R.styleable.CustomView_titleColor, ContextCompat.getColor(context, R.color.colorPrimary))
+        customview_title_tv.setTextColor(titleColor)
+
+        val descriptionColor = typedArray.getColor(R.styleable.CustomView_descriptionColor, ContextCompat.getColor(context, R.color.colorGray800))
+        customview_description_tv.setTextColor(descriptionColor)
+
+        val bgColor = typedArray.getColor(R.styleable.CustomView_backgroundColor, ContextCompat.getColor(context, R.color.colorWhite))
+        customview_top_cv.setCardBackgroundColor(bgColor)
+
+        val imageVisible = typedArray.getBoolean(R.styleable.CustomView_imageVisible, true)
+        if(imageVisible) customview_button_iv.visibility = View.VISIBLE else customview_button_iv.visibility = View.GONE
 
         typedArray.recycle()
     }
