@@ -7,6 +7,7 @@ interface  ApplyStayingContract {
 
     var viewGroup: ViewGroup
 
+    fun closeApplyStaying()
     fun changeColor(view: View)
     fun originalColor(view: View)
     fun createShortToast(text: String)

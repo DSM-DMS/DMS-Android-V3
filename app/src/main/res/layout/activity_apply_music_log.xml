@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="applyMusicLogViewModel"
-                type="dsm.android.v3.ui.applyGoingLog.ApplyMusicLogViewModel"/>
+                type="dsm.android.v3.ui.applyMusicLog.ApplyMusicLogViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <ImageView
-                            android:onClick="@{()->applyMusicLogViewModel.applyMusicLogClickBack()}"
+                            android:onClick="@{(view)->applyMusicLogViewModel.applyMusicLogClickBack(view)}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_round_arrow_back_24_px"/>
@@ -57,6 +57,7 @@
                 android:paddingTop="36dp"
                 android:paddingBottom="28dp">
             <TextView
+                    android:text="@={applyMusicLogViewModel.logTitle}"
                     android:id="@+id/apply_music_log_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
             <TextView
+                    android:text="@={applyMusicLogViewModel.logExplanation}"
                     android:id="@+id/apply_music_explanation_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,6 +91,7 @@
             android:shadowColor="@color/colorPrimary"
             app:cardCornerRadius="16dp">
         <LinearLayout
+                android:onClick="@{(view)->applyMusicLogViewModel.firstCardClick(view)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -136,6 +139,7 @@
             android:shadowColor="@color/colorPrimary"
             app:cardCornerRadius="16dp">
         <LinearLayout
+                android:onClick="@{(view)->applyMusicLogViewModel.secondCardClick(view)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"

@@ -18,6 +18,8 @@ class ApplyStayingViewModel(val contract: ApplyStayingContract): ViewModel(){
 
     init { getStayInfo() }
 
+    fun applyStayingClickBack() =  contract.closeApplyStaying()
+
     fun applyBtnClick(view: View) {
         api.applyStay(getToken(view.context), hashMapOf("value" to pageStatusLiveData.value!! + 1)).enqueue(object: Callback<Unit>{
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

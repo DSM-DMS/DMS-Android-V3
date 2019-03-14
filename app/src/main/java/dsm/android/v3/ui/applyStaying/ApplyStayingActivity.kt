@@ -32,6 +32,8 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
         setPager()
     }
 
+    override fun closeApplyStaying() = finish()
+
     override fun createShortToast(text: String) = toast(text).show()
 
     override fun changeColor(view: View){

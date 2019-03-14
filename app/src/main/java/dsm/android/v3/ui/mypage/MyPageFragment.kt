@@ -8,18 +8,12 @@ import dsm.android.v3.util.DataBindingFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.databinding.FragmentMypageBinding
-import android.animation.ValueAnimator
-import android.support.annotation.UiThread
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
-import dsm.android.v3.ui.logOutDialog.LogoutDialogFragment
+import dsm.android.v3.ui.logOutDialog.LogOutDialogFragment
 import dsm.android.v3.ui.pointLog.PointLogActivity
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.support.v4.runOnUiThread
 import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.support.v4.toast
 
 
 class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContract {
@@ -28,7 +22,7 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
         get() = dsm.android.v3.R.layout.fragment_mypage
 
     private val fm: FragmentManager? by lazy { fragmentManager }
-    private val logoutDialogFragment: LogoutDialogFragment by  lazy { LogoutDialogFragment() }
+    private val logoutDialogFragment: LogOutDialogFragment by  lazy { LogOutDialogFragment() }
     private val bugReportDialogFragment: BugReportDialogFragment by lazy { BugReportDialogFragment() }
     private val institutionDialogFragment: InstitutionDialogFragment by lazy { InstitutionDialogFragment() }
 

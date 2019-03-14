@@ -12,7 +12,7 @@ import dsm.android.v3.databinding.DialogLogoutBinding
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 
-class LogoutDialogFragment: DataBindingDialogFragment<DialogLogoutBinding>(), LogOutContract {
+class LogOutDialogFragment: DataBindingDialogFragment<DialogLogoutBinding>(), LogOutContract {
     override val layoutId: Int
         get() = R.layout.dialog_logout
 

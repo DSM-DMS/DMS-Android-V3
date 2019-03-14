@@ -28,6 +28,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                     <ImageView
+                            android:onClick="@{()->applyStayingViewModel.applyStayingClickBack()}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_round_arrow_back_24_px"/>

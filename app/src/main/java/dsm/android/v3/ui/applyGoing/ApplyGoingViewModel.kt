@@ -40,6 +40,8 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
         }
     }
 
+    fun applyGoingClickBack() = contract.closeApplyGoing()
+
     fun setApplyGoingData(applyGoingList: ApplyGoingModel) {
         saturdayItemList = applyGoingList.saturdayList
         sundayItemList = applyGoingList.sundayList

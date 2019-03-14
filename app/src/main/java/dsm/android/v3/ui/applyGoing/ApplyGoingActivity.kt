@@ -12,12 +12,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingBinding
-import dsm.android.v3.model.ApplyGoingPagerModel
+import dsm.android.v3.model.ApplyPagerModel
 import dsm.android.v3.ui.applyGoingDoc.ApplyGoingDocActivity
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogActivity
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_going.*
-import kotlinx.android.synthetic.main.item_apply_going.view.*
+import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textColor
@@ -40,16 +40,17 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
     override fun setViewPager(saturdayCount: Int, sundayCount: Int, workdayCount: Int){
         val models = arrayListOf(
-            ApplyGoingPagerModel(getString(R.string.apply_going_saturday_title), getString(R.string.apply_going_saturday_explanation), saturdayCount),
-            ApplyGoingPagerModel(getString(R.string.apply_going_sunday_title), getString(R.string.apply_going_sunday_explanation), sundayCount),
-            ApplyGoingPagerModel(getString(R.string.apply_going_workday_title), getString(R.string.apply_going_workday_explanation),workdayCount)
+            ApplyPagerModel(getString(R.string.apply_going_saturday_title), getString(R.string.apply_going_saturday_explanation), saturdayCount),
+            ApplyPagerModel(getString(R.string.apply_going_sunday_title), getString(R.string.apply_going_sunday_explanation), sundayCount),
+            ApplyPagerModel(getString(R.string.apply_going_workday_title), getString(R.string.apply_going_workday_explanation),workdayCount)
         )
         applyGoing_apply_list_pager.adapter = ApplyPageAdapter(models)
     }
 
+    override fun closeApplyGoing() = finish()
     override fun intentApplyGoingDoc() = startActivity<ApplyGoingDocActivity>()
 
-    inner class ApplyPageAdapter(val models: ArrayList<ApplyGoingPagerModel>) : PagerAdapter() {
+    inner class ApplyPageAdapter(val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
 
         override fun isViewFromObject(p0: View, p1: Any): Boolean  = p0 == p1
 
@@ -59,7 +60,7 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val layoutInflater = LayoutInflater.from(baseContext)
-            val view = layoutInflater.inflate(R.layout.item_apply_going, container, false)
+            val view = layoutInflater.inflate(R.layout.item_apply_pager, container, false)
             view.find<TextView>(R.id.item_applyGoing_title_tv).text = models[position].week
             view.find<TextView>(R.id.item_applyGoing_explanation_tv).text = models[position].description
             view.find<TextView>(R.id.item_applyGoing_count_tv).text = models[position].cnt.toString()
