@@ -59,5 +59,7 @@ dependencies {
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'android.arch.lifecycle:livedata:1.1.1'
     implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
 }
