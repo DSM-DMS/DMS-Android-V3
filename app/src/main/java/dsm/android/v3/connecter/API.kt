@@ -11,5 +11,5 @@ interface API {
     fun getMeal(@Path("day") day: String): Call<MealModel>
 
     @GET("/notice")
-    fun getNoticeList () : Call<Array<NoticeListModel>>
+    fun getNoticeList () : Call<NoticeListModel>
 }

@@ -43,6 +43,9 @@
     <string name="notice_rules_description">기숙사 규정을 열람합니다.</string>
     <string name="notice_question_title">자주하는 질문</string>
     <string name="notice_question_description">자주하는 질문을 열람합니다.</string>
+    <string name="notice_description_title">3월 우정관 캠페인</string>
+    <string name="notice_description_description">사감부에서 2018년 03월 10일에 게시한 공지입니다.</string>
+    <string name="notice_description_content">3월 우정관 캠페인은 \'복장규정 잘 지키기\' 입니다.아 침운동, 등교점호 시 지정된 복장을 잘 착용하기 바랍니다. 3월 중 복장 벌점이 없는 학생에게 상점 1점을 부여합니다.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

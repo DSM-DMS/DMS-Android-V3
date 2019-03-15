@@ -95,8 +95,9 @@ class CustomCardView : FrameLayout {
         }
     }
 
-    fun setCustomText(title: String) {
+    fun setCustomText(title: String, description : String) {
         customview_title_tv.text = title
+        customview_description_tv.text = description
     }
 
     fun setCustomImageView(resource : Int) {

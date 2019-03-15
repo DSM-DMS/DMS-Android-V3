@@ -2,14 +2,18 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/notice_list_constraint1"
         >
 
     <dsm.android.v3.ui.customView.CustomCardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="118dp"
             android:id="@+id/notice_list_customview"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="-12dp"
             app:title="@string/notice_rules_title"
             app:description="@string/notice_rules_description"
             app:count="1"
@@ -28,15 +32,26 @@
             android:id="@+id/notice_list_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintHorizontal_bias="1.0"
-            android:visibility="visible"
             app:layout_constraintTop_toBottomOf="@+id/notice_list_customview"
+            />
+
+    <FrameLayout
+            android:id="@+id/notice_list_description_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/style_upside_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             />
 
 </android.support.constraint.ConstraintLayout>

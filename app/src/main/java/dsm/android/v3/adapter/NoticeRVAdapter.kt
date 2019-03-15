@@ -11,16 +11,19 @@ import dsm.android.v3.R
 import dsm.android.v3.model.NoticeListModel
 import kotlinx.android.synthetic.main.item_notice.view.*
 
-class NoticeRVAdapter(val context : Context, val data : ArrayList<NoticeListModel>) : RecyclerView.Adapter<NoticeViewHolder>() {
+class NoticeRVAdapter(val context : Context, var data : ArrayList<NoticeListModel>) : RecyclerView.Adapter<NoticeViewHolder>() {
+
+    lateinit var viewListener : View.OnClickListener
 
     override fun getItemCount() = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NoticeViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_notice, parent)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
         return NoticeViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHodler: NoticeViewHolder, position: Int) {
+        viewHodler.view.setOnClickListener(viewListener)
         viewHodler.setData(data!![position])
         setScaleAnimation(viewHodler.view)
     }
@@ -28,8 +31,12 @@ class NoticeRVAdapter(val context : Context, val data : ArrayList<NoticeListMode
     private fun setScaleAnimation(view: View) {
         val anim =
             ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        anim.duration = 1000
+        anim.duration = 300
         view.startAnimation(anim)
+    }
+
+    fun setClickListener (listener : View.OnClickListener){
+        viewListener = listener
     }
 }
 
