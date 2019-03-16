@@ -56,8 +56,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko:0.10.8"
 
     // Room
-    implementation "android.arch.persistence.room:runtime:2.0.0"
-    kapt "android.arch.persistence.room:compiler:$roomVersion"
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
