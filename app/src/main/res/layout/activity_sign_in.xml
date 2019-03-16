@@ -191,7 +191,7 @@
                 android:text="로그인"
                 android:fontFamily="@font/nanumsquareregular"
                 android:textSize="16sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:onClick="@{(v)-> vm.doSignIn(v)}"
                 android:clickable="@{vm.btnColorSet}"
