@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.notice
 
+import android.nfc.Tag
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
@@ -56,14 +57,17 @@ class NoticeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getNotice() {
-        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<NoticeListModel> {
+        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<Array<NoticeListModel>> {
 
-            override fun onResponse(call: retrofit2.Call<NoticeListModel>, response: Response<NoticeListModel>) {
+            override fun onResponse(
+                call: retrofit2.Call<Array<NoticeListModel>>,
+                response: Response<Array<NoticeListModel>>
+            ) {
                 val body = response.body()
-                Log.d("tag", body!!.date)
+                Log.d("tag", body!![0].date)
             }
 
-            override fun onFailure(call: retrofit2.Call<NoticeListModel>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<Array<NoticeListModel>>, t: Throwable) {
                 Log.d("tag", t.message)
             }
         })
@@ -77,8 +81,8 @@ class NoticeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun setVisible() {
         if (check) {
-            notice_list_customview.visibility = View.INVISIBLE
             notice_list_rv.visibility = View.INVISIBLE
+            notice_list_customview.visibility = View.INVISIBLE
             notice_list_constraint1.backgroundColor = ContextCompat.getColor(this, R.color.colorGray300)
             check = false
         } else {
@@ -90,12 +94,20 @@ class NoticeActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    val fragment = NoticeDescriptionFragment()
 
     override fun onClick(v: View?) {
+        setVisible()
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(R.anim.slideup_in, R.anim.slideup_out)
-        transaction.add(R.id.notice_list_description_fragment, NoticeDescriptionFragment())
+        transaction.replace(R.id.notice_list_description_fragment, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
-        setVisible()
+    }
+
+    override fun onBackPressed() {
+        if(!check) fragment.cancle(this)
+        super.onBackPressed()
     }
 }

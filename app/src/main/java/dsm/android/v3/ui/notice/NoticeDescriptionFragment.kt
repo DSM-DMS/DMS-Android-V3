@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import dsm.android.v3.R
-import dsm.android.v3.model.NoticeListModel
-import org.jetbrains.anko.support.v4.act
-import java.util.zip.Inflater
 
 class NoticeDescriptionFragment : Fragment() {
 
@@ -18,10 +15,13 @@ class NoticeDescriptionFragment : Fragment() {
         val noticeActivity = activity as NoticeActivity
 
         view.findViewById<ImageView>(R.id.notice_description_cancle_iv).setOnClickListener {
-            noticeActivity.setVisible()
-            activity!!.supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.slideup_in, R.anim.slideup_out)
-            activity!!.supportFragmentManager.beginTransaction().remove(this).commit()
+            cancle(noticeActivity)
         }
         return view
+    }
+
+    fun cancle(noticeActivity: NoticeActivity) {
+        noticeActivity.setVisible()
+        activity!!.supportFragmentManager.beginTransaction().remove(this).commit()
     }
 }
