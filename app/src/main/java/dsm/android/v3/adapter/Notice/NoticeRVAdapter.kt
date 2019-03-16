@@ -1,4 +1,4 @@
-package dsm.android.v3.adapter
+package dsm.android.v3.adapter.Notice
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import dsm.android.v3.R
-import dsm.android.v3.model.NoticeListModel
-import dsm.android.v3.model.NoticeModel
+import dsm.android.v3.model.Notice.NoticeListModel
+import dsm.android.v3.model.Notice.NoticeModel
 import dsm.android.v3.ui.notice.NoticeActivity
 import kotlinx.android.synthetic.main.item_notice.view.*
 
 class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var activity : NoticeActivity) : RecyclerView.Adapter<NoticeRVAdapter.NoticeViewHolder>() {
 
-    override fun getItemCount() = data.notice.size
+    override fun getItemCount() = data.noticeList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NoticeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
@@ -23,7 +23,7 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
     }
 
     override fun onBindViewHolder(viewHodler: NoticeViewHolder, position: Int) {
-        viewHodler.setData(data!!.notice[position])
+        viewHodler.setData(data!!.noticeList[position])
         setScaleAnimation(viewHodler.view)
     }
 
@@ -43,13 +43,18 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
         fun setData(data : NoticeModel) {
             with(view) {
                 itemNotice_title_tv.text = data.title
-                itemNotice_date_tv.text = data.postDate
+                itemNotice_date_tv.text = frameDate(data.postDate)
             }
         }
 
         override fun onClick(v: View?) {
             var position = layoutPosition
-            activity.createDescription(data.notice[position].id)
+            activity.createDescription(data.noticeList[position].id)
+        }
+
+        fun frameDate(date : String) :String {
+            var frameDate = date.substring(0, 10)
+            return frameDate
         }
     }
 }
