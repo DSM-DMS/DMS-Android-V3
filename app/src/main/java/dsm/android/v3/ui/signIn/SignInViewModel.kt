@@ -28,6 +28,8 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
     }
 
     fun doSignIn(view: View) {
+
+
         val json = JsonObject().apply {
             addProperty("id", signInId.value)
             addProperty("password", signInPw.value)
@@ -52,11 +54,8 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
         })
     }
 
-    fun toSignUpBtn() {
-        navigator.intentToRegister()
-    }
+    fun toSignUpBtn() = navigator.intentToRegister()
 
-    fun MutableLiveData<String>.isValueBlank() =
-        this.value.isNullOrBlank()
+    fun MutableLiveData<String>.isValueBlank() = this.value.isNullOrBlank()
 
 }
