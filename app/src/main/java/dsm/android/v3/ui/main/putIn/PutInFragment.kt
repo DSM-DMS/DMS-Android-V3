@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentPutInBinding
+import dsm.android.v3.ui.applyMusicDom.ApplyMusicDomActivity
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -35,7 +36,7 @@ class PutInFragment : DataBindingFragment<FragmentPutInBinding>() {
 //            TODO("잔류신청 액티비티 연결하기")
         })
         viewModel.musicLiveEvent.observe(this, Observer {
-//            startActivity<>()
+            startActivity<ApplyMusicDomActivity>()
 //            TODO("기상음악 신청 액티비티 연결하기")
         })
         viewModel.goingOutLiveEvent.observe(this, Observer {
