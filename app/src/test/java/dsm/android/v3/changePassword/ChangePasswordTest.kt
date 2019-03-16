@@ -27,7 +27,7 @@ class ChangePasswordTest {
     fun `1) 새로운 패스워드랑 패스워드 확인이랑 다를 때`() {
         val inputStatus = viewModel.inputStatus.testObserver()
 
-        viewModel.originPassword.value = "asdfd"
+        viewModel.currentPassword.value = "asdfd"
         viewModel.newPassword.value = "asdf"
         viewModel.confirmPassword.value = "asdfdd"
 
@@ -48,7 +48,7 @@ class ChangePasswordTest {
     fun `3) 입력을 올바르게 잘 했을 때`() {
         val inputStatus = viewModel.inputStatus.testObserver()
 
-        viewModel.originPassword.value = "asdfd"
+        viewModel.currentPassword.value = "asdfd"
         viewModel.newPassword.value = "asdf"
         viewModel.confirmPassword.value = "asdf"
 

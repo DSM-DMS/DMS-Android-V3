@@ -2,6 +2,7 @@ package dsm.android.v3.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 
 private fun getPref(context: Context): SharedPreferences {
@@ -23,7 +24,7 @@ fun removeToken(context: Context, isAccess: Boolean = true) {
 }
 
 fun getToken(context: Context, isAccess: Boolean = true): String {
-  return "" + getPref(context).getString(getKey(isAccess), "")
+    return "Bearer " + getPref(context).getString(getKey(isAccess), "")
 }
 
 private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"
