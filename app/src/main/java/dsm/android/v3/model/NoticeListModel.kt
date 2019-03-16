@@ -1,3 +1,6 @@
 package dsm.android.v3.model
 
-data class NoticeListModel (var id : String, var date : String, var title : String)
+import com.google.gson.annotations.SerializedName
+
+class NoticeListModel (@SerializedName("noticeList") var notice : ArrayList<NoticeModel>)
+class NoticeModel (var id : Int, var postDate : String, var title : String)

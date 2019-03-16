@@ -9,22 +9,21 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import dsm.android.v3.R
 import dsm.android.v3.model.NoticeListModel
+import dsm.android.v3.model.NoticeModel
+import dsm.android.v3.ui.notice.NoticeActivity
 import kotlinx.android.synthetic.main.item_notice.view.*
 
-class NoticeRVAdapter(val context : Context, var data : ArrayList<NoticeListModel>) : RecyclerView.Adapter<NoticeViewHolder>() {
+class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var activity : NoticeActivity) : RecyclerView.Adapter<NoticeRVAdapter.NoticeViewHolder>() {
 
-    lateinit var viewListener : View.OnClickListener
-
-    override fun getItemCount() = data.size
+    override fun getItemCount() = data.notice.size
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NoticeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
-        return NoticeViewHolder(view)
+        return NoticeViewHolder(view, activity, data)
     }
 
     override fun onBindViewHolder(viewHodler: NoticeViewHolder, position: Int) {
-        viewHodler.view.setOnClickListener(viewListener)
-        viewHodler.setData(data!![position])
+        viewHodler.setData(data!!.notice[position])
         setScaleAnimation(viewHodler.view)
     }
 
@@ -35,17 +34,22 @@ class NoticeRVAdapter(val context : Context, var data : ArrayList<NoticeListMode
         view.startAnimation(anim)
     }
 
-    fun setClickListener (listener : View.OnClickListener){
-        viewListener = listener
-    }
-}
+    class NoticeViewHolder(val view : View, val activity: NoticeActivity, val data : NoticeListModel) : RecyclerView.ViewHolder(view), View.OnClickListener{
 
-class NoticeViewHolder(val view : View) : RecyclerView.ViewHolder(view) {
+        init {
+            view.setOnClickListener(this)
+        }
 
-    fun setData(data : NoticeListModel) {
-        with(view) {
-            itemNotice_title_tv.text = data.title
-            itemNotice_date_tv.text = data.date
+        fun setData(data : NoticeModel) {
+            with(view) {
+                itemNotice_title_tv.text = data.title
+                itemNotice_date_tv.text = data.postDate
+            }
+        }
+
+        override fun onClick(v: View?) {
+            var position = layoutPosition
+            activity.createDescription(data.notice[position].id)
         }
     }
 }

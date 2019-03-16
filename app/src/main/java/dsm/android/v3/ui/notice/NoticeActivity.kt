@@ -11,70 +11,84 @@ import android.telecom.Call
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
+import android.view.WindowId
 import android.widget.Toast
 import dsm.android.v3.R
 import dsm.android.v3.adapter.NoticeRVAdapter
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.NoticeListModel
+import dsm.android.v3.model.NoticeModel
 import dsm.android.v3.ui.customView.CustomCardView
 import kotlinx.android.synthetic.main.activity_notice_list.*
+import kotlinx.android.synthetic.main.customview_cardview.*
 import org.bouncycastle.asn1.x500.style.RFC4519Style.l
+import org.jetbrains.anko.adapterViewFlipper
 import org.jetbrains.anko.backgroundColor
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
-class NoticeActivity : AppCompatActivity(), View.OnClickListener {
+class NoticeActivity : AppCompatActivity() {
+
+    var type = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
 
         val type = intent.extras.get("activityType") as Boolean
+        this.type = type
+
+        val customView = notice_list_customview as CustomCardView
 
         if (type) {
-            val customView = notice_list_customview as CustomCardView
             customView.setCustomText("공지사항", "사감부에서 게시한 공지사항을 열람합니다.")
-            getNotice()
+            getNotice(this)
         } else {
-
+            customView.setCustomText("공지사항", "사감부에서 게시한 공지사항을 열람합니다.")
+            getRules(this)
         }
-
-        val test = ArrayList<NoticeListModel>()
-        test.add(NoticeListModel("hello", "2019-3-1", "기숙사 공지사항"))
-        test.add(NoticeListModel("hello", "2019-3-1", "기숙사 공지사항"))
-        test.add(NoticeListModel("hello", "2019-3-1", "기숙사 공지사항"))
-        test.add(NoticeListModel("hello", "2019-3-1", "기숙사 공지사항"))
-
-        val adapter = NoticeRVAdapter(this, test)
-
-        notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
-        notice_list_rv.adapter = adapter
-        adapter.setClickListener(this as View.OnClickListener)
 
         notice_list_customview.setOnClickListener {
             this.finish()
         }
     }
 
-    private fun getNotice() {
-        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<Array<NoticeListModel>> {
+    private fun getNotice(activity : NoticeActivity) {
+        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<NoticeListModel>{
 
-            override fun onResponse(
-                call: retrofit2.Call<Array<NoticeListModel>>,
-                response: Response<Array<NoticeListModel>>
-            ) {
-                val body = response.body()
-                Log.d("tag", body!![0].date)
+            override fun onResponse(call: retrofit2.Call<NoticeListModel>, response: Response<NoticeListModel>) { // only code 200
+                val body = response.body()!!
+
+                val adapter = NoticeRVAdapter(baseContext, body, activity)
+
+                notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
+                notice_list_rv.adapter = adapter
             }
 
-            override fun onFailure(call: retrofit2.Call<Array<NoticeListModel>>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<NoticeListModel>, t: Throwable) {
                 Log.d("tag", t.message)
+                Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    fun getRules() {
+    fun getRules(activity: NoticeActivity) {
+        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<NoticeListModel>{
 
+            override fun onResponse(call: retrofit2.Call<NoticeListModel>, response: Response<NoticeListModel>) { // only code 200
+                val body = response.body()!!
+
+                val adapter = NoticeRVAdapter(baseContext, body, activity)
+
+                notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
+                notice_list_rv.adapter = adapter
+            }
+
+            override fun onFailure(call: retrofit2.Call<NoticeListModel>, t: Throwable) {
+                Log.d("tag", t.message)
+                Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     var check = true
@@ -96,8 +110,13 @@ class NoticeActivity : AppCompatActivity(), View.OnClickListener {
 
     val fragment = NoticeDescriptionFragment()
 
-    override fun onClick(v: View?) {
+    fun createDescription (id : Int) {
         setVisible()
+
+        val bundle = Bundle(2)
+        bundle.putBoolean("type", type)
+        bundle.putInt("id", id)
+        fragment.arguments = bundle
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(R.anim.slideup_in, R.anim.slideup_out)
