@@ -6,21 +6,21 @@ import android.util.Log
 
 
 private fun getPref(context: Context): SharedPreferences {
-    return context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+  return context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 }
 
 fun saveToken(context: Context, token: String, isAccess: Boolean = true) {
-    getPref(context).edit().let {
-        it.putString(getKey(isAccess), token)
-        it.apply()
-    }
+  getPref(context).edit().let {
+    it.putString(getKey(isAccess), token)
+    it.apply()
+  }
 }
 
 fun removeToken(context: Context, isAccess: Boolean = true) {
-    getPref(context).edit().let {
-        it.remove(getKey(isAccess))
-        it.apply()
-    }
+  getPref(context).edit().let {
+    it.remove(getKey(isAccess))
+    it.apply()
+  }
 }
 
 fun getToken(context: Context, isAccess: Boolean = true): String {
