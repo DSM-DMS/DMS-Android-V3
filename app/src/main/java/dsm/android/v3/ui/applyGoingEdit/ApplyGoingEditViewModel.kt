@@ -39,6 +39,7 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
                 contract.createShortToast(when(response.code()){
                     200 -> "외출신청 취소에 성공했습니다."
                     204 -> "존재하지 않는 외출신청입니다."
+                    409 -> "외출신청 불가 시간입니다."
                     500 -> "로그인이 필요합니다."
                     else -> "오류코드: ${response.code()}"
                 })
