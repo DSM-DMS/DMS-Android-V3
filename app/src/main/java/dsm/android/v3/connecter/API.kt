@@ -22,7 +22,7 @@ interface API {
 
     @GET("/apply/stay")
     @Headers("Content-Type: application/json")
-    fun getStayInfo(@Header("Authorization")  token: String): Call<ApplyStayingModel>
+    fun getStayInfo(@Header("Authorization") token: String): Call<ApplyStayingModel>
 
     @POST("/apply/stay")
     @Headers("Content-Type: application/json")
@@ -39,6 +39,9 @@ interface API {
     @PATCH("/apply/goingout")
     @Headers("Content-Type: application/json")
     fun editGoingOut(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+
+    @GET("/apply/music")
+    fun getMusic(@Header("Authorization") token: String): Call<ApplyMusicModel>
 
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")
