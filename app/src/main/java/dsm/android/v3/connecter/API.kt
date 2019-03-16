@@ -43,6 +43,12 @@ interface API {
     @GET("/apply/music")
     fun getMusic(@Header("Authorization") token: String): Call<ApplyMusicModel>
 
+    @POST("/apply/music")
+    fun applyMusic(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+
+    @HTTP(method = "DELETE", path = "/apply/music", hasBody = true)
+    fun deleteMusic(@Header("Authorization") token: String, @Body body: Any?): Call<Void>
+
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")
     fun deleteGoingOut(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>

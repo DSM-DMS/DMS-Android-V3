@@ -7,13 +7,18 @@
     <data>
 
         <variable
+                name="isClicked"
+                type="boolean"/>
+
+        <variable
                 name="viewModel"
                 type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
-
 
         <import type="dsm.android.v3.model.ApplyMusicModel"/>
 
         <import type="dsm.android.v3.model.ApplyMusicDetailModel"/>
+
+        <import type="android.view.View"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -57,10 +62,12 @@
 
         <android.support.v7.widget.Api17CardView
                 android:layout_marginHorizontal="8dp"
+                android:onClick="@{() -> viewModel.firstMusicClicked()}"
                 app:layout_constraintTop_toBottomOf="@id/apply_music_explanation_tv"
                 android:id="@+id/apply_first_music_log_card_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@{viewModel.firstMusicIsClicked ? @color/colorPrimary : @color/colorWhite}"
                 app:cardElevation="8dp"
                 android:layout_marginTop="36dp"
                 android:shadowColor="@color/colorPrimary"
@@ -76,7 +83,7 @@
                         android:id="@+id/apply_first_music_log_card_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorGray700"
+                        android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray700}"
                         android:textSize="@dimen/typo_header"
                         android:text="@{viewModel.firstMusicLiveData}"
                         android:fontFamily="@font/nanumsquarebold"
@@ -90,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
                         tools:text="Coldplay"
-                        android:textColor="@color/colorGray600"
+                        android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray600}"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="2sp"/>
 
@@ -102,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
                         tools:text="2312 윤석민"
-                        android:textColor="@color/colorGray400"
+                        android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray400}"
                         android:lineSpacingExtra="1sp"/>
 
             </LinearLayout>
@@ -110,8 +117,10 @@
 
         <android.support.v7.widget.Api17CardView
                 android:layout_marginHorizontal="8dp"
+                android:onClick="@{() -> viewModel.secondMusicClicked()}"
                 app:layout_constraintTop_toBottomOf="@id/apply_first_music_log_card_lay"
                 android:id="@+id/apply_second_music_log_card_lay"
+                app:cardBackgroundColor="@{viewModel.secondMusicIsClicked ? @color/colorPrimary : @color/colorWhite}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="8dp"
@@ -129,7 +138,7 @@
                         android:text="@{viewModel.secondMusicLiveData}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorGray700"
+                        android:textColor="@{viewModel.secondMusicIsClicked ? @color/colorWhite : @color/colorGray700}"
                         android:textSize="@dimen/typo_header"
                         android:fontFamily="@font/nanumsquarebold"/>
 
@@ -140,31 +149,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
-                        android:textColor="@color/colorGray600"
+                        android:textColor="@{viewModel.secondMusicIsClicked ? @color/colorWhite : @color/colorGray600}"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="2sp"/>
 
                 <TextView
                         android:layout_marginTop="8dp"
-                        android:id="@+id/apply_second_music_log_card_reason_tv"
+                        android:id="@+id/apply_second_music_log_card_student_tv"
                         android:text="@{viewModel.secondStudentLiveData}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
-                        android:textColor="@color/colorGray400"
+                        android:textColor="@{viewModel.secondMusicIsClicked ? @color/colorWhite : @color/colorGray400}"
                         android:lineSpacingExtra="1sp"/>
 
             </LinearLayout>
         </android.support.v7.widget.Api17CardView>
 
         <Button
-                android:visibility="invisible"
+                android:visibility="@{viewModel.isMusicSelected ? View.VISIBLE : View.INVISIBLE}"
                 tools:visibility="visible"
                 android:textSize="@dimen/typo_header"
                 android:textColor="@color/colorWhite"
                 android:fontFamily="@font/nanumsquareregular"
                 android:text="@string/apply_music_delete_btn"
                 android:id="@+id/apply_music_delete_btn"
+                android:onClick="@{() -> viewModel.cancelMusic()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

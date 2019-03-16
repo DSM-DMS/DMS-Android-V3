@@ -16,6 +16,5 @@
             android:id="@+id/applyMusicLogFragment"
             android:name="dsm.android.v3.ui.applyMusicLog.ApplyMusicLogFragment"
             android:label="fragment_apply_music_log"
-            tools:layout="@layout/fragment_apply_music_log">
-    </fragment>
+            tools:layout="@layout/fragment_apply_music_log"/>
 </navigation>

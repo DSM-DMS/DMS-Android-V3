@@ -25,7 +25,7 @@ class ApplyMusicDomActivity : AppCompatActivity() {
         findNavController(R.id.applyMusic_fragmentContainer)
         saveToken(
             baseContext,
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTI3MTM0OTcsIm5iZiI6MTU1MjcxMzQ5NywianRpIjoiZGVjYmM4OTYtNTU2NC00M2QyLTg2NTMtN2U3Yjc1NWRjY2Y5IiwiZXhwIjoxNTUyNzE3MDk3LCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.XjfiHwyX3_ud-V1NgXonW_8SYu0fRPH7bQ2UY316upo"
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTI3NTE2NzgsIm5iZiI6MTU1Mjc1MTY3OCwianRpIjoiODI4YzA1OGUtNjNhNi00Mzg0LTkxOWQtZmY2YmNiZmJhODM3IiwiZXhwIjoxNTUyNzU1Mjc4LCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9_OcNb8p-5FrldTj0OvDvy3I-rKteldX4a8a4z7Dtlw"
         )
     }
 }
