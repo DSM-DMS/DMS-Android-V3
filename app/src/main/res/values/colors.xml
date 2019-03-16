@@ -3,6 +3,11 @@
     <color name="colorPrimary">#19b6b6</color>
     <color name="colorPrimaryDark">#159999</color>
     <color name="colorAccent">#19b6b6</color>
+    <color name="colorTextHint">#e0e0e0</color>
+    <color name="colorSignInBtnUnCliked">#dfdfdf</color>
+    <color name="colorTvUnCliked">#9f9f9f</color>
+    <color name="colorConstBack">#14000000</color>
+
     <color name="colorWhite">#FFFFFF</color>
 
     <color name="colorRed">#ff5454</color>
