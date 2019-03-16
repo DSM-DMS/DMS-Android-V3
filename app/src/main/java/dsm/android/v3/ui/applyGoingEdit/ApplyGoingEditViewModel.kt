@@ -16,7 +16,6 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
 
     private val dateFormat = SimpleDateFormat("MM/dd")
     private val sendDateFormat = SimpleDateFormat("MM-dd")
-    private val timeFormat = SimpleDateFormat("HH:mm ~ HH:mm")
 
     val applyGoingGoDate = MutableLiveData<String>()
     val applyGoingGoTime = MutableLiveData<String>()
