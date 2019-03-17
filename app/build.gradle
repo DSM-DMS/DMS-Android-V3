@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
 
 android {
     compileSdkVersion 28
@@ -63,6 +65,11 @@ dependencies {
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'android.arch.lifecycle:livedata:1.1.1'
     implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
+
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-rc02"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-rc02"
 
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
