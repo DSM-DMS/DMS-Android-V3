@@ -8,5 +8,8 @@ interface AuthDao{
     fun getAuth(): Auth
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg person: Auth)
+    fun insert(vararg auth: Auth)
+
+    @Delete
+    fun delete(vararg auth: Auth)
 }

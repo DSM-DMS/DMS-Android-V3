@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.mypage
 
+import android.app.Application
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
@@ -7,6 +8,7 @@ import android.view.View
 import dsm.android.v3.util.DataBindingFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentMypageBinding
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.changePassword.ChangePasswordActivity
@@ -14,7 +16,10 @@ import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.introduceTeam.IntroDeveloperActivity
 import dsm.android.v3.ui.logOutDialog.LogOutDialogFragment
 import dsm.android.v3.ui.pointLog.PointLogActivity
+import kotlinx.android.synthetic.main.dialog_logout.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 
 
 class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContract {
@@ -29,7 +34,7 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val factory = MyPageViewModelFactory(this, context!!)
+        val factory = MyPageViewModelFactory(this, activity!!.application)
         binding.myPageViewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
         register(binding.myPageViewModel!!)
         return rootView
@@ -41,19 +46,11 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
 
     override fun showDialogLogout() = logoutDialogFragment.show(fm, "logout")
 
-    override fun intentQuestionResearch() {
-        // startActivity<>() 설문 조사 액티비티로 전환
-    }
+    override fun intentQuestionResearch() = toast("오픈 준비 중입니다.").show()
 
-    override fun intentPasswordChange() {
-         startActivity<ChangePasswordActivity>() // 비밀번호 전환 액티비티로 전환
-    }
+    override fun intentPasswordChange() = startActivity<ChangePasswordActivity>()
 
-    override fun intentMeriteHistory() {
-         startActivity<PointLogActivity>()
-    }
+    override fun intentMeriteHistory() = startActivity<PointLogActivity>()
 
-    override fun intentintroDevelopers() {
-         startActivity<IntroDeveloperActivity>()
-    }
+    override fun intentintroDevelopers() = startActivity<IntroDeveloperActivity>()
 }
