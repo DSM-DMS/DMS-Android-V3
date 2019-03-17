@@ -23,10 +23,6 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
     val badPointText = MutableLiveData<String>().apply { value = "0" }
     val adviceText = MutableLiveData<String>()
 
-    init {
-        saveToken(context, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTIzMTQxOTEsIm5iZiI6MTU1MjMxNDE5MSwianRpIjoiMWE3MzY3ZjktZjJiMC00MWU1LWJlOWYtZTcxNGY5Mzg5NGY5IiwiZXhwIjoxNTg4MzEwNTkxLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.bQTPxQ4ifG2tomigLaGCBlAga0jvCEEFGB6b2QO52qM")
-    }
-
     override fun apply(event: Lifecycle.Event) {
         when(event){
             Lifecycle.Event.ON_START -> {
