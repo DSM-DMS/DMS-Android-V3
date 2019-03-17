@@ -7,6 +7,7 @@ import dsm.android.v3.R
 import dsm.android.v3.ui.main.meal.MealFragment
 import dsm.android.v3.ui.main.putIn.PutInFragment
 import dsm.android.v3.ui.mypage.MyPageFragment
+import dsm.android.v3.util.saveToken
 import kotlinx.android.synthetic.main.activity_main.*
 
 

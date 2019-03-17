@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="MyPageViewModel"
-            type="dsm.android.v3.ui.mypage.MyPageViewModel">
+            name="BugReportViewModel"
+            type="dsm.android.v3.ui.bugReportDialog.BugReportViewModel">
         </variable>
     </data>
 
@@ -21,7 +21,7 @@
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/round_bug_logo"
+            android:background="@drawable/ic_bug_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -56,7 +56,7 @@
                 android:id="@+id/bug_report_dialog_title_edit">
 
                 <android.support.design.widget.TextInputEditText
-                    android:text="@{MyPageViewModel.bugTitleEditText}"
+                    android:text="@={BugReportViewModel.bugTitleEditText}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 app:errorEnabled="true"
                 android:id="@+id/bug_report_dialog_content_edit">
                 <android.support.design.widget.TextInputEditText
-                    android:text="@{MyPageViewModel.bugContentEditText}"
+                    android:text="@={BugReportViewModel.bugContentEditText}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
-                android:onClick="@{()->MyPageViewModel.bugClickCancel()}"
+                android:onClick="@{()->BugReportViewModel.bugClickCancel()}"
                 android:id="@+id/bug_report_dialog_cancel_tv"
                 android:paddingVertical="11dp"
                 android:paddingHorizontal="50dp"
@@ -113,7 +113,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:onClick="@{()->MyPageViewModel.bugClickSend()}"
+                android:onClick="@{(view)->BugReportViewModel.bugClickSend(view)}"
                 android:id="@+id/bug_report_dialog_send_tv"
                 android:paddingVertical="11dp"
                 android:paddingHorizontal="50dp"
