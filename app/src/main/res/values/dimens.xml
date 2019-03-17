@@ -4,6 +4,8 @@
     <dimen name="horizontal_margin">24dp</dimen>
     <dimen name="vertical_margin_6">6dp</dimen>
     <dimen name="vertical_margin_8">8dp</dimen>
+    <dimen name="bottom_navigation_text_size">12sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
     <!-- Dimen for TextSize -->
     <dimen name="typo_header">16sp</dimen>
@@ -17,5 +19,5 @@
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_24">24sp</dimen>
 
-    <dimen name="bottom_navigation_text_size">12sp</dimen>
+
 </resources>

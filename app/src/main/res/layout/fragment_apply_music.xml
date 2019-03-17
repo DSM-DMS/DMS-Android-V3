@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.applyMusic.ApplyMusicFragment">
+
+
+        <TextView
+                android:id="@+id/apply_music_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="@string/apply_music_title"
+                android:textSize="@dimen/text_size_24"
+                android:fontFamily="@font/nanumsquareextrabold"
+                android:textColor="@color/colorPrimary"/>
+
+        <TextView
+                android:id="@+id/apply_music_explanation_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGray600"
+                android:textSize="@dimen/typo_subtitle"
+                android:text="@string/apply_music_explanation"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/nanumsquareregular"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/apply_music_title_tv"/>
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/apply_music_apply_list_pager"
+                android:paddingStart="50dp"
+                app:pageChange="@={viewModel.pageStatusLiveData}"
+                android:paddingEnd="50dp"
+                android:clipToPadding="false"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/apply_music_explanation_tv"
+                app:layout_constraintBottom_toTopOf="@id/applyGoing_apply_btn"
+                android:layout_marginTop="26dp"/>
+
+        <Button
+                android:id="@+id/applyGoing_apply_btn"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/radius_view_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:onClick="@{() -> viewModel.actionMusicLogCall()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:text="@string/apply_music_apply_btn"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquareregular"
+                />
+    </android.support.constraint.ConstraintLayout>
+</layout>

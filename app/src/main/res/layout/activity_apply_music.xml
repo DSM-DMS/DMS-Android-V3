@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
                 name="applyMusicViewModel"
                 type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
     </data>
+
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         <android.support.design.widget.AppBarLayout
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_height="wrap_content"
@@ -22,26 +27,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <ImageView
-                            android:onClick="@{()->applyMusicViewModel.applyMusicClickBack()}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_round_arrow_back_24_px"/>
-                    <TextView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:lineSpacingExtra="2sp"
-                            android:text="@string/apply_music_app_title"
-                            android:textSize="@dimen/text_size_16"
-                            android:fontFamily="@font/nanumsquarebold"
-                            android:textColor="@color/colorWhite"/>
-                </LinearLayout>
+
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -55,6 +41,7 @@
                 android:paddingHorizontal="16dp"
                 android:paddingTop="26dp"
                 android:paddingBottom="20dp">
+
             <TextView
                     android:id="@+id/apply_music_title_tv"
                     android:layout_width="wrap_content"
@@ -65,6 +52,7 @@
                     android:textSize="@dimen/text_size_24"
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
+
             <TextView
                     android:id="@+id/apply_music_explanation_tv"
                     android:layout_width="wrap_content"
@@ -83,7 +71,6 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{()->applyMusicViewModel.applyMusicClickLog()}"
                 android:id="@+id/applyGoing_apply_btn"
                 android:layout_marginHorizontal="16dp"
                 android:background="@drawable/radius_view_primary"

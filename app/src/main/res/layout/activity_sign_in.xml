@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="vm"
+                  type="dsm.android.v3.ui.signIn.SignInViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+        <ImageView
+                android:id="@+id/signIn_appLogo_img"
+                android:layout_width="50dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginStart="46dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/signin_main_icon" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_signIn_signIn"
+                app:layout_constraintVertical_bias="0.0" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+                android:id="@+id/signIn_DMS_for_Android_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="45dp"
+                android:text="DMS for Android"
+                android:fontFamily="@font/ralewaybold"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintTop_toBottomOf="@+id/signIn_appLogo_img"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+                android:id="@+id/signIn_what_is_DMS_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dormitory Management System"
+                android:textSize="10sp"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/ralewaybold"
+                app:layout_constraintTop_toBottomOf="@+id/signIn_DMS_for_Android_tv"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/signIn_DMS_for_Android_tv"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginTop="4dp"/>
+
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/signIn_constraintLayout_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="180dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signIn_what_is_DMS_tv"
+                android:background="@drawable/back_layout_half_round"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                    android:id="@+id/signIn_id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="46dp"
+                    android:text="아이디"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorTvUnCliked"
+                    android:fontFamily="@font/nanumsquarebold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/signIn_id_et"
+                    android:hint="아이디를 입력해주세요"
+                    android:fontFamily="@font/nanumsquareregular"
+                    android:text="@={vm.signInId}"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorTextHint"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="46dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="46dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/signIn_id_tv" app:layout_constraintVertical_bias="0.0"/>
+
+            <TextView
+                    android:id="@+id/signIn_pw_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="46dp"
+                    android:text="비밀번호"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorTvUnCliked"
+                    app:layout_constraintTop_toBottomOf="@+id/signIn_id_et"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2" app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"/>
+
+            <EditText
+                    android:inputType="textPassword"
+                    android:layout_width="0dp" android:layout_height="50dp" android:id="@+id/signIn_pw_et"
+                    app:layout_constraintTop_toBottomOf="@+id/signIn_pw_tv"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="46dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="46dp"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginTop="10dp" android:hint="비밀번호를 입력해주세요"
+                    android:text="@={vm.signInPw}"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textColorHint="@color/colorTextHint"
+                    android:textSize="14sp"/>
+
+            <TextView
+                    android:id="@+id/signIn_you_are_not_DMS_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아직 DMS 회원이 아니신가요?"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:textColor="#9e9e9e"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="46dp"
+                    app:layout_constraintTop_toBottomOf="@+id/signIn_pw_et"
+                    />
+
+            <TextView
+                    android:id="@+id/signIn_to_signUpActivity_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="46dp"
+                    android:text="회원가입"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/nanumsquarebold"
+                    android:onClick="@{() -> vm.toSignUpBtn()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signIn_pw_et"
+                    />
+
+            <android.support.constraint.Guideline
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintGuide_begin="46dp"
+                    android:id="@+id/guideline"/>
+
+            <android.support.constraint.Guideline
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/guideline2" app:layout_constraintGuide_end="47dp"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+                android:id="@+id/btn_signIn_signIn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="로그인"
+                android:fontFamily="@font/nanumsquareregular"
+                android:textSize="16sp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{(v)-> vm.doSignIn(v)}"
+                android:clickable="@{vm.btnColorSet}"
+                android:background="@{vm.btnColorSet == false ? @drawable/back_btn_unclicked : @drawable/back_btn_clicked}"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="1.0" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" android:layout_marginStart="16dp" android:layout_marginBottom="16dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -1,3 +1,3 @@
 package dsm.android.v3.model
 
-data class PointLogItemModel(val reason: String, val time: String, val point: Int, val pointType: Boolean)
+data class PointLogItemModel(val reason: String, val date: String, val point: Int, val pointType: Boolean)

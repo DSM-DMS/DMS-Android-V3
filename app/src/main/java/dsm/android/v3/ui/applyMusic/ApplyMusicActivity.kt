@@ -26,6 +26,8 @@ class ApplyMusicActivity: DataBindingActivity<ActivityApplyMusicBinding>(), Appl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(apply_music_toolbar)
+
         val factory = ApplyMusicViewModelFactory(this)
         binding.applyMusicViewModel = ViewModelProviders.of( this, factory).get(ApplyMusicViewModel::class.java)
         register(binding.applyMusicViewModel!!)

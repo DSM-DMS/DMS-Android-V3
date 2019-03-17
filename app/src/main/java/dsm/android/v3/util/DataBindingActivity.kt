@@ -46,15 +46,15 @@ abstract class DataBindingActivity<T : ViewDataBinding> : AppCompatActivity() {
         super.onDestroy()
     }
 
-    fun register(callback : LifecycleCallback) {
+    fun register(callback: LifecycleCallback) {
         lifecycleOwner.register(callback)
     }
 
-    fun unregister(callback : LifecycleCallback) {
+    fun unregister(callback: LifecycleCallback) {
         lifecycleOwner.unregister(callback)
     }
 
-    private fun notifyEvent(event : Lifecycle.Event) {
+    private fun notifyEvent(event: Lifecycle.Event) {
         lifecycleOwner.notifyEvent(event)
     }
 

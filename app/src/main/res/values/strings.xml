@@ -4,6 +4,11 @@
     <string name="navigation_submit">신청</string>
     <string name="navigation_notice">공지</string>
     <string name="navigation_mypage">마이페이지</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="id_et"><font size="14">아이디를 입력해주세요</font></string>
+    <string name="pw_et"><font size="14">비밀번호를 입력해주세요</font></string>
+    <string name="code_et"><font size="14">확인코드를 입력해주세요</font></string>
+    <string name="confirm_et"><font size="14">비밀번호를 확인해주세요</font></string>
     <string name="mypage_error_report">시설 고장 신고</string>
     <string name="mypage_research">설문 조사</string>
     <string name="mypage_merit">상점</string>
@@ -84,6 +89,7 @@
     <string name="apply_music_app_title">기상음악 신청</string>
     <string name="apply_music_title">기상음악 신청해주세요</string>
     <string name="apply_music_explanation">월요일부터 금요일 아침까지 기상시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능합니다.</string>
+    <string name="apply_music_base_explanation">아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
     <string name="apply_music_monday_title">월요일</string>
     <string name="apply_music_monday_explanation">월요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
     <string name="apply_music_tuesday_title">화요일</string>
@@ -105,7 +111,7 @@
     <string name="apply_music_dialog_music_artist_hint">아티스트</string>
     <string name="apply_music_dialog_music_cancel">취소</string>
     <string name="apply_music_dialog_music_apply">신청</string>
-    
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
