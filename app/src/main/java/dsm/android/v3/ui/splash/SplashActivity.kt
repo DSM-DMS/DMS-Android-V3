@@ -12,7 +12,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class SplashActivity: AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private lateinit var auth: Auth
 
@@ -21,18 +21,19 @@ class SplashActivity: AppCompatActivity() {
 
         doAsync {
             auth = AuthDatabase.getInstance(this@SplashActivity)!!.getAuthDao().getAuth()
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                startActivity<MainActivity>()
+                finish()
+                if (getToken(this@SplashActivity) == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
+                    startActivity<SignInActivity>()
+                    finish()
+                } else {
+                    toast("로그인이 필요합니다.").show()
+                }
+            } else {
+                toast("안드로이드 버전 업그레이드가 필요합니다.").show()
+            }
         }
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M){
-            startActivity<MainActivity>()
-            if (getToken(this) != "" || auth.id.isEmpty() || auth.password.isEmpty()){
-                startActivity<SignInActivity>()
-            } else {
-                toast("로그인이 필요합니다.").show()
-            }
-        } else {
-            toast("안드로이드 버전 업그레이드가 필요합니다.").show()
-        }
-        finish()
     }
 }

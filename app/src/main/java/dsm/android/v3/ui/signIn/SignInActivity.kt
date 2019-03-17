@@ -58,7 +58,9 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
 
     override fun intentToRegister() = startActivity<RegisterActivity>()
 
-    override fun intentToMain() = startActivity<MainActivity>()
+    override fun intentToMain() {
+        finish()
+    }
 
     fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorPrimary))
     fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorTvUnCliked))
