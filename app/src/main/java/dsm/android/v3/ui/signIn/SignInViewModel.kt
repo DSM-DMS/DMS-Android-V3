@@ -2,16 +2,20 @@ package dsm.android.v3.ui.signIn
 
 import android.arch.lifecycle.*
 import android.arch.lifecycle.ViewModel
+import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.gson.JsonObject
 import dsm.android.v3.connecter.Connecter
+import dsm.android.v3.connecter.api
 import dsm.android.v3.model.AuthModel
-import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.saveToken
+import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.reflect.InvocationTargetException
 
 class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
 
@@ -28,14 +32,21 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
     }
 
     fun doSignIn(view: View) {
+        val auth = Auth(signInId.value!!, signInPw.value!!)
+
         val json = JsonObject().apply {
             addProperty("id", signInId.value)
             addProperty("password", signInPw.value)
         }
+
         Connecter.api.signIn(json).enqueue(object : Callback<AuthModel> {
             override fun onResponse(call: Call<AuthModel>, response: Response<AuthModel>) {
                 when (response.code()) {
                     200 -> {
+                        doAsync {
+                            AuthDatabase.getInstance(view.context)!!
+                                .getAuthDao().insert(auth)
+                        }
                         Toast.makeText(view.context, "로그인 성공", Toast.LENGTH_SHORT).show()
                         saveToken(view.context,response.body()!!.token)
                         saveToken(view.context, response.body()!!.refreshToken!!, false)
@@ -52,11 +63,8 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
         })
     }
 
-    fun toSignUpBtn() {
-        navigator.intentToRegister()
-    }
+    fun toSignUpBtn() = navigator.intentToRegister()
 
-    fun MutableLiveData<String>.isValueBlank() =
-        this.value.isNullOrBlank()
+    fun MutableLiveData<String>.isValueBlank() = this.value.isNullOrBlank()
 
 }

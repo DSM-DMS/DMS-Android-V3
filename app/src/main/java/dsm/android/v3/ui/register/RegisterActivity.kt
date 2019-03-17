@@ -68,7 +68,7 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
     fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@RegisterActivity, R.color.colorTvUnCliked))
 
     override fun intentToLogin() {
-        startActivity<SignInActivity>()
+        finish()
     }
 
 

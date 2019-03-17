@@ -5,8 +5,11 @@ import android.view.View
 import android.widget.Toast
 import com.google.gson.JsonObject
 import dsm.android.v3.connecter.Connecter
+import dsm.android.v3.ui.signIn.Auth
+import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
+import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,11 +40,19 @@ class ChangePasswordViewModel : ViewModel() {
             addProperty("currentPassword", currentPassword.value)
             addProperty("newPassword", newPassword.value)
         }
+
         Connecter.api.changePw(getToken(view.context), json).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 when (response.code()) {
                     201 -> {
                         Toast.makeText(view.context, "비밀번호 변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                        doAsync {
+                            val instance = AuthDatabase.getInstance(view.context)!!
+                                .getAuthDao()
+                            val origin = instance.getAuth()
+                            instance.insert(Auth(origin.id, newPassword.value!!))
+
+                        }
                         activityFinishLiveEvent.call()
                     }
                     205 -> {
