@@ -22,13 +22,13 @@ class SplashActivity : AppCompatActivity() {
         doAsync {
             auth = AuthDatabase.getInstance(this@SplashActivity)!!.getAuthDao().getAuth()
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                startActivity<MainActivity>()
-                finish()
                 if (getToken(this@SplashActivity) == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
                     startActivity<SignInActivity>()
                     finish()
-                } else {
                     toast("로그인이 필요합니다.").show()
+                } else {
+                    startActivity<MainActivity>()
+                    finish()
                 }
             } else {
                 toast("안드로이드 버전 업그레이드가 필요합니다.").show()

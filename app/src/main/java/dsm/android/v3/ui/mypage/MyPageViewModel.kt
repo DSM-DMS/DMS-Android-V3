@@ -1,21 +1,27 @@
 package dsm.android.v3.ui.mypage
 
 import android.animation.ValueAnimator
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
+import dsm.android.v3.ui.signIn.Auth
+import dsm.android.v3.ui.signIn.AuthDatabase
+import dsm.android.v3.util.App
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
 import dsm.android.v3.util.saveToken
+import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.random.Random
 
-class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewModel(), LifecycleCallback{
+class MyPageViewModel(val contract: MyPageContract, val app: Application): AndroidViewModel(app), LifecycleCallback{
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
@@ -25,8 +31,8 @@ class MyPageViewModel(val contract: MyPageContract, val context: Context): ViewM
 
     override fun apply(event: Lifecycle.Event) {
         when(event){
-            Lifecycle.Event.ON_START -> {
-                api.getBasicInfo(getToken(context)).enqueue(object: Callback<MyPageInfoModel> {
+            Lifecycle.Event.ON_RESUME -> {
+                api.getBasicInfo(getToken(app.applicationContext)).enqueue(object: Callback<MyPageInfoModel> {
                     override fun onResponse(call: Call<MyPageInfoModel>, response: Response<MyPageInfoModel>) {
                         when(response.code()){
                             200 -> {

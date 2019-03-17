@@ -59,6 +59,7 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
     override fun intentToRegister() = startActivity<RegisterActivity>()
 
     override fun intentToMain() {
+        startActivity<MainActivity>()
         finish()
     }
 

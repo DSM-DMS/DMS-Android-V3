@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogLogoutBinding
+import dsm.android.v3.ui.signIn.SignInActivity
 import dsm.android.v3.util.DataBindingDialogFragment
 import dsm.android.v3.util.removeToken
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
 class LogOutDialogFragment : DataBindingDialogFragment<DialogLogoutBinding>(), LogOutContract {
+
     override val layoutId: Int
         get() = R.layout.dialog_logout
 
@@ -29,10 +32,12 @@ class LogOutDialogFragment : DataBindingDialogFragment<DialogLogoutBinding>(), L
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
+    override fun intentToLogin() {
+        startActivity<SignInActivity>()
+        activity!!.finish()
+    }
+
     override fun createShortToast(text: String) = toast(text).show()
 
-    override fun exitLogout() {
-        dialog.dismiss()
-        removeToken(context!!)
-    }
+    override fun exitLogout() =  dialog.dismiss()
 }
