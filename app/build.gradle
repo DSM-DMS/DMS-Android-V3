@@ -53,11 +53,19 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     // anko
-    implementation 'org.jetbrains.anko:anko:0.10.8'
-    // Android Architecture Component
+    implementation "org.jetbrains.anko:anko:0.10.8"
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'android.arch.lifecycle:livedata:1.1.1'
     implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }

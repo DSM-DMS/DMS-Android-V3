@@ -18,7 +18,7 @@ object Connecter {
 
         retrofit = Retrofit
             .Builder()
-            .baseUrl("http://dms-api.istruly.sexy/")
+            .baseUrl("https://dms-api.istruly.sexy/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
