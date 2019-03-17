@@ -17,9 +17,6 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
 
 class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavigator {
-    override fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
 
     override val layoutId: Int
         get() = R.layout.activity_sign_in
@@ -39,8 +36,7 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
             R.anim.slide_up
         )
 
-        val signInConstBack = findViewById<ConstraintLayout>(R.id.signIn_constraintLayout_layout)
-        signInConstBack.startAnimation(slideUp)
+        signIn_constraintLayout_layout.startAnimation(slideUp)
 
         signIn_id_et.setOnFocusChangeListener { v, hasFocus ->
             signIn_id_tv.clicked()
@@ -58,12 +54,12 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
 
     }
 
-    override fun intentToRegister() {
-        startActivity<RegisterActivity>()
-    }
+    override fun showToast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+    override fun intentToRegister() = startActivity<RegisterActivity>()
 
     override fun intentToMain() {
-        startActivity<MainActivity>()
+        finish()
     }
 
     fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorPrimary))
