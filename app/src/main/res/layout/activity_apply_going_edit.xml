@@ -59,7 +59,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_date_hint"
                             android:textSize="@dimen/typo_body1"
-                            android:inputType="numberSigned"
+                            android:inputType="date"
                             android:maxLength="5"
                             android:digits="0123456789/"/>
                 </android.support.design.widget.TextInputLayout>
