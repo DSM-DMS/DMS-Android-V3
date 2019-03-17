@@ -7,7 +7,7 @@ import dsm.android.v3.R
 import dsm.android.v3.ui.main.meal.MealFragment
 import dsm.android.v3.ui.main.putIn.PutInFragment
 import dsm.android.v3.ui.mypage.MyPageFragment
-import dsm.android.v3.util.saveToken
+import dsm.android.v3.ui.notice.NoticeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notice -> {
+                transaction.replace(R.id.main_container, NoticeFragment())
+                transaction.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_myPage -> {

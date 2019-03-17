@@ -20,7 +20,6 @@
                 android:id="@+id/introDeveloperItem_image_iv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/taeyoung"
                 android:scaleType="centerCrop"
                 app:riv_corner_radius_top_right="16dp"
                 app:riv_corner_radius_top_left="16dp"

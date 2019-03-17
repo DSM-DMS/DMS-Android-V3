@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="-12dp"
+              android:layout_marginBottom="-12dp"
+              xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Api17CardView
+            android:id="@+id/itemNotice_notice_cv"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="12dp"
+            >
+
+        <TextView
+                android:id="@+id/itemNotice_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="공지사항"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorGray700"
+                />
+
+        <TextView
+                android:id="@+id/itemNotice_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="39dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorGray400"
+                android:inputType="date"
+                android:text="사감부에서 게시한 공지사항을 열람합니다"
+                />
+    </android.support.v7.widget.Api17CardView>
+</LinearLayout>

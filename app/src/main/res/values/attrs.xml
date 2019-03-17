@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="count" format="integer"/>
+        <attr name="title" format="reference|string"/>
+        <attr name="description" format="reference|string"/>
+        <attr name="button" format="reference"/>
+        <attr name="titleColor" format="reference|color"/>
+        <attr name="descriptionColor" format="reference|color"/>
+        <attr name="backgroundColor" format="reference|color"/>
+        <attr name="imageVisible" format="boolean"/>
+    </declare-styleable>
+</resources>

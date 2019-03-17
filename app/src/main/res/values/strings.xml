@@ -38,6 +38,19 @@
     <string name="institution_dialog_report_title">고장 내용</string>
     <string name="institution_dialog_cancel">취소</string>
     <string name="institution_dialog_send">전송</string>
+    <string name="notice_title">대마고\n기숙사\n안내사항</string>
+    <string name="notice_description_highlight">DMS</string>
+    <string name="notice_description">는 대덕 소프트웨어 마이스터고등학교</string>
+    <string name="notice_description2">기숙사 생활에 필요한 유용한 정보를 제공합니다.</string>
+    <string name="notice_notice_title">공지사항</string>
+    <string name="notice_notice_description">사감부에서 게시한 공지사항을 열람합니다.</string>
+    <string name="notice_rules_title">기숙사 규정</string>
+    <string name="notice_rules_description">기숙사 규정을 열람합니다.</string>
+    <string name="notice_question_title">자주하는 질문</string>
+    <string name="notice_question_description">자주하는 질문을 열람합니다.</string>
+    <string name="notice_description_title">3월 우정관 캠페인</string>
+    <string name="notice_description_description">사감부에서 2018년 03월 10일에 게시한 공지입니다.</string>
+    <string name="notice_description_content">3월 우정관 캠페인은 \'복장규정 잘 지키기\' 입니다.아 침운동, 등교점호 시 지정된 복장을 잘 착용하기 바랍니다. 3월 중 복장 벌점이 없는 학생에게 상점 1점을 부여합니다.</string>
     <string name="apply_going_appbar_title">외출 신청</string>
     <string name="apply_going_title">외출을 신청하세요</string>
     <string name="apply_going_explanation">외출증 시스템의 변화로 DMS에서 외출 신청서를 작성 후 사감실에 본인 확인을 하고 외출을 할 수 있습니다.</string>
@@ -111,8 +124,7 @@
     <string name="apply_music_dialog_music_artist_hint">아티스트</string>
     <string name="apply_music_dialog_music_cancel">취소</string>
     <string name="apply_music_dialog_music_apply">신청</string>
-
-
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
