@@ -100,7 +100,7 @@ class NoticeActivity : AppCompatActivity() {
 
     val fragment = NoticeDescriptionFragment()
 
-    fun createDescription (id : Int) {
+    fun createDescription (id : Int, type : Boolean) {
         setVisible()
 
         val bundle = Bundle(2)

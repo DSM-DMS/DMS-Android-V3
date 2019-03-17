@@ -50,7 +50,7 @@ class RulesRvAdpater(val context : Context, var data : RulesModel, var activity 
 
         override fun onClick(v: View?) {
             var position = layoutPosition
-            activity.createDescription(data.ruleList[position].id)
+            activity.createDescription(data.ruleList[position].id, false)
         }
 
         fun frameDate(date : String) :String {

@@ -49,7 +49,7 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
 
         override fun onClick(v: View?) {
             var position = layoutPosition
-            activity.createDescription(data.noticeList[position].id)
+            activity.createDescription(data.noticeList[position].id, true)
         }
 
         fun frameDate(date : String) :String {
