@@ -11,6 +11,7 @@ import dsm.android.v3.databinding.FragmentMypageBinding
 import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
+import dsm.android.v3.ui.introduceTeam.IntroDeveloperActivity
 import dsm.android.v3.ui.logOutDialog.LogOutDialogFragment
 import dsm.android.v3.ui.pointLog.PointLogActivity
 import org.jetbrains.anko.support.v4.startActivity
@@ -53,6 +54,6 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>(), MyPageContrac
     }
 
     override fun intentintroDevelopers() {
-        // startActivity<>() 개발자 소개하는 액티비티로 전환
+         startActivity<IntroDeveloperActivity>()
     }
 }
