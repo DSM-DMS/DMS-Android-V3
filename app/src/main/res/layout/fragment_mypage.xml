@@ -138,7 +138,7 @@
         <View
                 android:id="@+id/mypage_list_lay"
                 android:layout_width="match_parent"
-                android:layout_height="377dp"
+                android:layout_height="0dp"
                 app:layout_constraintVertical_weight="0.6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
@@ -254,13 +254,16 @@
                 android:lineSpacingExtra="1dp"/>
         </android.support.v7.widget.CardView>
     
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mypage_advice_cv"
             android:layout_marginTop="22dp"
             android:orientation="vertical">
                 <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_password_change_lay"
                     android:id="@+id/mypage_logout_lay"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -270,6 +273,8 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterLogout()}">
     
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_logout_content_tv"
                         android:id="@+id/mypage_logout_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -280,7 +285,9 @@
                         android:fontFamily="@font/nanumsquarebold"/>
     
                     <TextView
+                        android:id="@+id/mypage_logout_content_tv"
                         app:layout_constraintTop_toBottomOf="@id/mypage_logout_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
@@ -300,6 +307,8 @@
                 </android.support.constraint.ConstraintLayout>
     
                 <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_logout_lay"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_lay"
                     android:id="@+id/mypage_password_change_lay"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -309,6 +318,8 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterPasswordChange()}">
     
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_password_change_content_tv"
                         android:id="@+id/mypage_password_change_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -319,6 +330,8 @@
                         android:fontFamily="@font/nanumsquarebold"/>
     
                     <TextView
+                        android:id="@+id/mypage_password_change_content_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mypage_password_change_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -339,6 +352,8 @@
                 </android.support.constraint.ConstraintLayout>
     
                 <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_password_change_lay"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_lay"
                     android:id="@+id/mypage_merit_history_lay"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -348,6 +363,8 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterMeritHistory()}">
     
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_content_tv"
                         android:id="@+id/mypage_merit_history_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -359,6 +376,8 @@
     
                     <TextView
                         app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/mypage_merit_history_content_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
@@ -378,6 +397,8 @@
                 </android.support.constraint.ConstraintLayout>
     
                 <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_lay"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:id="@+id/mypage_intro_developers_lay"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -387,6 +408,8 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterIntroDevelopers()}">
     
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_content_tv"
                         android:id="@+id/mypage_intro_developers_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -397,7 +420,9 @@
                         android:fontFamily="@font/nanumsquarebold"/>
     
                     <TextView
+                        android:id="@+id/mypage_intro_developers_content_tv"
                         app:layout_constraintTop_toBottomOf="@id/mypage_intro_developers_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body2"
@@ -415,6 +440,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

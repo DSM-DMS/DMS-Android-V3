@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/radius_dialog_white"
-        android:paddingTop="16dp"
-        android:paddingBottom="6dp"
-        android:paddingHorizontal="20dp">
+        android:paddingTop="24dp"
+        android:paddingBottom="12dp"
+        android:paddingHorizontal="26dp">
 
         <TextView
             app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
             android:id="@+id/logout_dialog_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/typo_subtitle"
+            android:textSize="@dimen/typo_header"
             android:textColor="@color/colorPrimary"
             android:lineSpacingExtra="2sp"
             android:text="@string/mypage_logout_title"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/logout_dialog_bold_content"
             android:textColor="@color/colorGray900"
-            android:textSize="@dimen/typo_body1"
+            android:textSize="@dimen/typo_subtitle"
             android:fontFamily="@font/nanumsquarebold"
             app:layout_constraintTop_toBottomOf="@id/logout_dialog_title_tv"
             android:layout_marginTop="25dp"/>
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/logout_dialog_light_content"
-            android:textSize="@dimen/text_size_8"
+            android:textSize="@dimen/typo_body2"
             android:textColor="@color/colorGray400"
             android:fontFamily="@font/nanumsquareregular"
             app:layout_constraintTop_toBottomOf="@id/logout_dialog_bold_content_tv"
@@ -62,26 +62,26 @@
             <TextView
                 android:onClick="@{()->LogOutViewModel.logoutClickCancel()}"
                 android:id="@+id/logout_dialog_cancel_tv"
-                android:paddingVertical="10dp"
+                android:paddingVertical="12dp"
                 android:paddingHorizontal="35dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/logout_dialog_cancel"
                 android:textColor="@color/colorGray600"
-                android:textSize="@dimen/typo_body2"
+                android:textSize="@dimen/typo_body1"
                 android:fontFamily="@font/nanumsquarebold"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:onClick="@{(view)->LogOutViewModel.logoutClickLogout(view)}"
                 android:id="@+id/logout_dialog_logout_tv"
-                android:paddingVertical="10dp"
+                android:paddingVertical="12dp"
                 android:paddingHorizontal="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/logout_dialog_logout"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/typo_body2"
+                android:textSize="@dimen/typo_body1"
                 android:fontFamily="@font/nanumsquarebold"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
