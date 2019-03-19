@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.applyMusicDom
+package dsm.android.v3.ui.applyMusic
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

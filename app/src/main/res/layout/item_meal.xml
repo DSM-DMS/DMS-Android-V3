@@ -51,7 +51,7 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintStart_toStartOf="@+id/mealItem_breakfast_header_tv"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Api17CardView>
@@ -100,7 +100,7 @@
                     app:layout_constraintStart_toStartOf="@+id/mealItem_lunch_header_tv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mealItem_lunch_header_tv"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Api17CardView>
@@ -149,7 +149,7 @@
                     app:layout_constraintStart_toStartOf="@+id/mealItem_dinner_header_tv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mealItem_dinner_header_tv"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Api17CardView>

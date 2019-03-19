@@ -13,7 +13,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".ui.applyMusicDom.ApplyMusicDomActivity">
+        <activity android:name=".ui.applyMusic.ApplyMusicDomActivity">
         </activity>
         <activity
                 android:name=".ui.signIn.SignInActivity"

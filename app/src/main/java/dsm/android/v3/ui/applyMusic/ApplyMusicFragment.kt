@@ -16,7 +16,7 @@ import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
 import dsm.android.v3.model.ApplyPagerModel
 import dsm.android.v3.util.DataBindingFragment
-import kotlinx.android.synthetic.main.activity_apply_music.*
+import kotlinx.android.synthetic.main.fragment_apply_music.*
 import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor

@@ -1,19 +1,16 @@
-package dsm.android.v3.ui.applyMusicDialog
+package dsm.android.v3.ui.applyMusic
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogApplyMusicBinding
-import dsm.android.v3.ui.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.util.DataBindingDialogFragment
 import kotlinx.android.synthetic.main.dialog_apply_music.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>(), ApplyMusicDialogContract {
+class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
     override val layoutId: Int
         get() = R.layout.dialog_apply_music
 

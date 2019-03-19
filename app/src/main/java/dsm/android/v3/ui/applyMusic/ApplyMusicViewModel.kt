@@ -128,7 +128,11 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
             ).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when (response.code()) {
-                        200 -> Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                        200 -> {
+                            Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                            getData()
+                            firstMusicClicked()
+                        }
                         403 -> Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -145,7 +149,11 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
             ).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when (response.code()) {
-                        200 -> Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                        200 -> {
+                            Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                            getData()
+                            secondMusicClicked()
+                        }
                         403 -> Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
