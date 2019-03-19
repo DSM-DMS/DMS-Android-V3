@@ -14,20 +14,20 @@ android {
         applicationId "dsm.android.v3"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode 2
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     dataBinding {
         enabled = true
+    }
+    productFlavors {
     }
 }
 
@@ -43,34 +43,31 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.23.4'
-    testImplementation "android.arch.core:core-testing:1.1.1"
+    testImplementation 'android.arch.core:core-testing:1.1.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // livedata-testing
     testImplementation 'com.jraska.livedata:testing:0.6.0'
-    testImplementation 'com.jraska.livedata:testing-ktx:0.6.0' // If you are Kotlin positive
+    testImplementation 'com.jraska.livedata:testing-ktx:0.6.0'
+    // If you are Kotlin positive
     // retrofit lib
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     // anko
-    implementation "org.jetbrains.anko:anko:0.10.8"
-
+    implementation 'org.jetbrains.anko:anko:0.10.8'
     // Room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
     kapt "android.arch.persistence.room:compiler:1.1.1"
-
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'android.arch.lifecycle:livedata:1.1.1'
     implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
-
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-rc02"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-rc02"
-
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-rc02'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-rc02'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.61'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
