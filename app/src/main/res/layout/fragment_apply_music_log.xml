@@ -97,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
                         tools:text="Coldplay"
+                        android:fontFamily="@font/nanumsquareregular"
                         android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray600}"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="2sp"/>
@@ -106,6 +107,7 @@
                         android:id="@+id/apply_first_music_log_card_student_tv"
                         android:text="@{viewModel.firstStudentLiveData}"
                         android:layout_width="wrap_content"
+                        android:fontFamily="@font/nanumsquareregular"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
                         tools:text="2312 윤석민"
@@ -149,6 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/typo_body1"
+                        android:fontFamily="@font/nanumsquareregular"
                         android:textColor="@{viewModel.secondMusicIsClicked ? @color/colorWhite : @color/colorGray600}"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="2sp"/>
@@ -159,6 +162,7 @@
                         android:text="@{viewModel.secondStudentLiveData}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquareregular"
                         android:textSize="@dimen/typo_body1"
                         android:textColor="@{viewModel.secondMusicIsClicked ? @color/colorWhite : @color/colorGray400}"
                         android:lineSpacingExtra="1sp"/>

@@ -48,6 +48,7 @@
                 android:textSize="16sp"
                 android:text="공지사항"
                 android:layout_marginLeft="16dp"
+                android:fontFamily="@font/nanumsquareregular"
                 android:layout_marginTop="16dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -60,6 +61,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="43dp"
                 android:textSize="12sp"
+                android:fontFamily="@font/nanumsquareregular"
                 android:textColor="@color/colorGray800"
                 android:text="사감부에서 게시한 공지사항을 열람합니다"
                 />
