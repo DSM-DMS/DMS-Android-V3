@@ -16,18 +16,17 @@ import java.util.*
 class MealFragmentViewModel : ViewModel() {
 
     val meals = MutableLiveData<ArrayList<String>>()
-
-    val pageStatusLiveData = MutableLiveData<Int>().apply { value = 0 }
+    val pageStatusLiveData = MutableLiveData<Int>().apply { postValue(3) }
 
     val dateLiveData = Transformations.map(pageStatusLiveData) {
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, it)
+        calendar.add(Calendar.DAY_OF_YEAR, it - 3)
         SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(calendar.time)
     }
 
     val weekLiveData = Transformations.map(pageStatusLiveData) {
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, it)
+        calendar.add(Calendar.DAY_OF_YEAR, it - 3)
         SimpleDateFormat("EEEE", Locale.KOREA).format(calendar.time)
     }
 
@@ -45,8 +44,9 @@ class MealFragmentViewModel : ViewModel() {
         val calender = Calendar.getInstance()
         val dataFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
 //        val list = arrayListOf("수수밥", "맑은무채국", "비엔나푸실리볶음", "조기구이", "사과", "배추겉절이")
+        calender.add(Calendar.DAY_OF_YEAR, -3)
         val meal = arrayListOf<String>().apply {
-            (0..7).forEach {
+            repeat((0..10).count()) {
                 this.add(dataFormat.format(calender.time))
                 calender.add(Calendar.DAY_OF_YEAR, 1)
             }
