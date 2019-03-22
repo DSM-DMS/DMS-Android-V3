@@ -63,6 +63,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
                         contract.createShortToast(
                             when(response.code()){
                                 200 -> "연장취소에 성공했습니다."
+                                204 -> "연장신청을 하지 않았습니다."
                                 403 -> "연장취소 권한이 없습니다."
                                 409 -> "연장취소 가능시간이 아닙니다."
                                 500 -> "로그인이 필요합니다."

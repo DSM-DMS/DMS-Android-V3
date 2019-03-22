@@ -3,6 +3,7 @@ package dsm.android.v3.ui.main
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.widget.EditText
 import dsm.android.v3.R
 import dsm.android.v3.ui.main.meal.MealFragment
 import dsm.android.v3.ui.main.putIn.PutInFragment

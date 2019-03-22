@@ -4,7 +4,6 @@ package dsm.android.v3.ui.main.meal
 
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.BindingAdapter
-import android.databinding.BindingMethod
 import android.databinding.InverseBindingAdapter
 import android.databinding.InverseBindingListener
 import android.support.v4.view.ViewPager

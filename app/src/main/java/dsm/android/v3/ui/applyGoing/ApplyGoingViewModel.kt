@@ -19,14 +19,18 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
 
     override fun apply(event: Lifecycle.Event) {
         when(event) {
-            Lifecycle.Event.ON_RESUME -> {
+            Lifecycle.Event.ON_START -> {
                 api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingModel>{
                     override fun onResponse(call: Call<ApplyGoingModel>, response: Response<ApplyGoingModel>) {
                         when(response.code()){
                             200 -> setApplyGoingData(response.body()!!)
-                            204 -> contract.createShortToast("외출신청 정보가 없습니다.")
+                            204 -> {
+                                val applyGoingList = ApplyGoingModel(ArrayList(), ArrayList(), ArrayList())
+                                setApplyGoingData(applyGoingList)
+                                contract.createShortToast("외출신청 정보가 없습니다.")
+                            }
                             403 -> contract.createShortToast("외출신청 정보 조회 권한이 없습니다.")
-                            500 -> "로그인이 필요합니다."
+                            500 -> contract.createShortToast("로그인이 필요합니다.")
                             else -> contract.createShortToast("오류코드: ${response.code()}")
                         }
                     }
