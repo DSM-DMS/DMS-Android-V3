@@ -59,21 +59,5 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract): ViewModel(){
         }
     }
 
-    fun onDateTextChanged(){
-        Log.d("applyGoingGoTime", applyGoingGoDate.value!!.length.toString())
-        if (applyGoingGoDate.value!!.length == 2)
-            applyGoingGoDate.value += "/"
-    }
-
-    fun onTimeTextChanged(){
-        Log.d("applyGoingGoTime", applyGoingGoTime.value!!.length.toString())
-        if (applyGoingGoTime.value!!.length == 2 || applyGoingGoTime.value!!.length == 10){
-            applyGoingGoTime.value += ":"
-        }
-        else if (applyGoingGoTime.value!!.length == 5)
-            applyGoingGoTime.value += " ~ "
-
-    }
-
     fun applyGoingDocClickBack() = contract.backApplyGoing()
 }
