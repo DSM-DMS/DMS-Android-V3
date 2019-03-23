@@ -10,7 +10,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.util.*
 
 class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel(){
 
@@ -53,9 +52,11 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     }
 
    fun applyGoingEditClickEdit(view: View){
-        if(applyGoingGoDate.value.isNullOrBlank()) contract.setErrorApplyGoingGoDate()
-        else if(applyGoingGoTime.value.isNullOrBlank()) contract.setErrorApplyGoingGoTime()
-        else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason()
+        if(applyGoingGoDate.value.isNullOrBlank() || applyGoingGoDate.value!!.matches(Regex("[01]\\d/[0-3]\\d")))
+            contract.setErrorApplyGoingGoDate("MM/DD 포맷에 맞춰 정확한 날짜를 입력해주세요.")
+        else if(applyGoingGoTime.value.isNullOrBlank() || applyGoingGoTime.value!!.matches(kotlin.text.Regex("[0-1]\\d:[0-6]\\d\\s~\\s[0-2]\\d:[0-5]\\d")))
+            contract.setErrorApplyGoingGoTime("hh:mm ~ hh:mm 포맷에 맞춰 정확한 시간을 입력해주세요.")
+        else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason("사유를 입력하세요.")
 
         else {
             api.editGoingOut(

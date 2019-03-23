@@ -20,11 +20,11 @@ class ApplyGoingEditActivity: DataBindingActivity<ActivityApplyGoingEditBinding>
 
     override fun createShortToast(text: String) = toast(text).show()
 
-    override fun setErrorApplyGoingGoDate() { applyGoing_edit_going_date_edit.error = "날짜를 입력하세요." }
+    override fun setErrorApplyGoingGoDate(text: String) { applyGoing_edit_going_date_edit.error = text }
 
-    override fun setErrorApplyGoingGoTime() { applyGoing_edit_going_time_edit.error = "일시를 입력하세요." }
+    override fun setErrorApplyGoingGoTime(text: String) { applyGoing_edit_going_time_edit.error = text }
 
-    override fun setErrorApplyGoingReason() { applyGoing_edit_reason_content_edit.error = "사유를 입력해주세요" }
+    override fun setErrorApplyGoingReason(text: String) { applyGoing_edit_reason_content_edit.error = text }
 
     override fun backApplyGoing() = finish()
 }

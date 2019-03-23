@@ -48,7 +48,7 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
         val seatHorizonMargin = dip(8)
         val seatVerticalMargin = dip(16)
-        val seatSize = dip(36)
+        val seatSize = dip(40)
         val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
         layoutParam.verticalMargin = seatVerticalMargin
         layoutParam.horizontalMargin = seatHorizonMargin

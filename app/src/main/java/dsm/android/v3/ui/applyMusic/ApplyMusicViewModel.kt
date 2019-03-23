@@ -128,7 +128,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
             ).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when (response.code()) {
-                        200 -> {
+                        200, 204 -> {
                             Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
                             getData()
                             firstMusicClicked()
@@ -149,7 +149,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
             ).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     when (response.code()) {
-                        200 -> {
+                        200, 204 -> {
                             Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
                             getData()
                             secondMusicClicked()
