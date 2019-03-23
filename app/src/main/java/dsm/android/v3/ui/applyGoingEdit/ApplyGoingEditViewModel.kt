@@ -20,6 +20,10 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     val applyGoingGoTime = MutableLiveData<String>()
     val applyGoingReason = MutableLiveData<String>()
 
+    val applyGoingGoDateError = MutableLiveData<String>()
+    val applyGoingGoTimeError = MutableLiveData<String>()
+    val applyGoingReasonError = MutableLiveData<String>()
+
     init { setDataText() }
 
     private fun setDataText(){
@@ -52,13 +56,15 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     }
 
    fun applyGoingEditClickEdit(view: View){
-        if(applyGoingGoDate.value.isNullOrBlank() || applyGoingGoDate.value!!.matches(Regex("[01]\\d/[0-3]\\d")))
-            contract.setErrorApplyGoingGoDate("MM/DD 포맷에 맞춰 정확한 날짜를 입력해주세요.")
-        else if(applyGoingGoTime.value.isNullOrBlank() || applyGoingGoTime.value!!.matches(kotlin.text.Regex("[0-1]\\d:[0-6]\\d\\s~\\s[0-2]\\d:[0-5]\\d")))
-            contract.setErrorApplyGoingGoTime("hh:mm ~ hh:mm 포맷에 맞춰 정확한 시간을 입력해주세요.")
-        else if (applyGoingReason.value.isNullOrBlank()) contract.setErrorApplyGoingReason("사유를 입력하세요.")
-
-        else {
+        if(applyGoingGoDate.value.isNullOrBlank() or !applyGoingGoDate.value!!.matches(Regex("[0-1]\\d/[0-3]\\d")))
+            applyGoingGoDateError.value = "MM/DD 포맷에 맞춰 정확한 날짜를 입력해주세요."
+        else applyGoingGoDateError.value = null
+        if(applyGoingGoTime.value.isNullOrBlank() or !applyGoingGoTime.value!!.matches(Regex("[0-2]\\d:[0-5]\\d\\s~\\s[0-2]\\d:[0-5]\\d")))
+            applyGoingGoTimeError.value = "hh:mm ~ hh:mm 포맷에 맞춰 정확한 시간을 입력해주세요."
+        else applyGoingGoTimeError.value = null
+        if (applyGoingReason.value.isNullOrBlank()) applyGoingReasonError.value = "사유를 입력하세요."
+        else applyGoingReasonError.value = null
+        if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.editGoingOut(
                 getToken(view.context), hashMapOf(
                     "applyId" to deleteItem.id
