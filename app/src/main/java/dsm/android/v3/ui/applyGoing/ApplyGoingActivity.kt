@@ -31,6 +31,13 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(applyGoing_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        title = "외출 신청"
+        applyGoing_toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         val factory = ApplyGoingViewModelFactory(this)
         binding.applyGoingViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingViewModel::class.java)
         register(binding.applyGoingViewModel!!)
@@ -47,7 +54,6 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
         applyGoing_apply_list_pager.adapter = ApplyPageAdapter(models)
     }
 
-    override fun closeApplyGoing() = finish()
     override fun intentApplyGoingDoc() = startActivity<ApplyGoingDocActivity>()
 
     inner class ApplyPageAdapter(val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {

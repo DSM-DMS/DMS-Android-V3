@@ -16,19 +16,20 @@ class InstitutionReportViewModel(val contract: InstitutionReportContract): ViewM
     val institutionRoomNumber = MutableLiveData<String>()
     val institutionReportContent = MutableLiveData<String>()
 
+    val institutionTitleError = MutableLiveData<String>()
+    val institutionRoomNumberError = MutableLiveData<String>()
+    val institutionReportContentError = MutableLiveData<String>()
+
     fun institutionClickCancel() = contract.exitInstitutionReport()
 
     fun institutionClickSend(view: View){
-        if (institutionTitle.value.isNullOrBlank())
-            contract.flagInstitutionTitleBlankError()
-
-        else if (institutionRoomNumber.value.isNullOrBlank())
-            contract.flagInstitutionRoomNumberBlankError()
-
-        else if (institutionReportContent.value.isNullOrBlank())
-            contract.flagInstitutionContentBlankError()
-
-        else{
+        if (institutionTitle.value.isNullOrBlank()) institutionTitleError.value = "제목을 입력해주세요."
+        else institutionTitleError.value = null
+        if (institutionRoomNumber.value.isNullOrBlank()) institutionRoomNumberError.value = "방 번호를 입력해주세요."
+        else institutionRoomNumberError.value = null
+        if (institutionReportContent.value.isNullOrBlank()) institutionReportContentError.value = "내용을 입력해주세요."
+        else institutionReportContentError.value = null
+        if (institutionTitleError.value.isNullOrBlank() and institutionRoomNumberError.value.isNullOrBlank() and institutionReportContentError.value.isNullOrBlank()){
             api.reportInstitution(getToken(view.context), hashMapOf("room" to institutionRoomNumber.value!!.toInt()
                 , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
                 .enqueue(object: Callback<Unit> {

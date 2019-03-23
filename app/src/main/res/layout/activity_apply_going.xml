@@ -24,27 +24,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
+                    app:titleTextAppearance="@style/Toolbar.TitleText"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <ImageView
-                            android:onClick="@{()->applyGoingViewModel.applyGoingClickBack()}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_round_arrow_back_24_px"/>
-                    <TextView
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:lineSpacingExtra="2sp"
-                            android:text="@string/apply_going_appbar_title"
-                            android:textSize="@dimen/text_size_16"
-                            android:fontFamily="@font/nanumsquarebold"
-                            android:textColor="@color/colorWhite"/>
-                </LinearLayout>
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 

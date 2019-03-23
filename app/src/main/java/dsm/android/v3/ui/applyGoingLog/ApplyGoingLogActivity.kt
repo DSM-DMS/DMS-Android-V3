@@ -11,6 +11,7 @@ import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingEdit.ApplyGoingEditActivity
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.deleteItem
 import dsm.android.v3.util.DataBindingActivity
+import kotlinx.android.synthetic.main.activity_apply_going_log.*
 import org.jetbrains.anko.startActivity
 
 class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>(), ApplyGoingLogContract, ApplyGoingLogContract.ApplyGoingLogRv {
@@ -20,6 +21,13 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(applyGoing_log_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        title = intent.getStringExtra("title")
+        applyGoing_log_toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         val factory = ApplyGoingLogViewModelFactory(this, intent.getStringExtra("title"))
         binding.applyGoingApplyRecordRv.layoutManager = LinearLayoutManager(this)
         binding.applyGoingLogViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingLogViewModel::class.java)
@@ -34,6 +42,4 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
     override fun setApplyList(models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>) {
         binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(models, this)
     }
-
-    override fun backApplyGoing() = finish()
 }

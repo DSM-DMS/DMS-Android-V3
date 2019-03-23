@@ -77,6 +77,9 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
 
     val inputMusicLiveData = MutableLiveData<String>()
     val inputArtistLiveData = MutableLiveData<String>()
+
+    val inputMusicError = MutableLiveData<String>()
+    val inputArtistError = MutableLiveData<String>()
     val fragmentDismissLiveEvent = SingleLiveEvent<Any>()
 
     override fun apply(event: Lifecycle.Event) {
@@ -187,40 +190,42 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
     }
 
     fun applyMusic() {
-        val map = hashMapOf(
-            "singer" to inputArtistLiveData.value,
-            "musicName" to inputMusicLiveData.value,
-            "day" to pageStatusLiveData.value
-        )
-        Connecter.api.applyMusic(getToken(app.applicationContext), map).enqueue(object : Callback<Unit> {
-            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                when (response.code()) {
-                    201 -> {
-                        Toast.makeText(app.applicationContext, "기상음악 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-                        fragmentDismissLiveEvent.call()
-                        getData()
-                    }
-                    205 -> {
-                        Toast.makeText(app.applicationContext, "기상음악 신청이 모두 완료되었어요 ㅠㅠ", Toast.LENGTH_SHORT).show()
-                        fragmentDismissLiveEvent.call()
-                        getData()
-                    }
-                    403 -> {
-                        Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
-                        fragmentDismissLiveEvent.call()
-                    }
-                    400 -> {
-                        Toast.makeText(app.applicationContext, "공란을 모두 채워주세요", Toast.LENGTH_SHORT).show()
-                        fragmentDismissLiveEvent.call()
+        if (inputMusicLiveData.value.isNullOrBlank()) inputMusicError.value = "노래 제목을 입력해주세요."
+        else inputMusicError.value = null
+        if (inputArtistLiveData.value.isNullOrBlank()) inputArtistError.value = "아티스트를 입력해주세요."
+        else inputArtistError.value = null
+        if (inputMusicError.value.isNullOrBlank() and inputArtistError.value.isNullOrBlank()){
+            val map = hashMapOf(
+                "singer" to inputArtistLiveData.value,
+                "musicName" to inputMusicLiveData.value,
+                "day" to pageStatusLiveData.value
+            )
+            Connecter.api.applyMusic(getToken(app.applicationContext), map).enqueue(object : Callback<Unit> {
+                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                    when (response.code()) {
+                        201 -> {
+                            Toast.makeText(app.applicationContext, "기상음악 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                            fragmentDismissLiveEvent.call()
+                            getData()
+                        }
+                        205 -> {
+                            Toast.makeText(app.applicationContext, "기상음악 신청이 모두 완료되었어요 ㅠㅠ", Toast.LENGTH_SHORT).show()
+                            fragmentDismissLiveEvent.call()
+                            getData()
+                        }
+                        403 -> {
+                            Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
+                            fragmentDismissLiveEvent.call()
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Toast.makeText(app.applicationContext, "네트워크 연결이 원할하지 않습니다.", Toast.LENGTH_SHORT).show()
-                fragmentDismissLiveEvent.call()
-            }
+                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                    Toast.makeText(app.applicationContext, "네트워크 연결이 원할하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    fragmentDismissLiveEvent.call()
+                }
 
-        })
+            })
+        }
     }
 }

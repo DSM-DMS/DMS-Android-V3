@@ -33,8 +33,4 @@ class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionRepo
     override fun createShortToast(text: String) = toast(text).show()
 
     override fun exitInstitutionReport() = dialog.dismiss()
-
-    override fun flagInstitutionTitleBlankError() { institution_dialog_title_edit.error = "제목을 입력하세요."}
-    override fun flagInstitutionRoomNumberBlankError() { institution_dialog_room_number_edit.error = "방 번호을 입력하세요." }
-    override fun flagInstitutionContentBlankError() { institution_dialog_report_content_edit.error = "내용를 입력하세요." }
 }

@@ -33,7 +33,4 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
     override fun exitBugReport() = dialog.dismiss()
 
     override fun createShortToast(text: String) = toast(text).show()
-
-    override fun flagBugTitleBlankError() { bug_report_dialog_title_edit.error = "제목을 입력하세요." }
-    override fun flagBugContentBlankError() { bug_report_dialog_content_edit.error = "내용을 입력하세요." }
 }

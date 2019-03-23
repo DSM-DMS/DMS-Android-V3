@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
 import dsm.android.v3.model.ApplyStayingPagerModel
@@ -27,12 +28,18 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setSupportActionBar(applyStaying_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        title = "잔류 신청"
+        applyStaying_toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         val factory = ApplyStayingViewModelFactory(this)
         binding.applyStayingViewModel = ViewModelProviders.of(this, factory).get(ApplyStayingViewModel::class.java)
         setPager()
     }
-
-    override fun closeApplyStaying() = finish()
 
     override fun createShortToast(text: String) = toast(text).show()
 

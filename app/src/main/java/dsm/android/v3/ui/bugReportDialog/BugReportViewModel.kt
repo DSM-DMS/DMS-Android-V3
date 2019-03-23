@@ -14,14 +14,17 @@ class BugReportViewModel(val contract: BugReportContract): ViewModel(){
     val bugTitleEditText = MutableLiveData<String>()
     val bugContentEditText = MutableLiveData<String>()
 
+    val bugTitleError = MutableLiveData<String>()
+    val bugContentError = MutableLiveData<String>()
+
     fun bugClickCancel() = contract.exitBugReport()
 
     fun bugClickSend(view: View) {
-        if (bugTitleEditText.value.isNullOrBlank())
-            contract.flagBugTitleBlankError()
-        else if (bugContentEditText.value.isNullOrBlank())
-            contract.flagBugContentBlankError()
-        else {
+        if (bugTitleEditText.value.isNullOrBlank()) bugTitleError.value = "제목을 입력하세요."
+        else bugTitleError.value = null
+        if (bugContentEditText.value.isNullOrBlank()) bugContentError.value = "내용을 입력하세요"
+        else bugContentError.value = null
+        if (bugTitleError.value.isNullOrBlank() and bugContentError.value.isNullOrBlank()) {
             api.reportBug(getToken(view.context), hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
                 .enqueue(object : Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
