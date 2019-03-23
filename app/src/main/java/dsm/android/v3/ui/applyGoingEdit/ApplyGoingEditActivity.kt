@@ -20,5 +20,11 @@ class ApplyGoingEditActivity: DataBindingActivity<ActivityApplyGoingEditBinding>
 
     override fun createShortToast(text: String) = toast(text).show()
 
+    override fun setErrorApplyGoingGoDate(text: String) { applyGoing_edit_going_date_edit.error = text }
+
+    override fun setErrorApplyGoingGoTime(text: String) { applyGoing_edit_going_time_edit.error = text }
+
+    override fun setErrorApplyGoingReason(text: String) { applyGoing_edit_reason_content_edit.error = text }
+
     override fun backApplyGoing() = finish()
 }
