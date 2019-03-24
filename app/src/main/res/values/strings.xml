@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DMS-Android-V3</string>
+    <string name="app_name">DMS</string>
     <string name="navigation_food">급식</string>
     <string name="navigation_submit">신청</string>
     <string name="navigation_notice">공지</string>

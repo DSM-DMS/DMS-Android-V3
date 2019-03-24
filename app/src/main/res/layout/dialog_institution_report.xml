@@ -107,7 +107,7 @@
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="280dp"
-                android:layout_height="140dp"
+                android:layout_height="wrap_content"
                 app:errorValue="@{InstitutionReportViewModel.institutionReportContentError}"
                 app:errorEnabled="true"
                 android:id="@+id/institution_dialog_report_content_edit">
@@ -116,7 +116,7 @@
                     android:gravity="top"
                     android:text="@={InstitutionReportViewModel.institutionReportContent}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="140dp"
                     android:hint="@string/institution_dialog_edit_report_content"
                     android:textSize="@dimen/typo_body1"/>
             </android.support.design.widget.TextInputLayout>

@@ -49,8 +49,6 @@
         </activity>
         <activity android:name=".ui.applyExtensionStudy.ApplyExtensionStudyActivity">
         </activity>
-        <activity android:name=".ui.applyMusic.ApplyMusicActivity"/>
-        <activity android:name=".ui.applyMusicLog.ApplyMusicLogActivity"/>
         <activity android:name=".ui.notice.NoticeActivity"/>
     </application>
 </manifest>
