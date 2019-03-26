@@ -48,15 +48,16 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
                                 .getAuthDao().insert(auth)
                         }
                         Toast.makeText(view.context, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        saveToken(view.context,response.body()!!.token)
+                        saveToken(view.context, response.body()!!.token)
                         saveToken(view.context, response.body()!!.refreshToken!!, false)
                         navigator.intentToMain()
                     }
-                    401 -> {
+                    204 ->
                         Toast.makeText(view.context, "로그인 실패", Toast.LENGTH_SHORT).show()
-                    } else -> Toast.makeText(view.context, "오류코드: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(view.context, "오류코드: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
+
             override fun onFailure(call: Call<AuthModel>, t: Throwable) {
                 Toast.makeText(view.context, "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
