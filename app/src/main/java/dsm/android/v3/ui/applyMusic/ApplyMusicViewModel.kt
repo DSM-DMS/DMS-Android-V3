@@ -177,8 +177,10 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                         model.value = response.body()
                         pageStatusLiveData.value = pageStatusLiveData.value
                     }
-                    204 ->
+                    204 -> {
                         model.value = ApplyMusicModel()
+                        pageStatusLiveData.value = pageStatusLiveData.value
+                    }
                 }
             }
 
@@ -194,7 +196,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
         else inputMusicError.value = null
         if (inputArtistLiveData.value.isNullOrBlank()) inputArtistError.value = "아티스트를 입력해주세요."
         else inputArtistError.value = null
-        if (inputMusicError.value.isNullOrBlank() and inputArtistError.value.isNullOrBlank()){
+        if (inputMusicError.value.isNullOrBlank() and inputArtistError.value.isNullOrBlank()) {
             val map = hashMapOf(
                 "singer" to inputArtistLiveData.value,
                 "musicName" to inputMusicLiveData.value,
