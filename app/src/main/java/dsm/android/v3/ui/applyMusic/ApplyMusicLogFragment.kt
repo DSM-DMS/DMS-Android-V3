@@ -20,7 +20,6 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         binding.viewModel = viewModel
         viewModel.dialogCallEvent.observe(this, Observer {
             ApplyMusicDialogFragment().show(fragmentManager, "시ㅡ발")
-//            findNavController().navigate(ApplyMusicLogFragmentDirections.actionApplyMusicLogFragmentToApplyMusicDialogFragment())
         })
     }
 
