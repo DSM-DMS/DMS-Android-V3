@@ -92,6 +92,7 @@
     <string name="apply_extension_study_third_floor_text">3층 독서실</string>
     <string name="apply_extension_study_fourth_floor_text">4층 독서실</string>
     <string name="apply_extension_study_fifth_floor_text">5층 독서실</string>
+    <string name="apply_extension_study_third_floor_sofa">3층 쇼파</string>
     <string name="apply_extension_study_cancel_btn">취소</string>
     <string name="apply_extension_study_apply_btn">신청</string>
     <string name="apply_extension_study_board_text">칠판</string>
