@@ -66,8 +66,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/apply_going_doc_date_hint"
                             android:textSize="@dimen/typo_body1"
-                            android:maxLength="5"
-                            android:inputType="number"/>
+                            android:maxLength="5"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
