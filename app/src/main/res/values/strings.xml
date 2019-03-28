@@ -20,7 +20,7 @@
     <string name="mypage_intro_developers_title">개발자 소개</string>
     <string name="mypage_logout_content">기기내 계정에서 로그아웃합니다.</string>
     <string name="mypage_password_change_content">DMS 계정의 비밀번호를 변경합니다.</string>
-    <string name="mypage_merit_history_content">우정관 상 / 벌점 내역을 확인랍니다.</string>
+    <string name="mypage_merit_history_content">우정관 상 / 벌점 내역을 확인합니다.</string>
     <string name="mypage_intro_developers_content">DMS팀의 개발자를 소개합니다.</string>
     <string name="logout_dialog_bold_content">DMS 계정에서 로그아웃 하시겠습니까?</string>
     <string name="logout_dialog_light_content">(현재 접속중인 계정에서 로그아웃을 진행합니다.)</string>
