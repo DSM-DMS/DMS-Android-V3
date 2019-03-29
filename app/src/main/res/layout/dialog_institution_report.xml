@@ -56,6 +56,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
+                    android:maxLines="3"
                     android:text="@={InstitutionReportViewModel.institutionTitle}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:background="@null"
@@ -84,6 +85,7 @@
                     app:errorValue="@{InstitutionReportViewModel.institutionRoomNumberError}"
                     app:errorEnabled="true">
                 <android.support.design.widget.TextInputEditText
+                        android:maxLines="1"
                         android:text="@={InstitutionReportViewModel.institutionRoomNumber}"
                         android:fontFamily="@font/nanumsquarebold"
                         android:background="@null"
@@ -112,6 +114,7 @@
                 app:errorEnabled="true"
                 android:id="@+id/institution_dialog_report_content_edit">
                 <android.support.design.widget.TextInputEditText
+                    android:maxLines="10"
                     android:fontFamily="@font/nanumsquarebold"
                     android:gravity="top"
                     android:text="@={InstitutionReportViewModel.institutionReportContent}"

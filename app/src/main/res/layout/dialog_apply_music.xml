@@ -62,6 +62,7 @@
                     android:id="@+id/music_dialog_title_edit">
 
                 <android.support.design.widget.TextInputEditText
+                        android:maxLines="3"
                         android:fontFamily="@font/nanumsquarebold"
                         android:text="@={viewModel.inputMusicLiveData}"
                         android:layout_width="match_parent"
@@ -89,6 +90,7 @@
                     android:id="@+id/music_dialog_content_edit">
 
                 <android.support.design.widget.TextInputEditText
+                        android:maxLines="3"
                         android:fontFamily="@font/nanumsquarebold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

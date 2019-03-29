@@ -57,6 +57,7 @@
                 android:id="@+id/bug_report_dialog_title_edit">
 
                 <android.support.design.widget.TextInputEditText
+                    android:maxLines="3"
                     android:text="@={BugReportViewModel.bugTitleEditText}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:layout_width="match_parent"
@@ -81,6 +82,7 @@
                 app:errorEnabled="true"
                 android:id="@+id/bug_report_dialog_content_edit">
                 <android.support.design.widget.TextInputEditText
+                    android:maxLines="10"
                     android:text="@={BugReportViewModel.bugContentEditText}"
                     android:fontFamily="@font/nanumsquarebold"
                     android:layout_width="match_parent"

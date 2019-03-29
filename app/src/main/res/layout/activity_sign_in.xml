@@ -93,6 +93,7 @@
                     app:layout_constraintHorizontal_bias="0.0"/>
 
             <EditText
+                    android:maxLines="1"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:id="@+id/signIn_id_et"
@@ -128,6 +129,7 @@
                     app:layout_constraintVertical_bias="0.0"/>
 
             <EditText
+                    android:maxLines="1"
                     android:inputType="textPassword"
                     android:layout_width="0dp" android:layout_height="50dp" android:id="@+id/signIn_pw_et"
                     app:layout_constraintTop_toBottomOf="@+id/signIn_pw_tv"

@@ -53,6 +53,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:errorEnabled="true">
                     <android.support.design.widget.TextInputEditText
+                            android:maxLines="1"
                             android:text="@={applyGoingEditViewModel.applyGoingGoDate}"
                             android:fontFamily="@font/nanumsquarebold"
                             android:background="@null"
@@ -81,6 +82,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:errorEnabled="true">
                     <android.support.design.widget.TextInputEditText
+                            android:maxLines="1"
                             android:text="@={applyGoingEditViewModel.applyGoingGoTime}"
                             android:fontFamily="@font/nanumsquarebold"
                             android:background="@null"
@@ -121,6 +123,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:errorEnabled="true">
                     <android.support.design.widget.TextInputEditText
+                            android:maxLines="4"
                             android:text="@={applyGoingEditViewModel.applyGoingReason}"
                             android:fontFamily="@font/nanumsquarebold"
                             android:background="@null"

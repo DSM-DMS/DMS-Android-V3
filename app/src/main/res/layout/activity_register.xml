@@ -79,6 +79,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/register_code_et"/>
 
             <EditText
+                    android:maxLines="1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintHeight_max="50dp"
@@ -115,6 +116,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/register_id_et"/>
 
             <EditText
+                    android:maxLines="1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintHeight_max="50dp"
@@ -151,6 +153,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/register_pw_et"/>
 
             <EditText
+                    android:maxLines="1"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -186,6 +189,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/register_pw_again_et"/>
 
             <EditText
+                    android:maxLines="1"
                     android:id="@+id/register_pw_again_et"
                     android:inputType="textPassword"
                     android:layout_width="0dp"
