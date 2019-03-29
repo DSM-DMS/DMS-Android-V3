@@ -3,106 +3,78 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent">
 
     <TextView
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notice_title"
             android:textSize="24sp"
-            android:textStyle="bold"
             android:textColor="@color/colorPrimary"
-            android:layout_marginTop="49dp"
-            android:layout_marginLeft="24dp"
-            android:fontFamily="@font/nanumsquareregular"
+            android:fontFamily="@font/nanumsquareextrabold"
             android:id="@+id/notice_title_tv"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0"
-            />
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+            android:fontFamily="@font/nanumsquareextrabold"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="21dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notice_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notice_description_highlight"
-            android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
-            android:id="@+id/notice_description1_tv"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/notice_title_tv"
-            android:layout_marginTop="21dp"
-            />
+            android:id="@+id/notice_description1_tv"/>
 
     <TextView
+            app:layout_constraintTop_toTopOf="@id/notice_description1_tv"
+            app:layout_constraintStart_toEndOf="@id/notice_description1_tv"
             android:id="@+id/notice_description2_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notice_description"
-            android:textStyle="bold"
             android:textColor="@color/colorGray800"
             android:fontFamily="@font/nanumsquareregular"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/notice_description1_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/notice_title_tv"
-            android:layout_marginTop="21dp"/>
+            android:textSize="14sp"/>
 
     <TextView
+            android:layout_marginStart="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notice_description1_tv"
             android:id="@+id/notice_description3_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notice_description2"
-            android:textStyle="bold"
             android:textColor="@color/colorGray800"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/nanumsquareregular"
-            android:layout_marginStart="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/notice_description1_tv"
-            />
+            android:fontFamily="@font/nanumsquareregular"/>
 
     <dsm.android.v3.ui.customView.CustomCardView
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@id/notice_description3_tv"
+            app:layout_constraintBottom_toTopOf="@id/notice_rules_customview"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="210dp"
+            android:layout_height="wrap_content"
             android:id="@+id/notice_notice_customview"
             app:title="@string/notice_notice_title"
             app:description="@string/notice_notice_description"
-            app:count="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.35000002"/>
+            app:count="3"/>
 
     <dsm.android.v3.ui.customView.CustomCardView
+            android:layout_marginTop="24dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@id/notice_notice_customview"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:id="@+id/notice_rules_customview"
             app:title="@string/notice_rules_title"
             app:description="@string/notice_rules_description"
-            app:count="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notice_notice_customview"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:count="3"/>
 
 </android.support.constraint.ConstraintLayout>
