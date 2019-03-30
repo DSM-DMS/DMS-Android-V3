@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Api17CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginHorizontal="8dp"
+        android:onClick="@{() -> viewModel.firstMusicClicked()}"
+        app:layout_constraintTop_toBottomOf="@id/apply_music_explanation_tv"
+        android:id="@+id/apply_first_music_log_card_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@{viewModel.firstMusicIsClicked ? @color/colorPrimary : @color/colorWhite}"
+        app:cardElevation="8dp"
+        android:layout_marginTop="36dp"
+        android:shadowColor="@color/colorPrimary"
+        app:cardCornerRadius="16dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <TextView
+                android:id="@+id/apply_first_music_log_card_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray700}"
+                android:textSize="@dimen/typo_header"
+                android:text="@{viewModel.firstMusicLiveData}"
+                android:fontFamily="@font/nanumsquarebold"
+                tools:text="Something Just Like This"/>
+
+        <TextView
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.firstSingerLiveData}"
+                android:id="@+id/apply_first_music_log_card_artist_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_body1"
+                tools:text="Coldplay"
+                android:fontFamily="@font/nanumsquareregular"
+                android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray600}"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="2sp"/>
+
+        <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/apply_first_music_log_card_student_tv"
+                android:text="@{viewModel.firstStudentLiveData}"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/nanumsquareregular"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/typo_body1"
+                tools:text="2312 윤석민"
+                android:textColor="@{viewModel.firstMusicIsClicked ? @color/colorWhite : @color/colorGray400}"
+                android:lineSpacingExtra="1sp"/>
+
+    </LinearLayout>
+</android.support.v7.widget.Api17CardView>
