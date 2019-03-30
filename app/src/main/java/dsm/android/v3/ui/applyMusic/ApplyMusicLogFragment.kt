@@ -6,8 +6,10 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import dsm.android.v3.R
+import dsm.android.v3.adapter.ApplyMusicAdapter
 import dsm.android.v3.databinding.FragmentApplyMusicLogBinding
 import dsm.android.v3.util.DataBindingFragment
+import kotlinx.android.synthetic.main.fragment_apply_music_log.*
 
 class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>() {
 
@@ -21,6 +23,7 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         viewModel.dialogCallEvent.observe(this, Observer {
             ApplyMusicDialogFragment().show(fragmentManager, "시ㅡ발")
         })
+        apply_music_musicList_rv.adapter = ApplyMusicAdapter()
     }
 
 
