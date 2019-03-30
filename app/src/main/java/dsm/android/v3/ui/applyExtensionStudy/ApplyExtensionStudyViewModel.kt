@@ -23,6 +23,11 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
     private val clickedTimeView = MutableLiveData<View>()
     private val clickedClassView = MutableLiveData<View>()
 
+    val topLocation = MutableLiveData<String>()
+    val leftLocation = MutableLiveData<String>()
+    val rightLocation = MutableLiveData<String>()
+
+
     init {
         applyExtensionStudyClickClass(classView, 1)
         applyExtensionStudyClickTime(timeView, 11)
@@ -47,6 +52,32 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
     }
 
     fun applyExtensionStudyClickClass(textView: View, classNum: Int){
+        when(classNum){
+            1, 2, 3, 4 -> {
+                topLocation.value = "칠판"
+                leftLocation.value = "창문"
+                rightLocation.value = "복도"
+            }
+
+            7, 9, 10 -> {
+                topLocation.value = "창문"
+                leftLocation.value = "옆방"
+                rightLocation.value = "계단"
+            }
+
+            6, 8 -> {
+                topLocation.value = "창문"
+                leftLocation.value = "학교"
+                rightLocation.value = "옆방"
+            }
+
+            5, 11 -> {
+                topLocation.value = ""
+                leftLocation.value = ""
+                rightLocation.value = ""
+            }
+        }
+
         if (this.classNum.value != classNum){
             clickedClassView.value?.let { contract.originTextViewColor(it as TextView) }
             contract.changeTextViewColor(textView as TextView)

@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/mypage_info_tv"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="25dp">
     
                 <LinearLayout
@@ -269,7 +269,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="36dp"
-                    android:paddingVertical="16dp"
                     android:onClick="@{()->MyPageViewModel.clickEnterLogout()}">
     
                     <TextView
@@ -294,8 +293,7 @@
                         android:textColor="@color/colorGray400"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/mypage_logout_content"
-                        android:fontFamily="@font/nanumsquareregular"
-                        android:layout_marginTop="6dp"/>
+                        android:fontFamily="@font/nanumsquareregular"/>
     
                     <ImageView
                         android:src="@drawable/ic_arrow_gray"
@@ -314,7 +312,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="36dp"
-                    android:paddingVertical="16dp"
                     android:onClick="@{()->MyPageViewModel.clickEnterPasswordChange()}">
     
                     <TextView
@@ -339,8 +336,7 @@
                         android:textColor="@color/colorGray400"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_password_change_content"
-                        android:fontFamily="@font/nanumsquareregular"
-                        android:layout_marginTop="6dp"/>
+                        android:fontFamily="@font/nanumsquareregular"/>
     
                     <ImageView
                         android:src="@drawable/ic_arrow_gray"
@@ -359,7 +355,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="36dp"
-                    android:paddingVertical="16dp"
                     android:onClick="@{()->MyPageViewModel.clickEnterMeritHistory()}">
     
                     <TextView
@@ -384,8 +379,7 @@
                         android:textColor="@color/colorGray400"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_merit_history_content"
-                        android:fontFamily="@font/nanumsquareregular"
-                        android:layout_marginTop="6dp"/>
+                        android:fontFamily="@font/nanumsquareregular"/>
     
                     <ImageView
                         android:src="@drawable/ic_arrow_gray"
@@ -404,7 +398,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="36dp"
-                    android:paddingVertical="16dp"
                     android:onClick="@{()->MyPageViewModel.clickEnterIntroDevelopers()}">
     
                     <TextView
@@ -429,8 +422,7 @@
                         android:textColor="@color/colorGray400"
                         android:lineSpacingExtra="2dp"
                         android:text="@string/mypage_intro_developers_content"
-                        android:fontFamily="@font/nanumsquareregular"
-                        android:layout_marginTop="6dp"/>
+                        android:fontFamily="@font/nanumsquareregular"/>
     
                     <ImageView
                         android:src="@drawable/ic_arrow_gray"

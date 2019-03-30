@@ -29,6 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/introDeveloperItem_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/nanumsquareregular"
                 android:id="@+id/introDeveloperItem_career_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

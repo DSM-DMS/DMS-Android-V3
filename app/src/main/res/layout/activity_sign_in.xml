@@ -35,7 +35,7 @@
                 android:text="DMS for Android"
                 android:fontFamily="@font/ralewaybold"
                 android:textSize="16sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorWhite"
                 app:layout_constraintTop_toBottomOf="@+id/signIn_appLogo_img"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dormitory Management System"
                 android:textSize="10sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary300"
                 android:fontFamily="@font/ralewaybold"
                 app:layout_constraintTop_toBottomOf="@+id/signIn_DMS_for_Android_tv"
                 android:layout_marginEnd="8dp"
@@ -93,11 +93,11 @@
                     app:layout_constraintHorizontal_bias="0.0"/>
 
             <EditText
+                    android:maxLines="1"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:id="@+id/signIn_id_et"
                     android:hint="아이디를 입력해주세요"
-                    android:fontFamily="@font/nanumsquareregular"
                     android:text="@={vm.signInId}"
                     android:textColor="#000000"
                     android:singleLine="true"
@@ -122,19 +122,29 @@
                     android:textSize="16sp"
                     android:textColor="@color/colorTvUnCliked"
                     app:layout_constraintTop_toBottomOf="@+id/signIn_id_et"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2" app:layout_constraintHorizontal_bias="0.0"
-                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0.0"/>
 
             <EditText
+                    android:maxLines="1"
                     android:inputType="textPassword"
-                    android:layout_width="0dp" android:layout_height="50dp" android:id="@+id/signIn_pw_et"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/signIn_pw_et"
                     app:layout_constraintTop_toBottomOf="@+id/signIn_pw_tv"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="46dp"
-                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="46dp"
-                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
-                    android:layout_marginTop="10dp" android:hint="비밀번호를 입력해주세요"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="46dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="46dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginTop="10dp"
+                    android:hint="비밀번호를 입력해주세요"
                     android:text="@={vm.signInPw}"
                     android:singleLine="true"
                     android:textColor="#000000"
@@ -173,14 +183,16 @@
             <android.support.constraint.Guideline
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:layout_constraintGuide_begin="46dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintGuide_begin="46dp"
                     android:id="@+id/guideline"/>
 
             <android.support.constraint.Guideline
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/guideline2" app:layout_constraintGuide_end="47dp"/>
+                    android:id="@+id/guideline2"
+                    app:layout_constraintGuide_end="47dp"/>
 
         </android.support.constraint.ConstraintLayout>
 

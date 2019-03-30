@@ -24,11 +24,12 @@
                 android:text="공지사항"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/nanumsquareextrabold"
                 android:textColor="@color/colorGray700"
                 />
 
         <TextView
+                android:fontFamily="@font/nanumsquareregular"
                 android:id="@+id/itemNotice_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

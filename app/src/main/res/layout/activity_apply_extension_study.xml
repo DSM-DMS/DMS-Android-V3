@@ -223,6 +223,22 @@
                         android:paddingVertical="6dp"
                         android:paddingHorizontal="16dp"
                         android:layout_marginStart="8dp"/>
+
+                <TextView
+                        android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickClass(view, 11)}"
+                        android:background="@drawable/radius_grayline_view"
+                        android:id="@+id/applyExtension_third_floor_sofa_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/apply_extension_study_third_floor_sofa"
+                        android:textSize="@dimen/typo_body2"
+                        android:fontFamily="@font/nanumsquarebold"
+                        android:textColor="@color/colorGray400"
+                        android:paddingVertical="6dp"
+                        android:paddingHorizontal="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"/>
             </LinearLayout>
 
         </HorizontalScrollView>
@@ -259,7 +275,7 @@
                     android:fontFamily="@font/nanumsquarebold"
                     android:textSize="@dimen/typo_body1"
                     android:textColor="@color/colorPrimary300"
-                    android:text="@string/apply_extension_study_board_text"
+                    android:text="@{applyExtensionStudyViewModel.topLocation}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -272,7 +288,7 @@
                     android:fontFamily="@font/nanumsquarebold"
                     android:textSize="@dimen/typo_body1"
                     android:textColor="@color/colorPrimary300"
-                    android:text="@string/apply_extension_study_window_text"
+                    android:text="@{applyExtensionStudyViewModel.leftLocation}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -286,7 +302,7 @@
                     android:fontFamily="@font/nanumsquarebold"
                     android:textSize="@dimen/typo_body1"
                     android:textColor="@color/colorPrimary300"
-                    android:text="@string/apply_extension_study_hallway_text"
+                    android:text="@{applyExtensionStudyViewModel.rightLocation}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

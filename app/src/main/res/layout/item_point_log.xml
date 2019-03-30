@@ -15,6 +15,7 @@
             android:layout_height="match_parent">
 
         <TextView
+                android:fontFamily="@font/nanumsquarebold"
                 android:id="@+id/pointLogItem_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
                 app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
+                android:fontFamily="@font/nanumsquareregular"
                 android:id="@+id/pointLogItem_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,12 +42,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/nanumsquareextrabold"
                 android:id="@+id/pointLogItem_point_tv"
                 android:layout_width="wrap_content"
                 android:textSize="20sp"
                 tools:text="+3"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
                 app:layout_constraintEnd_toEndOf="parent"

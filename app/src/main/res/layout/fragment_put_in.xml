@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
+                android:fontFamily="@font/nanumsquareextrabold"
                 android:text="신청"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="25dp"
@@ -34,6 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray500"
+                android:fontFamily="@font/nanumsquareregular"
                 android:textSize="@dimen/typo_subtitle"
                 android:text="연장, 잔류, 외출, 기상 음악을 신청 할 수 있습니다."
                 android:layout_marginTop="12dp"
@@ -66,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="연장 신청"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/nanumsquareextrabold"
                         android:textSize="18sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +77,7 @@
                         app:layout_constraintVertical_chainStyle="packed"/>
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareregular"
                         android:id="@+id/putIn_extension_content_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -111,11 +113,11 @@
                     android:layout_height="match_parent">
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareextrabold"
                         android:id="@+id/putIn_stay_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="잔류 신청"
-                        android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +127,7 @@
                         app:layout_constraintVertical_chainStyle="packed"/>
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareregular"
                         android:id="@+id/putIn_stay_content_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -160,11 +163,11 @@
                     android:layout_height="match_parent">
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareextrabold"
                         android:id="@+id/putIn_music_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="기상음악 신청"
-                        android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +177,7 @@
                         app:layout_constraintVertical_chainStyle="packed"/>
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareregular"
                         android:id="@+id/putIn_music_content_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -210,11 +214,11 @@
                     android:layout_height="match_parent">
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareextrabold"
                         android:id="@+id/putIn_goingOut_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="외출 신청"
-                        android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -224,6 +228,7 @@
                         app:layout_constraintVertical_chainStyle="packed"/>
 
                 <TextView
+                        android:fontFamily="@font/nanumsquareregular"
                         android:id="@+id/putIn_goingOut_content_tv"
                         android:layout_width="0dp"
                         android:layout_height="17dp"
