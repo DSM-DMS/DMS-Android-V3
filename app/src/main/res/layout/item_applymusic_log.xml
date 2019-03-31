@@ -7,18 +7,27 @@
     <data>
 
         <variable
+                name="index"
+                type="Integer"/>
+
+        <variable
                 name="musicData"
                 type="dsm.android.v3.model.ApplyMusicDetailModel"/>
+
+        <variable
+                name="viewModel"
+                type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
     </data>
 
     <android.support.v7.widget.Api17CardView
             android:layout_marginHorizontal="8dp"
             app:layout_constraintTop_toBottomOf="@id/apply_music_explanation_tv"
             android:id="@+id/apply_first_music_log_card_lay"
+            android:onClick="@{() -> viewModel.musicClicked(index)}"
+            app:cardBackgroundColor="@{viewModel.selectedIndex == index ? @color/colorPrimary : @color/colorWhite}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="8dp"
-            android:shadowColor="@color/colorPrimary"
             app:cardCornerRadius="16dp">
 
         <LinearLayout
@@ -33,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/typo_header"
                     android:text="@{musicData.musicName}"
+                    android:textColor="@{viewModel.selectedIndex == index ? @color/colorWhite : @color/colorGray700}"
                     android:fontFamily="@font/nanumsquarebold"
                     tools:text="Something Just Like This"/>
 
@@ -43,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/typo_body1"
                     android:text="@{musicData.singer}"
+                    android:textColor="@{viewModel.selectedIndex == index ? @color/colorWhite : @color/colorGray600}"
                     tools:text="Coldplay"
                     android:fontFamily="@font/nanumsquareregular"
                     android:letterSpacing="0.02"
@@ -55,6 +66,7 @@
                     android:fontFamily="@font/nanumsquareregular"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/typo_body1"
+                    android:textColor="@{viewModel.selectedIndex == index ? @color/colorWhite : @color/colorGray400}"
                     android:text="@{musicData.studentName}"
                     tools:text="2312 윤석민"
                     android:lineSpacingExtra="1sp"/>

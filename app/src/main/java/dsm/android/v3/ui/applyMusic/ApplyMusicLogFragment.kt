@@ -20,10 +20,13 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         super.onViewCreated(view, savedInstanceState)
         val viewModel = ViewModelProviders.of(activity!!).get(ApplyMusicViewModel::class.java)
         binding.viewModel = viewModel
+        apply_music_musicList_rv.adapter = ApplyMusicAdapter(viewModel)
         viewModel.dialogCallEvent.observe(this, Observer {
             ApplyMusicDialogFragment().show(fragmentManager, "시ㅡ발")
         })
-        apply_music_musicList_rv.adapter = ApplyMusicAdapter()
+        viewModel.dataSetChangedLiveEvent.observe(this, Observer {
+            apply_music_musicList_rv.adapter!!.notifyDataSetChanged()
+        })
     }
 
 
