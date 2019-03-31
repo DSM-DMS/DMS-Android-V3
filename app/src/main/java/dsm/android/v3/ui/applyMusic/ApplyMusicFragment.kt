@@ -72,18 +72,6 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
         apply_music_apply_list_pager.adapter = ApplyPageAdapter(models)
     }
 
-    fun changeColor(view: View) {
-        view.item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(context!!, R.color.colorPrimary))
-        view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(context!!, R.color.colorWhite)
-        view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(context!!, R.color.colorWhite)
-    }
-
-    fun originalColor(view: View) {
-        view.item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(context!!, R.color.colorWhite))
-        view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(context!!, R.color.colorPrimary)
-        view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(context!!, R.color.colorGray600)
-    }
-
     inner class ApplyPageAdapter(val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
 
         override fun isViewFromObject(p0: View, p1: Any): Boolean = p0 == p1
