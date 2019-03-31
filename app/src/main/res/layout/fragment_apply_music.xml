@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
                 name="viewModel"
                 type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
@@ -69,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:visibility="@{viewModel.model == null ? View.INVISIBLE : View.VISIBLE}"
                 android:onClick="@{() -> viewModel.actionMusicLogCall()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
