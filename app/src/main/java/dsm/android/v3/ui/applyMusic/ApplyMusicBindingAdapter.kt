@@ -1,4 +1,4 @@
-@file:JvmName("")
+@file:JvmName("ApplyMusicBindingAdapter")
 
 package dsm.android.v3.ui.applyMusic
 
