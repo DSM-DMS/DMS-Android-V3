@@ -22,7 +22,7 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         binding.viewModel = viewModel
         apply_music_musicList_rv.adapter = ApplyMusicAdapter(viewModel)
         viewModel.dialogCallEvent.observe(this, Observer {
-            ApplyMusicDialogFragment().show(fragmentManager, "시ㅡ발")
+            ApplyMusicDialogFragment().show(fragmentManager, "ApplyMusicDialogFragment")
         })
         viewModel.dataSetChangedLiveEvent.observe(this, Observer {
             apply_music_musicList_rv.adapter!!.notifyDataSetChanged()
