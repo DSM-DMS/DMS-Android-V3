@@ -2,6 +2,7 @@ package dsm.android.v3.ui.applyMusic
 
 import android.app.Application
 import android.arch.lifecycle.*
+import android.util.Log
 import android.widget.Toast
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.ApplyMusicDetailModel
@@ -19,17 +20,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
     val actionMusicLogLiveEvent = SingleLiveEvent<Any>()
     val model = MutableLiveData<ApplyMusicModel>()
     val pageStatusLiveData = MutableLiveData<Int>()
-    val firstMusicIsClicked = MutableLiveData<Boolean>().apply { value = false }
-    val secondMusicIsClicked = MutableLiveData<Boolean>().apply { value = false }
     val dialogCallEvent = SingleLiveEvent<Any>()
-    val isMusicSelected = MediatorLiveData<Boolean>().apply {
-        addSource(firstMusicIsClicked) {
-            value = it
-        }
-        addSource(secondMusicIsClicked) {
-            value = it
-        }
-    }
     val weekLiveData = Transformations.map(pageStatusLiveData) {
         when (it) {
             0 -> "월요일 기상음악"
@@ -53,27 +44,20 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
 
     val musicsLiveData = Transformations.map(pageStatusLiveData) {
         when (it) {
-            0 -> model.value?.mon
-            1 -> model.value?.tue
-            2 -> model.value?.wed
-            3 -> model.value?.thu
-            4 -> model.value?.fri
-            else -> ArrayList()
+            0 -> model.value?.mon!!.addIfNotFive(emptyMusicDetailModel)
+            1 -> model.value?.tue!!.addIfNotFive(emptyMusicDetailModel)
+            2 -> model.value?.wed!!.addIfNotFive(emptyMusicDetailModel)
+            3 -> model.value?.thu!!.addIfNotFive(emptyMusicDetailModel)
+            4 -> model.value?.fri!!.addIfNotFive(emptyMusicDetailModel)
+            else -> arrayListOf(emptyMusicDetailModel)
         }
     }
 
-    val firstMusicLiveData =
-        Transformations.map(musicsLiveData) { if (it!!.size >= 1) it[0].musicName else "신청곡이 없습니다." }
-    val firstSingerLiveData =
-        Transformations.map(musicsLiveData) { if (it!!.size >= 1) it[0].singer else "눌러서 노래를 신청해주세요." }
-    val firstStudentLiveData = Transformations.map(musicsLiveData) { if (it!!.size >= 1) it[0].studentName else "신청없음" }
+    var selectedIndex = MutableLiveData<Int?>()
 
-    val secondMusicLiveData =
-        Transformations.map(musicsLiveData) { if (it!!.size >= 2) it[1].musicName else "신청곡이 없습니다." }
-    val secondSingerLiveData =
-        Transformations.map(musicsLiveData) { if (it!!.size >= 2) it[1].singer else "눌러서 노래를 신청해주세요." }
-    val secondStudentLiveData =
-        Transformations.map(musicsLiveData) { if (it!!.size >= 2) it[1].studentName else "신청없음" }
+    val emptyMusicDetailModel =
+        ApplyMusicDetailModel(musicName = "신청곡이 없습니다.", singer = "눌러서 노래를 신청해주세요.", studentName = "신청없음")
+    val dataSetChangedLiveEvent = SingleLiveEvent<Any>()
 
     val inputMusicLiveData = MutableLiveData<String>()
     val inputArtistLiveData = MutableLiveData<String>()
@@ -86,8 +70,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
         when (event) {
             Lifecycle.Event.ON_START -> {
                 pageStatusLiveData.postValue(0)
-                firstMusicIsClicked.postValue(false)
-                secondMusicIsClicked.postValue(false)
+                selectedIndex.postValue(null)
                 getData()
             }
         }
@@ -95,78 +78,42 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
 
     fun actionMusicLogCall() = actionMusicLogLiveEvent.call()
 
-    fun firstMusicClicked() {
-        if (musicsLiveData.value!!.size == 0) {
-            dialogCallEvent.call()
-        } else if (firstMusicIsClicked.value == false) {
-            if (secondMusicIsClicked.value == true) {
-                secondMusicIsClicked.value = false
-                firstMusicIsClicked.value = true
-            } else {
-                firstMusicIsClicked.value = true
-            }
-        } else
-            firstMusicIsClicked.value = false
-    }
-
-    fun secondMusicClicked() {
-        if (musicsLiveData.value!!.size <= 1) {
-            dialogCallEvent.call()
-        } else if (secondMusicIsClicked.value == false) {
-            if (firstMusicIsClicked.value == true) {
-                firstMusicIsClicked.value = false
-                secondMusicIsClicked.value = true
-            } else {
-                secondMusicIsClicked.value = true
-            }
-        } else
-            secondMusicIsClicked.value = false
+    fun musicClicked(index: Int) {
+        when {
+            musicsLiveData.value!![index].id == "" -> dialogCallEvent.call()
+            selectedIndex.value != index -> selectedIndex.value = index
+            else -> selectedIndex.value = null
+        }
+        dataSetChangedLiveEvent.call()
+        Log.d("SelectedIndex", "SelectedIndex: $selectedIndex")
     }
 
     fun cancelMusic() {
-        if (firstMusicIsClicked.value!!) {
-            Connecter.api.deleteMusic(
-                getToken(app.applicationContext),
-                hashMapOf("applyId" to musicsLiveData.value!![0].id.toInt())
-            ).enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    when (response.code()) {
-                        200, 204 -> {
-                            Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
-                            getData()
-                            firstMusicClicked()
-                        }
-                        403 -> Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
+        Connecter.api.deleteMusic(
+            getToken(app.applicationContext),
+            hashMapOf("applyId" to musicsLiveData.value!![selectedIndex.value!!].id.toInt())
+        ).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                when (response.code()) {
+                    200, 204 -> {
+                        Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                        selectedIndex.postValue(null)
+                        dataSetChangedLiveEvent.call()
+                        getData()
+                    }
+                    403 ->{
+                        selectedIndex.postValue(null)
+                        dataSetChangedLiveEvent.call()
+                        Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    Toast.makeText(app.applicationContext, "네트워크 상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
-                }
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(app.applicationContext, "네트워크 상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            }
 
-            })
-        } else if (secondMusicIsClicked.value!!) {
-            Connecter.api.deleteMusic(
-                getToken(app.applicationContext),
-                hashMapOf("applyId" to musicsLiveData.value!![1].id.toInt())
-            ).enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    when (response.code()) {
-                        200, 204 -> {
-                            Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
-                            getData()
-                            secondMusicClicked()
-                        }
-                        403 -> Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    Toast.makeText(app.applicationContext, "네트워크 상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
-                }
-
-            })
-        }
+        })
     }
 
     fun getData() {
@@ -223,11 +170,21 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                 }
 
                 override fun onFailure(call: Call<Unit>, t: Throwable) {
-                    Toast.makeText(app.applicationContext, "네트워크 연결이 원할하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(app.applicationContext, "인터넷이 원할하지 않거나 기상음악 신청이 모두 완료되었습니다.", Toast.LENGTH_SHORT)
+                        .show()
                     fragmentDismissLiveEvent.call()
+                    getData()
                 }
 
             })
         }
+    }
+
+    fun ArrayList<ApplyMusicDetailModel>.addIfNotFive(model: ApplyMusicDetailModel): ArrayList<ApplyMusicDetailModel> {
+        return if (size != 5) {
+            add(model)
+            this
+        } else
+            this
     }
 }
