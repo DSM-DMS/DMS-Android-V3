@@ -17,7 +17,7 @@ android {
         targetSdkVersion 28
         versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 11
+        versionCode 12
     }
     buildTypes {
         release {
