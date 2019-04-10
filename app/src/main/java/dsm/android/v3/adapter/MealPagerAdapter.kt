@@ -1,7 +1,6 @@
 package dsm.android.v3.adapter
 
 import android.support.v4.view.PagerAdapter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,7 +74,6 @@ class MealPagerAdapter(val dates: ArrayList<String>) : PagerAdapter() {
 
     fun JsonArray.flatten(): String {
         val builder = StringBuilder()
-        Log.d("json Size", size().toString())
         return if (size() > 1) {
             forEach {
                 builder.append("${it.asString}, ")
