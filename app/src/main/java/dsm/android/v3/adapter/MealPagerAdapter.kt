@@ -33,22 +33,21 @@ class MealPagerAdapter(val dates: ArrayList<String>) : PagerAdapter() {
         val lunch = view.find<TextView>(R.id.mealItem_lunch_content_tv)
         val dinner = view.find<TextView>(R.id.mealItem_dinner_content_tv)
 
-//        Connecter.api.getMeal(dataFormat.format(calender.time)).enqueue(object : Callback<MealModel> {
         Connecter.api.getMeal(date).enqueue(object : Callback<JsonObject> {
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 when (response.code()) {
                     200 -> {
                         val body = response.body()!![date].asJsonObject
                         breakfast.text =
-                                if (body.has("breakfast")) body.getAsJsonArray("breakfast").flatten()
-                                else "급식이 없습니다."
+                            if (body.has("breakfast")) body.getAsJsonArray("breakfast").flatten()
+                            else "급식이 없습니다."
 
                         lunch.text =
-                                if (body.has("lunch")) body.getAsJsonArray("lunch").flatten()
-                                else "급식이 없습니다."
+                            if (body.has("lunch")) body.getAsJsonArray("lunch").flatten()
+                            else "급식이 없습니다."
                         dinner.text =
-                                if (body.has("dinner")) body.getAsJsonArray("dinner").flatten()
-                                else "급식이 없습니다."
+                            if (body.has("dinner")) body.getAsJsonArray("dinner").flatten()
+                            else "급식이 없습니다."
                         notifyDataSetChanged()
                     }
                     else -> {
@@ -75,7 +74,7 @@ class MealPagerAdapter(val dates: ArrayList<String>) : PagerAdapter() {
 
     fun JsonArray.flatten(): String {
         val builder = StringBuilder()
-        return if (size() != 0) {
+        return if (size() > 1) {
             forEach {
                 builder.append("${it.asString}, ")
             }
