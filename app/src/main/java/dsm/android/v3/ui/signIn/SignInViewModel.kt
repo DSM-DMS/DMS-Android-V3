@@ -22,21 +22,21 @@ class SignInViewModel() : ViewModel() {
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
 
-    val btnColorSet = MediatorLiveData<Boolean>().apply {
-        addSource(signInId) {
-            this.value = !signInId.isValueBlank() && !signInPw.isValueBlank()
-        }
-        addSource(signInPw) {
-            this.value = !signInId.isValueBlank() && !signInPw.isValueBlank()
-        }
-    }
-
     val successToastLiveEvent = SingleLiveEvent<Any>()
+
     val failedToastLiveEvent = SingleLiveEvent<Any>()
     val networkToastLiveEvent = SingleLiveEvent<Any>()
-
     val loginSuccessLiveEvent = SingleLiveEvent<Any>()
     val doRegisterLiveEvent = SingleLiveEvent<Any>()
+
+    val isIdFocused = MutableLiveData<Boolean>()
+    val isPasswordFocused = MutableLiveData<Boolean>()
+
+    val btnColorSet = MediatorLiveData<Boolean>().apply {
+        addSource(signInId) { this.value = !signInId.isValueBlank() && !signInPw.isValueBlank() }
+        addSource(signInPw) { this.value = !signInId.isValueBlank() && !signInPw.isValueBlank() }
+    }
+
 
     fun doSignIn(view: View) {
         val auth = Auth(signInId.value!!, signInPw.value!!)

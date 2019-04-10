@@ -28,37 +28,16 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
         binding.vm = viewModel
 
         viewModel.successToastLiveEvent.observe(this, Observer { toast("로그인에 성공하였습니다") })
-
+        viewModel.failedToastLiveEvent.observe(this, Observer { toast("아이디 혹은 비밀번호를 확인해 주세요") })
+        viewModel.networkToastLiveEvent.observe(this, Observer { toast("네트워크 상태를 확인해주세요") })
+        viewModel.doRegisterLiveEvent.observe(this, Observer { startActivity<RegisterActivity>() })
         viewModel.loginSuccessLiveEvent.observe(this, Observer {
             startActivity<MainActivity>()
             finish()
         })
 
-        viewModel.doRegisterLiveEvent.observe(this, Observer { startActivity<RegisterActivity>() })
-
-        viewModel.failedToastLiveEvent.observe(this, Observer { toast("아이디 혹은 비밀번호를 확인해 주세요") })
-        viewModel.networkToastLiveEvent.observe(this, Observer { toast("네트워크 상태를 확인해주세요") })
         AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up).let {
             signIn_constraintLayout_layout.startAnimation(it)
         }
-
-        signIn_id_et.setOnFocusChangeListener { v, hasFocus ->
-            signIn_id_tv.clicked()
-            signIn_pw_tv.unClicked()
-            signIn_id_et.hint = ""
-            signIn_pw_et.setHint(R.string.pw_et)
-        }
-        signIn_pw_et.setOnFocusChangeListener { v, hasFocus ->
-            signIn_id_tv.unClicked()
-            signIn_pw_tv.clicked()
-            signIn_id_et.setHint(R.string.id_et)
-            signIn_pw_et.hint = ""
-        }
-
-
     }
-
-    fun TextView.clicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorPrimary))
-    fun TextView.unClicked() = setTextColor(ContextCompat.getColor(this@SignInActivity, R.color.colorTvUnCliked))
-
 }
