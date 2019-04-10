@@ -17,7 +17,7 @@ interface API {
 
     //로그인
     @POST("account/auth")
-    fun signIn(@Body body: JsonObject): Call<AuthModel>
+    fun signIn(@Body body: Any): Call<AuthModel>
 
     //회원가입
     @POST("account/signup")

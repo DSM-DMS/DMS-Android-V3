@@ -2,22 +2,22 @@ package dsm.android.v3.ui.signIn
 
 import android.arch.lifecycle.*
 import android.arch.lifecycle.ViewModel
-import android.content.Context
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.gson.JsonObject
 import dsm.android.v3.connecter.Connecter
-import dsm.android.v3.connecter.api
 import dsm.android.v3.model.AuthModel
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.saveToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.reflect.InvocationTargetException
 
-class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
+class SignInViewModel() : ViewModel() {
 
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
@@ -31,40 +31,43 @@ class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
         }
     }
 
+    val successToastLiveEvent = SingleLiveEvent<Any>()
+    val failedToastLiveEvent = SingleLiveEvent<Any>()
+    val networkToastLiveEvent = SingleLiveEvent<Any>()
+
+    val loginSuccessLiveEvent = SingleLiveEvent<Any>()
+    val doRegisterLiveEvent = SingleLiveEvent<Any>()
+
     fun doSignIn(view: View) {
         val auth = Auth(signInId.value!!, signInPw.value!!)
-
-        val json = JsonObject().apply {
-            addProperty("id", signInId.value)
-            addProperty("password", signInPw.value)
-        }
-
-        Connecter.api.signIn(json).enqueue(object : Callback<AuthModel> {
-            override fun onResponse(call: Call<AuthModel>, response: Response<AuthModel>) {
-                when (response.code()) {
-                    200 -> {
-                        doAsync {
-                            AuthDatabase.getInstance(view.context)!!
-                                .getAuthDao().insert(auth)
+        Connecter.api.signIn(hashMapOf("id" to signInId.value, "password" to signInPw.value))
+            .enqueue(object : Callback<AuthModel> {
+                override fun onResponse(call: Call<AuthModel>, response: Response<AuthModel>) {
+                    when (response.code()) {
+                        200 -> {
+                            CoroutineScope(Dispatchers.Main).launch {
+                                launch(Dispatchers.IO) {
+                                    AuthDatabase.getInstance(view.context)
+                                        ?.getAuthDao()?.insert(auth)
+                                }
+                                successToastLiveEvent.call()
+                                response.body()?.token?.let { saveToken(view.context, it) }
+                                response.body()?.refreshToken?.let { saveToken(view.context, it, false) }
+                                loginSuccessLiveEvent.call()
+                            }
                         }
-                        Toast.makeText(view.context, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        saveToken(view.context, response.body()!!.token)
-                        saveToken(view.context, response.body()!!.refreshToken!!, false)
-                        navigator.intentToMain()
+                        204 -> failedToastLiveEvent.call()
+                        else -> networkToastLiveEvent.call()
                     }
-                    204 ->
-                        Toast.makeText(view.context, "로그인 실패", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(view.context, "오류코드: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
-            }
 
-            override fun onFailure(call: Call<AuthModel>, t: Throwable) {
-                Toast.makeText(view.context, "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<AuthModel>, t: Throwable) {
+                    networkToastLiveEvent.call()
+                }
+            })
     }
 
-    fun toSignUpBtn() = navigator.intentToRegister()
+    fun toSignUpBtn() = doRegisterLiveEvent.call()
 
     fun MutableLiveData<String>.isValueBlank() = this.value.isNullOrBlank()
 
