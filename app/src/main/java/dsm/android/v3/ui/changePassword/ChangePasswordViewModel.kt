@@ -52,16 +52,14 @@ class ChangePasswordViewModel(val app: Application) : AndroidViewModel(app) {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 when (response.code()) {
                     201 -> {
-                        CoroutineScope(Dispatchers.Main).launch {
-                            launch(Dispatchers.IO) {
-                                val instance = AuthDatabase.getInstance(app.baseContext)!!
-                                    .getAuthDao()
-                                val origin = instance.getAuth()
-                                instance.insert(Auth(origin.id, newPassword.value!!))
+                        CoroutineScope(Dispatchers.IO).launch {
+                            AuthDatabase.getInstance(app.baseContext)?.getAuthDao().let {
+                                it?.insert(Auth(it.getAuth().id, newPassword.value!!))
                             }
-                            changeSuccessLiveEvent.call()
-                            activityFinishLiveEvent.call()
                         }
+                        changeSuccessLiveEvent.call()
+                        activityFinishLiveEvent.call()
+
                     }
                     205 -> {
                         samePasswordLiveEvent.call()
