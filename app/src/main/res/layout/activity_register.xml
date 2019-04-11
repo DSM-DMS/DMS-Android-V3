@@ -219,7 +219,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:onClick="@{(v) -> vm.doSignUp(v)}"
+                    android:onClick="@{() -> vm.doSignUp()}"
                     android:clickable="@{vm.btnColorSet}"
                     android:background="@{vm.btnColorSet == false ? @drawable/back_btn_unclicked : @drawable/back_btn_clicked}"
                     tools:background="@drawable/back_btn_clicked"
