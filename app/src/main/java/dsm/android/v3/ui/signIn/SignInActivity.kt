@@ -3,10 +3,7 @@ package dsm.android.v3.ui.signIn
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.view.animation.AnimationUtils
-import android.widget.TextView
-import android.widget.Toast
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivitySignInBinding
 import dsm.android.v3.ui.main.MainActivity
@@ -27,11 +24,11 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
 
-        viewModel.successToastLiveEvent.observe(this, Observer { toast("로그인에 성공하였습니다") })
-        viewModel.failedToastLiveEvent.observe(this, Observer { toast("아이디 혹은 비밀번호를 확인해 주세요") })
-        viewModel.networkToastLiveEvent.observe(this, Observer { toast("네트워크 상태를 확인해주세요") })
+        viewModel.loginFailedLiveEvent.observe(this, Observer { toast("아이디 혹은 비밀번호를 확인해 주세요") })
+        viewModel.networkErrorLiveEvent.observe(this, Observer { toast("네트워크 상태를 확인해주세요") })
         viewModel.doRegisterLiveEvent.observe(this, Observer { startActivity<RegisterActivity>() })
         viewModel.loginSuccessLiveEvent.observe(this, Observer {
+            toast("로그인에 성공하였습니다")
             startActivity<MainActivity>()
             finish()
         })

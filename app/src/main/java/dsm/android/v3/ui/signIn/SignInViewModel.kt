@@ -20,11 +20,9 @@ class SignInViewModel(val app: Application) : AndroidViewModel(app) {
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
 
-    val successToastLiveEvent = SingleLiveEvent<Any>()
-
-    val failedToastLiveEvent = SingleLiveEvent<Any>()
-    val networkToastLiveEvent = SingleLiveEvent<Any>()
     val loginSuccessLiveEvent = SingleLiveEvent<Any>()
+    val networkErrorLiveEvent = SingleLiveEvent<Any>()
+    val loginFailedLiveEvent = SingleLiveEvent<Any>()
     val doRegisterLiveEvent = SingleLiveEvent<Any>()
 
     val isIdFocused = MutableLiveData<Boolean>()
@@ -43,24 +41,20 @@ class SignInViewModel(val app: Application) : AndroidViewModel(app) {
                 override fun onResponse(call: Call<AuthModel>, response: Response<AuthModel>) {
                     when (response.code()) {
                         200 -> {
-                            CoroutineScope(Dispatchers.Main).launch {
-                                launch(Dispatchers.IO) {
-                                    AuthDatabase.getInstance(app.baseContext)
-                                        ?.getAuthDao()?.insert(auth)
-                                }
-                                successToastLiveEvent.call()
-                                response.body()?.token?.let { saveToken(app.baseContext, it) }
-                                response.body()?.refreshToken?.let { saveToken(app.baseContext, it, false) }
-                                loginSuccessLiveEvent.call()
+                            CoroutineScope(Dispatchers.IO).launch {
+                                AuthDatabase.getInstance(app.baseContext)?.getAuthDao()?.insert(auth)
                             }
+                            response.body()?.token?.let { saveToken(app.baseContext, it) }
+                            response.body()?.refreshToken?.let { saveToken(app.baseContext, it, false) }
+                            loginSuccessLiveEvent.call()
                         }
-                        204 -> failedToastLiveEvent.call()
-                        else -> networkToastLiveEvent.call()
+                        204 -> loginFailedLiveEvent.call()
+                        else -> networkErrorLiveEvent.call()
                     }
                 }
 
                 override fun onFailure(call: Call<AuthModel>, t: Throwable) {
-                    networkToastLiveEvent.call()
+                    networkErrorLiveEvent.call()
                 }
             })
     }
