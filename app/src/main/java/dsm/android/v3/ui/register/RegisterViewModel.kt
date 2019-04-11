@@ -14,26 +14,26 @@ class RegisterViewModel : ViewModel() {
     val registerConfirmCode = MutableLiveData<String>()
     val registerId = MutableLiveData<String>()
     val registerPw = MutableLiveData<String>()
-    val registerPwComfirm = MutableLiveData<String>()
+    val registerPwConfirm = MutableLiveData<String>()
 
 
     val btnColorSet = MediatorLiveData<Boolean>().apply {
         addSource(registerConfirmCode) {
             this.value = !registerConfirmCode.isValueBlank() && !registerId.isValueBlank()
-                    && !registerPw.isValueBlank() && !registerPwComfirm.isValueBlank()
+                    && !registerPw.isValueBlank() && !registerPwConfirm.isValueBlank()
         }
         addSource(registerId) {
             this.value = !registerConfirmCode.isValueBlank() && !registerId.isValueBlank()
-                    && !registerPw.isValueBlank() && !registerPwComfirm.isValueBlank()
+                    && !registerPw.isValueBlank() && !registerPwConfirm.isValueBlank()
 
         }
         addSource(registerPw) {
             this.value = !registerConfirmCode.isValueBlank() && !registerId.isValueBlank()
-                    && !registerPw.isValueBlank() && !registerPwComfirm.isValueBlank()
+                    && !registerPw.isValueBlank() && !registerPwConfirm.isValueBlank()
         }
-        addSource(registerPwComfirm) {
+        addSource(registerPwConfirm) {
             this.value = !registerConfirmCode.isValueBlank() && !registerId.isValueBlank()
-                    && !registerPw.isValueBlank() && !registerPwComfirm.isValueBlank()
+                    && !registerPw.isValueBlank() && !registerPwConfirm.isValueBlank()
         }
     }
 
@@ -44,7 +44,7 @@ class RegisterViewModel : ViewModel() {
     val badNetworkLiveEvent = SingleLiveEvent<Any>()
 
     fun doSignUp() {
-        if (registerPw.value == registerPwComfirm.value) {
+        if (registerPw.value == registerPwConfirm.value) {
             Connecter.api.signUp(
                 hashMapOf(
                     "uuid" to registerConfirmCode.value,
@@ -57,6 +57,7 @@ class RegisterViewModel : ViewModel() {
                         201 -> registerFinishedLiveEvent.call()
                         204 -> wrongUuidLiveEvent.call()
                         205 -> sameIdLiveEvent.call()
+                        else -> badNetworkLiveEvent.call()
                     }
                 }
 
