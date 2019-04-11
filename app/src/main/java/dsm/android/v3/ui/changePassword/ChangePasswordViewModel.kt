@@ -1,20 +1,22 @@
 package dsm.android.v3.ui.changePassword
 
-import android.arch.lifecycle.*
-import android.view.View
-import android.widget.Toast
-import com.google.gson.JsonObject
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.ui.signIn.Auth
 import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ChangePasswordViewModel : ViewModel() {
+class ChangePasswordViewModel(val app: Application) : AndroidViewModel(app) {
 
     val currentPassword = MutableLiveData<String>()
     val newPassword = MutableLiveData<String>()
@@ -35,38 +37,44 @@ class ChangePasswordViewModel : ViewModel() {
         }
     }
 
-    fun changePassword(view: View) {
-        val json = JsonObject().apply {
-            addProperty("currentPassword", currentPassword.value)
-            addProperty("newPassword", newPassword.value)
-        }
+    val changeSuccessLiveEvent = SingleLiveEvent<Any>()
+    val samePasswordLiveEvent = SingleLiveEvent<Any>()
+    val errorLiveEvent = SingleLiveEvent<Any>()
 
-        Connecter.api.changePw(getToken(view.context), json).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+    fun changePassword() {
+        Connecter.api.changePw(
+            getToken(app.baseContext),
+            hashMapOf(
+                "currentPassword" to currentPassword.value,
+                "newPassword" to newPassword.value
+            )
+        ).enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 when (response.code()) {
                     201 -> {
-                        Toast.makeText(view.context, "비밀번호 변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-                        doAsync {
-                            val instance = AuthDatabase.getInstance(view.context)!!
-                                .getAuthDao()
-                            val origin = instance.getAuth()
-                            instance.insert(Auth(origin.id, newPassword.value!!))
-
+                        CoroutineScope(Dispatchers.Main).launch {
+                            launch(Dispatchers.IO) {
+                                val instance = AuthDatabase.getInstance(app.baseContext)!!
+                                    .getAuthDao()
+                                val origin = instance.getAuth()
+                                instance.insert(Auth(origin.id, newPassword.value!!))
+                            }
+                            changeSuccessLiveEvent.call()
+                            activityFinishLiveEvent.call()
                         }
-                        activityFinishLiveEvent.call()
                     }
                     205 -> {
-                        Toast.makeText(view.context, "현재 비밀번호와 새 비밀번호가 동일합니다.", Toast.LENGTH_SHORT).show()
+                        samePasswordLiveEvent.call()
                     }
                     403 -> {
-                        Toast.makeText(view.context, "비밀번호 변경이 제대로 완료되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                        errorLiveEvent.call()
                         activityFinishLiveEvent.call()
                     }
                 }
             }
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(view.context, "비밀번호 변경이 제대로 완료되지 않았습니다.", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                errorLiveEvent.call()
                 activityFinishLiveEvent.call()
             }
 
@@ -77,8 +85,6 @@ class ChangePasswordViewModel : ViewModel() {
         activityFinishLiveEvent.call()
     }
 
-    fun MutableLiveData<String>.isValueBlank() =
-        this.value.isNullOrBlank()
-
+    fun MutableLiveData<String>.isValueBlank() = value.isNullOrBlank()
 
 }
