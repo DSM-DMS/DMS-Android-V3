@@ -9,6 +9,28 @@
     <string name="pw_et"><font size="14">비밀번호를 입력해주세요</font></string>
     <string name="code_et"><font size="14">확인코드를 입력해주세요</font></string>
     <string name="confirm_et"><font size="14">비밀번호를 확인해주세요</font></string>
+    <string name="sign_title">DMS for Android</string>
+    <string name="sign_sub_title">Dormitory Management System</string>
+    <string name="sign_in">로그인</string>
+    <string name="sign_id">아이디</string>
+    <string name="sign_id_edit">아이디를 입력해주세요</string>
+    <string name="sign_password">비밀번호</string>
+    <string name="sign_password_edit">비밀번호를 입력해주세요</string>
+    <string name="sign_not_user">아직 DMS 회원이 아니신가요?</string>
+    <string name="sign_up">회원가입</string>
+    <string name="sign_up_check_code">확인코드 입력</string>
+    <string name="sign_up_check_code_edit">확인코드를 입력해주세요</string>
+    <string name="sign_password_retry">비밀번호 재입력</string>
+    <string name="sign_password_retry_edit">비밀번호를 확인해주세요</string>
+    <string name="change_password_title">비밀번호 변경</string>
+    <string name="change_password_sub_title">DMS 시스템의 비밀번호를 변경합니다.</string>
+    <string name="change_password_original">기존 비밀번호</string>
+    <string name="change_password_original_edit">비밀번호를 입력하세요</string>
+    <string name="change_password_new">새 비밀번호</string>
+    <string name="change_password_new_edit">새 비밀번호를 입력하세요</string>
+    <string name="change_password_new_check">새 비밀번호 확인</string>
+    <string name="change_password_new_check_edit">새 비밀번호를 확인해주세요</string>
+    <string name="change_password">비밀번호 변경</string>
     <string name="mypage_error_report">시설 고장 신고</string>
     <string name="mypage_research">설문 조사</string>
     <string name="mypage_merit">상점</string>
@@ -18,6 +40,7 @@
     <string name="mypage_password_change_title">비밀번호 변경</string>
     <string name="mypage_merit_history_title">상 / 벌점 내역</string>
     <string name="mypage_intro_developers_title">개발자 소개</string>
+    <string name="team_intro">팀 소개</string>
     <string name="mypage_logout_content">기기내 계정에서 로그아웃합니다.</string>
     <string name="mypage_password_change_content">DMS 계정의 비밀번호를 변경합니다.</string>
     <string name="mypage_merit_history_content">우정관 상 / 벌점 내역을 확인합니다.</string>
@@ -44,6 +67,8 @@
     <string name="notice_description2">기숙사 생활에 필요한 유용한 정보를 제공합니다.</string>
     <string name="notice_notice_title">공지사항</string>
     <string name="notice_notice_description">사감부에서 게시한 공지사항을 열람합니다.</string>
+    <string name="notice_detail_title">공지사항</string>
+    <string name="notice_detail_sub_title">사감부에서 게시한 공지사항을 열람합니다</string>
     <string name="notice_rules_title">기숙사 규정</string>
     <string name="notice_rules_description">기숙사 규정을 열람합니다.</string>
     <string name="notice_question_title">자주하는 질문</string>
@@ -116,6 +141,7 @@
     <string name="apply_music_friday_explanation">금요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다.</string>
     <string name="apply_music_apply_btn">신청</string>
     <string name="apply_music_delete_btn">취소</string>
+    <string name="dialog_apply_music_title">\" 신청 \"</string>
     <string name="apply_music_dialog_music_monday_title">월요일 노래 신청</string>
     <string name="apply_music_dialog_music_tuesday_title">화요일 노래 신청</string>
     <string name="apply_music_dialog_music_wednesday_title">수요일 노래 신청</string>
@@ -125,7 +151,7 @@
     <string name="apply_music_dialog_music_artist_hint">아티스트</string>
     <string name="apply_music_dialog_music_cancel">취소</string>
     <string name="apply_music_dialog_music_apply">신청</string>
-    
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

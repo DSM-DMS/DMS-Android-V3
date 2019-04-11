@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="공지사항"
+                android:text="@string/notice_detail_title"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumsquareextrabold"
@@ -38,7 +38,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/colorGray400"
                 android:inputType="date"
-                android:text="사감부에서 게시한 공지사항을 열람합니다"
+                android:text="@string/notice_detail_sub_title"
                 />
     </android.support.v7.widget.Api17CardView>
 </LinearLayout>
