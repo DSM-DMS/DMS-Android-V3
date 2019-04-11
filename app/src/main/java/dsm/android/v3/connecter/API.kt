@@ -21,7 +21,7 @@ interface API {
 
     //회원가입
     @POST("account/signup")
-    fun signUp(@Body body: JsonObject): Call<Void>
+    fun signUp(@Body body: Any): Call<Void>
 
     @GET("meal/{day}")
     fun getMeal(@Path("day") day: String): Call<JsonObject>
@@ -42,7 +42,7 @@ interface API {
     fun getPointLog(@Header("Authorization") token: String): Call<PointLogResponseModel>
 
     @PATCH("account/pw")
-    fun changePw(@Header("Authorization") token: String, @Body body: JsonObject): Call<Void>
+    fun changePw(@Header("Authorization") token: String, @Body body: Any): Call<Unit>
 
     @GET("/apply/extension/map/{time}/{class_num}")
     @Headers("Content-Type: application/json")
