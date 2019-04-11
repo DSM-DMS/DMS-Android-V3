@@ -1,10 +1,9 @@
 package dsm.android.v3.ui.signIn
 
-import android.arch.lifecycle.*
-import android.arch.lifecycle.ViewModel
-import android.view.View
-import android.widget.Toast
-import com.google.gson.JsonObject
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.AuthModel
 import dsm.android.v3.util.SingleLiveEvent
@@ -12,12 +11,11 @@ import dsm.android.v3.util.saveToken
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignInViewModel() : ViewModel() {
+class SignInViewModel(val app: Application) : AndroidViewModel(app) {
 
     val signInId = MutableLiveData<String>()
     val signInPw = MutableLiveData<String>()
@@ -38,7 +36,7 @@ class SignInViewModel() : ViewModel() {
     }
 
 
-    fun doSignIn(view: View) {
+    fun doSignIn() {
         val auth = Auth(signInId.value!!, signInPw.value!!)
         Connecter.api.signIn(hashMapOf("id" to signInId.value, "password" to signInPw.value))
             .enqueue(object : Callback<AuthModel> {
@@ -47,12 +45,12 @@ class SignInViewModel() : ViewModel() {
                         200 -> {
                             CoroutineScope(Dispatchers.Main).launch {
                                 launch(Dispatchers.IO) {
-                                    AuthDatabase.getInstance(view.context)
+                                    AuthDatabase.getInstance(app.baseContext)
                                         ?.getAuthDao()?.insert(auth)
                                 }
                                 successToastLiveEvent.call()
-                                response.body()?.token?.let { saveToken(view.context, it) }
-                                response.body()?.refreshToken?.let { saveToken(view.context, it, false) }
+                                response.body()?.token?.let { saveToken(app.baseContext, it) }
+                                response.body()?.refreshToken?.let { saveToken(app.baseContext, it, false) }
                                 loginSuccessLiveEvent.call()
                             }
                         }
