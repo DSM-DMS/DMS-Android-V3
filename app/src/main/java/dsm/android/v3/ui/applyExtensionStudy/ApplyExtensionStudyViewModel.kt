@@ -3,30 +3,35 @@ package dsm.android.v3.ui.applyExtensionStudy
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.content.Context
 import android.view.View
 import android.widget.TextView
 import dsm.android.v3.connecter.Connecter.api
 import dsm.android.v3.model.ExtensionModel
 import dsm.android.v3.util.LifecycleCallback
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, classView: View, timeView: View): ViewModel(), LifecycleCallback{
+class ApplyExtensionStudyViewModel(classView: View, timeView: View): ViewModel(), LifecycleCallback{
 
     private val time = MutableLiveData<Int>()
     private val classNum = MutableLiveData<Int>()
 
-    private val clickedTimeView = MutableLiveData<View>()
-    private val clickedClassView = MutableLiveData<View>()
+    val clickedTimeView = MutableLiveData<View>()
+    val clickedClassView = MutableLiveData<View>()
 
     val topLocation = MutableLiveData<String>()
     val leftLocation = MutableLiveData<String>()
     val rightLocation = MutableLiveData<String>()
 
+    val toastLiveData = MutableLiveData<String>()
+    val selectedSeatIndex = MutableLiveData<Int>()
+    val drawMapLiveData = MutableLiveData<ArrayList<ArrayList<Any>>>()
+    val originalColorLiveData = MutableLiveData<TextView>()
+
+    val backApplyMenuLiveEvent = SingleLiveEvent<Any>()
 
     init {
         applyExtensionStudyClickClass(classView, 1)
@@ -39,12 +44,11 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
         }
     }
 
-    fun applyExtensionStudyClickBack() = contract.backApplyMenu()
+    fun applyExtensionStudyClickBack() = backApplyMenuLiveEvent.call()
 
     fun applyExtensionStudyClickTime(textView: View, time: Int){
         if (this.time.value != time){
-            clickedTimeView.value?.let { contract.originTextViewColor(it as TextView) }
-            contract.changeTextViewColor(textView as TextView)
+            clickedTimeView.value?.let { originalColorLiveData.value = it as TextView }
             clickedTimeView.value = textView
             this.time.value = time
         }
@@ -58,19 +62,16 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
                 leftLocation.value = "창문"
                 rightLocation.value = "복도"
             }
-
             7, 9, 10 -> {
                 topLocation.value = "창문"
                 leftLocation.value = "옆방"
                 rightLocation.value = "계단"
             }
-
             6, 8 -> {
                 topLocation.value = "창문"
                 leftLocation.value = "학교"
                 rightLocation.value = "옆방"
             }
-
             5, 11 -> {
                 topLocation.value = ""
                 leftLocation.value = ""
@@ -79,8 +80,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
         }
 
         if (this.classNum.value != classNum){
-            clickedClassView.value?.let { contract.originTextViewColor(it as TextView) }
-            contract.changeTextViewColor(textView as TextView)
+            clickedClassView.value?.let { originalColorLiveData.value = it as TextView }
             clickedClassView.value = textView
             this.classNum.value = classNum
         }
@@ -91,7 +91,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
         time.value?.let {
             api.deleteExtension(getToken(view.context), time.value!!).enqueue(object: Callback<Unit>{
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        contract.createShortToast(
+                        toastLiveData.value = (
                             when(response.code()){
                                 200 -> "연장취소에 성공했습니다."
                                 204 -> "연장신청을 하지 않았습니다."
@@ -103,18 +103,18 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
                         loadMap()
                     }
                     override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        contract.createShortToast("오류가 발생했습니다.")
+                        toastLiveData.value = "오류가 발생했습니다."
                     }
                 })
         }
     }
 
     fun applyExtensionStudyClickApply(view: View){
-        contract.selectSeatIndex?.let {
+        selectedSeatIndex.value?.let {
             api.applyExtension(getToken(view.context), time.value!!, hashMapOf("classNum" to classNum.value!!, "seatNum" to it))
                 .enqueue(object: Callback<Unit>{
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        contract.createShortToast(
+                        toastLiveData.value = (
                             when(response.code()){
                                 201 -> "연장신청에 성공했습니다."
                                 205 -> "신청 불가 지역입니다."
@@ -126,7 +126,7 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
                         loadMap()
                     }
                     override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        contract.createShortToast("오류가 발생했습니다.")
+                        toastLiveData.value = "오류가 발생했습니다."
                     }
                 })
         }
@@ -138,13 +138,13 @@ class ApplyExtensionStudyViewModel(val contract: ApplyExtensionStudyContract, cl
                 api.getMap(time.value!!, classNum.value!!).enqueue(object: Callback<ExtensionModel> {
                     override fun onResponse(call: Call<ExtensionModel>, response: Response<ExtensionModel>) {
                         when(response.code()){
-                            200 -> contract.drawMap(response.body()!!.map)
-                            403 -> contract.createShortToast("연장신청 권한이 없습니다.")
-                            else -> contract.createShortToast("오류 코드: ${response.code()}")
+                            200 -> drawMapLiveData.value = response.body()!!.map
+                            403 -> toastLiveData.value = "연장신청 권한이 없습니다."
+                            else -> toastLiveData.value = "오류 코드: ${response.code()}"
                         }
                     }
                     override fun onFailure(call: Call<ExtensionModel>, t: Throwable) {
-                        contract.createShortToast("오류가 발생했습니다.")
+                        toastLiveData.value = "오류가 발생했습니다."
                     }
                 })
             }
