@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/typo_header"
                 android:textColor="@color/colorPrimary"
-                android:text="@{viewModel.weekLiveData + &quot; 신청&quot;}"
+                android:text="@{viewModel.weekLiveData + @string/dialog_apply_music_title}"
                 android:lineSpacingExtra="2sp"
                 android:fontFamily="@font/nanumsquarebold"/>
 
