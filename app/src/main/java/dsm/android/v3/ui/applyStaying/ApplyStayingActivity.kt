@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.applyStaying
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -8,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
 import dsm.android.v3.model.ApplyStayingPagerModel
@@ -19,37 +19,43 @@ import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 
-class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(), ApplyStayingContract{
+class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
 
     override val layoutId: Int
         get() = R.layout.activity_apply_staying
 
-    override lateinit var viewGroup: ViewGroup
+    lateinit var viewGroup: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setSupportActionBar(applyStaying_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
-        title = "잔류 신청"
-        applyStaying_toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        val factory = ApplyStayingViewModelFactory(this)
-        binding.applyStayingViewModel = ViewModelProviders.of(this, factory).get(ApplyStayingViewModel::class.java)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = "잔류 신청"
+        applyStaying_toolbar.setNavigationOnClickListener { onBackPressed() }
+        binding.applyStayingViewModel = ViewModelProviders.of(this).get(ApplyStayingViewModel::class.java)
+
+        binding.applyStayingViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
+        binding.applyStayingViewModel!!.changeColorLiveEvent.observe(this, Observer {
+            val view = viewGroup.getChildAt(binding.applyStayingViewModel!!.pageStatusLiveData.value!!)
+            changeColor(view)
+            binding.applyStayingViewModel!!.selectedView.value = view
+        })
+
+        binding.applyStayingViewModel!!.originalColorLiveEvent.observe(this, Observer {
+            originalColor(binding.applyStayingViewModel!!.selectedView.value!!)
+        })
         setPager()
     }
 
-    override fun createShortToast(text: String) = toast(text).show()
-
-    override fun changeColor(view: View){
+    fun changeColor(view: View){
         view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
         view.item_applyStaying_title_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
         view.item_applyStaying_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
     }
 
-    override fun originalColor(view: View){
+    fun originalColor(view: View){
         view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
         view.item_applyStaying_title_tv.textColor = ContextCompat.getColor(this, R.color.colorPrimary)
         view.item_applyStaying_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorGray600)

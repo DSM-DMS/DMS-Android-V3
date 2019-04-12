@@ -65,7 +65,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{(view)->applyStayingViewModel.applyBtnClick(view)}"
+                android:onClick="@{()->applyStayingViewModel.applyBtnClick()}"
                 android:id="@+id/applyStaying_apply_btn"
                 android:layout_marginHorizontal="16dp"
                 android:background="@drawable/radius_view_primary"
