@@ -12,7 +12,7 @@
             android:id="@+id/introDeveloper_intro_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="팀 소개"
+            android:text="@string/team_intro"
             android:textSize="24sp"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"

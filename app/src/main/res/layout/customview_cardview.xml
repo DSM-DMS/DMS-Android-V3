@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="공지사항"
+                android:text="@string/notice_detail_title"
                 android:layout_marginLeft="16dp"
                 android:fontFamily="@font/nanumsquareregular"
                 android:layout_marginTop="16dp"
@@ -63,7 +63,7 @@
                 android:textSize="12sp"
                 android:fontFamily="@font/nanumsquareregular"
                 android:textColor="@color/colorGray800"
-                android:text="사감부에서 게시한 공지사항을 열람합니다"
+                android:text="@string/notice_detail_sub_title"
                 />
 
         <ImageView
