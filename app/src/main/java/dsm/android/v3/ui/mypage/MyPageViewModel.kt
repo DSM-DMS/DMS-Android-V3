@@ -11,23 +11,32 @@ import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
 import dsm.android.v3.ui.signIn.Auth
 import dsm.android.v3.ui.signIn.AuthDatabase
-import dsm.android.v3.util.App
-import dsm.android.v3.util.LifecycleCallback
-import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
+import dsm.android.v3.util.*
 import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.random.Random
 
-class MyPageViewModel(val contract: MyPageContract, val app: Application): AndroidViewModel(app), LifecycleCallback{
+class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCallback{
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
     val goodPointText = MutableLiveData<String>().apply { value = "0" }
     val badPointText = MutableLiveData<String>().apply { value = "0" }
     val adviceText = MutableLiveData<String>()
+
+    val goodPoint = MutableLiveData<Int>()
+    val badPoint = MutableLiveData<Int>()
+
+    val pointCountAnimatorEvent = SingleLiveEvent<Any>()
+    val showInstitutionReportEvent = SingleLiveEvent<Any>()
+    val intentQuestionResearchEvent = SingleLiveEvent<Any>()
+    val showBugReportEvent = SingleLiveEvent<Any>()
+    val showLogoutEvent = SingleLiveEvent<Any>()
+    val intentPasswordChangeEvent = SingleLiveEvent<Any>()
+    val intentMeritHistoryEvent = SingleLiveEvent<Any>()
+    val intentIntroDevelopersEvent = SingleLiveEvent<Any>()
 
     override fun apply(event: Lifecycle.Event) {
         when(event){
@@ -39,7 +48,9 @@ class MyPageViewModel(val contract: MyPageContract, val app: Application): Andro
                                 nameText.value = response.body()!!.name
                                 infoText.value = createStudentNumber(response.body()!!.number)
                                 adviceText.value = response.body()!!.advice
-                                startCountAnimation(response.body()!!.goodPoint, response.body()!!.badPoint)
+                                goodPoint.value = response.body()!!.goodPoint
+                                badPoint.value = response.body()!!.badPoint
+                                pointCountAnimatorEvent.call()
                             }
                             403 -> adviceText.value = "마이페이지 조회 권한이 없습니다."
                             500 -> adviceText.value = "로그인이 필요합니다."
@@ -55,18 +66,6 @@ class MyPageViewModel(val contract: MyPageContract, val app: Application): Andro
         }
     }
 
-    fun startCountAnimation(merit: Int, demerit: Int) {
-        val meritAnimator = ValueAnimator.ofInt(0, merit)
-        val demeritAnimator = ValueAnimator.ofInt(0, demerit)
-        meritAnimator.duration = 500
-        demeritAnimator.duration = 500
-
-        meritAnimator.addUpdateListener { animation -> goodPointText.value = animation.animatedValue.toString() }
-        demeritAnimator.addUpdateListener { animation -> badPointText.value = animation.animatedValue.toString() }
-        meritAnimator.start()
-        demeritAnimator.start()
-    }
-
     fun createStudentNumber(num: Int): String{
         val numString = num.toString()
         if (numString.length == 4){
@@ -79,18 +78,18 @@ class MyPageViewModel(val contract: MyPageContract, val app: Application): Andro
         }
     }
 
-    fun clickEnterInstitutionReport() = contract.showDialogInstitutionReport()
+    fun clickEnterInstitutionReport() = showInstitutionReportEvent.call()
 
-    fun clickEnterQuestionResearch() = contract.intentQuestionResearch()
+    fun clickEnterQuestionResearch() = intentQuestionResearchEvent.call()
 
-    fun clickEnterBugReport() = contract.showDialogBugReport()
+    fun clickEnterBugReport() = showBugReportEvent.call()
 
-    fun clickEnterLogout() = contract.showDialogLogout()
+    fun clickEnterLogout() = showLogoutEvent.call()
 
-    fun clickEnterPasswordChange() = contract.intentPasswordChange()
+    fun clickEnterPasswordChange() = intentPasswordChangeEvent.call()
 
-    fun clickEnterMeritHistory() = contract.intentMeriteHistory()
+    fun clickEnterMeritHistory() = intentMeritHistoryEvent.call()
 
-    fun clickEnterIntroDevelopers() = contract.intentintroDevelopers()
+    fun clickEnterIntroDevelopers() = intentIntroDevelopersEvent.call()
 
 }
