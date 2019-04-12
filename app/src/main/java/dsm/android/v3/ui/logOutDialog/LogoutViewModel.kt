@@ -1,15 +1,20 @@
 package dsm.android.v3.ui.logOutDialog
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.content.Context
 import android.view.View
 import dsm.android.v3.ui.signIn.AuthDatabase
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.removeToken
 import org.jetbrains.anko.doAsync
 
-class LogOutViewModel(val contract: LogOutContract): ViewModel(){
+class LogoutViewModel(): ViewModel(){
 
-    fun logoutClickCancel() = contract.exitLogout()
+    val toastLiveData = MutableLiveData<String>()
+    val intentToLoginEvent = SingleLiveEvent<Any>()
+    val exitLogoutEvent = SingleLiveEvent<Any>()
+
+    fun logoutClickCancel() = exitLogoutEvent.call()
 
     fun logoutClickLogout(view: View) {
         doAsync {
@@ -17,8 +22,8 @@ class LogOutViewModel(val contract: LogOutContract): ViewModel(){
             AuthDatabase.getInstance(view.context)!!.getAuthDao().delete(auth)
         }
         removeToken(view.context)
-        contract.intentToLogin()
-        contract.createShortToast("로그아웃 하였습니다.")
-        contract.exitLogout()
+        intentToLoginEvent.call()
+        toastLiveData.value = "로그아웃 하였습니다."
+        exitLogoutEvent.call()
     }
 }
