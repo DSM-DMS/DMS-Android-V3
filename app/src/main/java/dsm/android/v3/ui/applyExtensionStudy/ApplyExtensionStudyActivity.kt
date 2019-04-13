@@ -20,24 +20,23 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
     override val layoutId: Int
         get() = R.layout.activity_apply_extension_study
 
-    var clickedSeat: TextView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ApplyExtensionStudyViewModelFactory(applyExtension_gaonsil_tv, applyExtension_eleven_tv)
-        binding.applyExtensionStudyViewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
-
+        binding.applyExtensionStudyViewModel = ViewModelProviders.of(this).get(ApplyExtensionStudyViewModel::class.java)
         register(binding.applyExtensionStudyViewModel!!)
 
+        binding.applyExtensionStudyViewModel!!.clickedClassView.value = applyExtension_gaonsil_tv
+        changeTextViewColor(applyExtension_gaonsil_tv)
+        binding.applyExtensionStudyViewModel!!.clickedTimeView.value = applyExtension_eleven_tv
+        changeTextViewColor(applyExtension_eleven_tv)
+
         binding.applyExtensionStudyViewModel!!.backApplyMenuLiveEvent.observe(this, Observer { finish() })
-        binding.applyExtensionStudyViewModel!!.toastLiveData.observe(this, Observer { createShortToast(it!!) })
+        binding.applyExtensionStudyViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
         binding.applyExtensionStudyViewModel!!.clickedClassView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
         binding.applyExtensionStudyViewModel!!.clickedTimeView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
         binding.applyExtensionStudyViewModel!!.originalColorLiveData.observe(this, Observer { originTextViewColor(it!!) })
         binding.applyExtensionStudyViewModel!!.drawMapLiveData.observe(this, Observer { drawMap(it!!) })
     }
-
-    fun createShortToast(text: String) = toast(text)
 
     fun changeTextViewColor(view: TextView){
         view.backgroundResource = R.drawable.radius_primaryline_primary_view
@@ -59,6 +58,8 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
         val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
         layoutParam.verticalMargin = seatVerticalMargin
         layoutParam.horizontalMargin = seatHorizonMargin
+
+        var clickedSeat: TextView? = null
 
         for (horizonMap in map){
             applyExtension_map_lay.addView(

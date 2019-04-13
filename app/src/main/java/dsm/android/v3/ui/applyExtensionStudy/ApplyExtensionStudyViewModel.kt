@@ -14,10 +14,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyExtensionStudyViewModel(classView: View, timeView: View): ViewModel(), LifecycleCallback{
+class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
 
-    private val time = MutableLiveData<Int>()
-    private val classNum = MutableLiveData<Int>()
+    private val time = MutableLiveData<Int>().apply { value = 11 }
+    private val classNum = MutableLiveData<Int>().apply { value = 1 }
 
     val clickedTimeView = MutableLiveData<View>()
     val clickedClassView = MutableLiveData<View>()
@@ -34,8 +34,8 @@ class ApplyExtensionStudyViewModel(classView: View, timeView: View): ViewModel()
     val backApplyMenuLiveEvent = SingleLiveEvent<Any>()
 
     init {
-        applyExtensionStudyClickClass(classView, 1)
-        applyExtensionStudyClickTime(timeView, 11)
+        setSideName(classNum.value!!)
+        loadMap()
     }
 
     override fun apply(event: Lifecycle.Event) {
@@ -44,18 +44,7 @@ class ApplyExtensionStudyViewModel(classView: View, timeView: View): ViewModel()
         }
     }
 
-    fun applyExtensionStudyClickBack() = backApplyMenuLiveEvent.call()
-
-    fun applyExtensionStudyClickTime(textView: View, time: Int){
-        if (this.time.value != time){
-            clickedTimeView.value?.let { originalColorLiveData.value = it as TextView }
-            clickedTimeView.value = textView
-            this.time.value = time
-        }
-        loadMap()
-    }
-
-    fun applyExtensionStudyClickClass(textView: View, classNum: Int){
+    fun setSideName(classNum: Int) {
         when(classNum){
             1, 2, 3, 4 -> {
                 topLocation.value = "칠판"
@@ -78,7 +67,22 @@ class ApplyExtensionStudyViewModel(classView: View, timeView: View): ViewModel()
                 rightLocation.value = ""
             }
         }
+    }
 
+    fun applyExtensionStudyClickBack() = backApplyMenuLiveEvent.call()
+
+    fun applyExtensionStudyClickTime(textView: View, time: Int){
+        if (this.time.value != time){
+            clickedTimeView.value?.let { originalColorLiveData.value = it as TextView }
+            clickedTimeView.value = textView
+            this.time.value = time
+        }
+        loadMap()
+    }
+
+    fun applyExtensionStudyClickClass(textView: View, classNum: Int){
+
+        setSideName(classNum)
         if (this.classNum.value != classNum){
             clickedClassView.value?.let { originalColorLiveData.value = it as TextView }
             clickedClassView.value = textView
