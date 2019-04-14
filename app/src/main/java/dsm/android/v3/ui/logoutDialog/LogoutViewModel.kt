@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.logOutDialog
+package dsm.android.v3.ui.logoutDialog
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel

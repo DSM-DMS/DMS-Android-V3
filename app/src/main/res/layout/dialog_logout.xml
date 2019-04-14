@@ -5,7 +5,7 @@
     <data>
         <variable
             name="LogoutViewModel"
-            type="dsm.android.v3.ui.logOutDialog.LogoutViewModel">
+            type="dsm.android.v3.ui.logoutDialog.LogoutViewModel">
         </variable>
     </data>
     <android.support.constraint.ConstraintLayout

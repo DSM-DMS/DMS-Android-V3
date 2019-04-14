@@ -14,7 +14,7 @@ import dsm.android.v3.ui.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.introduceTeam.IntroDeveloperActivity
-import dsm.android.v3.ui.logOutDialog.LogoutDialogFragment
+import dsm.android.v3.ui.logoutDialog.LogoutDialogFragment
 import dsm.android.v3.ui.pointLog.PointLogActivity
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -32,41 +32,21 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.myPageViewModel = ViewModelProviders.of(this).get(MyPageViewModel::class.java)
-        register(binding.myPageViewModel!!)
+        val viewModel = ViewModelProviders.of(this).get(MyPageViewModel::class.java)
 
-        binding.myPageViewModel!!.pointCountAnimatorEvent.observe(this, Observer {
+        viewModel.pointCountAnimatorEvent.observe(this, Observer {
             startCountAnimation(binding.myPageViewModel!!.goodPoint.value!!, binding.myPageViewModel!!.badPoint.value!!)
         })
+        viewModel.intentIntroDevelopersEvent.observe(this, Observer { startActivity<IntroDeveloperActivity>() })
+        viewModel.intentMeritHistoryEvent.observe(this, Observer { startActivity<PointLogActivity>() })
+        viewModel.intentPasswordChangeEvent.observe(this, Observer { startActivity<ChangePasswordActivity>() })
+        viewModel.intentQuestionResearchEvent.observe(this, Observer { toast("오픈 준비 중입니다.") })
+        viewModel.showBugReportEvent.observe(this, Observer { bugReportDialogFragment.show(fm, "bug") })
+        viewModel.showInstitutionReportEvent.observe(this, Observer { institutionDialogFragment.show(fm, "institution") })
+        viewModel.showLogoutEvent.observe(this, Observer { logoutDialogFragment.show(fm, "logout") })
 
-        binding.myPageViewModel!!.intentIntroDevelopersEvent.observe(this, Observer {
-            startActivity<IntroDeveloperActivity>()
-        })
-
-        binding.myPageViewModel!!.intentMeritHistoryEvent.observe(this, Observer {
-            startActivity<PointLogActivity>()
-        })
-
-        binding.myPageViewModel!!.intentPasswordChangeEvent.observe(this, Observer {
-            startActivity<ChangePasswordActivity>()
-        })
-
-        binding.myPageViewModel!!.intentQuestionResearchEvent.observe(this, Observer {
-            toast("오픈 준비 중입니다.")
-        })
-
-        binding.myPageViewModel!!.showBugReportEvent.observe(this, Observer {
-            bugReportDialogFragment.show(fm, "bug")
-        })
-
-        binding.myPageViewModel!!.showInstitutionReportEvent.observe(this, Observer {
-            institutionDialogFragment.show(fm, "institution")
-        })
-
-        binding.myPageViewModel!!.showLogoutEvent.observe(this, Observer {
-            logoutDialogFragment.show(fm, "logout")
-        })
-
+        binding.myPageViewModel = viewModel
+        register(binding.myPageViewModel!!)
         return rootView
     }
 

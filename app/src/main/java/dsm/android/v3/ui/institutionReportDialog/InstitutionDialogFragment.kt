@@ -21,10 +21,12 @@ class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionRepo
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.institutionReportViewModel = ViewModelProviders.of(this).get(InstitutionReportViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(InstitutionReportViewModel::class.java)
 
-        binding.institutionReportViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
-        binding.institutionReportViewModel!!.exitInstitutionReportEvent.observe(this, Observer { dialog.dismiss() })
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.exitInstitutionReportEvent.observe(this, Observer { dialog.dismiss() })
+
+        binding.institutionReportViewModel = viewModel
         return rootView
     }
 

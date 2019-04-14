@@ -21,10 +21,12 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.bugReportViewModel = ViewModelProviders.of(this).get(BugReportViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(BugReportViewModel::class.java)
 
-        binding.bugReportViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
-        binding.bugReportViewModel!!.exitBugReportEvent.observe(this, Observer { dialog.dismiss() })
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.exitBugReportEvent.observe(this, Observer { dialog.dismiss() })
+
+        binding.bugReportViewModel = viewModel
         return rootView
     }
 

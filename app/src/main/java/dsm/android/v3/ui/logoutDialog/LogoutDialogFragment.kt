@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.logOutDialog
+package dsm.android.v3.ui.logoutDialog
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -22,14 +22,15 @@ class LogoutDialogFragment : DataBindingDialogFragment<DialogLogoutBinding>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.logoutViewModel = ViewModelProviders.of(this).get(LogoutViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(LogoutViewModel::class.java)
 
-        binding.logoutViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
-        binding.logoutViewModel!!.exitLogoutEvent.observe(this, Observer { dialog.dismiss() })
-        binding.logoutViewModel!!.intentToLoginEvent.observe(this, Observer {
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.exitLogoutEvent.observe(this, Observer { dialog.dismiss() })
+        viewModel.intentToLoginEvent.observe(this, Observer {
             startActivity<SignInActivity>()
             activity!!.finish()
         })
+        binding.logoutViewModel = viewModel
         return rootView
     }
 
