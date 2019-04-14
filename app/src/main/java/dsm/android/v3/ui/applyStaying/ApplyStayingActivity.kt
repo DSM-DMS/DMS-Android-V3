@@ -28,24 +28,24 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setSupportActionBar(applyStaying_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "잔류 신청"
         applyStaying_toolbar.setNavigationOnClickListener { onBackPressed() }
-        binding.applyStayingViewModel = ViewModelProviders.of(this).get(ApplyStayingViewModel::class.java)
 
-        binding.applyStayingViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
-        binding.applyStayingViewModel!!.changeColorLiveEvent.observe(this, Observer {
-            val view = viewGroup.getChildAt(binding.applyStayingViewModel!!.pageStatusLiveData.value!!)
+        val viewModel = ViewModelProviders.of(this).get(ApplyStayingViewModel::class.java)
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.changeColorLiveEvent.observe(this, Observer {
+            val view = viewGroup.getChildAt(viewModel.pageStatusLiveData.value!!)
             changeColor(view)
             binding.applyStayingViewModel!!.selectedView.value = view
         })
-
-        binding.applyStayingViewModel!!.originalColorLiveEvent.observe(this, Observer {
-            originalColor(binding.applyStayingViewModel!!.selectedView.value!!)
+        viewModel.originalColorLiveEvent.observe(this, Observer {
+            originalColor(viewModel.selectedView.value!!)
         })
+
+        binding.applyStayingViewModel = viewModel
         setPager()
     }
 
