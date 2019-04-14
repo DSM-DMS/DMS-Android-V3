@@ -22,20 +22,22 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.applyExtensionStudyViewModel = ViewModelProviders.of(this).get(ApplyExtensionStudyViewModel::class.java)
-        register(binding.applyExtensionStudyViewModel!!)
+        val viewModel = ViewModelProviders.of(this).get(ApplyExtensionStudyViewModel::class.java)
 
-        binding.applyExtensionStudyViewModel!!.clickedClassView.value = applyExtension_gaonsil_tv
+        viewModel.clickedClassView.value = applyExtension_gaonsil_tv
         changeTextViewColor(applyExtension_gaonsil_tv)
-        binding.applyExtensionStudyViewModel!!.clickedTimeView.value = applyExtension_eleven_tv
+        viewModel.clickedTimeView.value = applyExtension_eleven_tv
         changeTextViewColor(applyExtension_eleven_tv)
 
-        binding.applyExtensionStudyViewModel!!.backApplyMenuLiveEvent.observe(this, Observer { finish() })
-        binding.applyExtensionStudyViewModel!!.toastLiveData.observe(this, Observer { toast(it!!) })
-        binding.applyExtensionStudyViewModel!!.clickedClassView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
-        binding.applyExtensionStudyViewModel!!.clickedTimeView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
-        binding.applyExtensionStudyViewModel!!.originalColorLiveData.observe(this, Observer { originTextViewColor(it!!) })
-        binding.applyExtensionStudyViewModel!!.drawMapLiveData.observe(this, Observer { drawMap(it!!) })
+        viewModel.backApplyMenuLiveEvent.observe(this, Observer { finish() })
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.clickedClassView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
+        viewModel.clickedTimeView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
+        viewModel.originalColorLiveData.observe(this, Observer { originTextViewColor(it!!) })
+        viewModel.drawMapLiveData.observe(this, Observer { drawMap(it!!) })
+
+        binding.applyExtensionStudyViewModel = viewModel
+        register(binding.applyExtensionStudyViewModel!!)
     }
 
     fun changeTextViewColor(view: TextView){
