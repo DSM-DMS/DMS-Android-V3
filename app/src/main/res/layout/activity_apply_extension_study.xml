@@ -347,8 +347,5 @@
                 android:fontFamily="@font/nanumsquareregular"
                 android:textColor="@color/colorWhite"
                 android:text="@string/apply_extension_study_apply_btn"/>
-
-
-
     </android.support.constraint.ConstraintLayout>
 </layout>

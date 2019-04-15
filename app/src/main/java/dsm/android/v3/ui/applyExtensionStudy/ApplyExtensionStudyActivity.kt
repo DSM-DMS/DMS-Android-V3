@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.applyExtensionStudy
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -14,36 +15,43 @@ import kotlinx.android.synthetic.main.activity_apply_extension_study.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStudyBinding>(), ApplyExtensionStudyContract{
+class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStudyBinding>(){
 
     override val layoutId: Int
         get() = R.layout.activity_apply_extension_study
 
-    override var selectSeatIndex: Int? = null
-    var clickedSeat: TextView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ApplyExtensionStudyViewModelFactory(this, applyExtension_gaonsil_tv as View, applyExtension_eleven_tv as View)
-        binding.applyExtensionStudyViewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(ApplyExtensionStudyViewModel::class.java)
+
+        viewModel.clickedClassView.value = applyExtension_gaonsil_tv
+        changeTextViewColor(applyExtension_gaonsil_tv)
+        viewModel.clickedTimeView.value = applyExtension_eleven_tv
+        changeTextViewColor(applyExtension_eleven_tv)
+
+        viewModel.backApplyMenuLiveEvent.observe(this, Observer { finish() })
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.clickedClassView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
+        viewModel.clickedTimeView.observe(this, Observer { changeTextViewColor(it!! as TextView) })
+        viewModel.originalColorLiveData.observe(this, Observer { originTextViewColor(it!!) })
+        viewModel.drawMapLiveData.observe(this, Observer { drawMap(it!!) })
+
+        binding.applyExtensionStudyViewModel = viewModel
         register(binding.applyExtensionStudyViewModel!!)
     }
 
-    override fun createShortToast(text: String) = toast(text).show()
-
-    override fun backApplyMenu() = finish()
-
-    override fun changeTextViewColor(view: TextView){
+    fun changeTextViewColor(view: TextView){
         view.backgroundResource = R.drawable.radius_primaryline_primary_view
         view.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
     }
-    override fun originTextViewColor(view: TextView){
+
+    fun originTextViewColor(view: TextView){
         view.backgroundResource = R.drawable.radius_grayline_view
         view.textColor = ContextCompat.getColor(applicationContext, R.color.colorGray400)
     }
 
-    override fun drawMap(map: ArrayList<ArrayList<Any>>) {
-        selectSeatIndex = 0
+    fun drawMap(map: ArrayList<ArrayList<Any>>) {
+        binding.applyExtensionStudyViewModel!!.selectedSeatIndex.value = 0
         applyExtension_map_lay.removeAllViews()
 
         val seatHorizonMargin = dip(8)
@@ -52,6 +60,8 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
         val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
         layoutParam.verticalMargin = seatVerticalMargin
         layoutParam.horizontalMargin = seatHorizonMargin
+
+        var clickedSeat: TextView? = null
 
         for (horizonMap in map){
             applyExtension_map_lay.addView(
@@ -71,7 +81,7 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
                                                     this@textView.backgroundResource = R.drawable.radius_primaryline_gray_view
                                                     this@textView.text = seat.toInt().toString()
                                                     clickedSeat = this@textView
-                                                    selectSeatIndex = seat.toInt()
+                                                    binding.applyExtensionStudyViewModel!!.selectedSeatIndex.value = seat.toInt()
                                                 }
                                             }
                                         }
