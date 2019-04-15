@@ -5,21 +5,13 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.content.Context
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
-import dsm.android.v3.ui.signIn.Auth
-import dsm.android.v3.ui.signIn.AuthDatabase
-import dsm.android.v3.util.App
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
-import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.random.Random
 
 class MyPageViewModel(val contract: MyPageContract, val app: Application): AndroidViewModel(app), LifecycleCallback{
 

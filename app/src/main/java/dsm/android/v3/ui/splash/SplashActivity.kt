@@ -2,9 +2,8 @@ package dsm.android.v3.ui.splash
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import dsm.android.v3.R
 import dsm.android.v3.ui.main.MainActivity
-import dsm.android.v3.ui.signIn.Auth
+import dsm.android.v3.database.Auth
 import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.ui.signIn.SignInActivity
 import dsm.android.v3.util.getToken

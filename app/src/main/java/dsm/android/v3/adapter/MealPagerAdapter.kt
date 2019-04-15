@@ -15,8 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-
-class MealPagerAdapter(val dates: ArrayList<String>) : PagerAdapter() {
+class MealPagerAdapter(private val dates: ArrayList<String>) : PagerAdapter() {
     override fun getCount() = dates.size
 
     override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
@@ -45,9 +44,11 @@ class MealPagerAdapter(val dates: ArrayList<String>) : PagerAdapter() {
                         lunch.text =
                             if (body.has("lunch")) body.getAsJsonArray("lunch").flatten()
                             else "급식이 없습니다."
+
                         dinner.text =
                             if (body.has("dinner")) body.getAsJsonArray("dinner").flatten()
                             else "급식이 없습니다."
+
                         notifyDataSetChanged()
                     }
                     else -> {

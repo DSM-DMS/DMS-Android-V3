@@ -2,20 +2,17 @@ package dsm.android.v3.ui.signIn
 
 import android.arch.lifecycle.*
 import android.arch.lifecycle.ViewModel
-import android.content.Context
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.gson.JsonObject
 import dsm.android.v3.connecter.Connecter
-import dsm.android.v3.connecter.api
+import dsm.android.v3.database.Auth
 import dsm.android.v3.model.AuthModel
 import dsm.android.v3.util.saveToken
 import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.reflect.InvocationTargetException
 
 class SignInViewModel(val navigator: SignInNavigator) : ViewModel() {
 
