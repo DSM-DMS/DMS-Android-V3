@@ -4,12 +4,13 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
 import dsm.android.v3.connecter.api
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class InstitutionReportViewModel(val contract: InstitutionReportContract): ViewModel(){
+class InstitutionReportViewModel(): ViewModel(){
 
     val institutionTitle = MutableLiveData<String>()
     val institutionRoomNumber = MutableLiveData<String>()
@@ -19,7 +20,8 @@ class InstitutionReportViewModel(val contract: InstitutionReportContract): ViewM
     val institutionRoomNumberError = MutableLiveData<String>()
     val institutionReportContentError = MutableLiveData<String>()
 
-    fun institutionClickCancel() = contract.exitInstitutionReport()
+    val toastLiveData = MutableLiveData<String>()
+    val exitInstitutionReportEvent = SingleLiveEvent<Any>()
 
     fun institutionClickSend(view: View){
         if (institutionTitle.value.isNullOrBlank()) institutionTitleError.value = "제목을 입력해주세요."
@@ -33,20 +35,21 @@ class InstitutionReportViewModel(val contract: InstitutionReportContract): ViewM
                 , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
                 .enqueue(object: Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        contract.createShortToast(
+                        toastLiveData.value =
                             when(response.code()){
                                 201 -> "시설고장 신고에 성공했습니다."
                                 403 -> "시설고장 신고 권한이 없습니다."
                                 else -> "오류코드: ${response.code()}"
                             }
-                        )
-                        contract.exitInstitutionReport()
+                        exitInstitutionReportEvent.call()
                     }
                     override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        contract.createShortToast("오류가 발생했습니다.")
-                        contract.exitInstitutionReport()
+                        toastLiveData.value = "오류가 발생했습니다."
+                        exitInstitutionReportEvent.call()
                     }
                 })
         }
     }
+
+    fun institutionClickCancel() = exitInstitutionReportEvent.call()
 }

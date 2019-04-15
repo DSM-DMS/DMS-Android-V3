@@ -4,12 +4,13 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
 import dsm.android.v3.connecter.api
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BugReportViewModel(val contract: BugReportContract): ViewModel(){
+class BugReportViewModel(): ViewModel(){
 
     val bugTitleEditText = MutableLiveData<String>()
     val bugContentEditText = MutableLiveData<String>()
@@ -17,7 +18,8 @@ class BugReportViewModel(val contract: BugReportContract): ViewModel(){
     val bugTitleError = MutableLiveData<String>()
     val bugContentError = MutableLiveData<String>()
 
-    fun bugClickCancel() = contract.exitBugReport()
+    val toastLiveData = MutableLiveData<String>()
+    val exitBugReportEvent = SingleLiveEvent<Any>()
 
     fun bugClickSend(view: View) {
         if (bugTitleEditText.value.isNullOrBlank()) bugTitleError.value = "제목을 입력하세요."
@@ -28,21 +30,23 @@ class BugReportViewModel(val contract: BugReportContract): ViewModel(){
             api.reportBug(getToken(view.context), hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
                 .enqueue(object : Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        contract.createShortToast(
+                        toastLiveData.value =
                             when (response.code()) {
                                 201 -> "버그 신고에 성공했습니다."
                                 400 -> "플렛폼 설정 오류입니다."
                                 403 -> "버그 신고 권한이 없습니다."
                                 else -> "오류 코드: ${response.code()}"
-                        })
-                        contract.exitBugReport()
+                        }
+                        exitBugReportEvent.call()
                     }
 
                     override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        contract.createShortToast("오류가 발생했습니다.")
-                        contract.exitBugReport()
+                        toastLiveData.value = "오류가 발생했습니다."
+                        exitBugReportEvent.call()
                     }
                 })
         }
     }
+
+    fun bugClickCancel() = exitBugReportEvent.call()
 }
