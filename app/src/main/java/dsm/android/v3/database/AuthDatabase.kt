@@ -4,6 +4,7 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import dsm.android.v3.database.Auth
 
 @Database(entities = arrayOf(Auth::class), version = 1)
 abstract class AuthDatabase: RoomDatabase() {

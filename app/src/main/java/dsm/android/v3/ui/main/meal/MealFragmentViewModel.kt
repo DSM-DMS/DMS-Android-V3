@@ -1,15 +1,8 @@
 package dsm.android.v3.ui.main.meal
 
-import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import android.util.Log
-import dsm.android.v3.connecter.Connecter
-import dsm.android.v3.model.MealModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,7 +36,7 @@ class MealFragmentViewModel : ViewModel() {
     fun getMeal() {
         val calender = Calendar.getInstance()
         val dataFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-//        val list = arrayListOf("수수밥", "맑은무채국", "비엔나푸실리볶음", "조기구이", "사과", "배추겉절이")
+
         calender.add(Calendar.DAY_OF_YEAR, -3)
         val meal = arrayListOf<String>().apply {
             repeat((0..10).count()) {
