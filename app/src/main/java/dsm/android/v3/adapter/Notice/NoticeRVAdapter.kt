@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_notice.view.*
 
 class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var activity : NoticeActivity) : RecyclerView.Adapter<NoticeRVAdapter.NoticeViewHolder>() {
 
-    override fun getItemCount() = data.noticeList.size
+    override fun getItemCount() = data.list.size
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NoticeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
@@ -23,7 +23,7 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
     }
 
     override fun onBindViewHolder(viewHodler: NoticeViewHolder, position: Int) {
-        viewHodler.setData(data!!.noticeList[position])
+        viewHodler.setData(data!!.list[position])
         setScaleAnimation(viewHodler.view)
     }
 
@@ -49,7 +49,7 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
 
         override fun onClick(v: View?) {
             var position = layoutPosition
-            activity.createDescription(data.noticeList[position].id, true)
+            activity.createDescription(data.list[position].id, true)
         }
 
         fun frameDate(date : String) :String {
