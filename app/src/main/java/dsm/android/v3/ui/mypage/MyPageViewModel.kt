@@ -7,7 +7,6 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
-import dsm.android.v3.ui.signIn.Auth
 import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.util.*
 import org.jetbrains.anko.doAsync
