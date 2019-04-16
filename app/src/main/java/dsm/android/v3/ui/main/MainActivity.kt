@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.EditText
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import dsm.android.v3.R
 import dsm.android.v3.ui.main.meal.MealFragment
 import dsm.android.v3.ui.main.putIn.PutInFragment
@@ -14,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    /*private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val transaction = supportFragmentManager.beginTransaction()
         when (item.itemId) {
             R.id.navigation_food -> {
@@ -39,22 +41,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().run {
+        /*supportFragmentManager.beginTransaction().run {
             replace(R.id.main_container, MealFragment())
             commit()
+        }*/
+//        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+        findNavController(R.id.main_container).let {
+            navigation.setupWithNavController(it)
         }
-        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+
     }
 
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         if (navigation.selectedItemId == R.id.navigation_food)
             super.onBackPressed()
         else
             navigation.selectedItemId = R.id.navigation_food
-    }
+    }*/
 }

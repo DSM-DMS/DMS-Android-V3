@@ -8,11 +8,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-    <FrameLayout
+    <fragment
             android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:name="dsm.android.v3.ui.main.putIn.PutInFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation_main"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/navigation"/>
