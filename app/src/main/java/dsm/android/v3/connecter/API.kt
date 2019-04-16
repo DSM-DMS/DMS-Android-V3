@@ -27,7 +27,7 @@ interface API {
     fun getNoticeList(): Call<NoticeListModel>
 
     @GET("/rule")
-    fun getRulesList(): Call<RulesModel>
+    fun getRulesList(): Call<NoticeListModel>
 
     @GET("/notice/{notice_id}")
     fun getNoticeDescription(@Path("notice_id") notice_id: String): Call<NoticeDescriptionModel>

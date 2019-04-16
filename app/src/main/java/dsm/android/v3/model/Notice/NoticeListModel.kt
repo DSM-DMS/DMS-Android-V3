@@ -3,7 +3,7 @@ package dsm.android.v3.model.Notice
 import com.google.gson.annotations.SerializedName
 
 data class NoticeListModel(
-    @SerializedName("list", alternate = ["noticeList", "ruleList"])
+    @SerializedName("list", alternate = ["noticeListLiveData", "ruleList"])
     val list: ArrayList<NoticeModel>
 )
 
