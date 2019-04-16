@@ -73,7 +73,5 @@ class ApplyGoingDocViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    fun applyGoingDocClickBack() {
-        backApplyGoingSingleLiveEvent.call()
-    }
+    fun applyGoingDocClickBack() = backApplyGoingSingleLiveEvent.call()
 }
