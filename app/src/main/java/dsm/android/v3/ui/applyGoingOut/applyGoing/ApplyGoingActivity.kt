@@ -1,5 +1,6 @@
-package dsm.android.v3.ui.applyGoing
+package dsm.android.v3.ui.applyGoingOut.applyGoing
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -13,8 +14,9 @@ import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingBinding
 import dsm.android.v3.model.ApplyPagerModel
-import dsm.android.v3.ui.applyGoingDoc.ApplyGoingDocActivity
-import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogActivity
+import dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocActivity
+import dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogActivity
+import dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogData
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_going.*
 import kotlinx.android.synthetic.main.item_apply_pager.view.*
@@ -23,42 +25,54 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 
-
-class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  ApplyGoingContract {
+class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>() {
 
     override val layoutId: Int
         get() = R.layout.activity_apply_going
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setSupportActionBar(applyGoing_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         title = "외출 신청"
-        applyGoing_toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        val factory = ApplyGoingViewModelFactory(this)
-        binding.applyGoingViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingViewModel::class.java)
+        applyGoing_toolbar.setNavigationOnClickListener { onBackPressed() }
+
+        val viewModel = ViewModelProviders.of(this).get(ApplyGoingViewModel::class.java)
+
+        viewModel.setViewPagerSingleLiveEvent.observe(this, Observer {
+            val models = arrayListOf(
+                ApplyPagerModel(
+                    getString(R.string.apply_going_saturday_title),
+                    getString(R.string.apply_going_saturday_explanation),
+                    ApplyGoingLogData.saturdayItemList.size
+                ),
+                ApplyPagerModel(
+                    getString(R.string.apply_going_sunday_title),
+                    getString(R.string.apply_going_sunday_explanation),
+                    ApplyGoingLogData.sundayItemList.size
+                ),
+                ApplyPagerModel(
+                    getString(R.string.apply_going_workday_title),
+                    getString(R.string.apply_going_workday_explanation),
+                    ApplyGoingLogData.workdayItemList.size
+                )
+            )
+            applyGoing_apply_list_pager.adapter = ApplyPageAdapter(models)
+        })
+
+        viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
+
+        viewModel.intentApplyGoingDocSingleLiveEvent.observe(this, Observer { startActivity<ApplyGoingDocActivity>() })
+
+        binding.applyGoingViewModel = viewModel
         register(binding.applyGoingViewModel!!)
     }
 
-    override fun createShortToast(text: String) = toast(text).show()
+    inner class ApplyPageAdapter(private val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
 
-    override fun setViewPager(saturdayCount: Int, sundayCount: Int, workdayCount: Int){
-        val models = arrayListOf(
-            ApplyPagerModel(getString(R.string.apply_going_saturday_title), getString(R.string.apply_going_saturday_explanation), saturdayCount),
-            ApplyPagerModel(getString(R.string.apply_going_sunday_title), getString(R.string.apply_going_sunday_explanation), sundayCount),
-            ApplyPagerModel(getString(R.string.apply_going_workday_title), getString(R.string.apply_going_workday_explanation),workdayCount)
-        )
-        applyGoing_apply_list_pager.adapter = ApplyPageAdapter(models)
-    }
-
-    override fun intentApplyGoingDoc() = startActivity<ApplyGoingDocActivity>()
-
-    inner class ApplyPageAdapter(val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
-
-        override fun isViewFromObject(p0: View, p1: Any): Boolean  = p0 == p1
+        override fun isViewFromObject(p0: View, p1: Any): Boolean = p0 == p1
 
         override fun getCount(): Int = models.size
 
@@ -70,8 +84,8 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
             view.find<TextView>(R.id.item_applyGoing_title_tv).text = models[position].week
             view.find<TextView>(R.id.item_applyGoing_explanation_tv).text = models[position].description
             view.find<TextView>(R.id.item_applyGoing_count_tv).text = models[position].cnt.toString()
-            view.find<Api17CardView>(R.id.item_applyGoing_card).setOnTouchListener { v, event ->
-                when(event.action){
+            view.find<Api17CardView>(R.id.item_applyGoing_card).setOnTouchListener { _, event ->
+                when (event.action) {
                     MotionEvent.ACTION_UP -> {
                         changeColor(view)
                         intentApplyGoingLog(position)
@@ -83,26 +97,38 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
             return view
         }
 
-        fun intentApplyGoingLog(position: Int) {
-            when(position){
+        private fun intentApplyGoingLog(position: Int) {
+            when (position) {
                 0 -> startActivity<ApplyGoingLogActivity>("title" to "토요외출")
                 1 -> startActivity<ApplyGoingLogActivity>("title" to "일요외출")
                 2 -> startActivity<ApplyGoingLogActivity>("title" to "평일외출")
             }
         }
 
-        fun changeColor(view: View){
-            view .item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+        private fun changeColor(view: View) {
+            view.item_applyGoing_card.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.colorPrimary
+                )
+            )
             view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
-            view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
+            view.item_applyGoing_explanation_tv.textColor =
+                ContextCompat.getColor(applicationContext, R.color.colorWhite)
             view.item_applyGoing_count_tv.background = getDrawable(R.drawable.radius_circle_white)
             view.item_applyGoing_count_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
         }
 
-        fun originalColor(view: View){
-            view.item_applyGoing_card.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+        fun originalColor(view: View) {
+            view.item_applyGoing_card.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.colorWhite
+                )
+            )
             view.item_applyGoing_title_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
-            view.item_applyGoing_explanation_tv.textColor = ContextCompat.getColor(applicationContext,R.color.colorGray600)
+            view.item_applyGoing_explanation_tv.textColor =
+                ContextCompat.getColor(applicationContext, R.color.colorGray600)
             view.item_applyGoing_count_tv.background = getDrawable(R.drawable.radius_circle_primary)
             view.item_applyGoing_count_tv.textColor = ContextCompat.getColor(applicationContext, R.color.colorWhite)
         }

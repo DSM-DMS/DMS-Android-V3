@@ -63,7 +63,7 @@ interface API {
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingModel>
+    fun getGoingOutInfo(): Call<ApplyGoingModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")

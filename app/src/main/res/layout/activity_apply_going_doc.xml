@@ -6,7 +6,7 @@
 
         <variable
                 name="applyGoingDocViewModel"
-                type="dsm.android.v3.ui.applyGoingDoc.ApplyGoingDocViewModel"/>
+                type="dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -147,7 +147,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{(view)->applyGoingDocViewModel.applyGoingDocClickApply(view)}"
+                android:onClick="@{()->applyGoingDocViewModel.applyGoingDocClickApply()}"
                 android:id="@+id/applyGoing_apply_btn"
                 android:background="@drawable/radius_view_primary"
                 android:layout_width="match_parent"

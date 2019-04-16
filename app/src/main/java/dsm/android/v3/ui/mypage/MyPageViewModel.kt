@@ -1,17 +1,13 @@
 package dsm.android.v3.ui.mypage
 
-import android.animation.ValueAnimator
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
-import dsm.android.v3.ui.signIn.Auth
-import dsm.android.v3.ui.signIn.AuthDatabase
-import dsm.android.v3.util.*
-import org.jetbrains.anko.doAsync
 import dsm.android.v3.util.LifecycleCallback
+import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback

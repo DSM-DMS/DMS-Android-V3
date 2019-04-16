@@ -1,44 +1,36 @@
 package dsm.android.v3.adapter
 
+import android.arch.lifecycle.MutableLiveData
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import dsm.android.v3.R
+import dsm.android.v3.BR
+import dsm.android.v3.databinding.ItemApplyGoingLogBinding
 import dsm.android.v3.model.ApplyGoingModel
-import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogContract
-import org.jetbrains.anko.*
-import java.text.SimpleDateFormat
-import java.util.*
 
-class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
+class ApplyGoingLogAdapter :
+    RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>() {
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ApplyGoingLogViewHolder {
-        val view = LayoutInflater.from(p0.context).inflate(R.layout.item_apply_going_log, p0, false)
-        return ApplyGoingLogViewHolder(view)
+    private var logItems = ArrayList<ApplyGoingModel.ApplyGoingDataModel>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplyGoingLogViewHolder {
+        val binding = ItemApplyGoingLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ApplyGoingLogViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = models.size
+    override fun getItemCount(): Int = logItems.size
 
-    override fun onBindViewHolder(p0: ApplyGoingLogViewHolder, p1: Int) = p0.bind(models[p1])
+    override fun onBindViewHolder(holder: ApplyGoingLogViewHolder, position: Int) = holder.bind(logItems[position])
 
-    inner class ApplyGoingLogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val stringFormat = SimpleDateFormat("MM월 dd일 HH:mm")
-        private val dateFormat = SimpleDateFormat("MM-dd HH:mm")
-        val timeLimit = itemView.find<TextView>(R.id.applyGoing_log_card_time_tv)
-        val reason = itemView.find<TextView>(R.id.applyGoing_log_card_reason_tv)
+    fun setItem(logItems: MutableLiveData<ArrayList<ApplyGoingModel.ApplyGoingDataModel>>) {
+        this.logItems = logItems.value!!
+        notifyDataSetChanged()
+    }
 
-        fun bind(model: ApplyGoingModel.ApplyGoingDataModel){
-            timeLimit.text = "${createFrontDate(model.date)} ${createBackDate(model.date)}"
-            reason.text = model.reason
-            itemView.setOnClickListener { applyGoingLogRv.logItemClick(model) }
-        }
+    inner class ApplyGoingLogViewHolder(val binding: ItemApplyGoingLogBinding) : RecyclerView.ViewHolder(binding.root.rootView) {
 
-        fun createFrontDate(date: String): String = stringFormat.format(dateFormat.parse(date))
-        fun createBackDate(date: String): String {
-            val idx = date.indexOf("~")
-            return date.substring(idx)
+        fun bind(log: ApplyGoingModel.ApplyGoingDataModel) {
+            binding.setVariable(BR.goingLog, log)
         }
     }
 }

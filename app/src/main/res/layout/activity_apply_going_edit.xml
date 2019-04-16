@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="applyGoingEditViewModel"
-                type="dsm.android.v3.ui.applyGoingEdit.ApplyGoingEditViewModel"/>
+                type="dsm.android.v3.ui.applyGoingOut.applyGoingEdit.ApplyGoingEditViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -137,7 +137,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <Button
-                android:onClick="@{(view)->applyGoingEditViewModel.applyGoingEditClickCancel(view)}"
+                android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickCancel()}"
                 android:id="@+id/applyGoing_cancel_btn"
                 android:background="@drawable/radius_view_gray"
                 android:layout_width="0dp"
@@ -154,7 +154,7 @@
                 android:layout_marginBottom="16dp"/>
 
         <Button
-                android:onClick="@{(view)->applyGoingEditViewModel.applyGoingEditClickEdit(view)}"
+                android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickEdit()}"
                 android:id="@+id/applyGoing_edit_btn"
                 android:background="@drawable/radius_view_primary"
                 android:layout_width="0dp"

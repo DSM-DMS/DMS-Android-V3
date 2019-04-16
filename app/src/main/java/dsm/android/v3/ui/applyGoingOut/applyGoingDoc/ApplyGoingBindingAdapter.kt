@@ -1,6 +1,6 @@
 @file:JvmName("ApplyGoingBindingAdapter")
 
-package dsm.android.v3.ui.applyGoingDoc
+package dsm.android.v3.ui.applyGoingOut.applyGoingDoc
 
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.BindingAdapter
