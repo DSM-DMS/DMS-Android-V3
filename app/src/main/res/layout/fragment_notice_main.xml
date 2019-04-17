@@ -1,80 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notice_title"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/nanumsquareextrabold"
-            android:id="@+id/notice_title_tv"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+    <data>
 
-    <TextView
-            android:fontFamily="@font/nanumsquareextrabold"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="21dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notice_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notice_description_highlight"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp"
-            android:id="@+id/notice_description1_tv"/>
+        <variable
+                name="vm"
+                type="dsm.android.v3.ui.notice.NoticeViewModel"/>
+    </data>
 
-    <TextView
-            app:layout_constraintTop_toTopOf="@id/notice_description1_tv"
-            app:layout_constraintStart_toEndOf="@id/notice_description1_tv"
-            android:id="@+id/notice_description2_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notice_description"
-            android:textColor="@color/colorGray800"
-            android:fontFamily="@font/nanumsquareregular"
-            android:textSize="14sp"/>
-
-    <TextView
-            android:layout_marginStart="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notice_description1_tv"
-            android:id="@+id/notice_description3_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notice_description2"
-            android:textColor="@color/colorGray800"
-            android:textSize="14sp"
-            android:fontFamily="@font/nanumsquareregular"/>
-
-    <dsm.android.v3.ui.customView.CustomCardView
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@id/notice_description3_tv"
-            app:layout_constraintBottom_toTopOf="@id/notice_rules_customview"
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/notice_notice_customview"
-            app:title="@string/notice_notice_title"
-            app:description="@string/notice_notice_description"
-            app:count="3"/>
+            android:layout_height="match_parent">
 
-    <dsm.android.v3.ui.customView.CustomCardView
-            android:layout_marginTop="24dp"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@id/notice_notice_customview"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/notice_rules_customview"
-            app:title="@string/notice_rules_title"
-            app:description="@string/notice_rules_description"
-            app:count="3"/>
+        <TextView
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notice_title"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/nanumsquareextrabold"
+                android:id="@+id/notice_title_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+                android:fontFamily="@font/nanumsquareextrabold"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="21dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notice_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notice_description_highlight"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:id="@+id/notice_description1_tv"/>
+
+        <TextView
+                app:layout_constraintTop_toTopOf="@id/notice_description1_tv"
+                app:layout_constraintStart_toEndOf="@id/notice_description1_tv"
+                android:id="@+id/notice_description2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notice_description"
+                android:textColor="@color/colorGray800"
+                android:fontFamily="@font/nanumsquareregular"
+                android:textSize="14sp"/>
+
+        <TextView
+                android:layout_marginStart="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notice_description1_tv"
+                android:id="@+id/notice_description3_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notice_description2"
+                android:textColor="@color/colorGray800"
+                android:textSize="14sp"
+                android:fontFamily="@font/nanumsquareregular"/>
+
+        <dsm.android.v3.ui.customView.CustomCardView
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@id/notice_description3_tv"
+                app:layout_constraintBottom_toTopOf="@id/notice_rules_customview"
+                android:onClick="@{() -> vm.onNoticeClick(0)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/notice_notice_customview"
+                app:title="@string/notice_notice_title"
+                app:description="@string/notice_notice_description"
+                app:count="3"/>
+
+        <dsm.android.v3.ui.customView.CustomCardView
+                android:layout_marginTop="24dp"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@id/notice_notice_customview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{() -> vm.onNoticeClick(1)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/notice_rules_customview"
+                app:title="@string/notice_rules_title"
+                app:description="@string/notice_rules_description"
+                app:count="3"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

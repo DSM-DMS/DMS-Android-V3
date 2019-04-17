@@ -28,9 +28,6 @@
             android:id="@+id/noticeListFragment"
             android:name="dsm.android.v3.ui.notice.NoticeListFragment"
             android:label="NoticeListFragment">
-        <argument
-                android:name="noticeType"
-                app:argType="integer"/>
         <action
                 android:id="@+id/action_noticeListFragment_to_noticeDescriptionFragment"
                 app:destination="@id/noticeDescriptionFragment"/>
@@ -39,11 +36,5 @@
             android:id="@+id/noticeDescriptionFragment"
             android:name="dsm.android.v3.ui.notice.NoticeDescriptionFragment"
             android:label="NoticeDescriptionFragment">
-        <argument
-                android:name="noticeType"
-                app:argType="integer"/>
-        <argument
-                android:name="noticeId"
-                app:argType="integer"/>
     </fragment>
 </navigation>

@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="-12dp"
-              android:layout_marginBottom="-12dp"
-              xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="noticeData"
+                type="dsm.android.v3.model.notice.NoticeModel"/>
+
+        <variable
+                name="vm"
+                type="dsm.android.v3.ui.notice.NoticeViewModel"/>
+
+     <!--   <variable
+                name="id"
+                type="Integer"/>-->
+    </data>
 
     <android.support.v7.widget.Api17CardView
             android:id="@+id/itemNotice_notice_cv"
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginBottom="-12dp"
+            android:onClick="@{() -> vm.onListClicked(noticeData.id)}"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="12dp"
-            >
+            app:cardElevation="12dp">
 
         <TextView
                 android:id="@+id/itemNotice_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="@string/notice_detail_title"
+                android:text="@{noticeData.title}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumsquareextrabold"
-                android:textColor="@color/colorGray700"
-                />
+                android:textColor="@color/colorGray700"/>
 
         <TextView
-                android:fontFamily="@font/nanumsquareregular"
                 android:id="@+id/itemNotice_date_tv"
+                android:fontFamily="@font/nanumsquareregular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{noticeData.postDate}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="39dp"
                 android:textSize="12sp"
-                android:textColor="@color/colorGray400"
-                android:inputType="date"
-                android:text="@string/notice_detail_sub_title"
-                />
+                android:textColor="@color/colorGray400"/>
     </android.support.v7.widget.Api17CardView>
-</LinearLayout>
+</layout>
