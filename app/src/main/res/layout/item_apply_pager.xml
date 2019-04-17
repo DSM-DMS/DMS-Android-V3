@@ -6,6 +6,10 @@
     <data>
 
         <variable
+                name="applyPagerModel"
+                type="dsm.android.v3.model.ApplyPagerModel"/>
+
+        <variable
                 name="applyGoingViewModel"
                 type="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingViewModel"/>
     </data>
@@ -34,7 +38,7 @@
 
                 <TextView
                         android:id="@+id/item_applyGoing_title_tv"
-                        android:text="@string/apply_going_saturday_title"
+                        android:text="@{applyPagerModel.week}"
                         android:textSize="@dimen/text_size_24"
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/nanumsquareextrabold"
@@ -50,7 +54,7 @@
                         android:textColor="@color/colorGray600"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="10sp"
-                        android:text="@string/apply_going_saturday_explanation"
+                        android:text="@{applyPagerModel.description}"
                         android:layout_marginTop="20dp"/>
             </LinearLayout>
         </android.support.v7.widget.Api17CardView>
@@ -63,6 +67,7 @@
                 android:fontFamily="@font/nanumsquareextrabold"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/text_size_18"
+                android:text="@{String.valueOf(applyPagerModel.cnt)}"
                 android:background="@drawable/radius_circle_primary"
                 app:layout_constraintEnd_toEndOf="@id/item_applyGoing_card"
                 app:layout_constraintTop_toTopOf="@id/item_applyGoing_card"/>

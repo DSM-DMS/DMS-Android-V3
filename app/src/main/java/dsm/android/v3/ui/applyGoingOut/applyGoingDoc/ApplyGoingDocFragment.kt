@@ -17,8 +17,7 @@ class ApplyGoingDocFragment : DataBindingFragment<FragmentApplyGoingDocBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModelFactory = ApplyGoingDocViewModelFactory(activity!!.application)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingDocViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(ApplyGoingDocViewModel::class.java)
 
         viewModel.backApplyGoingSingleLiveEvent.observe(this, Observer { findNavController().popBackStack() })
 

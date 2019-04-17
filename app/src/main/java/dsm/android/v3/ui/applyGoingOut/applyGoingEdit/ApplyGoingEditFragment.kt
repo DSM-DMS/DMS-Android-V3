@@ -16,8 +16,8 @@ class ApplyGoingEditFragment : DataBindingFragment<FragmentApplyGoingEditBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModelFactory = ApplyGoingEditViewModelFactory(activity!!.application)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingEditViewModel::class.java)
+
+        val viewModel = ViewModelProviders.of(this).get(ApplyGoingEditViewModel::class.java)
 
         viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
 

@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import dsm.android.v3.BR
 import dsm.android.v3.databinding.ItemApplyGoingLogBinding
 import dsm.android.v3.model.ApplyGoingModel
+import dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogViewModel
 
-class ApplyGoingLogAdapter :
+class ApplyGoingLogAdapter(val viewModel: ApplyGoingLogViewModel) :
     RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>() {
 
     private var logItems = ArrayList<ApplyGoingModel.ApplyGoingDataModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplyGoingLogViewHolder {
         val binding = ItemApplyGoingLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding.applyGoingLogViewModel = viewModel
         return ApplyGoingLogViewHolder(binding)
     }
 
@@ -31,6 +33,7 @@ class ApplyGoingLogAdapter :
 
         fun bind(log: ApplyGoingModel.ApplyGoingDataModel) {
             binding.setVariable(BR.goingLog, log)
+            binding.root.setOnClickListener { binding.applyGoingLogViewModel!!.logItemClick(log) }
         }
     }
 }

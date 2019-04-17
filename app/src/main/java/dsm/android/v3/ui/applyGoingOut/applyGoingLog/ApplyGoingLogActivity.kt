@@ -36,7 +36,7 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
         })
 
         binding.applyGoingApplyRecordRv.layoutManager = LinearLayoutManager(this)
-        binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter()
+        binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(viewModel)
         binding.applyGoingLogViewModel = viewModel
     }
 }

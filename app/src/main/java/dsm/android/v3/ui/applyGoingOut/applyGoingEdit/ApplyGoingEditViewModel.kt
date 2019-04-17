@@ -1,18 +1,16 @@
 package dsm.android.v3.ui.applyGoingOut.applyGoingEdit
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import dsm.android.v3.connecter.api
 import dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogData.deleteItem
 import dsm.android.v3.util.SingleLiveEvent
-import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 
-class ApplyGoingEditViewModel(application: Application) : AndroidViewModel(application) {
+class ApplyGoingEditViewModel : ViewModel() {
 
     private val dateFormat = SimpleDateFormat("MM/dd")
     private val sendDateFormat = SimpleDateFormat("MM-dd")
@@ -53,7 +51,7 @@ class ApplyGoingEditViewModel(application: Application) : AndroidViewModel(appli
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.editGoingOut(
-                getToken(getApplication()), hashMapOf(
+                hashMapOf(
                     "applyId" to deleteItem.id
                     , "date" to "${createSendDateString(applyGoingGoDate.value!!)} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}"
@@ -80,7 +78,7 @@ class ApplyGoingEditViewModel(application: Application) : AndroidViewModel(appli
     }
 
     fun applyGoingEditClickCancel() {
-        api.deleteGoingOut(getToken(getApplication()), hashMapOf("applyId" to deleteItem.id))
+        api.deleteGoingOut(hashMapOf("applyId" to deleteItem.id))
             .enqueue(object : Callback<Unit> {
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     createShortToastSingleLiveEvent.value =

@@ -1,18 +1,16 @@
 package dsm.android.v3.ui.applyGoingOut.applyGoingDoc
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import dsm.android.v3.connecter.api
 import dsm.android.v3.util.SingleLiveEvent
-import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ApplyGoingDocViewModel(application: Application) : AndroidViewModel(application) {
+class ApplyGoingDocViewModel : ViewModel() {
 
     private val dateFormat = SimpleDateFormat("MM/dd")
     private val sendDateFormat = SimpleDateFormat("MM-dd")
@@ -48,7 +46,7 @@ class ApplyGoingDocViewModel(application: Application) : AndroidViewModel(applic
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.applyGoingOutDoc(
-                getToken(getApplication()), hashMapOf(
+                hashMapOf(
                     "date" to "${createDateString()} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}"
                 )

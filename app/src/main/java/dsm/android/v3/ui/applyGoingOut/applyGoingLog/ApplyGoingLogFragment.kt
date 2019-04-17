@@ -41,7 +41,7 @@ class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>(
         })
 
         binding.applyGoingApplyRecordRv.layoutManager = LinearLayoutManager(context)
-        binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter()
+        binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(viewModel)
         binding.applyGoingLogViewModel = viewModel
     }
 }

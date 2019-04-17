@@ -21,7 +21,6 @@
                 android:id="@+id/applyGoing_log_card_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{applyGoingLogViewModel.logItemClick(goingLog)"
                 app:cardElevation="8dp"
                 android:shadowColor="@color/colorPrimary"
                 app:cardCornerRadius="16dp">

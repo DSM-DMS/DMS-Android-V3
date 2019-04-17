@@ -1,9 +1,13 @@
 package dsm.android.v3.ui.applyGoingOut.applyGoing
 
 import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
+import android.view.View
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.ApplyGoingModel
+import dsm.android.v3.model.ApplyPagerModel
 import dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogData
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
@@ -16,6 +20,9 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
     val setViewPagerSingleLiveEvent = SingleLiveEvent<Any>()
     val intentApplyGoingDocSingleLiveEvent = SingleLiveEvent<Any>()
     val createShortToastSingleLiveEvent = SingleLiveEvent<String>()
+    val intentApplyGoingLogSingleLiveEvent = SingleLiveEvent<View>()
+
+    val applyPagerModelLiveData = MutableLiveData<ArrayList<ApplyPagerModel>>()
 
     override fun apply(event: Lifecycle.Event) {
         when (event) {
@@ -46,11 +53,34 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
         }
     }
 
-    fun setApplyGoingData(applyGoingList: ApplyGoingModel) {
-        ApplyGoingLogData.saturdayItemList = applyGoingList.saturdayList
-        ApplyGoingLogData.sundayItemList = applyGoingList.sundayList
-        ApplyGoingLogData.workdayItemList = applyGoingList.workdayList
-        setViewPagerSingleLiveEvent.call()
+    fun setApplyGoingData(applyGoingModel: ApplyGoingModel) {
+
+        applyPagerModelLiveData.value = arrayListOf(
+            ApplyPagerModel(
+                "토요외출",
+                "토요일 12시 30분부터 점심식사를 한 후 외출이 가능합니다. " +
+                        "주말 급식을 신청하지 않은 학생은 바로 외출이 가능합니다. " +
+                        "외출한 학생들은 예외 상황이 아닌 이상 17시 30분까지 귀사하여 점호 후 저녁 식사를 해야 합니다.",
+                applyGoingModel.saturdayList.size
+            ),
+            ApplyPagerModel(
+                "일요외출",
+                "일요일 12시 30분부터 점심식사를 한 후 외출이 가능합니다. " +
+                        "주말 급식을 신청하지 않은 학생은 바로 외출이 가능합니다. " +
+                        "외출한 학생들은 예외 상황이 아닌 이상 17시 30분까지 귀사하여 점호 후 저녁 식사를 해야 합니다.",
+                applyGoingModel.sundayList.size
+            ),
+            ApplyPagerModel(
+                "평일외출",
+                "평일에 하는 외출이 아닌 예외 상황인 평일 (예: 시험 끝난 후)에 가능한 외출입니다. " +
+                        "부모님 허락을 맡은 후 선생님이 확인하시면 외출이 가능합니다.",
+                applyGoingModel.workdayList.size
+            )
+        )
+
+        ApplyGoingLogData.saturdayItemList = applyGoingModel.saturdayList
+        ApplyGoingLogData.sundayItemList = applyGoingModel.sundayList
+        ApplyGoingLogData.workdayItemList = applyGoingModel.workdayList
     }
 
     fun setShortToast(text: String) {
@@ -59,4 +89,8 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
     }
 
     fun applyGoingClickDoc() = intentApplyGoingDocSingleLiveEvent.call()
+
+    fun setIntentApplyGoingLog(view: View) {
+        intentApplyGoingLogSingleLiveEvent.value = view
+    }
 }
