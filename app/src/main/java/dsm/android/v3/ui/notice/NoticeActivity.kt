@@ -1,3 +1,4 @@
+/*
 package dsm.android.v3.ui.notice
 
 import android.os.Bundle
@@ -8,7 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import dsm.android.v3.R
-import dsm.android.v3.adapter.Notice.NoticeRVAdapter
+import dsm.android.v3.adapter.Notice.NoticeAdapter
 import dsm.android.v3.adapter.Notice.RulesRvAdpater
 import dsm.android.v3.connecter.Connecter
 import dsm.android.v3.model.Notice.NoticeListModel
@@ -50,7 +51,7 @@ class NoticeActivity : AppCompatActivity() {
             override fun onResponse(call: retrofit2.Call<NoticeListModel>, response: Response<NoticeListModel>) {
                 val body = response.body()!!
 
-                val adapter = NoticeRVAdapter(baseContext, body, activity)
+                val adapter = NoticeAdapter(baseContext, body, activity)
 
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
@@ -121,7 +122,7 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(!check) fragment.cancle(this)
+        if(!check) fragment.cancel(this)
         super.onBackPressed()
     }
-}
+}*/
