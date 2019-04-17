@@ -40,6 +40,7 @@
         </activity>
         <activity android:name=".ui.changePassword.ChangePasswordActivity">
         </activity>
+        <activity android:name=".ui.applyGoingOut.ApplyGoingOutActivity"/>
         <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingActivity">
         </activity>
         <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogActivity"/>

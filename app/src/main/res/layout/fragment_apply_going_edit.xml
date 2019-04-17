@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+                name="applyGoingEditViewModel"
+                type="dsm.android.v3.ui.applyGoingOut.applyGoingEdit.ApplyGoingEditViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+            <ImageButton
+                    android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickBack()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_close_gray_24dp"
+                    android:background="@drawable/radius_close_gray"
+                    android:layout_margin="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/applyGoing_edit_going_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply_going_doc_going_title"
+                    android:textSize="@dimen/typo_header"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/nanumsquareextrabold"
+                    android:layout_marginTop="40dp"/>
+
+            <LinearLayout
+                    android:id="@+id/applyGoing_edit_going_date_lay"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/applyGoing_edit_going_time_lay"
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_edit_going_title"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                        android:id="@+id/applyGoing_edit_going_date_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorValue="@{applyGoingEditViewModel.applyGoingGoDateError}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:errorEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                            android:maxLines="1"
+                            android:text="@={applyGoingEditViewModel.applyGoingGoDate}"
+                            android:fontFamily="@font/nanumsquarebold"
+                            android:background="@null"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/apply_going_doc_date_hint"
+                            android:textSize="@dimen/typo_body1"
+                            android:maxLength="5"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/applyGoing_edit_going_time_lay"
+                    app:layout_constraintStart_toEndOf="@id/applyGoing_edit_going_date_lay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_edit_going_title"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                        android:id="@+id/applyGoing_edit_going_time_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorValue="@{applyGoingEditViewModel.applyGoingGoTimeError}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:errorEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                            android:maxLines="1"
+                            android:text="@={applyGoingEditViewModel.applyGoingGoTime}"
+                            android:fontFamily="@font/nanumsquarebold"
+                            android:background="@null"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/apply_going_doc_time_hint"
+                            android:textSize="@dimen/typo_body1"
+                            android:maxLength="13"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/applyGoing_edit_reason_title"
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_edit_going_date_lay"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply_going_doc_reason_title"
+                    android:textSize="@dimen/typo_header"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/nanumsquareextrabold"
+                    android:layout_marginTop="14dp"/>
+
+            <LinearLayout
+                    android:id="@+id/applyGoing_edit_reason_content_lay"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/applyGoing_edit_reason_title"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                        android:id="@+id/applyGoing_edit_reason_content_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorValue="@{applyGoingEditViewModel.applyGoingReasonError}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:errorEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                            android:maxLines="4"
+                            android:text="@={applyGoingEditViewModel.applyGoingReason}"
+                            android:fontFamily="@font/nanumsquarebold"
+                            android:background="@null"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="사유 입력"
+                            android:textSize="@dimen/typo_body1"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+                android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickCancel()}"
+                android:id="@+id/applyGoing_cancel_btn"
+                android:background="@drawable/radius_view_gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/applyGoing_edit_btn"
+                android:gravity="center"
+                android:text="@string/apply_going_edit_cancel_btn"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquareregular"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"/>
+
+        <Button
+                android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickEdit()}"
+                android:id="@+id/applyGoing_edit_btn"
+                android:background="@drawable/radius_view_primary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/applyGoing_cancel_btn"
+                android:gravity="center"
+                android:text="@string/apply_going_edit_edit_btn"
+                android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquareregular"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

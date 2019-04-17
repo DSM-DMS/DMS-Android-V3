@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentPutInBinding
 import dsm.android.v3.ui.applyExtensionStudy.ApplyExtensionStudyActivity
+import dsm.android.v3.ui.applyGoingOut.ApplyGoingOutActivity
 import dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingActivity
 import dsm.android.v3.ui.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.applyStaying.ApplyStayingActivity
@@ -42,7 +43,7 @@ class PutInFragment : DataBindingFragment<FragmentPutInBinding>() {
 //            TODO("기상음악 신청 액티비티 연결하기")
         })
         viewModel.goingOutLiveEvent.observe(this, Observer {
-            startActivity<ApplyGoingActivity>()
+            startActivity<ApplyGoingOutActivity>()
 //            TODO("외출신청 액티비티 연결하기")
         })
         return rootView

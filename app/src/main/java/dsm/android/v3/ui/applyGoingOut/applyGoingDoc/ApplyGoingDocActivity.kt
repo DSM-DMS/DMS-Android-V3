@@ -18,7 +18,7 @@ class ApplyGoingDocActivity : DataBindingActivity<ActivityApplyGoingDocBinding>(
         val viewModelFactory = ApplyGoingDocViewModelFactory(application)
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingDocViewModel::class.java)
 
-        viewModel.backApplyGoingSingleLiveEvent.observe(this, Observer { finish() })
+        viewModel.backApplyGoingSingleLiveEvent.observe(this, Observer { onBackPressed() })
 
         viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
 
