@@ -2,15 +2,18 @@ package dsm.android.v3.ui.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.app.AppCompatActivity
 import android.widget.EditText
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dsm.android.v3.R
 import dsm.android.v3.ui.main.meal.MealFragment
 import dsm.android.v3.ui.main.putIn.PutInFragment
 import dsm.android.v3.ui.mypage.MyPageFragment
 import dsm.android.v3.ui.notice.NoticeFragment
+import dsm.android.v3.ui.notice.NoticeListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -57,10 +60,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /*override fun onBackPressed() {
-        if (navigation.selectedItemId == R.id.navigation_food)
+    override fun onBackPressed() {
+        val fragment = main_container as NavHostFragment
+        if (fragment.childFragmentManager.fragments[0] is NoticeListFragment) {
+            val noticeFragment = fragment.childFragmentManager.fragments[0] as NoticeListFragment
+            if (noticeFragment.bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED || noticeFragment.bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED)
+                noticeFragment.bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            else
+                super.onBackPressed()
+        } else
             super.onBackPressed()
-        else
-            navigation.selectedItemId = R.id.navigation_food
-    }*/
+    }
 }

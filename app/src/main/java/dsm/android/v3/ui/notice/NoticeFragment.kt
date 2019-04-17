@@ -1,33 +1,34 @@
 package dsm.android.v3.ui.notice
 
-import android.content.Intent
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
+import dsm.android.v3.databinding.FragmentNoticeMainBinding
 import dsm.android.v3.ui.customView.CustomCardView
+import dsm.android.v3.util.DataBindingFragment
+import org.jetbrains.anko.find
 
-class NoticeFragment : DialogFragment(){
+class NoticeFragment : DataBindingFragment<FragmentNoticeMainBinding>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override val layoutId: Int
+        get() = R.layout.fragment_notice_main
+    val viewModel by lazy { ViewModelProviders.of(activity!!)[NoticeViewModel::class.java] }
 
-        val view = inflater!!.inflate(R.layout.fragment_notice_main, container, false) as View
-
-        view.findViewById<CustomCardView>(R.id.notice_notice_customview).setOnClickListener {
-            val intent = Intent(context, NoticeActivity::class.java)
-            intent.putExtra("activityType", true)
-            context!!.startActivity(intent)
-        }
-
-        view.findViewById<CustomCardView>(R.id.notice_rules_customview).setOnClickListener {
-            val intent = Intent(context, NoticeActivity::class.java)
-            intent.putExtra("activityType", false)
-            context!!.startActivity(intent)
-        }
-
-        return view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.vm = viewModel
+        viewModel.getNoticeListLiveEvent.observe(this, Observer {
+            findNavController().navigate(
+                NoticeFragmentDirections.actionNoticeFragmentToNoticeListFragment()
+            )
+        })
     }
 
 }
