@@ -1,16 +1,16 @@
-package dsm.android.v3.model.Notice
+package dsm.android.v3.model.notice
 
 import com.google.gson.annotations.SerializedName
 
 data class NoticeListModel(
-    @SerializedName("list", alternate = ["noticeListLiveData", "ruleList"])
-    val list: ArrayList<NoticeModel>
+    @SerializedName("list", alternate = ["noticeList", "ruleList"])
+    val list: ArrayList<NoticeModel> = arrayListOf()
 )
 
 data class RulesModel(val ruleList: ArrayList<NoticeModel>)
 
 data class NoticeModel(
     @SerializedName("id", alternate = ["ruleId", "noticeId"]) val id: Int,
-    val postDate: String,
+    var postDate: String,
     val title: String
 )
