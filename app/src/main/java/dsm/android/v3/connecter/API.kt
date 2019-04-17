@@ -4,10 +4,8 @@ import dsm.android.v3.model.*
 import retrofit2.Call
 import retrofit2.http.*
 import com.google.gson.JsonObject
-import dsm.android.v3.model.MealModel
-import dsm.android.v3.model.Notice.NoticeDescriptionModel
-import dsm.android.v3.model.Notice.NoticeListModel
-import dsm.android.v3.model.Notice.RulesModel
+import dsm.android.v3.model.notice.NoticeDescriptionModel
+import dsm.android.v3.model.notice.NoticeListModel
 import dsm.android.v3.model.PointLogResponseModel
 
 interface API {
