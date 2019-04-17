@@ -20,6 +20,10 @@ class NoticeViewModel() : ViewModel() {
     val getNoticeListLiveEvent = SingleLiveEvent<Any>()
     val getDescriptionLiveEvent = SingleLiveEvent<Any>()
 
+    val finishNoticeLiveEvent = SingleLiveEvent<Any>()
+    val finishNoticeListLiveEvent = SingleLiveEvent<Any>()
+    val closeDescriptionLiveEvent = SingleLiveEvent<Any>()
+
     fun getNoticeList() {
         when (noticeTypeLiveData.value) {
             0 -> Connecter.api.getNoticeList()
@@ -73,4 +77,13 @@ class NoticeViewModel() : ViewModel() {
         getDescription()
         getDescriptionLiveEvent.call()
     }
+
+    fun finishNoticeListCall() {
+        finishNoticeListLiveEvent.call()
+    }
+
+    fun closeEventCall() {
+        closeDescriptionLiveEvent.call()
+    }
+
 }

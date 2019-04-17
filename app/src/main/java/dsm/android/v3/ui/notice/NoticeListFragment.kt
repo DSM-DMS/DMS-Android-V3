@@ -32,13 +32,13 @@ class NoticeListFragment : DataBindingFragment<FragmentNoticeListBinding>() {
             it.isHideable = true
             it.state = BottomSheetBehavior.STATE_HIDDEN
         }
-    }
 
-    fun onBackPressed() {
-        BottomSheetBehavior.from(binding.noticeDescriptionBottomSheet).let {
-            if (it.state == BottomSheetBehavior.STATE_EXPANDED || it.state == BottomSheetBehavior.STATE_HALF_EXPANDED) {
-                it.state = BottomSheetBehavior.STATE_HIDDEN
-            }
-        }
+        viewModel.finishNoticeListLiveEvent.observe(this, Observer {
+            findNavController().popBackStack()
+        })
+
+        viewModel.closeDescriptionLiveEvent.observe(this, Observer {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        })
     }
 }
