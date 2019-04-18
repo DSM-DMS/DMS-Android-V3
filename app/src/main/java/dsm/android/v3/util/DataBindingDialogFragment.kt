@@ -7,8 +7,9 @@ import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.trello.rxlifecycle2.components.support.RxDialogFragment
 
-abstract class DataBindingDialogFragment<T : ViewDataBinding> : DialogFragment() {
+abstract class DataBindingDialogFragment<T : ViewDataBinding> : RxDialogFragment() {
 
     lateinit var rootView: View
     lateinit var binding: T
@@ -18,7 +19,7 @@ abstract class DataBindingDialogFragment<T : ViewDataBinding> : DialogFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         rootView = binding.root
         return rootView
     }

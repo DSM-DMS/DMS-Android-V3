@@ -1,6 +1,8 @@
 package dsm.android.v3.ui.mypage
 
 import android.animation.ValueAnimator
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
