@@ -7,9 +7,8 @@ import dsm.android.v3.model.ApplyGoingModel
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.saturdayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.sundayItemList
 import dsm.android.v3.ui.applyGoingLog.ApplyGoingLogData.workdayItemList
-import dsm.android.v3.util.LifecycleCallback
-import dsm.android.v3.util.getToken
-import dsm.android.v3.util.saveToken
+import dsm.android.v3.util.*
+import io.reactivex.disposables.Disposables
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +19,7 @@ class ApplyGoingViewModel(val contract: ApplyGoingContract): ViewModel(), Lifecy
     override fun apply(event: Lifecycle.Event) {
         when(event) {
             Lifecycle.Event.ON_START -> {
-                api.getGoingOutInfo(getToken(contract as Context)).enqueue(object: Callback<ApplyGoingModel>{
+                api.getGoingOutInfo().enqueue(object: Callback<ApplyGoingModel>{
                     override fun onResponse(call: Call<ApplyGoingModel>, response: Response<ApplyGoingModel>) {
                         when(response.code()){
                             200 -> setApplyGoingData(response.body()!!)

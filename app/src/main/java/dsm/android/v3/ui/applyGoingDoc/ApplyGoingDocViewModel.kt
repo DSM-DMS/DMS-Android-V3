@@ -44,7 +44,7 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() 
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.applyGoingOutDoc(
-                getToken(view.context), hashMapOf(
+                hashMapOf(
                     "date" to "${createDateString()} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}"
                 )

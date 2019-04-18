@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), LifecycleCallback {
+class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), LifecycleCallback{
 
     val introductionBaseString = "아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다."
     val actionMusicLogLiveEvent = SingleLiveEvent<Any>()
@@ -67,7 +67,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
     val fragmentDismissLiveEvent = SingleLiveEvent<Any>()
 
     override fun apply(event: Lifecycle.Event) {
-        when (event) {
+        when(event) {
             Lifecycle.Event.ON_START -> {
                 pageStatusLiveData.postValue(0)
                 selectedIndex.postValue(null)
@@ -90,7 +90,6 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
 
     fun cancelMusic() {
         Connecter.api.deleteMusic(
-            getToken(app.applicationContext),
             hashMapOf("applyId" to musicsLiveData.value!![selectedIndex.value!!].id.toInt())
         ).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
@@ -117,7 +116,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
     }
 
     fun getData() {
-        Connecter.api.getMusic(getToken(app.applicationContext)).enqueue(object : Callback<ApplyMusicModel> {
+        Connecter.api.getMusic().enqueue(object : Callback<ApplyMusicModel> {
             override fun onResponse(call: Call<ApplyMusicModel>, response: Response<ApplyMusicModel>) {
                 when (response.code()) {
                     200 -> {
@@ -149,7 +148,7 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                 "musicName" to inputMusicLiveData.value,
                 "day" to pageStatusLiveData.value
             )
-            Connecter.api.applyMusic(getToken(app.applicationContext), map).enqueue(object : Callback<Unit> {
+            Connecter.api.applyMusic(map).enqueue(object : Callback<Unit> {
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                     when (response.code()) {
                         201 -> {

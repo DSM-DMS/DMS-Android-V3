@@ -34,7 +34,7 @@ class PointLogActivity : AppCompatActivity() {
             finish()
         }
         
-        Connecter.api.getPointLog(getToken(applicationContext)).enqueue(object : Callback<PointLogResponseModel> {
+        Connecter.api.getPointLog().enqueue(object : Callback<PointLogResponseModel> {
             override fun onResponse(call: Call<PointLogResponseModel>, response: Response<PointLogResponseModel>) {
                 val body = response.body()
                 pointLog_list_rv.layoutManager = LinearLayoutManager(this@PointLogActivity)

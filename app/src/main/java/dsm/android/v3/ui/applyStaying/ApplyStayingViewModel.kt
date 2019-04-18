@@ -1,18 +1,18 @@
 package dsm.android.v3.ui.applyStaying
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.*
 import android.view.View
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.ApplyStayingModel
+import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyStayingViewModel(val app: Application): AndroidViewModel(app){
+class ApplyStayingViewModel(val app: Application): AndroidViewModel(app) {
 
     val selectedView = MutableLiveData<View>()
     val toastLiveData = MutableLiveData<String>()
@@ -23,7 +23,7 @@ class ApplyStayingViewModel(val app: Application): AndroidViewModel(app){
     init { getStayInfo() }
 
     fun applyBtnClick() {
-        api.applyStay(getToken(app.baseContext), hashMapOf("value" to pageStatusLiveData.value!! + 1)).enqueue(object: Callback<Unit>{
+        api.applyStay(hashMapOf("value" to pageStatusLiveData.value!! + 1)).enqueue(object: Callback<Unit>{
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 toastLiveData.value = (
                     when(response.code()){
@@ -42,7 +42,7 @@ class ApplyStayingViewModel(val app: Application): AndroidViewModel(app){
     }
 
     fun getStayInfo(){
-        api.getStayInfo(getToken(app.baseContext)).enqueue(object: Callback<ApplyStayingModel> {
+        api.getStayInfo().enqueue(object: Callback<ApplyStayingModel> {
             override fun onResponse(call: Call<ApplyStayingModel>, response: Response<ApplyStayingModel>) {
                 when(response.code()){
                     200 -> setStayingData(response.body()!!.value - 1)

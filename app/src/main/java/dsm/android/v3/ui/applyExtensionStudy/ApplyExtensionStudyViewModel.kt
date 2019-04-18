@@ -1,8 +1,6 @@
 package dsm.android.v3.ui.applyExtensionStudy
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.*
 import android.view.View
 import android.widget.TextView
 import dsm.android.v3.connecter.Connecter.api
@@ -39,11 +37,10 @@ class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
     }
 
     override fun apply(event: Lifecycle.Event) {
-        when(event){
+        when(event) {
             Lifecycle.Event.ON_START -> loadMap()
         }
     }
-
     fun setSideName(classNum: Int) {
         when(classNum){
             1, 2, 3, 4 -> {
@@ -93,7 +90,7 @@ class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
 
     fun applyExtensionStudyClickCancel(view: View){
         time.value?.let {
-            api.deleteExtension(getToken(view.context), time.value!!).enqueue(object: Callback<Unit>{
+            api.deleteExtension(time.value!!).enqueue(object: Callback<Unit>{
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                         toastLiveData.value = (
                             when(response.code()){
@@ -115,7 +112,7 @@ class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
 
     fun applyExtensionStudyClickApply(view: View){
         selectedSeatIndex.value?.let {
-            api.applyExtension(getToken(view.context), time.value!!, hashMapOf("classNum" to classNum.value!!, "seatNum" to it))
+            api.applyExtension(time.value!!, hashMapOf("classNum" to classNum.value!!, "seatNum" to it))
                 .enqueue(object: Callback<Unit>{
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                         toastLiveData.value = (

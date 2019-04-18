@@ -41,7 +41,7 @@ class ChangePasswordViewModel : ViewModel() {
             addProperty("newPassword", newPassword.value)
         }
 
-        Connecter.api.changePw(getToken(view.context), json).enqueue(object : Callback<Void> {
+        Connecter.api.changePw(json).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 when (response.code()) {
                     201 -> {

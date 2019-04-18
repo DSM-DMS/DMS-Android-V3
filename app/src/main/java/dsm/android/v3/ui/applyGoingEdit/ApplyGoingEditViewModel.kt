@@ -37,7 +37,7 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
     private fun createSetDateString(date: String): String = dateFormat.format(sendDateFormat.parse(date))
 
     fun applyGoingEditClickCancel(view: View){
-        api.deleteGoingOut(getToken(view.context), hashMapOf("applyId" to deleteItem.id)).enqueue(object: Callback<Unit>{
+        api.deleteGoingOut(hashMapOf("applyId" to deleteItem.id)).enqueue(object: Callback<Unit>{
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 contract.createShortToast(when(response.code()){
                     200 -> "외출신청 취소에 성공했습니다."
@@ -66,7 +66,7 @@ class ApplyGoingEditViewModel(val contract: ApplyGoingEditContract): ViewModel()
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.editGoingOut(
-                getToken(view.context), hashMapOf(
+                hashMapOf(
                     "applyId" to deleteItem.id
                     , "date" to "${createSendDateString(applyGoingGoDate.value!!)} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}")).enqueue(object: Callback<Unit> {

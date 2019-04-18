@@ -27,7 +27,7 @@ class BugReportViewModel(): ViewModel(){
         if (bugContentEditText.value.isNullOrBlank()) bugContentError.value = "내용을 입력하세요"
         else bugContentError.value = null
         if (bugTitleError.value.isNullOrBlank() and bugContentError.value.isNullOrBlank()) {
-            api.reportBug(getToken(view.context), hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
+            api.reportBug(hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
                 .enqueue(object : Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                         toastLiveData.value =

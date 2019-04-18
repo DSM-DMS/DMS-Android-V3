@@ -31,7 +31,7 @@ class InstitutionReportViewModel(): ViewModel(){
         if (institutionReportContent.value.isNullOrBlank()) institutionReportContentError.value = "내용을 입력해주세요."
         else institutionReportContentError.value = null
         if (institutionTitleError.value.isNullOrBlank() and institutionRoomNumberError.value.isNullOrBlank() and institutionReportContentError.value.isNullOrBlank()){
-            api.reportInstitution(getToken(view.context), hashMapOf("room" to institutionRoomNumber.value!!.toInt()
+            api.reportInstitution(hashMapOf("room" to institutionRoomNumber.value!!.toInt()
                 , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
                 .enqueue(object: Callback<Unit> {
                     override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

@@ -1,23 +1,14 @@
 package dsm.android.v3.ui.mypage
 
-import android.animation.ValueAnimator
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.*
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.MyPageInfoModel
-import dsm.android.v3.ui.signIn.Auth
-import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.util.*
-import org.jetbrains.anko.doAsync
-import dsm.android.v3.util.LifecycleCallback
-import dsm.android.v3.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCallback{
+class MyPageViewModel: ViewModel(), LifecycleCallback {
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
@@ -38,11 +29,11 @@ class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCal
     val intentIntroDevelopersEvent = SingleLiveEvent<Any>()
 
     override fun apply(event: Lifecycle.Event) {
-        when(event){
+        when(event) {
             Lifecycle.Event.ON_RESUME -> {
-                api.getBasicInfo(getToken(app.applicationContext)).enqueue(object: Callback<MyPageInfoModel> {
+                api.getBasicInfo().enqueue(object : Callback<MyPageInfoModel> {
                     override fun onResponse(call: Call<MyPageInfoModel>, response: Response<MyPageInfoModel>) {
-                        when(response.code()){
+                        when (response.code()) {
                             200 -> {
                                 nameText.value = response.body()!!.name
                                 infoText.value = createStudentNumber(response.body()!!.number)
