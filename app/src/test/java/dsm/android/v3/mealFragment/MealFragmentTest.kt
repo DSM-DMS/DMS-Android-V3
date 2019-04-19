@@ -1,8 +1,8 @@
 package dsm.android.v3.mealFragment
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import dsm.android.v3.model.MealModel
-import dsm.android.v3.ui.main.meal.MealFragmentViewModel
+import dsm.android.v3.presentation.model.MealModel
+import dsm.android.v3.presentation.viewModel.meal.MealFragmentViewModel
 import dsm.android.v3.util.testObserver
 import org.junit.Before
 import org.junit.Rule

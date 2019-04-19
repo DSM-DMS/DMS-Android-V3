@@ -10,13 +10,13 @@
 
         <variable
                 name="viewModel"
-                type="dsm.android.v3.ui.applyMusic.ApplyMusicViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.applyMusic.ApplyMusicFragment">
+            tools:context=".ui.fragment.applyMusic.ApplyMusicFragment">
 
 
         <TextView

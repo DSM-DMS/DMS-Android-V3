@@ -8,7 +8,7 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.register.RegisterViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.register.RegisterViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

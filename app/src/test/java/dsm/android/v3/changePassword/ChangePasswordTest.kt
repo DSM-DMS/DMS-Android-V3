@@ -1,7 +1,7 @@
 package dsm.android.v3.changePassword
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import dsm.android.v3.ui.changePassword.ChangePasswordViewModel
+import dsm.android.v3.presentation.viewModel.changePassword.ChangePasswordViewModel
 import dsm.android.v3.util.testObserver
 import org.junit.Before
 import org.junit.Test

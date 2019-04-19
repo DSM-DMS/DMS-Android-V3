@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="applyGoingEditViewModel"
-                type="dsm.android.v3.ui.applyGoingEdit.ApplyGoingEditViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOutEdit.ApplyGoingEditViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

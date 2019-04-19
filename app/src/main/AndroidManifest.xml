@@ -13,17 +13,17 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".ui.applyMusic.ApplyMusicDomActivity">
+        <activity android:name="dsm.android.v3.ui.activity.applyMusic.ApplyMusicDomActivity">
         </activity>
         <activity
-                android:name=".ui.signIn.SignInActivity"
+                android:name="dsm.android.v3.ui.activity.signIn.SignInActivity"
                 android:label="@string/app_name">
         </activity>
         <activity
-                android:name=".ui.introduceTeam.IntroDeveloperActivity"
+                android:name="dsm.android.v3.ui.activity.introduceTeam.IntroDeveloperActivity"
                 android:theme="@style/AppTheme"/>
         <activity
-                android:name=".ui.splash.SplashActivity"
+                android:name="dsm.android.v3.ui.activity.splash.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,24 +31,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"/>
-        <activity android:name=".ui.register.RegisterActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.main.MainActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.register.RegisterActivity"/>
 
         <activity
-                android:name=".ui.pointLog.PointLogActivity"
+                android:name="dsm.android.v3.ui.activity.pointLog.PointLogActivity"
                 android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".ui.changePassword.ChangePasswordActivity">
+        <activity android:name="dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity">
         </activity>
-        <activity android:name=".ui.applyGoing.ApplyGoingActivity">
+        <activity android:name="dsm.android.v3.ui.activity.applyGoingOut.ApplyGoingActivity">
         </activity>
-        <activity android:name=".ui.applyGoingLog.ApplyGoingLogActivity"/>
-        <activity android:name=".ui.applyGoingDoc.ApplyGoingDocActivity"/>
-        <activity android:name=".ui.applyGoingEdit.ApplyGoingEditActivity"/>
-        <activity android:name=".ui.applyStaying.ApplyStayingActivity">
+        <activity android:name="dsm.android.v3.ui.activity.applyGoingOutLog.ApplyGoingLogActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.applyGoingOutDoc.ApplyGoingDocActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.applyGoingOutEdit.ApplyGoingEditActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.applyStaying.ApplyStayingActivity">
         </activity>
-        <activity android:name=".ui.applyExtensionStudy.ApplyExtensionStudyActivity">
+        <activity android:name="dsm.android.v3.ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity">
         </activity>
-        <activity android:name=".ui.notice.NoticeActivity"/>
+        <activity android:name="dsm.android.v3.ui.activity.notice.NoticeActivity"/>
     </application>
 </manifest>
