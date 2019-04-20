@@ -1,11 +1,11 @@
 package dsm.android.v3.ui.activity.applyGoingOutLog
 
-import dsm.android.v3.data.entity.ApplyGoingOut
+import dsm.android.v3.data.entity.ApplyGoingOutModel
 
 interface ApplyGoingLogContract{
-    fun setApplyList(models: ArrayList<ApplyGoingOut.ApplyGoingDataModel>)
+    fun setApplyList(models: ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>)
 
     interface ApplyGoingLogRv{
-        fun logItemClick(model: ApplyGoingOut.ApplyGoingDataModel)
+        fun logItemClick(model: ApplyGoingOutModel.ApplyGoingDataModel)
     }
 }

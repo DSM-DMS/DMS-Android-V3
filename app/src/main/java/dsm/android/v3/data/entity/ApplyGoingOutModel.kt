@@ -2,7 +2,7 @@ package dsm.android.v3.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class ApplyGoingOut(
+data class ApplyGoingOutModel(
     @SerializedName("saturday")
     var saturdayList: ArrayList<ApplyGoingDataModel>,
 

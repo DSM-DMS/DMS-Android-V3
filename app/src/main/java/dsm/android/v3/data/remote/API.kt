@@ -61,7 +61,7 @@ interface API {
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(): Call<ApplyGoingOut>
+    fun getGoingOutInfo(): Call<ApplyGoingOutModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")

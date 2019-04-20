@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
-import dsm.android.v3.data.entity.ApplyGoingOut
+import dsm.android.v3.data.entity.ApplyGoingOutModel
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
 import dsm.android.v3.ui.activity.applyGoingOutEdit.ApplyGoingEditActivity
 import dsm.android.v3.ui.activity.applyGoingOutLog.ApplyGoingLogData.deleteItem
@@ -33,13 +33,13 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
         binding.applyGoingLogViewModel = ViewModelProviders.of(this, factory).get(ApplyGoingLogViewModel::class.java)
     }
 
-    override fun logItemClick(model: ApplyGoingOut.ApplyGoingDataModel) {
+    override fun logItemClick(model: ApplyGoingOutModel.ApplyGoingDataModel) {
         deleteItem = model
         startActivity<ApplyGoingEditActivity>()
         finish()
     }
 
-    override fun setApplyList(models: ArrayList<ApplyGoingOut.ApplyGoingDataModel>) {
+    override fun setApplyList(models: ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>) {
         binding.applyGoingApplyRecordRv.adapter = ApplyGoingLogAdapter(models, this)
     }
 }

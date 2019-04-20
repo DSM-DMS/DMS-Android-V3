@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
-import dsm.android.v3.data.entity.ApplyGoingOut
+import dsm.android.v3.data.entity.ApplyGoingOutModel
 import dsm.android.v3.ui.activity.applyGoingOutLog.ApplyGoingLogContract
 import org.jetbrains.anko.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingOut.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
+class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>, val applyGoingLogRv: ApplyGoingLogContract.ApplyGoingLogRv): RecyclerView.Adapter<ApplyGoingLogAdapter.ApplyGoingLogViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ApplyGoingLogViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_apply_going_log, p0, false)
@@ -29,7 +29,7 @@ class ApplyGoingLogAdapter (val models: ArrayList<ApplyGoingOut.ApplyGoingDataMo
         val timeLimit = itemView.find<TextView>(R.id.applyGoing_log_card_time_tv)
         val reason = itemView.find<TextView>(R.id.applyGoing_log_card_reason_tv)
 
-        fun bind(model: ApplyGoingOut.ApplyGoingDataModel){
+        fun bind(model: ApplyGoingOutModel.ApplyGoingDataModel){
             timeLimit.text = "${createFrontDate(model.date)} ${createBackDate(model.date)}"
             reason.text = model.reason
             itemView.setOnClickListener { applyGoingLogRv.logItemClick(model) }
