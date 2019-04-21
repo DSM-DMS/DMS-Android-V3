@@ -28,13 +28,5 @@
             android:id="@+id/noticeListFragment"
             android:name="dsm.android.v3.ui.notice.NoticeListFragment"
             android:label="NoticeListFragment">
-        <action
-                android:id="@+id/action_noticeListFragment_to_noticeDescriptionFragment"
-                app:destination="@id/noticeDescriptionFragment"/>
-    </fragment>
-    <fragment
-            android:id="@+id/noticeDescriptionFragment"
-            android:name="dsm.android.v3.ui.notice.NoticeDescriptionFragment"
-            android:label="NoticeDescriptionFragment">
     </fragment>
 </navigation>
