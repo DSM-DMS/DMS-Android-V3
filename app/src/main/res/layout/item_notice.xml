@@ -11,10 +11,6 @@
         <variable
                 name="vm"
                 type="dsm.android.v3.ui.notice.NoticeViewModel"/>
-
-     <!--   <variable
-                name="id"
-                type="Integer"/>-->
     </data>
 
     <android.support.v7.widget.Api17CardView

@@ -20,7 +20,71 @@
                 android:layout_height="match_parent"
                 android:id="@+id/notice_list_constraint1">
 
-            <dsm.android.v3.ui.customView.CustomCardView
+            <android.support.v7.widget.Api17CardView
+                    android:id="@+id/noticeList_category_cv"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="12dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp">
+
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                            android:id="@+id/noticeList_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{vm.titleLiveData}"
+                            android:fontFamily="@font/nanumsquareextrabold"
+                            android:textColor="#FFF"
+                            tools:text="자주하는 질문"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"/>
+
+                    <TextView
+                            android:id="@+id/noticeList_description_tv"
+                            android:fontFamily="@font/nanumsquareregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.descriptionLiveData}"
+                            android:textSize="12sp"
+                            tools:text="사감부에서 게시한 공지사항을 열람합니다."
+                            android:textColor="#a9e4e4"
+                            android:layout_marginBottom="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/noticeList_title_tv"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/noticeList_close_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{() -> vm.finishNoticeListCall()}"
+                            android:src="@drawable/ic_close_white_24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.Api17CardView>
+
+            <!--<dsm.android.v3.ui.customView.CustomCardView
                     android:layout_width="match_parent"
                     android:layout_height="118dp"
                     android:id="@+id/notice_list_customview"
@@ -35,7 +99,7 @@
                     app:descriptionColor="@color/colorWhite"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"/>-->
 
 
             <android.support.v7.widget.RecyclerView
@@ -50,10 +114,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintTop_toBottomOf="@+id/notice_list_customview"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/noticeList_category_cv"/>
 
         </android.support.constraint.ConstraintLayout>
 

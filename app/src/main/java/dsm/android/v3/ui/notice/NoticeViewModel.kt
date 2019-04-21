@@ -1,6 +1,7 @@
 package dsm.android.v3.ui.notice
 
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import dsm.android.v3.connecter.Connecter
@@ -13,6 +14,18 @@ import retrofit2.Response
 
 class NoticeViewModel() : ViewModel() {
     val noticeTypeLiveData = MutableLiveData<Int>() // 0: 공지사항, 1: 기숙사 규칙
+    val titleLiveData = Transformations.map(noticeTypeLiveData) {
+        when(it){
+            0 -> "공지사항"
+            else -> "기숙사 규칙"
+        }
+    }
+    val descriptionLiveData = Transformations.map(noticeTypeLiveData) {
+        when(it){
+            0 -> "사감부에서 게시한 공지사항을 열람합니다."
+            else -> "사감부에서 게시한 기숙사 규칙을 열람합니다."
+        }
+    }
     val noticeIdLiveData = MutableLiveData<Int>()
     val noticeListLiveData = MutableLiveData<NoticeListModel>()
     val noticeDescriptionLiveData = MutableLiveData<NoticeDescriptionModel>()
