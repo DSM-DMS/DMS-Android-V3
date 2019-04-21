@@ -33,7 +33,6 @@ class NoticeViewModel() : ViewModel() {
     val getNoticeListLiveEvent = SingleLiveEvent<Any>()
     val getDescriptionLiveEvent = SingleLiveEvent<Any>()
 
-    val finishNoticeLiveEvent = SingleLiveEvent<Any>()
     val finishNoticeListLiveEvent = SingleLiveEvent<Any>()
     val closeDescriptionLiveEvent = SingleLiveEvent<Any>()
 
