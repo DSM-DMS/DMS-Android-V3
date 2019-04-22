@@ -7,7 +7,7 @@
     <fragment
             android:id="@+id/applyGoingFragment"
             android:name="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingFragment"
-            android:label="ApplyGoingFragment">
+            android:label="외출 신청">
         <action
                 android:id="@+id/action_applyGoingFragment_to_applyGoingLogFragment"
                 app:destination="@id/applyGoingLogFragment"
@@ -23,6 +23,11 @@
                 app:popEnterAnim="@anim/slideup_in"
                 app:popExitAnim="@anim/slideup_out"
                 app:popUpToInclusive="false"/>
+        <argument
+                android:name="actionBar"
+                app:argType="dsm.android.v3.ui.applyGoingOut.ActionBarParcel"
+                app:nullable="true"
+                android:defaultValue="@null"/>
     </fragment>
     <fragment
             android:id="@+id/applyGoingLogFragment"
@@ -35,6 +40,15 @@
                 app:exitAnim="@anim/slideup_out"
                 app:popEnterAnim="@anim/slideup_in"
                 app:popExitAnim="@anim/slideup_out"/>
+        <argument
+                android:name="goingOut"
+                app:argType="string"
+                android:defaultValue="토요외출"/>
+        <argument
+                android:name="actionBar"
+                app:argType="dsm.android.v3.ui.applyGoingOut.ActionBarParcel"
+                app:nullable="true"
+                android:defaultValue="@null"/>
     </fragment>
     <fragment
             android:id="@+id/applyGoingDocFragment"

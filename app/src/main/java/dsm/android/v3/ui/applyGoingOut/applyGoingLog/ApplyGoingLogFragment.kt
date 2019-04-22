@@ -14,30 +14,29 @@ import dsm.android.v3.util.DataBindingFragment
 
 class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>() {
 
+    private val actionBar by lazy { arguments!!.getParcelable<ActionBarParcel>("actionBar")?.actionBar }
+
     override val layoutId: Int
         get() = R.layout.fragment_apply_going_log
 
     override fun onStart() {
         super.onStart()
 
-        val actionBarParcel = findNavController().graph.arguments["actionBar"]!!.defaultValue as ActionBarParcel
-        actionBarParcel.actionBar.show()
+        actionBar!!.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val title = findNavController().graph.arguments["title"]!!.defaultValue as String
-        val actionBarParcel = findNavController().graph.arguments["actionBar"]!!.defaultValue as ActionBarParcel
+        val title = arguments!!.getString("goingOut")
+        actionBar!!.title = title
 
-        actionBarParcel.actionBar.title = title
-
-        val viewModelFactory = ApplyGoingLogViewModelFactory(title)
+        val viewModelFactory = ApplyGoingLogViewModelFactory(title!!)
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingLogViewModel::class.java)
 
         viewModel.logItemClickSingleLiveEvent.observe(this, Observer {
             findNavController().navigate(ApplyGoingLogFragmentDirections.actionApplyGoingLogFragmentToApplyGoingEditFragment())
-            actionBarParcel.actionBar.hide()
+            actionBar!!.hide()
         })
 
         binding.applyGoingApplyRecordRv.layoutManager = LinearLayoutManager(context)

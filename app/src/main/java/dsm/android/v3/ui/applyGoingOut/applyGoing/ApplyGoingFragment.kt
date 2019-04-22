@@ -5,29 +5,28 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.View
-import androidx.navigation.NavArgument
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyGoingBinding
 import dsm.android.v3.ui.applyGoingOut.ActionBarParcel
 import dsm.android.v3.util.DataBindingFragment
-import kotlinx.android.synthetic.main.activity_apply_going.*
 import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 
 class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
+    private val actionBarParcel by lazy { arguments?.getParcelable<ActionBarParcel>("actionBar") }
+    private val actionBar by lazy { actionBarParcel!!.actionBar }
+
     override val layoutId: Int
         get() = R.layout.fragment_apply_going
 
     override fun onStart() {
         super.onStart()
-        val controller = findNavController()
-        val actionBarParcel = controller.graph.arguments["actionBar"]!!.defaultValue as ActionBarParcel
 
-        actionBarParcel.actionBar.title = "외출 신청"
-        actionBarParcel.actionBar.show()
+        actionBar!!.title = "외출 신청"
+        actionBar!!.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,17 +36,14 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
         viewModel.intentApplyGoingLogSingleLiveEvent.observe(this, Observer {
             changeColor(it!!)
-            intentApplyGoingLog(applyGoing_apply_list_pager.currentItem)
+            intentApplyGoingLog(it.tag as Int)
         })
 
         viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
 
         viewModel.intentApplyGoingDocSingleLiveEvent.observe(this, Observer {
-            val controller = findNavController()
-            val actionBarParcel = controller.graph.arguments["actionBar"]!!.defaultValue as ActionBarParcel
-
-            controller.navigate(ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingDocFragment())
-            actionBarParcel.actionBar.hide()
+            findNavController().navigate(ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingDocFragment())
+            actionBarParcel!!.actionBar!!.hide()
         })
 
         binding.applyGoingViewModel = viewModel
@@ -56,13 +52,15 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
     }
 
     private fun intentApplyGoingLog(position: Int) {
-        val controller = findNavController()
-        when (position) {
-            0 -> controller.graph.addArgument("title", NavArgument.Builder().setDefaultValue("토요외출").build())
-            1 -> controller.graph.addArgument("title", NavArgument.Builder().setDefaultValue("일요외출").build())
-            2 -> controller.graph.addArgument("title", NavArgument.Builder().setDefaultValue("평일외출").build())
+        val directions = ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingLogFragment()
+        directions.actionBar = actionBarParcel
+        directions.goingOut = when (position) {
+            0 -> "토요외출"
+            1 -> "일요외출"
+            2 -> "평일외출"
+            else -> ""
         }
-        controller.navigate(ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingLogFragment())
+        findNavController().navigate(directions)
     }
 
     private fun changeColor(view: View) {

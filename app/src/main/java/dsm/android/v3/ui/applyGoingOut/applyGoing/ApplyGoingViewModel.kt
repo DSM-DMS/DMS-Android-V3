@@ -90,7 +90,7 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
 
     fun applyGoingClickDoc() = intentApplyGoingDocSingleLiveEvent.call()
 
-    fun setIntentApplyGoingLog(view: View) {
+    fun setGoingApplyGoingLog(view: View) {
         intentApplyGoingLogSingleLiveEvent.value = view
     }
 }
