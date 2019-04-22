@@ -1,6 +1,6 @@
 package dsm.android.v3.ui.applyGoingOut
 
- import android.os.Bundle
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
 import dsm.android.v3.R
@@ -15,7 +15,6 @@ class ApplyGoingOutActivity : AppCompatActivity() {
         setSupportActionBar(going_out_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "외출 신청"
         going_out_toolbar.setNavigationOnClickListener { onBackPressed() }
 
         findNavController(R.id.going_out_fragment)

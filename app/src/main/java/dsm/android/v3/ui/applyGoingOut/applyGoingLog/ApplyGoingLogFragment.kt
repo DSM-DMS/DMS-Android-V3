@@ -15,6 +15,7 @@ import dsm.android.v3.util.DataBindingFragment
 class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>() {
 
     private val actionBar by lazy { (activity as AppCompatActivity).supportActionBar }
+    private val title by lazy { arguments!!.getString("goingOut") }
 
     override val layoutId: Int
         get() = R.layout.fragment_apply_going_log
@@ -22,14 +23,12 @@ class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>(
     override fun onStart() {
         super.onStart()
 
+        actionBar!!.title = title
         actionBar!!.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val title = arguments!!.getString("goingOut")
-        actionBar!!.title = title
 
         val viewModelFactory = ApplyGoingLogViewModelFactory(title!!)
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingLogViewModel::class.java)
