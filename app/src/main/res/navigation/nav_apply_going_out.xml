@@ -23,11 +23,6 @@
                 app:popEnterAnim="@anim/slideup_in"
                 app:popExitAnim="@anim/slideup_out"
                 app:popUpToInclusive="false"/>
-        <argument
-                android:name="actionBar"
-                app:argType="dsm.android.v3.ui.applyGoingOut.ActionBarParcel"
-                app:nullable="true"
-                android:defaultValue="@null"/>
     </fragment>
     <fragment
             android:id="@+id/applyGoingLogFragment"
@@ -44,11 +39,6 @@
                 android:name="goingOut"
                 app:argType="string"
                 android:defaultValue="토요외출"/>
-        <argument
-                android:name="actionBar"
-                app:argType="dsm.android.v3.ui.applyGoingOut.ActionBarParcel"
-                app:nullable="true"
-                android:defaultValue="@null"/>
     </fragment>
     <fragment
             android:id="@+id/applyGoingDocFragment"

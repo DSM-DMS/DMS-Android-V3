@@ -4,11 +4,11 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyGoingBinding
-import dsm.android.v3.ui.applyGoingOut.ActionBarParcel
 import dsm.android.v3.util.DataBindingFragment
 import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.support.v4.toast
@@ -16,8 +16,7 @@ import org.jetbrains.anko.textColor
 
 class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
-    private val actionBarParcel by lazy { arguments!!.getParcelable<ActionBarParcel>("actionBar") }
-    private val actionBar by lazy { actionBarParcel!!.actionBar }
+    private val actionBar by lazy { (activity as AppCompatActivity).supportActionBar }
 
     override val layoutId: Int
         get() = R.layout.fragment_apply_going
@@ -25,8 +24,8 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
     override fun onStart() {
         super.onStart()
 
-        actionBar!!.title = "외출 신청"
-        actionBar!!.show()
+        actionBar?.title = "외출 신청"
+        actionBar?.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +42,7 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
         viewModel.applyGoingDocSingleLiveEvent.observe(this, Observer {
             findNavController().navigate(ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingDocFragment())
-            actionBarParcel!!.actionBar!!.hide()
+            actionBar?.hide()
         })
 
         binding.applyGoingViewModel = viewModel
@@ -53,7 +52,6 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
     private fun intentApplyGoingLog(position: Int) {
         val directions = ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingLogFragment()
-        directions.actionBar = actionBarParcel
         directions.goingOut = when (position) {
             0 -> "토요외출"
             1 -> "일요외출"
