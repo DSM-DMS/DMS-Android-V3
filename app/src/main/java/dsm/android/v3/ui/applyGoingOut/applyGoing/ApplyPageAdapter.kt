@@ -26,7 +26,7 @@ class ApplyPageAdapter(val viewModel: ApplyGoingViewModel) : PagerAdapter() {
 
         binding.root.setOnClickListener {
             it.tag = position
-            binding.applyGoingViewModel!!.setGoingApplyGoingLog(it)
+            binding.applyGoingViewModel!!.setApplyGoingLog(it)
         }
 
         container.addView(binding.root)

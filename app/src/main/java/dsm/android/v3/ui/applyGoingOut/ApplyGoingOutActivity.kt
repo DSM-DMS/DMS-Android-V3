@@ -25,6 +25,13 @@ class ApplyGoingOutActivity : AppCompatActivity() {
         val bundle = Bundle().apply { putParcelable("actionBar", ActionBarParcel(supportActionBar)) }
         findNavController(R.id.going_out_fragment).navigate(R.id.applyGoingFragment, bundle)
     }
+
+    override fun onBackPressed() {
+        if (findNavController(R.id.going_out_fragment).currentDestination!!.label.toString() == "applyGoingFragment")
+            finish()
+        else
+            super.onBackPressed()
+    }
 }
 
 data class ActionBarParcel(val actionBar: ActionBar?) : Parcelable {

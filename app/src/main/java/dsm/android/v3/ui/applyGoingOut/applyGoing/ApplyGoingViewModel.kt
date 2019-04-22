@@ -3,7 +3,6 @@ package dsm.android.v3.ui.applyGoingOut.applyGoing
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import android.view.View
 import dsm.android.v3.connecter.api
 import dsm.android.v3.model.ApplyGoingModel
@@ -17,10 +16,9 @@ import retrofit2.Response
 
 class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
 
-    val setViewPagerSingleLiveEvent = SingleLiveEvent<Any>()
-    val intentApplyGoingDocSingleLiveEvent = SingleLiveEvent<Any>()
+    val applyGoingDocSingleLiveEvent = SingleLiveEvent<Any>()
     val createShortToastSingleLiveEvent = SingleLiveEvent<String>()
-    val intentApplyGoingLogSingleLiveEvent = SingleLiveEvent<View>()
+    val applyGoingLogSingleLiveEvent = SingleLiveEvent<View>()
 
     val applyPagerModelLiveData = MutableLiveData<ArrayList<ApplyPagerModel>>()
 
@@ -88,9 +86,9 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
             createShortToastSingleLiveEvent.value = text
     }
 
-    fun applyGoingClickDoc() = intentApplyGoingDocSingleLiveEvent.call()
+    fun applyGoingClickDoc() = applyGoingDocSingleLiveEvent.call()
 
-    fun setGoingApplyGoingLog(view: View) {
-        intentApplyGoingLogSingleLiveEvent.value = view
+    fun setApplyGoingLog(view: View) {
+        applyGoingLogSingleLiveEvent .value = view
     }
 }

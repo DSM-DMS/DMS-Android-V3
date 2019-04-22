@@ -16,7 +16,7 @@ import org.jetbrains.anko.textColor
 
 class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
-    private val actionBarParcel by lazy { arguments?.getParcelable<ActionBarParcel>("actionBar") }
+    private val actionBarParcel by lazy { arguments!!.getParcelable<ActionBarParcel>("actionBar") }
     private val actionBar by lazy { actionBarParcel!!.actionBar }
 
     override val layoutId: Int
@@ -34,14 +34,14 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
         val viewModel = ViewModelProviders.of(this).get(ApplyGoingViewModel::class.java)
 
-        viewModel.intentApplyGoingLogSingleLiveEvent.observe(this, Observer {
+        viewModel.applyGoingLogSingleLiveEvent.observe(this, Observer {
             changeColor(it!!)
             intentApplyGoingLog(it.tag as Int)
         })
 
         viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
 
-        viewModel.intentApplyGoingDocSingleLiveEvent.observe(this, Observer {
+        viewModel.applyGoingDocSingleLiveEvent.observe(this, Observer {
             findNavController().navigate(ApplyGoingFragmentDirections.actionApplyGoingFragmentToApplyGoingDocFragment())
             actionBarParcel!!.actionBar!!.hide()
         })

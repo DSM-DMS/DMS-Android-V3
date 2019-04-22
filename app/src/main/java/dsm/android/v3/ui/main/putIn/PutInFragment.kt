@@ -11,7 +11,6 @@ import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentPutInBinding
 import dsm.android.v3.ui.applyExtensionStudy.ApplyExtensionStudyActivity
 import dsm.android.v3.ui.applyGoingOut.ApplyGoingOutActivity
-import dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingActivity
 import dsm.android.v3.ui.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.applyStaying.ApplyStayingActivity
 import dsm.android.v3.util.DataBindingFragment
