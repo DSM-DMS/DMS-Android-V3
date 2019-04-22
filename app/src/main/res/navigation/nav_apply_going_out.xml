@@ -7,7 +7,7 @@
     <fragment
             android:id="@+id/applyGoingFragment"
             android:name="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingFragment"
-            android:label="외출 신청">
+            android:label="applyGoingFragment">
         <action
                 android:id="@+id/action_applyGoingFragment_to_applyGoingLogFragment"
                 app:destination="@id/applyGoingLogFragment"
