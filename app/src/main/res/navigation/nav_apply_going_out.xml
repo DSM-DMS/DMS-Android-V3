@@ -27,7 +27,7 @@
     <fragment
             android:id="@+id/applyGoingLogFragment"
             android:name="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogFragment"
-            android:label="ApplyGoingLogFragment">
+            android:label="{goingOut}">
         <action
                 android:id="@+id/action_applyGoingLogFragment_to_applyGoingEditFragment"
                 app:destination="@id/applyGoingEditFragment"
@@ -43,9 +43,9 @@
     <fragment
             android:id="@+id/applyGoingDocFragment"
             android:name="dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocFragment"
-            android:label="ApplyGoingDocFragment"/>
+            android:label=""/>
     <fragment
             android:id="@+id/applyGoingEditFragment"
             android:name="dsm.android.v3.ui.applyGoingOut.applyGoingEdit.ApplyGoingEditFragment"
-            android:label="ApplyGoingEditFragment"/>
+            android:label=""/>
 </navigation>

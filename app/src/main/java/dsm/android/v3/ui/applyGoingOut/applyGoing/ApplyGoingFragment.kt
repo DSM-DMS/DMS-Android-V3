@@ -24,7 +24,6 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
     override fun onStart() {
         super.onStart()
 
-        actionBar?.title = "외출 신청"
         actionBar?.show()
     }
 

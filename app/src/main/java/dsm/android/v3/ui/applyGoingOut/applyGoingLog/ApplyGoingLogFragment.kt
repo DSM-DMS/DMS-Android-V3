@@ -23,7 +23,6 @@ class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>(
     override fun onStart() {
         super.onStart()
 
-        actionBar!!.title = title
         actionBar!!.show()
     }
 
