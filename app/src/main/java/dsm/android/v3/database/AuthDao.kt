@@ -1,6 +1,7 @@
 package dsm.android.v3.ui.signIn
 
 import android.arch.persistence.room.*
+import dsm.android.v3.database.Auth
 
 @Dao
 interface AuthDao{

@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="LogOutViewModel"
-            type="dsm.android.v3.ui.logOutDialog.LogOutViewModel">
+            name="LogoutViewModel"
+            type="dsm.android.v3.ui.logoutDialog.LogoutViewModel">
         </variable>
     </data>
     <android.support.constraint.ConstraintLayout
@@ -60,7 +60,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:onClick="@{()->LogOutViewModel.logoutClickCancel()}"
+                android:onClick="@{()->LogoutViewModel.logoutClickCancel()}"
                 android:id="@+id/logout_dialog_cancel_tv"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="35dp"
@@ -73,7 +73,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:onClick="@{(view)->LogOutViewModel.logoutClickLogout(view)}"
+                android:onClick="@{(view)->LogoutViewModel.logoutClickLogout(view)}"
                 android:id="@+id/logout_dialog_logout_tv"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="30dp"

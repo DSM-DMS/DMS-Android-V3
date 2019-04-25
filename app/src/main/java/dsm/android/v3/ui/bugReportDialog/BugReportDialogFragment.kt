@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.bugReportDialog
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,15 +14,19 @@ import dsm.android.v3.util.DataBindingDialogFragment
 import kotlinx.android.synthetic.main.dialog_bug_report.*
 import org.jetbrains.anko.support.v4.toast
 
-class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>(), BugReportContract {
+class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>(){
 
     override val layoutId: Int
         get() = R.layout.dialog_bug_report
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val factory = BugReportViewModelFactory(this)
-        binding.bugReportViewModel = ViewModelProviders.of(this, factory).get(BugReportViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(BugReportViewModel::class.java)
+
+        viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
+        viewModel.exitBugReportEvent.observe(this, Observer { dialog.dismiss() })
+
+        binding.bugReportViewModel = viewModel
         return rootView
     }
 
@@ -29,8 +34,4 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
         super.onStart()
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
-
-    override fun exitBugReport() = dialog.dismiss()
-
-    override fun createShortToast(text: String) = toast(text).show()
 }

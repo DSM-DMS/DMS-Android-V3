@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.connecter.Connecter
-import dsm.android.v3.ui.signIn.Auth
+import dsm.android.v3.database.Auth
 import dsm.android.v3.ui.signIn.AuthDatabase
 import dsm.android.v3.util.SingleLiveEvent
 import dsm.android.v3.util.getToken

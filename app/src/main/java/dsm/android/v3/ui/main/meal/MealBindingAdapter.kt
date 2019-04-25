@@ -22,7 +22,6 @@ fun ViewPager.getPageChange(): Int {
     return currentItem
 }
 
-
 @BindingAdapter("pageChangeAttrChanged")
 fun ViewPager.setPageChangeListener(listener: InverseBindingListener) {
     onPageChangeListener {

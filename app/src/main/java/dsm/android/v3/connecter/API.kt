@@ -9,9 +9,6 @@ import dsm.android.v3.model.Notice.NoticeDescriptionModel
 import dsm.android.v3.model.Notice.NoticeListModel
 import dsm.android.v3.model.Notice.RulesModel
 import dsm.android.v3.model.PointLogResponseModel
-import retrofit2.http.*
-import retrofit2.*
-import dsm.android.v3.model.*
 
 interface API {
 
