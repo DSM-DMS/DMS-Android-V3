@@ -21,5 +21,8 @@ class ChangePasswordActivity : DataBindingActivity<ActivityChangePasswordBinding
         viewModel.activityFinishLiveEvent.observe(this, Observer {
             finish()
         })
+        viewModel.changeSuccessLiveEvent.observe(this, Observer { toast("비밀번호 변경이 완료되었습니다.") })
+        viewModel.samePasswordLiveEvent.observe(this, Observer { toast("현재 비밀번호와 새 비밀번호가 동일합니다.") })
+        viewModel.errorLiveEvent.observe(this, Observer { toast("비밀번호 변경이 제대로 완료되지 않았습니다.") })
     }
 }
