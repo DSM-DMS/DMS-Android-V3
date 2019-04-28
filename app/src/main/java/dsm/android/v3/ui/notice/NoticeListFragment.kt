@@ -5,6 +5,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import androidx.navigation.fragment.findNavController
 
@@ -24,6 +25,7 @@ class NoticeListFragment : DataBindingFragment<FragmentNoticeListBinding>() {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
         binding.noticeListRv.adapter = NoticeAdapter(viewModel)
+        binding.noticeDescriptionContentTv.movementMethod = ScrollingMovementMethod()
         viewModel.getDescriptionLiveEvent.observe(this, Observer {
             //            NoticeDescriptionFragment().show(fragmentManager!!, "")
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED

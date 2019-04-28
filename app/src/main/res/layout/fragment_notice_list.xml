@@ -118,7 +118,7 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/notice_description_bottomSheet"
@@ -127,88 +127,81 @@
                 android:backgroundTint="@color/colorWhite"
                 app:layout_behavior="@string/bottom_sheet_behavior">
 
-            <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="52dp"
-                    android:src="@drawable/ic_logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintHorizontal_bias="0.0"/>
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <ImageView
-                    android:id="@+id/notice_description_cancle_iv"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_close_gray_24dp"
-                    android:onClick="@{() -> vm.closeEventCall()}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    android:layout_marginEnd="24dp"/>
+                <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/ic_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:id="@+id/imageView"/>
+
+                <ImageView
+                        android:id="@+id/notice_description_cancle_iv"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_close_gray_24dp"
+                        android:onClick="@{() -> vm.closeEventCall()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        android:layout_marginEnd="24dp"/>
 
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/notice_description_title_tv"
-                    android:textSize="18sp"
-                    android:text="@{vm.noticeDescriptionLiveData.title}"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:lineSpacingExtra="3sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    android:layout_marginTop="100dp"
-                    />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/notice_description_title_tv"
+                        android:textSize="18sp"
+                        android:text="@{vm.noticeDescriptionLiveData.title}"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:lineSpacingExtra="3sp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
-            <TextView
-                    android:id="@+id/notice_description_description_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textColor="#6fd1d1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="24dp"
-                    android:lineSpacingExtra="1sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/notice_description_title_tv"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintHorizontal_bias="0.0"/>
+                <TextView
+                        android:id="@+id/notice_description_content_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorGray800"
+                        android:text="@{vm.noticeDescriptionLiveData.content}"
+                        android:letterSpacing="0.04"
+                        android:lineSpacingExtra="4sp"
+                        android:scrollbars="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="24dp"
+                        app:layout_constraintTop_toBottomOf="@+id/notice_description_title_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <TextView
-                    android:id="@+id/notice_description_content_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorGray800"
-                    android:text="@{vm.noticeDescriptionLiveData.content}"
-                    android:letterSpacing="0.04"
-                    android:lineSpacingExtra="4sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/notice_description_description_tv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginTop="36dp"/>
-        </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>
