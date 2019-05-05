@@ -1,17 +1,16 @@
-package dsm.android.v3.ui.applyGoingDoc
+package dsm.android.v3.ui.applyGoingOut.applyGoingDoc
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.view.View
 import dsm.android.v3.connecter.api
-import dsm.android.v3.util.getToken
+import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() {
+class ApplyGoingDocViewModel : ViewModel() {
 
     private val dateFormat = SimpleDateFormat("MM/dd")
     private val sendDateFormat = SimpleDateFormat("MM-dd")
@@ -25,6 +24,9 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() 
     val applyGoingGoTimeError = MutableLiveData<String>()
     val applyGoingReasonError = MutableLiveData<String>()
 
+    val backApplyGoingSingleLiveEvent = SingleLiveEvent<Any>()
+    val createShortToastSingleLiveEvent = SingleLiveEvent<String>()
+
     init {
         val date = Date(System.currentTimeMillis())
         applyGoingGoDate.value = dateFormat.format(date)
@@ -33,7 +35,7 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() 
 
     private fun createDateString(): String = sendDateFormat.format(dateFormat.parse(applyGoingGoDate.value))
 
-    fun applyGoingDocClickApply(view: View) {
+    fun applyGoingDocClickApply() {
         if (applyGoingGoDate.value.isNullOrBlank() or !applyGoingGoDate.value!!.matches(Regex("[0-1]\\d/[0-3]\\d")))
             applyGoingGoDateError.value = "MM/DD 포맷에 맞춰 정확한 날짜를 입력해주세요."
         else applyGoingGoDateError.value = null
@@ -44,14 +46,14 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() 
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
             api.applyGoingOutDoc(
-                getToken(view.context), hashMapOf(
+                hashMapOf(
                     "date" to "${createDateString()} ${applyGoingGoTime.value}"
                     , "reason" to "${applyGoingReason.value}"
                 )
             ).enqueue(object : Callback<Unit> {
 
                 override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                    contract.createShortToast(
+                    createShortToastSingleLiveEvent.value =
                         when (response.code()) {
                             201 -> "외출신청에 성공했습니다."
                             403 -> "외출신청 권한이 없습니다."
@@ -59,16 +61,15 @@ class ApplyGoingDocViewModel(val contract: ApplyGoingDocContract) : ViewModel() 
                             500 -> "로그인이 필요합니다."
                             else -> "오류코드: ${response.code()}"
                         }
-                    )
-                    contract.backApplyGoing()
+                    applyGoingDocClickBack()
                 }
 
                 override fun onFailure(call: Call<Unit>, t: Throwable) {
-                    contract.createShortToast("오류가 발생했습니다.")
+                    createShortToastSingleLiveEvent.value = "오류가 발생했습니다."
                 }
             })
         }
     }
 
-    fun applyGoingDocClickBack() = contract.backApplyGoing()
+    fun applyGoingDocClickBack() = backApplyGoingSingleLiveEvent.call()
 }

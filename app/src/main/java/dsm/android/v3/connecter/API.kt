@@ -63,15 +63,15 @@ interface API {
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingModel>
+    fun getGoingOutInfo(): Call<ApplyGoingModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun applyGoingOutDoc(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+    fun applyGoingOutDoc(@Body body: Any?): Call<Unit>
 
     @PATCH("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun editGoingOut(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+    fun editGoingOut(@Body body: Any?): Call<Unit>
 
     @GET("/apply/music")
     fun getMusic(@Header("Authorization") token: String): Call<ApplyMusicModel>
@@ -84,7 +84,7 @@ interface API {
 
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")
-    fun deleteGoingOut(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+    fun deleteGoingOut(@Body body: Any?): Call<Unit>
 
     @GET("/info/basic")
     @Headers("Content-Type: application/json")
