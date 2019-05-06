@@ -7,93 +7,94 @@ import dsm.android.v3.data.entity.*
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.data.entity.NoticeListModel
 import dsm.android.v3.data.entity.RulesModel
+import io.reactivex.Single
 
 interface API {
 
     //로그인
     @POST("account/auth")
-    fun signIn(@Body body: JsonObject): Call<AuthModel>
+    fun signIn(@Body body: JsonObject): Single<AuthModel>
 
     //회원가입
     @POST("account/signup")
-    fun signUp(@Body body: JsonObject): Call<Void>
+    fun signUp(@Body body: JsonObject): Single<Unit>
 
     @GET("meal/{day}")
-    fun getMeal(@Path("day") day: String): Call<JsonObject>
+    fun getMeal(@Path("day") day: String): Single<JsonObject>
 
     @GET("/notice")
-    fun getNoticeList(): Call<NoticeListModel>
+    fun getNoticeList(): Single<NoticeListModel>
 
     @GET("/rule")
-    fun getRulesList(): Call<RulesModel>
+    fun getRulesList(): Single<RulesModel>
 
     @GET("/notice/{notice_id}")
-    fun getNoticeDescription(@Path("notice_id") notice_id: String): Call<NoticeDescriptionModel>
+    fun getNoticeDescription(@Path("notice_id") notice_id: String): Single<NoticeDescriptionModel>
 
     @GET("/rule/{rule_id}")
-    fun getRulesDescription(@Path("rule_id") rule_id: String): Call<NoticeDescriptionModel>
+    fun getRulesDescription(@Path("rule_id") rule_id: String): Single<NoticeDescriptionModel>
 
     @GET("info/point")
-    fun getPointLog(): Call<PointLogResponseModel>
+    fun getPointLog(): Single<PointLogResponseModel>
 
     @PATCH("account/pw")
-    fun changePw(@Body body: JsonObject): Call<Void>
+    fun changePw(@Body body: JsonObject): Single<Void>
 
     @GET("/apply/extension/map/{time}/{class_num}")
     @Headers("Content-Type: application/json")
-    fun getMap(@Path("time") time: Int, @Path("class_num") classNum: Int): Call<ExtensionModel>
+    fun getMap(@Path("time") time: Int, @Path("class_num") classNum: Int): Single<ExtensionModel>
 
     @POST("/apply/extension/{time}")
     @Headers("Content-Type: application/json")
-    fun applyExtension(@Path("time") time: Int, @Body body: HashMap<String, Int>): Call<Unit>
+    fun applyExtension(@Path("time") time: Int, @Body body: HashMap<String, Int>): Single<Unit>
 
     @DELETE("/apply/extension/{time}")
     @Headers("Content-Type: application/json")
-    fun deleteExtension(@Path("time") time: Int): Call<Unit>
+    fun deleteExtension(@Path("time") time: Int): Single<Unit>
 
     @GET("/apply/stay")
     @Headers("Content-Type: application/json")
-    fun getStayInfo(): Call<ApplyStayingModel>
+    fun getStayInfo(): Single<ApplyStayingModel>
 
     @POST("/apply/stay")
     @Headers("Content-Type: application/json")
-    fun applyStay(@Body body: Any?): Call<Unit>
+    fun applyStay(@Body body: Any?): Single<Unit>
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(): Call<ApplyGoingOutModel>
+    fun getGoingOutInfo(): Single<ApplyGoingOutModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun applyGoingOutDoc(@Body body: Any?): Call<Unit>
+    fun applyGoingOutDoc(@Body body: Any?): Single<Unit>
 
     @PATCH("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun editGoingOut(@Body body: Any?): Call<Unit>
+    fun editGoingOut(@Body body: Any?): Single<Unit>
 
     @GET("/apply/music")
-    fun getMusic(): Call<ApplyMusicModel>
+    fun getMusic(): Single<ApplyMusicModel>
 
     @POST("/apply/music")
-    fun applyMusic(@Body body: Any?): Call<Unit>
+    fun applyMusic(@Body body: Any?): Single<Unit>
 
     @HTTP(method = "DELETE", path = "/apply/music", hasBody = true)
-    fun deleteMusic(@Body body: Any?): Call<Void>
+    fun deleteMusic(@Body body: Any?): Single<Void>
 
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")
-    fun deleteGoingOut(@Body body: Any?): Call<Unit>
+    fun deleteGoingOut(@Body body: Any?): Single<Unit>
 
     @GET("/info/basic")
     @Headers("Content-Type: application/json")
-    fun getBasicInfo(): Call<MyPageInfoModel>
+    fun getBasicInfo(): Single<MyPageInfoModel>
 
     @POST("/report/facility")
     @Headers("Content-Type: application/json")
-    fun reportInstitution(@Body body: Any?): Call<Unit>
+    fun reportInstitution(@Body body: Any?): Single<Unit>
 
     @POST("/report/bug/2")
     @Headers("Content-Type: application/json")
-    fun reportBug(@Body body: Any?): Call<Unit>
+    fun reportBug(@Body body: Any?): Single<Unit>
 
 }
