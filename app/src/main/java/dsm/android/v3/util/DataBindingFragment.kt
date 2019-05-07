@@ -20,8 +20,10 @@ abstract class DataBindingFragment<T : ViewDataBinding> : RxFragment() {
 
     private val lifecycleOwner = LifecycleOwner()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    abstract fun inject()
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inject()
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         rootView = binding.root
         binding.lifecycleOwner = this

@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.activity.applyExtensionStudy
 
+import android.app.Application
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyExtensionStudyBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModel
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_extension_study.*
@@ -19,6 +21,8 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
     override val layoutId: Int
         get() = R.layout.activity_apply_extension_study
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

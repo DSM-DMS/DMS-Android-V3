@@ -15,7 +15,6 @@ class ApiModule{
     @Singleton
     fun provideApi(@Named("retrofit") retrofit: Retrofit) : API = retrofit.create(API::class.java)
 
-
     @Provides
     @Singleton
     fun provideApiClient(Api: API) = ApiClient(Api)

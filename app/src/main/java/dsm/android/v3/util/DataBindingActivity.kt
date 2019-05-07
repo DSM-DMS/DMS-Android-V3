@@ -15,8 +15,11 @@ abstract class DataBindingActivity<T : ViewDataBinding> : RxAppCompatActivity() 
 
     private val lifecycleOwner = LifecycleOwner()
 
+    abstract fun inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        inject()
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
     }

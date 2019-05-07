@@ -84,5 +84,10 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
 
     // dagger2
+    kapt "com.google.dagger:dagger-android-processor:2.22.1"
+    kapt "com.google.dagger:dagger-compiler:2.22.1"
+
     implementation 'com.google.dagger:dagger:2.22.1'
+    implementation 'com.google.dagger:dagger-android:2.22.1'
+    implementation 'com.google.dagger:dagger-android-support:2.22.1'
 }
