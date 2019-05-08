@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityRegisterBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.register.RegisterViewModel
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_register.*
@@ -21,6 +22,8 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>(), Registe
     private val viewModel: RegisterViewModel by lazy {
         ViewModelProviders.of(this, factory).get(RegisterViewModel::class.java)
     }
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

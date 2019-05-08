@@ -10,7 +10,6 @@ import android.widget.Toast
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.Notice.NoticeRVAdapter
 import dsm.android.v3.ui.adapter.Notice.RulesRvAdpater
-import dsm.android.v3.data.remote.Connecter
 import dsm.android.v3.data.entity.NoticeListModel
 import dsm.android.v3.data.entity.RulesModel
 import dsm.android.v3.ui.fragment.notice.NoticeDescriptionFragment

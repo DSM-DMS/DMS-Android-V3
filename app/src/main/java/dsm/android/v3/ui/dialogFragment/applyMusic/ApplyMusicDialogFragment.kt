@@ -9,12 +9,15 @@ import android.os.Bundle
 import android.view.View
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogApplyMusicBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.util.DataBindingDialogFragment
 import kotlinx.android.synthetic.main.dialog_apply_music.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
+
     override val layoutId: Int
         get() = R.layout.dialog_apply_music
     val viewModel by lazy {

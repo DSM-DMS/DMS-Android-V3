@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModel
 import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
@@ -25,6 +26,8 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>(), SignInNavig
     private val viewModel: SignInViewModel by lazy {
         ViewModelProviders.of(this, factory).get(SignInViewModel::class.java)
     }
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     @SuppressLint("ResourceType", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

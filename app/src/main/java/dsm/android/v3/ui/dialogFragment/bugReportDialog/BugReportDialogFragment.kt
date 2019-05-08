@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogBugReportBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModel
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 
 class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>(){
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     override val layoutId: Int
         get() = R.layout.dialog_bug_report

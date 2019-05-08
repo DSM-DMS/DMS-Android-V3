@@ -8,6 +8,7 @@ import android.view.View
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.ApplyMusicAdapter
 import dsm.android.v3.databinding.FragmentApplyMusicLogBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.ui.dialogFragment.applyMusic.ApplyMusicDialogFragment
 import dsm.android.v3.util.DataBindingFragment
@@ -17,6 +18,8 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
 
     override val layoutId: Int
         get() = R.layout.fragment_apply_music_log
+
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

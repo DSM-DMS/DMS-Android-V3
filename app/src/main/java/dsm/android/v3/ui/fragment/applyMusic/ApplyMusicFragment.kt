@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.util.DataBindingFragment
@@ -22,6 +23,8 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
 
     override val layoutId: Int
         get() = R.layout.fragment_apply_music
+
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

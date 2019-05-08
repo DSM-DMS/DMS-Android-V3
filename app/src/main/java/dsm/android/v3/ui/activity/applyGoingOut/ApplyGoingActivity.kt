@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModel
 import dsm.android.v3.ui.activity.applyGoingOutDoc.ApplyGoingDocActivity
@@ -29,6 +30,8 @@ class ApplyGoingActivity : DataBindingActivity<ActivityApplyGoingBinding>(),  Ap
 
     override val layoutId: Int
         get() = R.layout.activity_apply_going
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.PointLogAdapter
-import dsm.android.v3.data.remote.Connecter
 import dsm.android.v3.data.entity.PointLogResponseModel
 
 import kotlinx.android.synthetic.main.activity_point_log.*

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.MealPagerAdapter
 import dsm.android.v3.databinding.FragmentMealBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.meal.MealFragmentViewModel
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.find
@@ -18,6 +19,8 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
 
     override val layoutId: Int
         get() = R.layout.fragment_meal
+
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     val viewModel by lazy { ViewModelProviders.of(this)[MealFragmentViewModel::class.java] }
 

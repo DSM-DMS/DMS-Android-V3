@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentPutInBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.putIn.PutInViewModel
 import dsm.android.v3.ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity
 import dsm.android.v3.ui.activity.applyGoingOut.ApplyGoingActivity
@@ -20,6 +21,8 @@ import org.jetbrains.anko.support.v4.startActivity
 class PutInFragment : DataBindingFragment<FragmentPutInBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_put_in
+
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     val viewModel by lazy { ViewModelProviders.of(this)[PutInViewModel::class.java] }
     override fun onCreateView(

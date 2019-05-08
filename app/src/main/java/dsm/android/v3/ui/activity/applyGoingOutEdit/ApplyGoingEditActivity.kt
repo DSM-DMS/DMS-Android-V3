@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyGoingEditBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyGoingOutEdit.ApplyGoingEditViewModel
 import dsm.android.v3.util.DataBindingActivity
 import org.jetbrains.anko.toast
@@ -11,6 +12,8 @@ import org.jetbrains.anko.toast
 class ApplyGoingEditActivity: DataBindingActivity<ActivityApplyGoingEditBinding>(), ApplyGoingEditContract{
     override val layoutId: Int
         get() = R.layout.activity_apply_going_edit
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

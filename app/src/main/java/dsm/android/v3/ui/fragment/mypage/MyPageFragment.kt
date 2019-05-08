@@ -10,6 +10,7 @@ import dsm.android.v3.util.DataBindingFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.databinding.FragmentMypageBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModel
 import dsm.android.v3.ui.dialogFragment.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
@@ -25,6 +26,8 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
 
     override val layoutId: Int
         get() = dsm.android.v3.R.layout.fragment_mypage
+
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     private val fm: FragmentManager? by lazy { fragmentManager }
     private val logoutDialogFragment: LogoutDialogFragment by  lazy { LogoutDialogFragment() }

@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogInstitutionReportBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModel
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 
 class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionReportBinding>() {
+    override fun inject() = BaseApp.appComponent.injectFragment(this)
 
     override val layoutId: Int
         get() = R.layout.dialog_institution_report

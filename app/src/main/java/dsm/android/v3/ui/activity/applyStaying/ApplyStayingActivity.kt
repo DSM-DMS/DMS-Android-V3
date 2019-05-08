@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.model.ApplyStayingPagerModel
 import dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModel
 import dsm.android.v3.util.DataBindingActivity
@@ -26,6 +27,8 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
         get() = R.layout.activity_apply_staying
 
     lateinit var viewGroup: ViewGroup
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

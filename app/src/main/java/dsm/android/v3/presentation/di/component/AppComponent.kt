@@ -14,5 +14,5 @@ import javax.inject.Singleton
 interface AppComponent{
     fun injectActivity(activity: Activity)
 
-    fun injectFragment(activity: Fragment)
+    fun injectFragment(fragment: Fragment)
 }

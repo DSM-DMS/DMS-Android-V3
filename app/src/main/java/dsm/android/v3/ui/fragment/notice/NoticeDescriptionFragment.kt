@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.Connecter
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import kotlinx.android.synthetic.main.fragment_notice_description.*

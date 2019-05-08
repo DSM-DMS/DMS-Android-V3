@@ -7,6 +7,7 @@ import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.ActivityApplyGoingLogBinding
 import dsm.android.v3.data.entity.ApplyGoingOutModel
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
 import dsm.android.v3.ui.activity.applyGoingOutEdit.ApplyGoingEditActivity
 import dsm.android.v3.ui.activity.applyGoingOutLog.ApplyGoingLogData.deleteItem
@@ -18,6 +19,8 @@ class ApplyGoingLogActivity: DataBindingActivity<ActivityApplyGoingLogBinding>()
 
     override val layoutId: Int
         get() = R.layout.activity_apply_going_log
+
+    override fun inject() = BaseApp.appComponent.injectActivity(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
