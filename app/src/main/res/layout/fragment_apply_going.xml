@@ -2,32 +2,19 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
                 name="applyGoingViewModel"
-                type="dsm.android.v3.ui.applyGoing.ApplyGoingViewModel"/>
+                type="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingViewModel"/>
 
         <import type="android.arch.lifecycle.MutableLiveData"/>
     </data>
+
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <android.support.design.widget.AppBarLayout
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:theme="@style/AppTheme.AppBarOverlay"
-                android:id="@+id/appBarLayout">
-
-            <android.support.v7.widget.Toolbar
-                    android:id="@+id/applyGoing_toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    app:titleTextAppearance="@style/Toolbar.TitleText"
-                    app:popupTheme="@style/AppTheme.PopupOverlay">
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
 
         <android.support.constraint.ConstraintLayout
                 android:id="@+id/applyGoing_explanation_lay"
@@ -39,6 +26,7 @@
                 android:paddingHorizontal="16dp"
                 android:paddingTop="26dp"
                 android:paddingBottom="20dp">
+
             <TextView
                     android:id="@+id/applyGoing_title_tv"
                     android:layout_width="wrap_content"
@@ -49,6 +37,7 @@
                     android:textSize="@dimen/text_size_24"
                     android:fontFamily="@font/nanumsquareextrabold"
                     android:textColor="@color/colorPrimary"/>
+
             <TextView
                     android:id="@+id/applyGoing_explanation_tv"
                     android:layout_width="wrap_content"
@@ -91,12 +80,11 @@
                 android:id="@+id/applyGoing_apply_list_pager"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:applyPagerItems="@{applyGoingViewModel.applyPagerModelLiveData}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/applyGoing_explanation_lay"
                 app:layout_constraintBottom_toTopOf="@id/applyGoing_apply_btn"/>
 
-
     </android.support.constraint.ConstraintLayout>
-
 </layout>
