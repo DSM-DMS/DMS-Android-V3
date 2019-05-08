@@ -1,25 +1,20 @@
 package dsm.android.v3.ui.applyMusic
 
-
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
 import dsm.android.v3.model.ApplyPagerModel
 import dsm.android.v3.util.DataBindingFragment
 import kotlinx.android.synthetic.main.fragment_apply_music.*
-import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.find
-import org.jetbrains.anko.textColor
 
 class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
 
@@ -28,9 +23,9 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val viewModel = ViewModelProviders.of(activity!!).get(ApplyMusicViewModel::class.java)
-        binding.viewModel = viewModel
-        register(binding.viewModel!!)
+
         viewModel.actionMusicLogLiveEvent.observe(this, Observer {
             findNavController().navigate(ApplyMusicFragmentDirections.actionApplyMusicFragmentToApplyMusicLogFragment())
         })
@@ -39,9 +34,11 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
             setViewPager(it!!.mon.size, it.tue.size, it.wed.size, it.thu.size, it.fri.size)
         })
 
+        binding.viewModel = viewModel
+        register(binding.viewModel!!)
     }
 
-    fun setViewPager(monday: Int, tuesday: Int, wednesday: Int, thursday: Int, friday: Int) {
+    private fun setViewPager(monday: Int, tuesday: Int, wednesday: Int, thursday: Int, friday: Int) {
         val models = arrayListOf(
             ApplyPagerModel(
                 getString(R.string.apply_music_monday_title),
@@ -72,7 +69,7 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
         apply_music_apply_list_pager.adapter = ApplyPageAdapter(models)
     }
 
-    inner class ApplyPageAdapter(val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
+    inner class ApplyPageAdapter(private val models: ArrayList<ApplyPagerModel>) : PagerAdapter() {
 
         override fun isViewFromObject(p0: View, p1: Any): Boolean = p0 == p1
 
@@ -88,10 +85,6 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
             view.find<TextView>(R.id.item_applyGoing_count_tv).text = models[position].cnt.toString()
             container.addView(view)
             return view
-        }
-
-        override fun startUpdate(container: ViewGroup) {
-            super.startUpdate(container)
         }
     }
 }

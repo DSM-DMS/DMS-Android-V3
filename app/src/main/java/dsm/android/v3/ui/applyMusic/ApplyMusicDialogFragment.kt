@@ -16,16 +16,17 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
     override val layoutId: Int
         get() = R.layout.dialog_apply_music
+
     val viewModel by lazy {
         ViewModelProviders.of(activity!!)[ApplyMusicViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         music_dialog_cancel_tv.onClick { dismiss() }
-        viewModel.fragmentDismissLiveEvent.observe(this, Observer {
-            dismiss()
-        })
+
+        viewModel.fragmentDismissLiveEvent.observe(this, Observer { dismiss() })
         binding.viewModel = viewModel
     }
 
@@ -36,8 +37,8 @@ class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBindi
 
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
+
         viewModel.inputArtistLiveData.value = ""
         viewModel.inputMusicLiveData.value = ""
-
     }
 }
