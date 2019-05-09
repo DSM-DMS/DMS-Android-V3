@@ -74,13 +74,13 @@ interface API {
     fun editGoingOut(@Body body: Any?): Call<Unit>
 
     @GET("/apply/music")
-    fun getMusic(@Header("Authorization") token: String): Call<ApplyMusicModel>
+    fun getMusic(): Call<ApplyMusicModel>
 
     @POST("/apply/music")
-    fun applyMusic(@Header("Authorization") token: String, @Body body: Any?): Call<Unit>
+    fun applyMusic(@Body body: Any?): Call<Unit>
 
     @HTTP(method = "DELETE", path = "/apply/music", hasBody = true)
-    fun deleteMusic(@Header("Authorization") token: String, @Body body: Any?): Call<Void>
+    fun deleteMusic(@Body body: Any?): Call<Void>
 
     @HTTP(method = "DELETE", path = "/apply/goingout", hasBody = true)
     @Headers("Content-Type: application/json")

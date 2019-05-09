@@ -5,7 +5,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
                 name="isClicked"
                 type="boolean"/>
@@ -26,50 +25,63 @@
             android:layout_height="match_parent"
             tools:context=".ui.applyMusic.ApplyMusicLogFragment">
 
-
-        <TextView
-                android:id="@+id/apply_music_log_title_tv"
-                android:text="@{viewModel.weekLiveData}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="화요일 기상음악"
+        <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="true"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                android:textSize="@dimen/text_size_24"
-                android:layout_marginTop="36dp"
-                android:fontFamily="@font/nanumsquareextrabold"
-                android:textColor="@color/colorPrimary"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-                android:text="@{viewModel.introduceLiveData}"
-                android:id="@+id/apply_music_explanation_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorGray600"
-                android:textSize="@dimen/typo_subtitle"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/nanumsquareregular"
-                android:letterSpacing="0.02"
-                android:lineSpacingExtra="10sp"
-                tools:text="화요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/apply_music_log_title_tv"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent"/>
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/apply_music_musicList_rv"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                tools:listitem="@layout/item_applymusic_log"
-                app:musicData="@{viewModel.musicsLiveData}"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/apply_music_delete_btn"
-                app:layout_constraintTop_toBottomOf="@+id/apply_music_explanation_tv"/>
+                <TextView
+                        android:id="@+id/apply_music_log_title_tv"
+                        android:text="@{viewModel.weekLiveData}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="화요일 기상음악"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:textSize="@dimen/text_size_24"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/nanumsquareextrabold"
+                        android:textColor="@color/colorPrimary"/>
+
+                <TextView
+                        android:text="@{viewModel.introduceLiveData}"
+                        android:id="@+id/apply_music_explanation_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGray600"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/nanumsquareregular"
+                        android:letterSpacing="0.02"
+                        android:lineSpacingExtra="10sp"
+                        tools:text="화요일 아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다."
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/apply_music_log_title_tv"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/apply_music_musicList_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:paddingBottom="66dp"
+                        tools:listitem="@layout/item_apply_music_log"
+                        app:musicData="@{viewModel.musicsLiveData}"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@+id/apply_music_explanation_tv"/>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
 
         <Button
                 android:visibility="@{viewModel.selectedIndex != null ? View.VISIBLE : View.INVISIBLE}"

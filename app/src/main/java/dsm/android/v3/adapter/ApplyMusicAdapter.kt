@@ -1,16 +1,15 @@
 package dsm.android.v3.adapter
 
-import android.arch.lifecycle.Observer
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import dsm.android.v3.databinding.ItemApplyMusicLogBinding
 import dsm.android.v3.model.ApplyMusicDetailModel
-import dsm.android.v3.databinding.ItemApplymusicLogBinding
 import dsm.android.v3.ui.applyMusic.ApplyMusicViewModel
 
 class ApplyMusicAdapter(val viewModel: ApplyMusicViewModel) :
     RecyclerView.Adapter<ApplyMusicAdapter.ApplyMusicViewHolder>() {
+
     var item = arrayListOf<ApplyMusicDetailModel>()
         set(value) {
             field = value
@@ -18,7 +17,7 @@ class ApplyMusicAdapter(val viewModel: ApplyMusicViewModel) :
         }
 
     override fun onCreateViewHolder(view: ViewGroup, p1: Int): ApplyMusicViewHolder {
-        val binding = ItemApplymusicLogBinding.inflate(LayoutInflater.from(view.context), view, false)
+        val binding = ItemApplyMusicLogBinding.inflate(LayoutInflater.from(view.context), view, false)
         return ApplyMusicViewHolder(binding)
     }
 
@@ -28,7 +27,7 @@ class ApplyMusicAdapter(val viewModel: ApplyMusicViewModel) :
         viewHolder.bind()
     }
 
-    inner class ApplyMusicViewHolder(val binding: ItemApplymusicLogBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ApplyMusicViewHolder(val binding: ItemApplyMusicLogBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             binding.musicData = item[adapterPosition]
             binding.viewModel = viewModel

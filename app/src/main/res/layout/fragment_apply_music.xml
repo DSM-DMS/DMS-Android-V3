@@ -18,7 +18,6 @@
             android:layout_height="match_parent"
             tools:context=".ui.applyMusic.ApplyMusicFragment">
 
-
         <TextView
                 android:id="@+id/apply_music_title_tv"
                 android:layout_width="wrap_content"
@@ -53,6 +52,7 @@
                 android:id="@+id/apply_music_apply_list_pager"
                 android:paddingStart="50dp"
                 app:pageChange="@={viewModel.pageStatusLiveData}"
+                app:applyMusicPagerItems="@{viewModel.applyPagerModelLiveData}"
                 android:paddingEnd="50dp"
                 android:clipToPadding="false"
                 android:layout_width="0dp"
@@ -66,7 +66,8 @@
 
         <Button
                 android:id="@+id/applyGoing_apply_btn"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/radius_view_primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +81,6 @@
                 android:text="@string/apply_music_apply_btn"
                 android:textSize="@dimen/typo_header"
                 android:textColor="@color/colorWhite"
-                android:fontFamily="@font/nanumsquareregular"
-                />
+                android:fontFamily="@font/nanumsquareregular"/>
     </android.support.constraint.ConstraintLayout>
 </layout>
