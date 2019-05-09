@@ -10,6 +10,7 @@ import dsm.android.v3.databinding.FragmentApplyMusicLogBinding
 import dsm.android.v3.util.DataBindingFragment
 import kotlinx.android.synthetic.main.fragment_apply_music_log.*
 import kotlinx.android.synthetic.main.fragment_apply_music_log.view.*
+import org.jetbrains.anko.support.v4.toast
 
 class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>() {
 
@@ -28,6 +29,8 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         viewModel.dataSetChangedLiveEvent.observe(this, Observer {
             apply_music_musicList_rv.adapter!!.notifyDataSetChanged()
         })
+
+        viewModel.toastLiveEvent.observe(this, Observer{ toast(it!!) })
 
         binding.viewModel = viewModel
         binding.root.apply_music_musicList_rv.adapter = ApplyMusicAdapter(viewModel)

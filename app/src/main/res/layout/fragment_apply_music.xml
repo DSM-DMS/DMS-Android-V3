@@ -52,6 +52,7 @@
                 android:id="@+id/apply_music_apply_list_pager"
                 android:paddingStart="50dp"
                 app:pageChange="@={viewModel.pageStatusLiveData}"
+                app:applyMusicPagerItems="@{viewModel.applyPagerModelLiveData}"
                 android:paddingEnd="50dp"
                 android:clipToPadding="false"
                 android:layout_width="0dp"

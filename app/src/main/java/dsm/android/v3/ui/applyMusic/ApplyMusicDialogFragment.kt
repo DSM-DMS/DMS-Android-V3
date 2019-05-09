@@ -12,6 +12,7 @@ import dsm.android.v3.databinding.DialogApplyMusicBinding
 import dsm.android.v3.util.DataBindingDialogFragment
 import kotlinx.android.synthetic.main.dialog_apply_music.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.toast
 
 class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
     override val layoutId: Int
@@ -27,6 +28,9 @@ class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBindi
         music_dialog_cancel_tv.onClick { dismiss() }
 
         viewModel.fragmentDismissLiveEvent.observe(this, Observer { dismiss() })
+
+        viewModel.toastLiveEvent.observe(this, Observer{ toast(it!!) })
+
         binding.viewModel = viewModel
     }
 

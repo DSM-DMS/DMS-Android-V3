@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyGoingBinding
 import dsm.android.v3.util.DataBindingFragment
-import kotlinx.android.synthetic.main.item_apply_pager.view.*
+import kotlinx.android.synthetic.main.item_apply_going_pager.view.*
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 
@@ -45,7 +45,7 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
         })
 
         binding.applyGoingViewModel = viewModel
-        binding.applyGoingApplyListPager.adapter = ApplyPageAdapter(viewModel)
+        binding.applyGoingApplyListPager.adapter = ApplyGoingPageAdapter(viewModel)
         register(binding.applyGoingViewModel!!)
     }
 

@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.BR
-import dsm.android.v3.databinding.ItemApplyPagerBinding
+import dsm.android.v3.databinding.ItemApplyGoingPagerBinding
 import dsm.android.v3.model.ApplyPagerModel
 
-class ApplyPageAdapter(val viewModel: ApplyGoingViewModel) : PagerAdapter() {
+class ApplyGoingPageAdapter(val viewModel: ApplyGoingViewModel) : PagerAdapter() {
 
     private var applyPagerModels = ArrayList<ApplyPagerModel>()
 
@@ -20,7 +20,7 @@ class ApplyPageAdapter(val viewModel: ApplyGoingViewModel) : PagerAdapter() {
     override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val binding = ItemApplyPagerBinding.inflate(LayoutInflater.from(container.context), container, false)
+        val binding = ItemApplyGoingPagerBinding.inflate(LayoutInflater.from(container.context), container, false)
         binding.setVariable(BR.applyPagerModel, applyPagerModels[position])
         binding.applyGoingViewModel = viewModel
 
