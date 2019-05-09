@@ -3,18 +3,11 @@ package dsm.android.v3.ui.applyMusic
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
-import dsm.android.v3.model.ApplyPagerModel
 import dsm.android.v3.util.DataBindingFragment
-import kotlinx.android.synthetic.main.fragment_apply_music.*
-import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.toast
 
 class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
