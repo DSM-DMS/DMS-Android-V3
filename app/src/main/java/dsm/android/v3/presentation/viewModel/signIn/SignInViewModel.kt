@@ -6,7 +6,7 @@ import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.MutableLiveData
 import dsm.android.v3.domain.entity.Auth
 import dsm.android.v3.domain.entity.AuthModel
-import dsm.android.v3.ui.activity.signIn.AuthDatabase
+import dsm.android.v3.data.local.database.AuthDatabase
 import dsm.android.v3.util.SingleLiveEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

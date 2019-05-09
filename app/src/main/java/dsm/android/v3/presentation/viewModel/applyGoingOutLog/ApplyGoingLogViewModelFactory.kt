@@ -1,4 +1,4 @@
-package dsm.android.v3.presentation.viewModelFactory
+package dsm.android.v3.presentation.viewModel.applyGoingOutLog
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

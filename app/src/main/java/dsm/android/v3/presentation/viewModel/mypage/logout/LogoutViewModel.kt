@@ -3,7 +3,7 @@ package dsm.android.v3.presentation.viewModel.mypage.logout
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
-import dsm.android.v3.ui.activity.signIn.AuthDatabase
+import dsm.android.v3.data.local.database.AuthDatabase
 import dsm.android.v3.util.SingleLiveEvent
 import org.jetbrains.anko.doAsync
 

@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.data.local.shared.LocalStorage
-import dsm.android.v3.data.local.shared.SharedPrefStorage
 import dsm.android.v3.domain.entity.Auth
 import dsm.android.v3.presentation.di.app.BaseApp
-import dsm.android.v3.ui.activity.signIn.AuthDatabase
+import dsm.android.v3.data.local.database.AuthDatabase
 import dsm.android.v3.ui.activity.signIn.SignInActivity
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity

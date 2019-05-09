@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.activity.signIn
+package dsm.android.v3.data.local.dao
 
 import android.arch.persistence.room.*
 import dsm.android.v3.domain.entity.Auth

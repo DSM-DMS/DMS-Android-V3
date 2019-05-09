@@ -11,11 +11,10 @@ class SharedPrefStorage(val context: Context): LocalStorage {
             it.apply()
         }
 
-    override fun getToken(): Observable<String> = Observable.fromCallable {
+    override fun getToken(): String =
         "Bearer " + getPref(context).getString(getKey(true), "")
-    }
 
-    override fun removeToken(token: String) =
+    override fun removeToken() =
         getPref(context).edit().let {
             it.remove(getKey(true))
             it.apply()

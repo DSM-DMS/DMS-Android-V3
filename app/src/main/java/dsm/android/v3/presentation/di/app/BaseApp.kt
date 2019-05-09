@@ -2,7 +2,6 @@ package dsm.android.v3.presentation.di.app
 
 import android.app.Application
 import dsm.android.v3.presentation.di.component.AppComponent
-import dsm.android.v3.presentation.di.component.DaggerAppComponent
 import dsm.android.v3.presentation.di.module.ApiModule
 import dsm.android.v3.presentation.di.module.AppModule
 import dsm.android.v3.presentation.di.module.NetworkModule

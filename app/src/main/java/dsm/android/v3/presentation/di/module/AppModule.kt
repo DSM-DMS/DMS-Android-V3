@@ -14,8 +14,4 @@ class AppModule(val application: Application) {
     @Provides
     @Singleton
     fun provideApp() = application
-
-    @Provides
-    @Singleton
-    fun provideLocalStorage() = SharedPrefStorage(application)
 }

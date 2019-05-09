@@ -11,7 +11,7 @@ import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.FragmentApplyGoingLogBinding
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
-import dsm.android.v3.presentation.viewModelFactory.ApplyGoingLogViewModelFactory
+import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModelFactory
 import dsm.android.v3.ui.applyGoingOut.applyGoingOutLog.ApplyGoingLogFragmentDirections
 import dsm.android.v3.util.DataBindingFragment
 
@@ -32,7 +32,8 @@ class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModelFactory = ApplyGoingLogViewModelFactory(title!!)
+        val viewModelFactory =
+            ApplyGoingLogViewModelFactory(title!!)
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingLogViewModel::class.java)
 
         viewModel.logItemClickSingleLiveEvent.observe(this, Observer {

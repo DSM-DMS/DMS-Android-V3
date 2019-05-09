@@ -4,7 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import dsm.android.v3.connecter.SecretHeaderInterceptor
+import dsm.android.v3.data.local.database.AuthDatabase
+import dsm.android.v3.data.local.shared.LocalStorage
+import dsm.android.v3.data.remote.interceptor.SecretHeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,7 +24,7 @@ class NetworkModule(val mBaseUrl: String) {
 
     @Provides
     @Singleton
-    fun provideSecretHeaderInterceptor(): SecretHeaderInterceptor = SecretHeaderInterceptor()
+    fun provideSecretHeaderInterceptor(local: LocalStorage, authDatabase: AuthDatabase): SecretHeaderInterceptor = SecretHeaderInterceptor(local, authDatabase)
 
     @Provides
     @Singleton
