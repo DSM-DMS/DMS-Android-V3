@@ -7,7 +7,7 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.signIn.SignInViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.signIn.SignInViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

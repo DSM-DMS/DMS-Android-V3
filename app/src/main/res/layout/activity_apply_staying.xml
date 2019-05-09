@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="applyStayingViewModel"
-                type="dsm.android.v3.ui.applyStaying.ApplyStayingViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

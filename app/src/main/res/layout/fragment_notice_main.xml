@@ -54,7 +54,7 @@
             android:textSize="14sp"
             android:fontFamily="@font/nanumsquareregular"/>
 
-    <dsm.android.v3.ui.customView.CustomCardView
+    <dsm.android.v3.ui.CustomView.CustomCardView
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toBottomOf="@id/notice_description3_tv"
             app:layout_constraintBottom_toTopOf="@id/notice_rules_customview"
@@ -65,7 +65,7 @@
             app:description="@string/notice_notice_description"
             app:count="3"/>
 
-    <dsm.android.v3.ui.customView.CustomCardView
+    <dsm.android.v3.ui.CustomView.CustomCardView
             android:layout_marginTop="24dp"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toBottomOf="@id/notice_notice_customview"

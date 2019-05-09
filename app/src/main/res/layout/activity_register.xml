@@ -8,7 +8,7 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.register.RegisterViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.register.RegisterViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -201,7 +201,7 @@
                     android:layout_marginStart="46dp"
                     android:layout_marginTop="4dp"
                     android:hint="@string/sign_password_retry_edit"
-                    android:text="@={vm.registerPwComfirm}"
+                    android:text="@={vm.registerPwConfirm}"
                     android:textColor="#000000"
                     android:singleLine="true"
                     android:textColorHint="@color/colorTextHint"
