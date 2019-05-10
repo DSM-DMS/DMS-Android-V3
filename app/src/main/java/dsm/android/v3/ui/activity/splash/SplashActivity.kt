@@ -2,6 +2,7 @@ package dsm.android.v3.ui.activity.splash
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.domain.entity.Auth
@@ -19,6 +20,9 @@ class SplashActivity : AppCompatActivity() {
 
     @Inject
     private lateinit var localStorage: LocalStorage
+
+    @Inject
+    lateinit var authDao: AuthDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

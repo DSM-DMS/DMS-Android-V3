@@ -8,8 +8,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.NoticeListModel
 import dsm.android.v3.domain.entity.RulesModel
+import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.ui.adapter.NoticeRVAdapter
 import dsm.android.v3.ui.adapter.RulesRvAdpater
 import dsm.android.v3.ui.CustomView.CustomCardView
@@ -17,14 +20,22 @@ import dsm.android.v3.ui.fragment.notice.NoticeDescriptionFragment
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import org.jetbrains.anko.backgroundColor
 import retrofit2.Response
+import javax.inject.Inject
 
 class NoticeActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var apiClient: ApiClient
 
     var type = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
+
+        BaseApp.appComponent.injectActivity(this)
+
+        val repository = NoticeRepositoryImpl(apiClient)
 
         val type = intent.extras.get("activityType") as Boolean
         this.type = type

@@ -10,20 +10,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
+import dsm.android.v3.domain.repository.applyStaying.ApplyStayingRepositoryImpl
 import dsm.android.v3.presentation.model.ApplyStayingPagerModel
-import dsm.android.v3.ui.applyStaying.ApplyStayingViewModel
+import dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModel
+import dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_staying.*
 import kotlinx.android.synthetic.main.item_apply_staying.view.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
 
     override val layoutId: Int
         get() = R.layout.activity_apply_staying
+
+    @Inject
+    lateinit var apiCLient: ApiClient
 
     lateinit var viewGroup: ViewGroup
 
@@ -35,7 +42,8 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
         supportActionBar?.title = "잔류 신청"
         applyStaying_toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        val viewModel = ViewModelProviders.of(this).get(ApplyStayingViewModel::class.java)
+        val factory = ApplyStayingViewModelFactory(ApplyStayingRepositoryImpl(apiCLient))
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyStayingViewModel::class.java)
         viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
         viewModel.changeColorLiveEvent.observe(this, Observer {
             val view = viewGroup.getChildAt(viewModel.pageStatusLiveData.value!!)

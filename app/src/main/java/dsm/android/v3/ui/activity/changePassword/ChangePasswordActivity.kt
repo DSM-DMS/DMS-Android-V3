@@ -4,16 +4,24 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityChangePasswordBinding
+import dsm.android.v3.domain.repository.changePassword.ChangePasswordRepositoryImpl
 import dsm.android.v3.presentation.viewModel.changePassword.ChangePasswordViewModel
+import dsm.android.v3.presentation.viewModel.changePassword.ChangePasswordViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class ChangePasswordActivity : DataBindingActivity<ActivityChangePasswordBinding>() {
     override val layoutId: Int
         get() = R.layout.activity_change_password
 
-    val viewModel: ChangePasswordViewModel by lazy { ViewModelProviders.of(this)[ChangePasswordViewModel::class.java] }
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory: ChangePasswordViewModelFactory by lazy { ChangePasswordViewModelFactory(ChangePasswordRepositoryImpl(apiClient)) }
+    val viewModel: ChangePasswordViewModel by lazy { ViewModelProviders.of(this, factory)[ChangePasswordViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

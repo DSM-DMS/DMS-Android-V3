@@ -1,6 +1,7 @@
 package dsm.android.v3.ui.activity.applyExtensionStudy
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -8,21 +9,30 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityApplyExtensionStudyBinding
+import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepositoryImpl
+import dsm.android.v3.domain.repository.register.RegisterRepositoryImpl
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModel
+import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_extension_study.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import javax.inject.Inject
 
 class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStudyBinding>(){
+
+    @Inject
+    lateinit var apiClient: ApiClient
 
     override val layoutId: Int
         get() = R.layout.activity_apply_extension_study
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProviders.of(this).get(ApplyExtensionStudyViewModel::class.java)
+        val factory = ApplyExtensionStudyViewModelFactory(ApplyExtensionStudyRepositoryImpl(apiClient))
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
 
         viewModel.clickedClassView.value = applyExtension_gaonsil_tv
         changeTextViewColor(applyExtension_gaonsil_tv)

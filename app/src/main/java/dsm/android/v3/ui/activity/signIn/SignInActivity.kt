@@ -5,22 +5,38 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import dsm.android.v3.R
+import dsm.android.v3.data.local.dao.AuthDao
+import dsm.android.v3.data.local.shared.LocalStorage
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivitySignInBinding
+import dsm.android.v3.domain.repository.signIn.SignInRepositoryImpl
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModel
+import dsm.android.v3.presentation.viewModel.signIn.SignInViewModelFactory
 import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
 
     override val layoutId: Int
         get() = R.layout.activity_sign_in
 
-    private val viewModel: SignInViewModel by lazy { ViewModelProviders.of(this).get(
-        SignInViewModel::class.java) }
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    @Inject
+    lateinit var authDao: AuthDao
+
+    @Inject
+    lateinit var localStorage: LocalStorage
+
+    private val factory: SignInViewModelFactory by lazy { SignInViewModelFactory(SignInRepositoryImpl(apiClient, localStorage, authDao)) }
+
+    private val viewModel: SignInViewModel by lazy { ViewModelProviders.of(this, factory).get(SignInViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

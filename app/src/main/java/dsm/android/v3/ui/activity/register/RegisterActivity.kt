@@ -6,16 +6,25 @@ import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityRegisterBinding
+import dsm.android.v3.domain.repository.register.RegisterRepositoryImpl
+import dsm.android.v3.presentation.viewModel.register.RegisterViewModelFactory
 import dsm.android.v3.presentation.viewModel.register.RegisterViewModel
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>() {
 
     override val layoutId: Int
         get() = R.layout.activity_register
+
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    private val factory: RegisterViewModelFactory by lazy { RegisterViewModelFactory(RegisterRepositoryImpl(apiClient)) }
 
     private val viewModel: RegisterViewModel by lazy {
         ViewModelProviders.of(this).get(RegisterViewModel::class.java)
