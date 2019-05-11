@@ -29,17 +29,15 @@ class SplashActivity : AppCompatActivity() {
 
         BaseApp.appComponent.injectActivity(this)
         doAsync {
-            auth = AuthDatabase.getInstance(this@SplashActivity)!!.getAuthDao().getAuth()
+            auth = authDao.getAuth()
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                localStorage.getToken().subscribe {
-                    if (it == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
-                        startActivity<SignInActivity>()
-                        finish()
-                        toast("로그인이 필요합니다.").show()
-                    } else {
-                        startActivity<MainActivity>()
-                        finish()
-                    }
+                if (localStorage.getToken()  == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
+                    startActivity<SignInActivity>()
+                    finish()
+                    toast("로그인이 필요합니다.").show()
+                } else {
+                    startActivity<MainActivity>()
+                    finish()
                 }
             } else {
                 toast("안드로이드 버전 업그레이드가 필요합니다.").show()

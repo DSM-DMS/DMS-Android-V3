@@ -6,19 +6,28 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyGoingDocBinding
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
+import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.presentation.viewModel.applyGoingOutDoc.ApplyGoingDocViewModel
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.support.v4.toast
+import javax.inject.Inject
 
 class ApplyGoingDocFragment : DataBindingFragment<FragmentApplyGoingDocBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_apply_going_doc
 
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this).get(ApplyGoingDocViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyGoingDocViewModel::class.java)
 
         viewModel.backApplyGoingSingleLiveEvent.observe(this, Observer { findNavController().popBackStack() })
 

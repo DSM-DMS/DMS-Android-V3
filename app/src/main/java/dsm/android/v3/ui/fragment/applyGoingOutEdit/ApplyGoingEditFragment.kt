@@ -6,19 +6,28 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyGoingEditBinding
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
+import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.presentation.viewModel.applyGoingOutEdit.ApplyGoingEditViewModel
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.support.v4.toast
+import javax.inject.Inject
 
 class ApplyGoingEditFragment : DataBindingFragment<FragmentApplyGoingEditBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_apply_going_edit
 
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this).get(ApplyGoingEditViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyGoingEditViewModel::class.java)
 
         viewModel.createShortToastSingleLiveEvent.observe(this, Observer { toast(it!!) })
 

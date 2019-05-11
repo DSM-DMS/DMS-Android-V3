@@ -8,17 +8,26 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogApplyMusicBinding
+import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepositoryImpl
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
+import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment
 import kotlinx.android.synthetic.main.dialog_apply_music.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import javax.inject.Inject
 
 class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
     override val layoutId: Int
         get() = R.layout.dialog_apply_music
+
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient)) }
     val viewModel by lazy {
-        ViewModelProviders.of(activity!!)[ApplyMusicViewModel::class.java]
+        ViewModelProviders.of(activity!!, factory)[ApplyMusicViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

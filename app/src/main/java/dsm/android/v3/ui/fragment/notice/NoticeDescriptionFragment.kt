@@ -9,19 +9,27 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
+import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import kotlinx.android.synthetic.main.fragment_notice_description.*
 import retrofit2.Call
 import retrofit2.Response
+import javax.inject.Inject
 
 class NoticeDescriptionFragment : Fragment() {
+
+    @Inject
+    lateinit var apiClient: ApiClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_notice_description, container, false) as View
         val noticeActivity = activity as NoticeActivity
         val id = arguments!!.getInt("id")
         val type = arguments!!.getBoolean("type")
+
+        val repository = NoticeRepositoryImpl(apiClient)
 
         if(type) getNotice(id)
         else getRules(id)

@@ -12,22 +12,30 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
+import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepositoryImpl
 import dsm.android.v3.presentation.model.ApplyPagerModel
-import dsm.android.v3.ui.applyMusic.ApplyMusicFragmentDirections
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
+import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModelFactory
 import dsm.android.v3.util.DataBindingFragment
 import kotlinx.android.synthetic.main.fragment_apply_music.*
 import org.jetbrains.anko.find
+import javax.inject.Inject
 
 class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
 
     override val layoutId: Int
         get() = R.layout.fragment_apply_music
 
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient)) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProviders.of(activity!!).get(ApplyMusicViewModel::class.java)
+        val viewModel = ViewModelProviders.of(activity!!, factory).get(ApplyMusicViewModel::class.java)
         binding.viewModel = viewModel
         register(binding.viewModel!!)
         viewModel.actionMusicLogLiveEvent.observe(this, Observer {

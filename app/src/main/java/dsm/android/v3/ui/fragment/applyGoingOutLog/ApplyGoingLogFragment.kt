@@ -8,18 +8,23 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.FragmentApplyGoingLogBinding
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
+import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModelFactory
-import dsm.android.v3.ui.applyGoingOut.applyGoingOutLog.ApplyGoingLogFragmentDirections
 import dsm.android.v3.util.DataBindingFragment
+import javax.inject.Inject
 
 class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>() {
 
     private val actionBar by lazy { (activity as AppCompatActivity).supportActionBar }
     private val title by lazy { arguments!!.getString("goingOut") }
 
+    @Inject
+    lateinit var apiClient: ApiClient
     override val layoutId: Int
         get() = R.layout.fragment_apply_going_log
 
@@ -32,8 +37,7 @@ class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModelFactory =
-            ApplyGoingLogViewModelFactory(title!!)
+        val viewModelFactory = ApplyGoingLogViewModelFactory(title!!, ApplyGoingOutRepositoryImpl(apiClient))
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ApplyGoingLogViewModel::class.java)
 
         viewModel.logItemClickSingleLiveEvent.observe(this, Observer {

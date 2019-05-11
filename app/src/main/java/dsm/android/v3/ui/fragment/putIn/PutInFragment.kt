@@ -32,19 +32,15 @@ class PutInFragment : DataBindingFragment<FragmentPutInBinding>() {
 
         viewModel.extensionLiveEvent.observe(this, Observer {
             startActivity<ApplyExtensionStudyActivity>()
-//            TODO("연장신청 액티비티 연결하기")
         })
         viewModel.stayLiveEvent.observe(this, Observer {
             startActivity<ApplyStayingActivity>()
-//            TODO("잔류신청 액티비티 연결하기")
         })
         viewModel.musicLiveEvent.observe(this, Observer {
             startActivity<ApplyMusicDomActivity>()
-//            TODO("기상음악 신청 액티비티 연결하기")
         })
         viewModel.goingOutLiveEvent.observe(this, Observer {
             startActivity<ApplyGoingOutActivity>()
-//            TODO("외출신청 액티비티 연결하기")
         })
         return rootView
     }

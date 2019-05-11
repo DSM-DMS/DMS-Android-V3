@@ -8,14 +8,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyGoingBinding
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
 import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModel
+import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.ui.adapter.ApplyPageAdapter
-import dsm.android.v3.ui.applyGoingOut.applyGoingOut.ApplyGoingFragmentDirections
 import dsm.android.v3.util.DataBindingFragment
 import kotlinx.android.synthetic.main.item_apply_pager.view.*
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
+import javax.inject.Inject
 
 class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
@@ -30,10 +33,15 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
         actionBar?.show()
     }
 
+    @Inject
+    lateinit var apiClient: ApiClient
+
+    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this).get(ApplyGoingViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyGoingViewModel::class.java)
 
         viewModel.applyGoingLogSingleLiveEvent.observe(this, Observer {
             changeColor(it!!)
