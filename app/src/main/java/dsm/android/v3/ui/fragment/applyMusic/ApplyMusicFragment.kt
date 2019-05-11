@@ -1,6 +1,7 @@
 package dsm.android.v3.ui.fragment.applyMusic
 
 
+import android.app.Application
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -31,7 +32,10 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
     @Inject
     lateinit var apiClient: ApiClient
 
-    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient)) }
+    @Inject
+    lateinit var application: Application
+
+    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient, application)) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,7 +1,8 @@
 package dsm.android.v3.presentation.viewModel.applyGoingOutDoc
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
@@ -9,7 +10,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ApplyGoingDocViewModel : ViewModel() {
+class ApplyGoingDocViewModel(val applyGoingOutRepository: ApplyGoingOutRepository) : BaseViewModel() {
 
     private val dateFormat = SimpleDateFormat("MM/dd")
     private val sendDateFormat = SimpleDateFormat("MM-dd")
@@ -44,29 +45,21 @@ class ApplyGoingDocViewModel : ViewModel() {
         if (applyGoingReason.value.isNullOrBlank()) applyGoingReasonError.value = "사유를 입력하세요"
         else applyGoingReasonError.value = null
         if (applyGoingGoDateError.value.isNullOrBlank() and applyGoingGoTimeError.value.isNullOrBlank() and applyGoingReasonError.value.isNullOrBlank()) {
-            api.applyGoingOutDoc(
-                hashMapOf(
-                    "date" to "${createDateString()} ${applyGoingGoTime.value}"
-                    , "reason" to "${applyGoingReason.value}"
-                )
-            ).enqueue(object : Callback<Unit> {
-
-                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                    createShortToastSingleLiveEvent.value =
-                        when (response.code()) {
-                            201 -> "외출신청에 성공했습니다."
-                            403 -> "외출신청 권한이 없습니다."
-                            409 -> "외출신청 가능시간이 아닙니다."
-                            500 -> "로그인이 필요합니다."
-                            else -> "오류코드: ${response.code()}"
-                        }
-                    applyGoingDocClickBack()
-                }
-
-                override fun onFailure(call: Call<Unit>, t: Throwable) {
-                    createShortToastSingleLiveEvent.value = "오류가 발생했습니다."
-                }
-            })
+            add(applyGoingOutRepository.applyGoingOutDoc(
+                hashMapOf("date" to "${createDateString()} ${applyGoingGoTime.value}", "reason" to "${applyGoingReason.value}")
+            ).subscribe({ response ->
+                createShortToastSingleLiveEvent.value =
+                    when (response.code()) {
+                        201 -> "외출신청에 성공했습니다."
+                        403 -> "외출신청 권한이 없습니다."
+                        409 -> "외출신청 가능시간이 아닙니다."
+                        500 -> "로그인이 필요합니다."
+                        else -> "오류코드: ${response.code()}"
+                    }
+                applyGoingDocClickBack()
+            }, {
+                createShortToastSingleLiveEvent.value = "오류가 발생했습니다."
+            }))
         }
     }
 

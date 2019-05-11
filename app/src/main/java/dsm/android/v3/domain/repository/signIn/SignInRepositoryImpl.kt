@@ -7,9 +7,10 @@ import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.Auth
 import dsm.android.v3.domain.entity.AuthModel
 import io.reactivex.Single
+import retrofit2.Response
 
 class SignInRepositoryImpl(val apiClient: ApiClient, val localStorage: LocalStorage, val authDao: AuthDao): SignInRepository {
-    override fun signIn(body: JsonObject): Single<AuthModel> = apiClient.signIn(body)
+    override fun signIn(body: JsonObject): Single<Response<AuthModel>> = apiClient.signIn(body)
 
     override fun saveToken(token: String) = localStorage.saveToken(token)
 

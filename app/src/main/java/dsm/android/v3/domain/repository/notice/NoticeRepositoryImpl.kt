@@ -5,13 +5,14 @@ import dsm.android.v3.domain.entity.NoticeListModel
 import dsm.android.v3.domain.entity.RulesModel
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Single
+import retrofit2.Response
 
 class NoticeRepositoryImpl(val apiClient: ApiClient): NoticeRepository {
-    override fun getNoticeList(): Single<NoticeListModel> = apiClient.getNoticeList()
+    override fun getNoticeList(): Single<Response<NoticeListModel>> = apiClient.getNoticeList()
 
-    override fun getRulesList(): Single<RulesModel> = apiClient.getRulesList()
+    override fun getRulesList(): Single<Response<RulesModel>> = apiClient.getRulesList()
 
-    override fun getNoticeDescription(notice_id: String): Single<NoticeDescriptionModel> = apiClient.getNoticeDescription(notice_id)
+    override fun getNoticeDescription(notice_id: String): Single<Response<NoticeDescriptionModel>> = apiClient.getNoticeDescription(notice_id)
 
-    override fun getRulesDescription(rule_id: String): Single<NoticeDescriptionModel> = apiClient.getRulesDescription(rule_id)
+    override fun getRulesDescription(rule_id: String): Single<Response<NoticeDescriptionModel>> = apiClient.getRulesDescription(rule_id)
 }

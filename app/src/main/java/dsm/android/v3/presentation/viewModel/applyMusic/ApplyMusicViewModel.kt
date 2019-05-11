@@ -6,13 +6,15 @@ import android.util.Log
 import android.widget.Toast
 import dsm.android.v3.domain.entity.ApplyMusicDetailModel
 import dsm.android.v3.domain.entity.ApplyMusicModel
+import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), LifecycleCallback {
+class ApplyMusicViewModel(val applyMusicRepository: ApplyMusicRepository, val app: Application) : BaseViewModel(), LifecycleCallback {
 
     val introductionBaseString = "아침 기상 시에 나올 노래를 신청받습니다. 한 사람당 한 곡만 신청이 가능하며 적절하지 않은 노래나 부적절한 가사가 포함된 노래는 반려될 수 있습니다."
     val actionMusicLogLiveEvent = SingleLiveEvent<Any>()
@@ -87,11 +89,8 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
     }
 
     fun cancelMusic() {
-        Connecter.api.deleteMusic(
-            getToken(app.applicationContext),
-            hashMapOf("applyId" to musicsLiveData.value!![selectedIndex.value!!].id.toInt())
-        ).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+        add(applyMusicRepository.deleteMusic(hashMapOf("applyId" to musicsLiveData.value!![selectedIndex.value!!].id.toInt()))
+            .subscribe({ response ->
                 when (response.code()) {
                     200, 204 -> {
                         Toast.makeText(app.applicationContext, "성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
@@ -105,18 +104,14 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                         Toast.makeText(app.applicationContext, "권한이 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
+            }, {
                 Toast.makeText(app.applicationContext, "네트워크 상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+            }))
     }
 
     fun getData() {
-        Connecter.api.getMusic(getToken(app.applicationContext)).enqueue(object : Callback<ApplyMusicModel> {
-            override fun onResponse(call: Call<ApplyMusicModel>, response: Response<ApplyMusicModel>) {
+        add(applyMusicRepository.getMusic()
+            .subscribe({ response ->
                 when (response.code()) {
                     200 -> {
                         model.value = response.body()
@@ -127,13 +122,9 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                         pageStatusLiveData.value = pageStatusLiveData.value
                     }
                 }
-            }
-
-            override fun onFailure(call: Call<ApplyMusicModel>, t: Throwable) {
+            }, {
                 Toast.makeText(app.applicationContext, "네트워크 상태를 확인해주세요.", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+            }))
     }
 
     fun applyMusic() {
@@ -147,8 +138,8 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                 "musicName" to inputMusicLiveData.value,
                 "day" to pageStatusLiveData.value
             )
-            Connecter.api.applyMusic(getToken(app.applicationContext), map).enqueue(object : Callback<Unit> {
-                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+            add(applyMusicRepository.applyMusic(map)
+                .subscribe({ response ->
                     when (response.code()) {
                         201 -> {
                             Toast.makeText(app.applicationContext, "기상음악 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show()
@@ -165,16 +156,12 @@ class ApplyMusicViewModel(val app: Application) : AndroidViewModel(app), Lifecyc
                             fragmentDismissLiveEvent.call()
                         }
                     }
-                }
-
-                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                }, {
                     Toast.makeText(app.applicationContext, "인터넷이 원할하지 않거나 기상음악 신청이 모두 완료되었습니다.", Toast.LENGTH_SHORT)
                         .show()
                     fragmentDismissLiveEvent.call()
                     getData()
-                }
-
-            })
+                }))
         }
     }
 

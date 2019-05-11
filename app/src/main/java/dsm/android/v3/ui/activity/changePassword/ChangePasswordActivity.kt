@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import dsm.android.v3.R
+import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityChangePasswordBinding
 import dsm.android.v3.domain.repository.changePassword.ChangePasswordRepositoryImpl
@@ -20,7 +21,10 @@ class ChangePasswordActivity : DataBindingActivity<ActivityChangePasswordBinding
     @Inject
     lateinit var apiClient: ApiClient
 
-    val factory: ChangePasswordViewModelFactory by lazy { ChangePasswordViewModelFactory(ChangePasswordRepositoryImpl(apiClient)) }
+    @Inject
+    lateinit var authDao: AuthDao
+
+    val factory: ChangePasswordViewModelFactory by lazy { ChangePasswordViewModelFactory(ChangePasswordRepositoryImpl(apiClient, authDao)) }
     val viewModel: ChangePasswordViewModel by lazy { ViewModelProviders.of(this, factory)[ChangePasswordViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {

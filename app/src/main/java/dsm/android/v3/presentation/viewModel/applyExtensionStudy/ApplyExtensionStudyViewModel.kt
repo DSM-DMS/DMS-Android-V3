@@ -2,17 +2,18 @@ package dsm.android.v3.presentation.viewModel.applyExtensionStudy
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.view.View
 import android.widget.TextView
 import dsm.android.v3.domain.entity.ExtensionModel
+import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
+class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExtensionStudyRepository): BaseViewModel(), LifecycleCallback{
 
     private val time = MutableLiveData<Int>().apply { value = 11 }
     private val classNum = MutableLiveData<Int>().apply { value = 1 }
@@ -91,64 +92,56 @@ class ApplyExtensionStudyViewModel(): ViewModel(), LifecycleCallback{
 
     fun applyExtensionStudyClickCancel(view: View){
         time.value?.let {
-            api.deleteExtension(getToken(view.context), time.value!!).enqueue(object: Callback<Unit>{
-                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                    toastLiveData.value = (
-                            when(response.code()){
-                                200 -> "연장취소에 성공했습니다."
-                                204 -> "연장신청을 하지 않았습니다."
-                                403 -> "연장취소 권한이 없습니다."
-                                409 -> "연장취소 가능시간이 아닙니다."
-                                500 -> "로그인이 필요합니다."
-                                else -> "오류코드: ${response.code()}"
-                            })
+            add(applyExtensionStudyRepository.deleteExtension(time.value!!)
+                .subscribe ({ response ->
+                    when(response.code()){
+                        200 -> "연장취소에 성공했습니다."
+                        204 -> "연장신청을 하지 않았습니다."
+                        403 -> "연장취소 권한이 없습니다."
+                        409 -> "연장취소 가능시간이 아닙니다."
+                        500 -> "로그인이 필요합니다."
+                        else -> "오류코드: ${response.code()}"
+                    }
                     loadMap()
-                }
-                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                }, {
                     toastLiveData.value = "오류가 발생했습니다."
-                }
-            })
+                }))
         }
     }
 
     fun applyExtensionStudyClickApply(view: View){
         selectedSeatIndex.value?.let {
-            api.applyExtension(getToken(view.context), time.value!!, hashMapOf("classNum" to classNum.value!!, "seatNum" to it))
-                .enqueue(object: Callback<Unit>{
-                    override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        toastLiveData.value = (
-                                when(response.code()){
-                                    201 -> "연장신청에 성공했습니다."
-                                    205 -> "신청 불가 지역입니다."
-                                    403 -> "연장신청 권한이 없습니다."
-                                    409 -> "연장신청 가능시간이 아닙니다."
-                                    500 -> "로그인이 필요합니다."
-                                    else -> "오류 코드: ${response.code()}"
-                                })
-                        loadMap()
-                    }
-                    override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        toastLiveData.value = "오류가 발생했습니다."
-                    }
-                })
+            add(applyExtensionStudyRepository.applyExtension(time.value!!, hashMapOf("classNum" to classNum.value!!, "seatNum" to it))
+                .subscribe({response ->
+                    toastLiveData.value = (
+                        when(response.code()){
+                            201 -> "연장신청에 성공했습니다."
+                            205 -> "신청 불가 지역입니다."
+                            403 -> "연장신청 권한이 없습니다."
+                            409 -> "연장신청 가능시간이 아닙니다."
+                            500 -> "로그인이 필요합니다."
+                            else -> "오류 코드: ${response.code()}"
+                        })
+                    loadMap()
+                }, {
+                    toastLiveData.value = "오류가 발생했습니다."
+                }))
         }
     }
 
     fun loadMap(){
         time.value?.let {
             classNum.value?.let {
-                api.getMap(time.value!!, classNum.value!!).enqueue(object: Callback<ExtensionModel> {
-                    override fun onResponse(call: Call<ExtensionModel>, response: Response<ExtensionModel>) {
+                add(applyExtensionStudyRepository.getMap(time.value!!, classNum.value!!)
+                    .subscribe({ response ->
                         when(response.code()){
                             200 -> drawMapLiveData.value = response.body()!!.map
                             403 -> toastLiveData.value = "연장신청 권한이 없습니다."
                             else -> toastLiveData.value = "오류 코드: ${response.code()}"
                         }
-                    }
-                    override fun onFailure(call: Call<ExtensionModel>, t: Throwable) {
-                        toastLiveData.value = "오류가 발생했습니다."
-                    }
-                })
+                    }, {
+                    toastLiveData.value = "오류가 발생했습니다."
+                }))
             }
         }
     }

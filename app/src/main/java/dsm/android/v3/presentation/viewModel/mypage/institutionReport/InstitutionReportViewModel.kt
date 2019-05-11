@@ -3,12 +3,14 @@ package dsm.android.v3.presentation.viewModel.mypage.institutionReport
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
+import dsm.android.v3.domain.repository.mypage.MyPageRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class InstitutionReportViewModel(): ViewModel(){
+class InstitutionReportViewModel(val myPageRepository: MyPageRepository): BaseViewModel(){
 
     val institutionTitle = MutableLiveData<String>()
     val institutionRoomNumber = MutableLiveData<String>()
@@ -29,23 +31,20 @@ class InstitutionReportViewModel(): ViewModel(){
         if (institutionReportContent.value.isNullOrBlank()) institutionReportContentError.value = "내용을 입력해주세요."
         else institutionReportContentError.value = null
         if (institutionTitleError.value.isNullOrBlank() and institutionRoomNumberError.value.isNullOrBlank() and institutionReportContentError.value.isNullOrBlank()){
-            api.reportInstitution(getToken(view.context), hashMapOf("room" to institutionRoomNumber.value!!.toInt()
+            add(myPageRepository.reportInstitution(hashMapOf("room" to institutionRoomNumber.value!!.toInt()
                 , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
-                .enqueue(object: Callback<Unit> {
-                    override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        toastLiveData.value =
-                            when(response.code()){
-                                201 -> "시설고장 신고에 성공했습니다."
-                                403 -> "시설고장 신고 권한이 없습니다."
-                                else -> "오류코드: ${response.code()}"
-                            }
-                        exitInstitutionReportEvent.call()
-                    }
-                    override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        toastLiveData.value = "오류가 발생했습니다."
-                        exitInstitutionReportEvent.call()
-                    }
-                })
+                .subscribe({ response ->
+                    toastLiveData.value =
+                        when(response.code()){
+                            201 -> "시설고장 신고에 성공했습니다."
+                            403 -> "시설고장 신고 권한이 없습니다."
+                            else -> "오류코드: ${response.code()}"
+                        }
+                    exitInstitutionReportEvent.call()
+                }, {
+                    toastLiveData.value = "오류가 발생했습니다."
+                    exitInstitutionReportEvent.call()
+                }))
         }
     }
 

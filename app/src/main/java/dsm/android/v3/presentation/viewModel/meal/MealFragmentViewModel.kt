@@ -2,11 +2,12 @@ package dsm.android.v3.presentation.viewModel.meal
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModel
+import dsm.android.v3.domain.repository.meal.MealRepository
+import dsm.android.v3.util.BaseViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MealFragmentViewModel : ViewModel() {
+class MealFragmentViewModel : BaseViewModel() {
 
     val meals = MutableLiveData<ArrayList<String>>()
     val pageStatusLiveData = MutableLiveData<Int>().apply { postValue(3) }

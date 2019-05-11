@@ -1,14 +1,14 @@
 package dsm.android.v3.presentation.viewModel.applyGoingOutLog
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import dsm.android.v3.domain.entity.ApplyGoingOutModel
 import dsm.android.v3.presentation.model.ApplyGoingLogData
 import dsm.android.v3.presentation.model.ApplyGoingLogData.deleteItem
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 import java.text.SimpleDateFormat
 
-class ApplyGoingLogViewModel(title: String) : ViewModel() {
+class ApplyGoingLogViewModel(title: String) : BaseViewModel() {
 
     val logTitle = MutableLiveData<String>()
     val logItems = MutableLiveData<ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>>()

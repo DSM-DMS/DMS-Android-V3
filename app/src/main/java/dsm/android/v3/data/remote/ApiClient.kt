@@ -6,125 +6,126 @@ import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 
 class ApiClient(val api: API) {
 
-    fun signIn(body: JsonObject): Single<AuthModel> =
+    fun signIn(body: JsonObject): Single<Response<AuthModel>> =
         api.signIn(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun signUp(body: JsonObject): Single<Unit> =
+    fun signUp(body: JsonObject): Single<Response<Unit>> =
         api.signUp(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getMeal(day: String): Single<JsonObject> =
+    fun getMeal(day: String): Single<Response<JsonObject>> =
         api.getMeal(day)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getNoticeList(): Single<NoticeListModel> =
+    fun getNoticeList(): Single<Response<NoticeListModel>> =
         api.getNoticeList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getRulesList(): Single<RulesModel> =
+    fun getRulesList(): Single<Response<RulesModel>> =
         api.getRulesList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getNoticeDescription(notice_id: String): Single<NoticeDescriptionModel> =
+    fun getNoticeDescription(notice_id: String): Single<Response<NoticeDescriptionModel>> =
         api.getNoticeDescription(notice_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getRulesDescription(rule_id: String): Single<NoticeDescriptionModel> =
+    fun getRulesDescription(rule_id: String): Single<Response<NoticeDescriptionModel>> =
         api.getRulesDescription(rule_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getPointLog(): Single<PointLogResponseModel> =
+    fun getPointLog(): Single<Response<PointLogResponseModel>> =
         api.getPointLog()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun changePw(body: JsonObject): Single<Void> =
+    fun changePw(body: Any?): Single<Response<Unit>> =
         api.changePw(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getMap(time: Int, classNum: Int): Single<ExtensionModel> =
+    fun getMap(time: Int, classNum: Int): Single<Response<ExtensionModel>> =
         api.getMap(time, classNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun applyExtension(time: Int, body: HashMap<String, Int>): Single<Unit> =
+    fun applyExtension(time: Int, body: HashMap<String, Int>): Single<Response<Unit>> =
         api.applyExtension(time, body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun deleteExtension(time: Int): Single<Unit> =
+    fun deleteExtension(time: Int): Single<Response<Unit>> =
         api.deleteExtension(time)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getStayInfo(): Single<ApplyStayingModel> =
+    fun getStayInfo(): Single<Response<ApplyStayingModel>> =
         api.getStayInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun applyStay(body: Any?): Single<Unit> =
+    fun applyStay(body: Any?): Single<Response<Unit>> =
         api.applyStay(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getGoingOutInfo(): Single<ApplyGoingOutModel> =
+    fun getGoingOutInfo(): Single<Response<ApplyGoingOutModel>> =
         api.getGoingOutInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun applyGoingOutDoc(body: Any?): Single<Unit> =
+    fun applyGoingOutDoc(body: Any?): Single<Response<Unit>> =
         api.applyGoingOutDoc(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun editGoingOut(body: Any?): Single<Unit> =
+    fun editGoingOut(body: Any?): Single<Response<Unit>> =
         api.editGoingOut(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getMusic(): Single<ApplyMusicModel> =
+    fun getMusic(): Single<Response<ApplyMusicModel>> =
         api.getMusic()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun applyMusic(body: Any?): Single<Unit> =
+    fun applyMusic(body: Any?): Single<Response<Unit>> =
         api.applyMusic(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun deleteMusic(body: Any?): Single<Void> =
+    fun deleteMusic(body: Any?): Single<Response<Unit>> =
         api.deleteMusic(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun deleteGoingOut(body: Any?): Single<Unit> =
+    fun deleteGoingOut(body: Any?): Single<Response<Unit>> =
         api.deleteGoingOut(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getBasicInfo(): Single<MyPageInfoModel> =
+    fun getBasicInfo(): Single<Response<MyPageInfoModel>> =
         api.getBasicInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun reportInstitution(body: Any?): Single<Unit> =
+    fun reportInstitution(body: Any?): Single<Response<Unit>> =
         api.reportInstitution(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun reportBug(body: Any?): Single<Unit> =
+    fun reportBug(body: Any?): Single<Response<Unit>> =
         api.reportBug(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

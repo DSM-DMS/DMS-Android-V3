@@ -2,18 +2,19 @@ package dsm.android.v3.presentation.viewModel.applyGoingOut
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.view.View
 import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepository
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.model.ApplyGoingLogData
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
+class ApplyGoingViewModel(val applyGoingOutRepository: ApplyGoingOutRepository) : BaseViewModel(), LifecycleCallback {
 
     val applyGoingDocSingleLiveEvent = SingleLiveEvent<Any>()
     val createShortToastSingleLiveEvent = SingleLiveEvent<String>()
@@ -24,8 +25,8 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
     override fun apply(event: Lifecycle.Event) {
         when (event) {
             Lifecycle.Event.ON_START -> {
-                api.getGoingOutInfo().enqueue(object : Callback<ApplyGoingOutModel> {
-                    override fun onResponse(call: Call<ApplyGoingOutModel>, response: Response<ApplyGoingOutModel>) {
+                add(applyGoingOutRepository.getGoingOutInfo()
+                    .subscribe({ response ->
                         when (response.code()) {
                             200 -> setApplyGoingData(response.body()!!)
                             204 -> setShortToast("외출신청 정보가 없습니다.")
@@ -33,12 +34,9 @@ class ApplyGoingViewModel : ViewModel(), LifecycleCallback {
                             500 -> setShortToast("로그인이 필요합니다.")
                             else -> setShortToast("오류코드: ${response.code()}")
                         }
-                    }
-
-                    override fun onFailure(call: Call<ApplyGoingOutModel>, t: Throwable) {
+                    }, {
                         setShortToast("오류가 발생했습니다.")
-                    }
-                })
+                    }))
                 setApplyGoingData(
                     ApplyGoingOutModel(
                         ApplyGoingLogData.saturdayItemList,
