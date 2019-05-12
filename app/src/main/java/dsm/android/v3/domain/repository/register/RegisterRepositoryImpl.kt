@@ -6,5 +6,5 @@ import io.reactivex.Single
 import retrofit2.Response
 
 class RegisterRepositoryImpl(val apiClient: ApiClient): RegisterRepository {
-    override fun signUp(body: JsonObject): Single<Response<Unit>> = apiClient.signUp(body)
+    override fun signUp(body: Any?): Single<Response<Unit>> = apiClient.signUp(body)
 }

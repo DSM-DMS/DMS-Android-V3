@@ -10,12 +10,12 @@ import retrofit2.Response
 
 class ApiClient(val api: API) {
 
-    fun signIn(body: JsonObject): Single<Response<AuthModel>> =
+    fun signIn(body: Any?): Single<Response<AuthModel>> =
         api.signIn(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun signUp(body: JsonObject): Single<Response<Unit>> =
+    fun signUp(body: Any?): Single<Response<Unit>> =
         api.signUp(body)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

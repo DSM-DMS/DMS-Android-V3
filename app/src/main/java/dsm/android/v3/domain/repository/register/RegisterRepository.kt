@@ -5,5 +5,5 @@ import io.reactivex.Single
 import retrofit2.Response
 
 interface RegisterRepository {
-    fun signUp(body: JsonObject): Single<Response<Unit>>
+    fun signUp(body: Any?): Single<Response<Unit>>
 }

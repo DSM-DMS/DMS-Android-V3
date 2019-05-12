@@ -6,9 +6,9 @@ import io.reactivex.Single
 import retrofit2.Response
 
 interface SignInRepository {
-    fun signIn(body: JsonObject): Single<Response<AuthModel>>
+    fun signIn(body: Any?): Single<Response<AuthModel>>
 
-    fun saveToken(token: String)
+    fun saveToken(token: String, access: Boolean)
 
     fun saveDb(id: String, pw: String)
 }

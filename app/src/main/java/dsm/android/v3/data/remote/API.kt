@@ -12,11 +12,11 @@ import retrofit2.Response
 interface API {
     //로그인
     @POST("account/auth")
-    fun signIn(@Body body: JsonObject): Single<Response<AuthModel>>
+    fun signIn(@Body body: Any?): Single<Response<AuthModel>>
 
     //회원가입
     @POST("account/signup")
-    fun signUp(@Body body: JsonObject): Single<Response<Unit>>
+    fun signUp(@Body body: Any?): Single<Response<Unit>>
 
     @GET("meal/{day}")
     fun getMeal(@Path("day") day: String): Single<Response<JsonObject>>

@@ -3,12 +3,14 @@ package dsm.android.v3.presentation.viewModel.register
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import dsm.android.v3.domain.repository.register.RegisterRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisterViewModel : ViewModel() {
+class RegisterViewModel(val registerRepository: RegisterRepository) : BaseViewModel() {
 
     val registerConfirmCode = MutableLiveData<String>()
     val registerId = MutableLiveData<String>()
@@ -44,26 +46,22 @@ class RegisterViewModel : ViewModel() {
 
     fun doSignUp() {
         if (registerPw.value == registerPwConfirm.value) {
-            Connecter.api.signUp(
+            add(registerRepository.signUp(
                 hashMapOf(
                     "uuid" to registerConfirmCode.value,
                     "id" to registerId.value,
                     "password" to registerPw.value
                 )
-            ).enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    when (response.code()) {
-                        201 -> registerFinishedLiveEvent.call()
-                        204 -> wrongUuidLiveEvent.call()
-                        205 -> sameIdLiveEvent.call()
-                        else -> badNetworkLiveEvent.call()
-                    }
+            ).subscribe({ response ->
+                when (response.code()) {
+                    201 -> registerFinishedLiveEvent.call()
+                    204 -> wrongUuidLiveEvent.call()
+                    205 -> sameIdLiveEvent.call()
+                    else -> badNetworkLiveEvent.call()
                 }
-
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    badNetworkLiveEvent.call()
-                }
-            })
+            }, {
+                badNetworkLiveEvent.call()
+            }))
         } else {
             wrongPwLiveEvent.call()
         }

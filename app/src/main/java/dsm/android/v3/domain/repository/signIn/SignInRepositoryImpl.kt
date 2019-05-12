@@ -10,9 +10,9 @@ import io.reactivex.Single
 import retrofit2.Response
 
 class SignInRepositoryImpl(val apiClient: ApiClient, val localStorage: LocalStorage, val authDao: AuthDao): SignInRepository {
-    override fun signIn(body: JsonObject): Single<Response<AuthModel>> = apiClient.signIn(body)
+    override fun signIn(body: Any?): Single<Response<AuthModel>> = apiClient.signIn(body)
 
-    override fun saveToken(token: String) = localStorage.saveToken(token)
+    override fun saveToken(token: String, access: Boolean) = localStorage.saveToken(token, access)
 
     override fun saveDb(id: String, pw: String) = authDao.insert(Auth(id, pw))
 }

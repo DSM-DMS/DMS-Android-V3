@@ -1,5 +1,6 @@
 package dsm.android.v3.ui.dialogFragment.applyMusic
 
+import android.app.Application
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.DialogInterface
@@ -25,7 +26,9 @@ class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBindi
     @Inject
     lateinit var apiClient: ApiClient
 
-    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient)) }
+    @Inject
+    lateinit var application: Application
+    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient), application) }
     val viewModel by lazy {
         ViewModelProviders.of(activity!!, factory)[ApplyMusicViewModel::class.java]
     }

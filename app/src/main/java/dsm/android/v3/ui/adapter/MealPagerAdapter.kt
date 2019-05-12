@@ -8,16 +8,23 @@ import android.widget.TextView
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import dsm.android.v3.R
+import dsm.android.v3.domain.repository.meal.MealRepository
+import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.find
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class MealPagerAdapter(private val dates: ArrayList<String>) : PagerAdapter() {
+class MealPagerAdapter(private val dates: ArrayList<String>, val mealRepository: MealRepository) : PagerAdapter() {
+    val compsite = CompositeDisposable()
+
     override fun getCount() = dates.size
 
-    override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
+    override fun destroyItem(container: ViewGroup, position: Int, any: Any) {
+        container.removeView(any as View)
+        compsite.clear()
+    }
 
     override fun isViewFromObject(p0: View, p1: Any) = p0 == p1
 
@@ -31,8 +38,8 @@ class MealPagerAdapter(private val dates: ArrayList<String>) : PagerAdapter() {
         val lunch = view.find<TextView>(R.id.mealItem_lunch_content_tv)
         val dinner = view.find<TextView>(R.id.mealItem_dinner_content_tv)
 
-        Connecter.api.getMeal(date).enqueue(object : Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+        compsite.add(mealRepository.getMeal(date)
+            .subscribe({ response ->
                 when (response.code()) {
                     200 -> {
                         val body = response.body()!![date].asJsonObject
@@ -57,16 +64,12 @@ class MealPagerAdapter(private val dates: ArrayList<String>) : PagerAdapter() {
                         notifyDataSetChanged()
                     }
                 }
-            }
-
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+            }, {
                 breakfast.text = "네트워크"
                 lunch.text = "상태를"
                 dinner.text = "확인해주세요"
                 notifyDataSetChanged()
-            }
-
-        })
+            }))
 
         container.addView(view)
         return view

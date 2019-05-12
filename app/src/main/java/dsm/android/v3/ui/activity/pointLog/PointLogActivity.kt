@@ -4,12 +4,15 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.PointLogAdapter
 import dsm.android.v3.domain.entity.PointLogResponseModel
+import dsm.android.v3.domain.repository.pointLog.PointLogRepository
 import dsm.android.v3.domain.repository.pointLog.PointLogRepositoryImpl
 import dsm.android.v3.presentation.di.app.BaseApp
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_point_log.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,14 +24,16 @@ class PointLogActivity : AppCompatActivity() {
     @Inject
     lateinit var apiClient: ApiClient
 
+    val composite = CompositeDisposable()
+
+    val repository: PointLogRepository by lazy { PointLogRepositoryImpl(apiClient) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_point_log)
         setSupportActionBar(pointLog_toolbar)
 
         BaseApp.appComponent.injectActivity(this)
-
-        val repository = PointLogRepositoryImpl(apiClient)
 
         pointLog_toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -38,20 +43,19 @@ class PointLogActivity : AppCompatActivity() {
         pointLog_toolbar.setNavigationOnClickListener {
             finish()
         }
-        
-        Connecter.api.getPointLog(getToken(applicationContext)).enqueue(object : Callback<PointLogResponseModel> {
-            override fun onResponse(call: Call<PointLogResponseModel>, response: Response<PointLogResponseModel>) {
+
+        composite.add(repository.getPointLog()
+            .subscribe({ response ->
                 val body = response.body()
                 pointLog_list_rv.layoutManager = LinearLayoutManager(this@PointLogActivity)
                 pointLog_list_rv.adapter = body?.pointHistory?.let { PointLogAdapter(it) }
+            }, {
+                Log.d("throwable", "$it")
+            }))
+    }
 
-            }
-
-            override fun onFailure(call: Call<PointLogResponseModel>, t: Throwable) {
-
-            }
-
-        })
-
+    override fun onDestroy() {
+        super.onDestroy()
+        composite.clear()
     }
 }

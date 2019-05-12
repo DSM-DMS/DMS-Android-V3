@@ -1,13 +1,15 @@
 package dsm.android.v3.presentation.viewModel.mypage.logout
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.view.View
-import dsm.android.v3.data.local.database.AuthDatabase
+import dsm.android.v3.domain.repository.mypage.MyPageRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class LogoutViewModel(): ViewModel(){
+class LogoutViewModel(val myPageRepository: MyPageRepository): BaseViewModel(){
 
     val toastLiveData = MutableLiveData<String>()
     val intentToLoginEvent = SingleLiveEvent<Any>()
@@ -16,11 +18,7 @@ class LogoutViewModel(): ViewModel(){
     fun logoutClickCancel() = exitLogoutEvent.call()
 
     fun logoutClickLogout(view: View) {
-        doAsync {
-            val auth =  AuthDatabase.getInstance(view.context)!!.getAuthDao().getAuth()
-            AuthDatabase.getInstance(view.context)!!.getAuthDao().delete(auth)
-        }
-        removeToken(view.context)
+        CoroutineScope(Dispatchers.IO).launch { myPageRepository.logout() }
         intentToLoginEvent.call()
         toastLiveData.value = "로그아웃 하였습니다."
         exitLogoutEvent.call()

@@ -1,18 +1,13 @@
 package dsm.android.v3.presentation.viewModel.mypage
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import dsm.android.v3.domain.entity.MyPageInfoModel
+import dsm.android.v3.domain.repository.mypage.MyPageRepository
+import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
-import dsm.android.v3.util.getToken
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCallback{
+class MyPageViewModel(val myPageRepository: MyPageRepository): BaseViewModel(), LifecycleCallback{
 
     val nameText = MutableLiveData<String>()
     val infoText = MutableLiveData<String>()
@@ -35,8 +30,8 @@ class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCal
     override fun apply(event: Lifecycle.Event) {
         when(event){
             Lifecycle.Event.ON_RESUME -> {
-                api.getBasicInfo(getToken(app.applicationContext)).enqueue(object: Callback<MyPageInfoModel> {
-                    override fun onResponse(call: Call<MyPageInfoModel>, response: Response<MyPageInfoModel>) {
+                add(myPageRepository.getBasicInfo()
+                    .subscribe({ response ->
                         when(response.code()){
                             200 -> {
                                 nameText.value = response.body()!!.name
@@ -50,12 +45,9 @@ class MyPageViewModel(val app: Application): AndroidViewModel(app), LifecycleCal
                             500 -> adviceText.value = "로그인이 필요합니다."
                             else -> adviceText.value = "오류코드: ${response.code()}"
                         }
-                    }
-
-                    override fun onFailure(call: Call<MyPageInfoModel>, t: Throwable) {
+                    }, {
                         adviceText.value = "오류가 발생했습니다."
-                    }
-                })
+                    }))
             }
         }
     }

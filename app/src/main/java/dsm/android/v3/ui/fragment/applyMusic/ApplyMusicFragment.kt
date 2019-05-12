@@ -35,7 +35,7 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
     @Inject
     lateinit var application: Application
 
-    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient, application)) }
+    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient), application) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

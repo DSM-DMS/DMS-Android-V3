@@ -11,12 +11,16 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.NoticeListModel
 import dsm.android.v3.domain.entity.RulesModel
+import dsm.android.v3.domain.repository.notice.NoticeRepository
 import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
 import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.ui.adapter.NoticeRVAdapter
 import dsm.android.v3.ui.adapter.RulesRvAdpater
 import dsm.android.v3.ui.CustomView.CustomCardView
 import dsm.android.v3.ui.fragment.notice.NoticeDescriptionFragment
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposables
+import io.reactivex.subscribers.DisposableSubscriber
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import org.jetbrains.anko.backgroundColor
 import retrofit2.Response
@@ -29,13 +33,15 @@ class NoticeActivity : AppCompatActivity() {
 
     var type = true
 
+    val repository: NoticeRepository by lazy { NoticeRepositoryImpl(apiClient) }
+
+    val composite = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
 
         BaseApp.appComponent.injectActivity(this)
-
-        val repository = NoticeRepositoryImpl(apiClient)
 
         val type = intent.extras.get("activityType") as Boolean
         this.type = type
@@ -56,40 +62,34 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     private fun getNotice(activity : NoticeActivity) {
-        Connecter.api.getNoticeList().enqueue(object : retrofit2.Callback<NoticeListModel>{
-
-            override fun onResponse(call: retrofit2.Call<NoticeListModel>, response: Response<NoticeListModel>) {
+        composite.add(repository.getNoticeList()
+            .subscribe({ response ->
                 val body = response.body()!!
 
                 val adapter = NoticeRVAdapter(baseContext, body, activity)
 
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
-            }
-
-            override fun onFailure(call: retrofit2.Call<NoticeListModel>, t: Throwable) {
-                Log.d("tag", t.message)
+            }, {
+                Log.d("tag", it.message)
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
-        })
+        ))
     }
 
     fun getRules(activity: NoticeActivity) {
-        Connecter.api.getRulesList().enqueue(object : retrofit2.Callback<RulesModel> {
-            override fun onResponse(call: retrofit2.Call<RulesModel>, response: Response<RulesModel>) {
+        composite.add(repository.getRulesList()
+            .subscribe({ response ->
                 val body = response.body()!!
 
                 val adapter = RulesRvAdpater(baseContext, body, activity)
 
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
-            }
-
-            override fun onFailure(call: retrofit2.Call<RulesModel>, t: Throwable) {
-                Log.d("tag", t.message)
+            }, {
+                Log.d("tag",it.message)
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
-            }
-        })
+            }))
     }
 
     var check = true
@@ -134,5 +134,10 @@ class NoticeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if(!check) fragment.cancle(this)
         super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        composite.clear()
     }
 }

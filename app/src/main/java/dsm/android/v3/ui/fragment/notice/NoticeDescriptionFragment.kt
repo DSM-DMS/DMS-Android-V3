@@ -10,9 +10,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
+import dsm.android.v3.domain.repository.notice.NoticeRepository
 import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_notice_description.*
 import retrofit2.Call
 import retrofit2.Response
@@ -23,13 +25,15 @@ class NoticeDescriptionFragment : Fragment() {
     @Inject
     lateinit var apiClient: ApiClient
 
+    val composite = CompositeDisposable()
+
+    val repository: NoticeRepository by lazy { NoticeRepositoryImpl(apiClient) }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_notice_description, container, false) as View
         val noticeActivity = activity as NoticeActivity
         val id = arguments!!.getInt("id")
         val type = arguments!!.getBoolean("type")
-
-        val repository = NoticeRepositoryImpl(apiClient)
 
         if(type) getNotice(id)
         else getRules(id)
@@ -48,10 +52,8 @@ class NoticeDescriptionFragment : Fragment() {
     }
 
     fun getNotice(id : Int) {
-
-        Connecter.api.getNoticeDescription(id.toString()).enqueue(object : retrofit2.Callback<NoticeDescriptionModel> {
-
-            override fun onResponse(call: Call<NoticeDescriptionModel>, response: Response<NoticeDescriptionModel>) {
+        composite.add(repository.getNoticeDescription(id.toString())
+            .subscribe({ response ->
                 when(response.code()) {
                     200 -> {
                         var body = response.body()
@@ -64,19 +66,14 @@ class NoticeDescriptionFragment : Fragment() {
                         Toast.makeText(context, "다시 시도해주세요", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-
-            override fun onFailure(call: Call<NoticeDescriptionModel>, t: Throwable) {
-                Log.d("tag", t.message)
-            }
-        })
+            }, {
+                Log.d("tag", it.message)
+            }))
     }
 
     fun getRules(id : Int) {
-
-        Connecter.api.getRulesDescription(id.toString()).enqueue(object : retrofit2.Callback<NoticeDescriptionModel>{
-
-            override fun onResponse(call: Call<NoticeDescriptionModel>, response: Response<NoticeDescriptionModel>) {
+        composite.add(repository.getRulesDescription(id.toString())
+            .subscribe({ response ->
                 when(response.code()) {
                     200 -> {
                         var body = response.body()
@@ -89,12 +86,9 @@ class NoticeDescriptionFragment : Fragment() {
                         Toast.makeText(context, "다시 시도해주세요", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-
-            override fun onFailure(call: Call<NoticeDescriptionModel>, t: Throwable) {
-                Log.d("tag", t.message)
-            }
-        })
+            }, {
+                Log.d("tag", it.message)
+            }))
     }
 
     fun frameDate(date : String) :String {
@@ -102,5 +96,10 @@ class NoticeDescriptionFragment : Fragment() {
         var month = date.substring(6,7)
         var year = date.substring(0, 4)
         return "사감부에서 ${year}년 ${month}월 ${day}일에 게시한 글입니다."
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        composite.clear()
     }
 }
