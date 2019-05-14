@@ -1,26 +1,26 @@
 package dsm.android.v3.presentation.di.app
 
+import android.app.Activity
 import android.app.Application
-import dsm.android.v3.presentation.di.component.AppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import dsm.android.v3.presentation.di.component.DaggerAppComponent
-import dsm.android.v3.presentation.di.module.ApiModule
-import dsm.android.v3.presentation.di.module.AppModule
-import dsm.android.v3.presentation.di.module.NetworkModule
+import javax.inject.Inject
 
-class BaseApp : Application() {
+class BaseApp : Application(), HasActivityInjector {
 
-    companion object {
-        lateinit var appComponent: AppComponent
-        val baseUrl = "https://api.github.com/"
-    }
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
 
     override fun onCreate() {
         super.onCreate()
-
-        appComponent = DaggerAppComponent.builder()
-            .networkModule(NetworkModule(baseUrl))
-            .apiModule(ApiModule())
-            .appModule(AppModule(this))
+        DaggerAppComponent.builder()
+            .application(this)
             .build()
+            .inject(this)
+
     }
 }

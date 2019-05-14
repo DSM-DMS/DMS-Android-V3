@@ -14,12 +14,16 @@ import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogBugReportBinding
 import dsm.android.v3.domain.repository.mypage.MyPageRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
+import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModel
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
 
+@FragmentScope
 class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>(){
 
     override val layoutId: Int

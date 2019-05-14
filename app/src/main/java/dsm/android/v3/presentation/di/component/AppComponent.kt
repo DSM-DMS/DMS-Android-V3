@@ -1,18 +1,24 @@
 package dsm.android.v3.presentation.di.component
 
-import android.app.Activity
 import android.app.Application
-import android.support.v4.app.Fragment
+import dagger.BindsInstance
 import dagger.Component
-import dsm.android.v3.presentation.di.module.ApiModule
-import dsm.android.v3.presentation.di.module.AppModule
-import dsm.android.v3.presentation.di.module.NetworkModule
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.module.*
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(AppModule::class),(NetworkModule::class),(ApiModule::class)])
+@Component(modules = [(AppModule::class),(ActivityModule::class),(AndroidSupportInjectionModule::class)])
 interface AppComponent{
-    fun injectActivity(activity: Activity)
 
-    fun injectFragment(fragment: Fragment)
+    fun inject(app: BaseApp)
+
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): AppComponent.Builder
+        fun build(): AppComponent
+    }
 }

@@ -13,6 +13,7 @@ import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityApplyExtensionStudyBinding
 import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepositoryImpl
 import dsm.android.v3.domain.repository.register.RegisterRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModel
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModelFactory
 import dsm.android.v3.util.DataBindingActivity

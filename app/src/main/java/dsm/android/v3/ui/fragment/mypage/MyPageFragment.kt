@@ -14,6 +14,8 @@ import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentMypageBinding
 import dsm.android.v3.domain.repository.mypage.MyPageRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModel
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.ui.dialogFragment.bugReportDialog.BugReportDialogFragment
@@ -26,7 +28,7 @@ import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
 
-
+@ActivityScope
 class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
 
     override val layoutId: Int

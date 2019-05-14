@@ -12,6 +12,8 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogApplyMusicBinding
 import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepositoryImpl
+import dsm.android.v3.presentation.di.scope.ActivityScope
+import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.dialog_apply_music.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import javax.inject.Inject
 
+@FragmentScope
 class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBinding>() {
     override val layoutId: Int
         get() = R.layout.dialog_apply_music
@@ -28,7 +31,9 @@ class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBindi
 
     @Inject
     lateinit var application: Application
+
     val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient), application) }
+
     val viewModel by lazy {
         ViewModelProviders.of(activity!!, factory)[ApplyMusicViewModel::class.java]
     }

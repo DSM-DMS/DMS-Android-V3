@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import dagger.android.support.DaggerFragment
 import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.repository.notice.NoticeRepository
 import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import io.reactivex.disposables.CompositeDisposable
@@ -20,7 +23,8 @@ import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 
-class NoticeDescriptionFragment : Fragment() {
+@ActivityScope
+class NoticeDescriptionFragment : DaggerFragment() {
 
     @Inject
     lateinit var apiClient: ApiClient

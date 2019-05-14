@@ -13,6 +13,7 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityApplyStayingBinding
 import dsm.android.v3.domain.repository.applyStaying.ApplyStayingRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.model.ApplyStayingPagerModel
 import dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModel
 import dsm.android.v3.presentation.viewModel.applyStaying.ApplyStayingViewModelFactory

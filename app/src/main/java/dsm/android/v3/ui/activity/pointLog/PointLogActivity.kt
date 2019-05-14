@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.PointLogAdapter
@@ -19,7 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class PointLogActivity : AppCompatActivity() {
+class PointLogActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var apiClient: ApiClient
@@ -32,8 +33,6 @@ class PointLogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_point_log)
         setSupportActionBar(pointLog_toolbar)
-
-        BaseApp.appComponent.injectActivity(this)
 
         pointLog_toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -10,9 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trello.rxlifecycle2.components.support.RxFragment
+import dagger.android.support.DaggerFragment
 import dsm.android.v3.presentation.di.app.BaseApp
 
-abstract class DataBindingFragment<T : ViewDataBinding> : RxFragment() {
+abstract class DataBindingFragment<T : ViewDataBinding> : DaggerFragment() {
 
     lateinit var rootView: View
     lateinit var binding: T
@@ -22,7 +23,6 @@ abstract class DataBindingFragment<T : ViewDataBinding> : RxFragment() {
     private val lifecycleOwner = LifecycleOwner()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        BaseApp.appComponent.injectFragment(this)
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         rootView = binding.root
         binding.lifecycleOwner = this

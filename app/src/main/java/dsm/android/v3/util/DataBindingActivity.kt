@@ -5,10 +5,11 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.presentation.di.app.BaseApp
 
 
-abstract class DataBindingActivity<T : ViewDataBinding> : RxAppCompatActivity() {
+abstract class DataBindingActivity<T : ViewDataBinding> : DaggerAppCompatActivity() {
 
     lateinit var binding: T
 
@@ -18,7 +19,6 @@ abstract class DataBindingActivity<T : ViewDataBinding> : RxAppCompatActivity() 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        BaseApp.appComponent.injectActivity(this)
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
     }

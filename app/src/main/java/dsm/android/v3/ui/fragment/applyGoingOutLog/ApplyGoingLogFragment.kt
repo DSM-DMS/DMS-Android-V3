@@ -12,12 +12,15 @@ import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.databinding.FragmentApplyGoingLogBinding
 import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModelFactory
 import dsm.android.v3.util.DataBindingFragment
 import javax.inject.Inject
 
+@ActivityScope
 class ApplyGoingLogFragment : DataBindingFragment<FragmentApplyGoingLogBinding>() {
 
     private val actionBar by lazy { (activity as AppCompatActivity).supportActionBar }

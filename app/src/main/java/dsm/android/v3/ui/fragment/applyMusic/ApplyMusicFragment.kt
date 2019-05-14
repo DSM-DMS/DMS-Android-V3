@@ -16,6 +16,8 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
 import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModelFactory
@@ -24,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_apply_music.*
 import org.jetbrains.anko.find
 import javax.inject.Inject
 
+@ActivityScope
 class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
 
     override val layoutId: Int

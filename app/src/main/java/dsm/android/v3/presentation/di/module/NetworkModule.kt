@@ -18,6 +18,8 @@ import javax.inject.Singleton
 @Module
 class NetworkModule(val mBaseUrl: String) {
 
+    val baseUrl = "https://api.github.com/"
+
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }

@@ -9,7 +9,7 @@ import dsm.android.v3.data.local.shared.SharedPrefStorage
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [(ApiModule::class),(NetworkModule::class),(LocalModule::class)])
 class AppModule(val application: Application) {
     @Provides
     @Singleton

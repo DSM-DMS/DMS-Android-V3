@@ -11,13 +11,17 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.MealPagerAdapter
 import dsm.android.v3.databinding.FragmentMealBinding
+import dsm.android.v3.domain.repository.meal.MealRepository
 import dsm.android.v3.domain.repository.meal.MealRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.meal.MealFragmentViewModel
 import dsm.android.v3.presentation.viewModel.meal.MealViewModelFactory
 import dsm.android.v3.util.DataBindingFragment
 import org.jetbrains.anko.find
 import javax.inject.Inject
 
+@ActivityScope
 class MealFragment : DataBindingFragment<FragmentMealBinding>() {
 
     override val layoutId: Int
@@ -25,6 +29,8 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
 
     @Inject
     lateinit var apiClient: ApiClient
+
+    val mealRepository: MealRepository by lazy { MealRepositoryImpl(apiClient) }
 
     val factory by lazy { MealViewModelFactory(MealRepositoryImpl(apiClient)) }
     val viewModel by lazy { ViewModelProviders.of(this, factory)[MealFragmentViewModel::class.java] }
@@ -39,7 +45,7 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
         viewModel.getMeal()
 
         viewModel.meals.observe(this, Observer {
-            rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!)
+            rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!, mealRepository)
         })
 
         return rootView

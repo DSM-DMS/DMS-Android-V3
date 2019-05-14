@@ -11,6 +11,8 @@ import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyGoingBinding
 import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
+import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModel
 import dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModelFactory
 import dsm.android.v3.ui.adapter.ApplyPageAdapter
@@ -20,6 +22,7 @@ import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 import javax.inject.Inject
 
+@ActivityScope
 class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
 
     private val actionBar by lazy { (activity as AppCompatActivity).supportActionBar }

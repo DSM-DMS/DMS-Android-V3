@@ -48,7 +48,7 @@ class SecretHeaderInterceptor(val local: LocalStorage, val authDatabase: AuthDat
 //            Log.d("되라 제발", "${auth.id}, ${auth.password}")
             if (response.code() == 200) {
                 val responseBody = JSONObject(response.body()?.string())
-                local.saveToken(responseBody["accessToken"].toString())
+                local.saveToken(responseBody["accessToken"].toString(), true)
                 val newReuqest = chain.request()
                     .newBuilder()
                     .addHeader("X-Date", time)

@@ -8,6 +8,7 @@ import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityChangePasswordBinding
 import dsm.android.v3.domain.repository.changePassword.ChangePasswordRepositoryImpl
+import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.changePassword.ChangePasswordViewModel
 import dsm.android.v3.presentation.viewModel.changePassword.ChangePasswordViewModelFactory
 import dsm.android.v3.util.DataBindingActivity

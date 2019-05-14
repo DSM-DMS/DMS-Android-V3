@@ -8,9 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trello.rxlifecycle2.components.support.RxDialogFragment
+import dagger.android.support.DaggerDialogFragment
 import dsm.android.v3.presentation.di.app.BaseApp
 
-abstract class DataBindingDialogFragment<T : ViewDataBinding> : RxDialogFragment() {
+abstract class DataBindingDialogFragment<T : ViewDataBinding> : DaggerDialogFragment() {
 
     lateinit var rootView: View
     lateinit var binding: T
@@ -18,7 +19,6 @@ abstract class DataBindingDialogFragment<T : ViewDataBinding> : RxDialogFragment
     abstract val layoutId: Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        BaseApp.appComponent.injectFragment(this)
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.lifecycleOwner = this
         rootView = binding.root

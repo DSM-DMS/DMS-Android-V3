@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.NoticeListModel
@@ -26,7 +27,7 @@ import org.jetbrains.anko.backgroundColor
 import retrofit2.Response
 import javax.inject.Inject
 
-class NoticeActivity : AppCompatActivity() {
+class NoticeActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var apiClient: ApiClient
@@ -40,8 +41,6 @@ class NoticeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
-
-        BaseApp.appComponent.injectActivity(this)
 
         val type = intent.extras.get("activityType") as Boolean
         this.type = type
