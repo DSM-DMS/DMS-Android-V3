@@ -17,6 +17,6 @@ class ApiModule{
 
     @Provides
     @Singleton
-    fun provideApiClient(Api: API) = ApiClient(Api)
+    fun provideApiClient(Api: API) : ApiClient = ApiClient(Api)
 
 }

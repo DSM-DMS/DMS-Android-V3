@@ -10,15 +10,17 @@ import dsm.android.v3.presentation.di.module.*
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(AppModule::class),(ActivityModule::class),(AndroidSupportInjectionModule::class)])
-interface AppComponent{
-
-    fun inject(app: BaseApp)
+@Component(
+    modules = [(AppModule::class),
+        (ActivityModule::class), (AndroidSupportInjectionModule::class), (ApiModule::class), (NetworkModule::class), (LocalModule::class)]
+)
+interface AppComponent: AndroidInjector<BaseApp> {
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(application: Application): AppComponent.Builder
+        fun application(application: BaseApp): AppComponent.Builder
+
         fun build(): AppComponent
     }
 }

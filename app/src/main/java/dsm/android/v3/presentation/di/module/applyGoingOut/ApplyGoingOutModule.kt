@@ -19,15 +19,21 @@ import dsm.android.v3.ui.fragment.applyGoingOutLog.ApplyGoingLogFragment
 
 @Module
 abstract class ApplyGoingOutModule {
-    @ActivityScope
-    @Provides
-    fun provideRepository(apiClient: ApiClient): ApplyGoingOutRepository
-            = ApplyGoingOutRepositoryImpl(apiClient)
 
-    @ActivityScope
-    @Provides
-    fun provideViewModelFactory(repository: ApplyGoingOutRepository): ApplyGoingViewModelFactory
-            = ApplyGoingViewModelFactory(repository)
+    @Module
+    companion object {
+        @ActivityScope
+        @JvmStatic
+        @Provides
+        fun provideRepository(apiClient: ApiClient): ApplyGoingOutRepository
+                = ApplyGoingOutRepositoryImpl(apiClient)
+
+        @ActivityScope
+        @JvmStatic
+        @Provides
+        fun provideViewModelFactory(repository: ApplyGoingOutRepository): ApplyGoingViewModelFactory
+                = ApplyGoingViewModelFactory(repository)
+    }
 
     @FragmentScope
     @ContributesAndroidInjector

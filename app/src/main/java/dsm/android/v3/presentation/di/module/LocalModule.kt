@@ -7,24 +7,24 @@ import dsm.android.v3.data.local.shared.SharedPrefStorage
 import dsm.android.v3.data.local.database.AuthDatabase
 import javax.inject.Singleton
 import android.arch.persistence.room.Room
+import android.content.Context
 import dsm.android.v3.data.local.dao.AuthDao
+import dsm.android.v3.data.local.shared.LocalStorage
 
 
 @Module
-class LocalModule(val application: Application) {
+class LocalModule {
 
-    private val authDatabase: AuthDatabase
-
-    init {
-        authDatabase = Room.databaseBuilder(application, AuthDatabase::class.java, "auth.db").build()
-    }
     @Provides
     @Singleton
-    fun provideLocalStorage() = SharedPrefStorage(application)
+    fun provideAuthDataBase(context: Context) : AuthDatabase
+            = Room.databaseBuilder(context, AuthDatabase::class.java, "auth.db").build()
 
-    @Singleton
+
     @Provides
-    fun provideRoomDatabase(): AuthDatabase = authDatabase
+    @Singleton
+    fun provideLocalStorage(context: Context) : LocalStorage = SharedPrefStorage(context)
+
 
     @Singleton
     @Provides

@@ -16,24 +16,30 @@ import dsm.android.v3.ui.fragment.applyMusic.ApplyMusicFragment
 import dsm.android.v3.ui.fragment.applyMusic.ApplyMusicLogFragment
 
 @Module
-abstract class ApplyMusicModule {
+abstract class ApplyMusicDomModule {
 
-    @ActivityScope
-    @Provides
-    fun provideRepository(apiClient: ApiClient): ApplyMusicRepository
-            = ApplyMusicRepositoryImpl(apiClient)
+    @Module
+    companion object {
+        @ActivityScope
+        @JvmStatic
+        @Provides
+        fun provideRepository(apiClient: ApiClient): ApplyMusicRepository
+                = ApplyMusicRepositoryImpl(apiClient)
 
-    @ActivityScope
-    @Provides
-    fun provideViewModelFactory(repository: ApplyMusicRepository, application: Application): ApplyMusicViewModelFactory
-            = ApplyMusicViewModelFactory(repository, application)
+        @ActivityScope
+        @JvmStatic
+        @Provides
+        fun provideViewModelFactory(repository: ApplyMusicRepository, application: Application): ApplyMusicViewModelFactory
+                = ApplyMusicViewModelFactory(repository, application)
+
+    }
 
     @FragmentScope
     @ContributesAndroidInjector
     abstract fun applyMusicFragment(): ApplyMusicFragment
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun applyMusicLogFragment(): ApplyMusicLogFragment
 
     @DialogFragmentScope

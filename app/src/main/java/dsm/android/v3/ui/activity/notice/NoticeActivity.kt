@@ -29,12 +29,10 @@ import javax.inject.Inject
 
 class NoticeActivity : DaggerAppCompatActivity() {
 
-    @Inject
-    lateinit var apiClient: ApiClient
-
     var type = true
 
-    val repository: NoticeRepository by lazy { NoticeRepositoryImpl(apiClient) }
+    @Inject
+    lateinit var repository: NoticeRepository
 
     val composite = CompositeDisposable()
 

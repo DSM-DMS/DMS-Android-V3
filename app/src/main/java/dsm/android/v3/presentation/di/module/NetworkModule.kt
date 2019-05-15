@@ -16,9 +16,12 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class NetworkModule(val mBaseUrl: String) {
+class NetworkModule {
 
-    val baseUrl = "https://api.github.com/"
+    companion object {
+        private val baseUrl = "https://api.github.com/"
+    }
+
 
     @Provides
     @Singleton
@@ -51,7 +54,7 @@ class NetworkModule(val mBaseUrl: String) {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(mBaseUrl)
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .build()
     }
