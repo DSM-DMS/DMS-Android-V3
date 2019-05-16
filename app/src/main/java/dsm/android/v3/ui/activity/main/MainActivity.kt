@@ -2,16 +2,41 @@ package dsm.android.v3.ui.activity.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
 import dsm.android.v3.ui.fragment.meal.MealFragment
 import dsm.android.v3.ui.fragment.putIn.PutInFragment
 import dsm.android.v3.ui.fragment.mypage.MyPageFragment
-import dsm.android.v3.ui.dialogFragment.notice.NoticeFragment
+import dsm.android.v3.ui.fragment.notice.NoticeFragment
+import io.reactivex.BackpressureStrategy
+import io.reactivex.FlowableSubscriber
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.activity_main.*
+import org.bouncycastle.util.Times
+import org.jetbrains.anko.toast
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+    private val backButtonSubject: Subject<Long> =
+        BehaviorSubject.createDefault(0L)
+            .toSerialized()
+
+    private val backButtonSubjectDisposable: Disposable = backButtonSubject
+        .buffer(2, 1)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe {
+            if (it[1] - it[0] <= 1500) finish()
+            else toast("뒤로가기 버튼을 한 번 더 누르시면 종료됩니다.")
+        }
+
+    override fun onBackPressed() {
+        if (navigation.selectedItemId == R.id.navigation_food)
+            backButtonSubject.onNext(System.currentTimeMillis())
+        else navigation.selectedItemId = R.id.navigation_food
+    }
 
     private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val transaction = supportFragmentManager.beginTransaction()
@@ -48,12 +73,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
         navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-    }
-
-    override fun onBackPressed() {
-        if (navigation.selectedItemId == R.id.navigation_food)
-            super.onBackPressed()
-        else
-            navigation.selectedItemId = R.id.navigation_food
     }
 }
