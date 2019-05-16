@@ -19,6 +19,7 @@ import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.logout.LogoutViewModel
+import dsm.android.v3.presentation.viewModel.mypage.logout.LogoutViewModelFactory
 import dsm.android.v3.ui.activity.signIn.SignInActivity
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.startActivity
@@ -32,15 +33,7 @@ class LogoutDialogFragment : DataBindingDialogFragment<DialogLogoutBinding>() {
         get() = R.layout.dialog_logout
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var authDao: AuthDao
-
-    @Inject
-    lateinit var localStorage: LocalStorage
-
-    val factory by lazy { MyPageViewModelFactory(MyPageRepositoryImpl(apiClient, localStorage, authDao)) }
+    lateinit var factory: LogoutViewModelFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

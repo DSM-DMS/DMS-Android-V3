@@ -6,10 +6,4 @@ import retrofit2.Response
 
 interface MyPageRepository {
     fun getBasicInfo(): Single<Response<MyPageInfoModel>>
-
-    fun reportBug(body: Any?): Single<Response<Unit>>
-
-    fun reportInstitution(body: Any?): Single<Response<Unit>>
-
-    fun logout()
 }

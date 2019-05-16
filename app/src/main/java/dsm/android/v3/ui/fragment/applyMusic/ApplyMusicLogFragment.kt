@@ -26,12 +26,7 @@ class ApplyMusicLogFragment : DataBindingFragment<FragmentApplyMusicLogBinding>(
         get() = R.layout.fragment_apply_music_log
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var application: Application
-
-    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient), application) }
+    lateinit var factory: ApplyMusicViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

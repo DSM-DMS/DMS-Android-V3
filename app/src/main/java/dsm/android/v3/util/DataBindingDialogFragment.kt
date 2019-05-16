@@ -3,15 +3,13 @@ package dsm.android.v3.util
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.trello.rxlifecycle2.components.support.RxDialogFragment
 import dagger.android.support.DaggerDialogFragment
-import dsm.android.v3.presentation.di.app.BaseApp
+import dagger.android.support.HasSupportFragmentInjector
 
-abstract class DataBindingDialogFragment<T : ViewDataBinding> : DaggerDialogFragment() {
+abstract class DataBindingDialogFragment<T : ViewDataBinding> : DaggerDialogFragment(), HasSupportFragmentInjector {
 
     lateinit var rootView: View
     lateinit var binding: T

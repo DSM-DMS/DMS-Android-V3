@@ -7,7 +7,7 @@ import dsm.android.v3.util.BaseViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MealFragmentViewModel : BaseViewModel() {
+class MealFragmentViewModel() : BaseViewModel() {
 
     val meals = MutableLiveData<ArrayList<String>>()
     val pageStatusLiveData = MutableLiveData<Int>().apply { postValue(3) }

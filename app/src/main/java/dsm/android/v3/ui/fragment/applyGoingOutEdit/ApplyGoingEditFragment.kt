@@ -23,9 +23,7 @@ class ApplyGoingEditFragment : DataBindingFragment<FragmentApplyGoingEditBinding
         get() = R.layout.fragment_apply_going_edit
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+    lateinit var factory: ApplyGoingViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

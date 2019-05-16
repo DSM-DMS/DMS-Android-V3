@@ -33,9 +33,6 @@ class ApplyMusicFragment : DataBindingFragment<FragmentApplyMusicBinding>() {
         get() = R.layout.fragment_apply_music
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
     lateinit var factory: ApplyMusicViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

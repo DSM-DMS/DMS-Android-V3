@@ -19,6 +19,7 @@ import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModel
+import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
@@ -30,15 +31,7 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
         get() = R.layout.dialog_bug_report
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var authDao: AuthDao
-
-    @Inject
-    lateinit var localStorage: LocalStorage
-
-    val factory by lazy { MyPageViewModelFactory(MyPageRepositoryImpl(apiClient, localStorage, authDao)) }
+    lateinit var factory: BugReportViewModelFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

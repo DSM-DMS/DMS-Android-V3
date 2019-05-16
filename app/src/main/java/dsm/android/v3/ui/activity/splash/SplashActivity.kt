@@ -7,6 +7,7 @@ import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.domain.entity.Auth
+import dsm.android.v3.domain.repository.splash.SplashRepository
 import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.ui.activity.signIn.SignInActivity
 import kotlinx.coroutines.CoroutineScope
@@ -21,17 +22,14 @@ class SplashActivity : DaggerAppCompatActivity() {
     private lateinit var auth: Auth
 
     @Inject
-    lateinit var localStorage: LocalStorage
-
-    @Inject
-    lateinit var authDao: AuthDao
+    lateinit var repository: SplashRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CoroutineScope(Dispatchers.IO).launch {
-            auth = authDao.getAuth()
+            auth = repository.getAuth()
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                if (localStorage.getToken()  == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
+                if (repository.getToken()  == "Bearer " || auth.id.isEmpty() || auth.password.isEmpty()) {
                     startActivity<SignInActivity>()
                     finish()
                     toast("로그인이 필요합니다.").show()

@@ -35,15 +35,7 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
         get() = dsm.android.v3.R.layout.fragment_mypage
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var localStorage: LocalStorage
-
-    @Inject
-    lateinit var authDao: AuthDao
-
-    val factory by lazy { MyPageViewModelFactory(MyPageRepositoryImpl(apiClient, localStorage, authDao)) }
+    lateinit var factory: MyPageViewModelFactory
 
     private val fm: FragmentManager? by lazy { fragmentManager }
     private val logoutDialogFragment: LogoutDialogFragment by  lazy { LogoutDialogFragment() }

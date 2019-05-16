@@ -22,12 +22,11 @@ import javax.inject.Inject
 
 class PointLogActivity : DaggerAppCompatActivity() {
 
-    @Inject
-    lateinit var apiClient: ApiClient
 
     val composite = CompositeDisposable()
 
-    val repository: PointLogRepository by lazy { PointLogRepositoryImpl(apiClient) }
+    @Inject
+    lateinit var repository: PointLogRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

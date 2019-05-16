@@ -1,18 +1,16 @@
-package dsm.android.v3.ui.dialogFragment.notice
+package dsm.android.v3.ui.fragment.notice
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dagger.android.support.DaggerFragment
 import dsm.android.v3.R
-import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import dsm.android.v3.ui.CustomView.CustomCardView
 
-@FragmentScope
-class NoticeFragment : DaggerFragment(){
+class NoticeFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

@@ -27,12 +27,7 @@ class ApplyMusicDialogFragment : DataBindingDialogFragment<DialogApplyMusicBindi
         get() = R.layout.dialog_apply_music
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var application: Application
-
-    val factory by lazy { ApplyMusicViewModelFactory(ApplyMusicRepositoryImpl(apiClient), application) }
+    lateinit var factory: ApplyMusicViewModelFactory
 
     val viewModel by lazy {
         ViewModelProviders.of(activity!!, factory)[ApplyMusicViewModel::class.java]

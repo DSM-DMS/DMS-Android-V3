@@ -37,9 +37,7 @@ class ApplyGoingFragment : DataBindingFragment<FragmentApplyGoingBinding>() {
     }
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+    lateinit var factory: ApplyGoingViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

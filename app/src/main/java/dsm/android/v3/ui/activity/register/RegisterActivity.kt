@@ -23,9 +23,7 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>() {
         get() = R.layout.activity_register
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    private val factory: RegisterViewModelFactory by lazy { RegisterViewModelFactory(RegisterRepositoryImpl(apiClient)) }
+    lateinit var factory: RegisterViewModelFactory
 
     private val viewModel: RegisterViewModel by lazy {
         ViewModelProviders.of(this).get(RegisterViewModel::class.java)

@@ -25,14 +25,13 @@ import javax.inject.Inject
 class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStudyBinding>(){
 
     @Inject
-    lateinit var apiClient: ApiClient
+    lateinit var factory: ApplyExtensionStudyViewModelFactory
 
     override val layoutId: Int
         get() = R.layout.activity_apply_extension_study
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = ApplyExtensionStudyViewModelFactory(ApplyExtensionStudyRepositoryImpl(apiClient))
         val viewModel = ViewModelProviders.of(this, factory).get(ApplyExtensionStudyViewModel::class.java)
 
         viewModel.clickedClassView.value = applyExtension_gaonsil_tv

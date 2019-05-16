@@ -2,11 +2,11 @@ package dsm.android.v3.presentation.viewModel.mypage.bugReport
 
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
-import dsm.android.v3.domain.repository.mypage.MyPageRepository
+import dsm.android.v3.domain.repository.bugReport.BugReportRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 
-class BugReportViewModel(val myPageRepository: MyPageRepository): BaseViewModel(){
+class BugReportViewModel(val bugReportRepository: BugReportRepository): BaseViewModel(){
 
     val bugTitleEditText = MutableLiveData<String>()
     val bugContentEditText = MutableLiveData<String>()
@@ -23,7 +23,7 @@ class BugReportViewModel(val myPageRepository: MyPageRepository): BaseViewModel(
         if (bugContentEditText.value.isNullOrBlank()) bugContentError.value = "내용을 입력하세요"
         else bugContentError.value = null
         if (bugTitleError.value.isNullOrBlank() and bugContentError.value.isNullOrBlank()) {
-            add(myPageRepository.reportBug(hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
+            add(bugReportRepository.reportBug(hashMapOf("content" to "${bugTitleEditText.value}/${bugContentEditText.value}"))
                 .subscribe({ response ->
                     toastLiveData.value =
                         when (response.code()) {

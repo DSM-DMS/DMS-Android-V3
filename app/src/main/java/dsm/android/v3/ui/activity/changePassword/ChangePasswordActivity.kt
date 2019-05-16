@@ -20,12 +20,8 @@ class ChangePasswordActivity : DataBindingActivity<ActivityChangePasswordBinding
         get() = R.layout.activity_change_password
 
     @Inject
-    lateinit var apiClient: ApiClient
+    lateinit var factory: ChangePasswordViewModelFactory
 
-    @Inject
-    lateinit var authDao: AuthDao
-
-    val factory: ChangePasswordViewModelFactory by lazy { ChangePasswordViewModelFactory(ChangePasswordRepositoryImpl(apiClient, authDao)) }
     val viewModel: ChangePasswordViewModel by lazy { ViewModelProviders.of(this, factory)[ChangePasswordViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {

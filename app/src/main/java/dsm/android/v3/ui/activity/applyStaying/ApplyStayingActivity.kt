@@ -31,7 +31,7 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
         get() = R.layout.activity_apply_staying
 
     @Inject
-    lateinit var apiCLient: ApiClient
+    lateinit var factory: ApplyStayingViewModelFactory
 
     lateinit var viewGroup: ViewGroup
 
@@ -43,7 +43,6 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
         supportActionBar?.title = "잔류 신청"
         applyStaying_toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        val factory = ApplyStayingViewModelFactory(ApplyStayingRepositoryImpl(apiCLient))
         val viewModel = ViewModelProviders.of(this, factory).get(ApplyStayingViewModel::class.java)
         viewModel.toastLiveData.observe(this, Observer { toast(it!!) })
         viewModel.changeColorLiveEvent.observe(this, Observer {

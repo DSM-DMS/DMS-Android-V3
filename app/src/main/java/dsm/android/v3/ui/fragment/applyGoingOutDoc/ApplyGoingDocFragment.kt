@@ -23,9 +23,7 @@ class ApplyGoingDocFragment : DataBindingFragment<FragmentApplyGoingDocBinding>(
         get() = R.layout.fragment_apply_going_doc
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    val factory by lazy { ApplyGoingViewModelFactory(ApplyGoingOutRepositoryImpl(apiClient)) }
+    lateinit var factory: ApplyGoingViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

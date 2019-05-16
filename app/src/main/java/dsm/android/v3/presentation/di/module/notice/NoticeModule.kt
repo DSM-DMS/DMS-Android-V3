@@ -8,10 +8,11 @@ import dsm.android.v3.domain.repository.notice.NoticeRepository
 import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
-import dsm.android.v3.ui.dialogFragment.notice.NoticeFragment
+import dsm.android.v3.ui.fragment.notice.NoticeDescriptionFragment
 
 @Module
 abstract class NoticeModule {
+
     @Module
     companion object {
         @ActivityScope
@@ -21,7 +22,8 @@ abstract class NoticeModule {
                 = NoticeRepositoryImpl(apiClient)
     }
 
+
     @FragmentScope
-    @ContributesAndroidInjector
-    abstract fun noticeFragment(): NoticeFragment
+    @ContributesAndroidInjector()
+    abstract fun noticeDescriptionFragment(): NoticeDescriptionFragment
 }

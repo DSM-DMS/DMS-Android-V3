@@ -1,16 +1,12 @@
 package dsm.android.v3.presentation.viewModel.mypage.institutionReport
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.view.View
-import dsm.android.v3.domain.repository.mypage.MyPageRepository
+import dsm.android.v3.domain.repository.institutionReport.InstitutionReportRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class InstitutionReportViewModel(val myPageRepository: MyPageRepository): BaseViewModel(){
+class InstitutionReportViewModel(val institutionReportRepository: InstitutionReportRepository): BaseViewModel(){
 
     val institutionTitle = MutableLiveData<String>()
     val institutionRoomNumber = MutableLiveData<String>()
@@ -31,7 +27,7 @@ class InstitutionReportViewModel(val myPageRepository: MyPageRepository): BaseVi
         if (institutionReportContent.value.isNullOrBlank()) institutionReportContentError.value = "내용을 입력해주세요."
         else institutionReportContentError.value = null
         if (institutionTitleError.value.isNullOrBlank() and institutionRoomNumberError.value.isNullOrBlank() and institutionReportContentError.value.isNullOrBlank()){
-            add(myPageRepository.reportInstitution(hashMapOf("room" to institutionRoomNumber.value!!.toInt()
+            add(institutionReportRepository.reportInstitution(hashMapOf("room" to institutionRoomNumber.value!!.toInt()
                 , "content" to "${institutionTitle.value}/${institutionReportContent.value}"))
                 .subscribe({ response ->
                     toastLiveData.value =

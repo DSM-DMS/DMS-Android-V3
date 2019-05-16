@@ -11,9 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.trello.rxlifecycle2.components.support.RxFragment
 import dagger.android.support.DaggerFragment
+import dagger.android.support.HasSupportFragmentInjector
 import dsm.android.v3.presentation.di.app.BaseApp
 
-abstract class DataBindingFragment<T : ViewDataBinding> : DaggerFragment() {
+abstract class DataBindingFragment<T : ViewDataBinding> : DaggerFragment(), HasSupportFragmentInjector {
 
     lateinit var rootView: View
     lateinit var binding: T

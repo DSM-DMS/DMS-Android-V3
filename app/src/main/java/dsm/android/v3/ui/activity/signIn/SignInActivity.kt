@@ -27,15 +27,7 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
         get() = R.layout.activity_sign_in
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var authDao: AuthDao
-
-    @Inject
-    lateinit var localStorage: LocalStorage
-
-    private val factory: SignInViewModelFactory by lazy { SignInViewModelFactory(SignInRepositoryImpl(apiClient, localStorage, authDao)) }
+    lateinit var factory: SignInViewModelFactory
 
     private val viewModel: SignInViewModel by lazy { ViewModelProviders.of(this, factory).get(SignInViewModel::class.java) }
 

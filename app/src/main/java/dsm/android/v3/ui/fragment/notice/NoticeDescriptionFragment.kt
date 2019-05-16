@@ -26,12 +26,10 @@ import javax.inject.Inject
 @ActivityScope
 class NoticeDescriptionFragment : DaggerFragment() {
 
-    @Inject
-    lateinit var apiClient: ApiClient
-
     val composite = CompositeDisposable()
 
-    val repository: NoticeRepository by lazy { NoticeRepositoryImpl(apiClient) }
+    @Inject
+    lateinit var repository: NoticeRepository
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_notice_description, container, false) as View

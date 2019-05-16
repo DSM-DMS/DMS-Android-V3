@@ -9,16 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
-import dsm.android.v3.data.local.dao.AuthDao
-import dsm.android.v3.data.local.shared.LocalStorage
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogInstitutionReportBinding
-import dsm.android.v3.domain.repository.mypage.MyPageRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
-import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModel
+import dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
@@ -30,15 +25,7 @@ class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionRepo
         get() = R.layout.dialog_institution_report
 
     @Inject
-    lateinit var apiClient: ApiClient
-
-    @Inject
-    lateinit var authDao: AuthDao
-
-    @Inject
-    lateinit var localStorage: LocalStorage
-
-    val factory by lazy { MyPageViewModelFactory(MyPageRepositoryImpl(apiClient, localStorage, authDao)) }
+    lateinit var factory: InstitutionReportViewModelFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

@@ -7,7 +7,7 @@ import dagger.Provides
 import dsm.android.v3.presentation.di.app.BaseApp
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [(ApiModule::class), (NetworkModule::class), (LocalModule::class)])
 class AppModule {
     @Provides
     @Singleton
