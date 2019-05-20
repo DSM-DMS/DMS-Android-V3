@@ -74,4 +74,9 @@ class MainActivity : DaggerAppCompatActivity() {
         }
         navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backButtonSubjectDisposable.dispose()
+    }
 }
