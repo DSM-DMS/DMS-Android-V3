@@ -6,7 +6,7 @@
 
         <variable
                 name="applyExtensionStudyViewModel"
-                type="dsm.android.v3.ui.applyExtensionStudy.ApplyExtensionStudyViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

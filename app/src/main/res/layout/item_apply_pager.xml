@@ -7,11 +7,11 @@
 
         <variable
                 name="applyPagerModel"
-                type="dsm.android.v3.model.ApplyPagerModel"/>
+                type="dsm.android.v3.presentation.model.ApplyPagerModel"/>
 
         <variable
                 name="applyGoingViewModel"
-                type="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

@@ -6,7 +6,7 @@
             app:startDestination="@id/applyMusicFragment">
     <fragment
             android:id="@+id/applyMusicFragment"
-            android:name="dsm.android.v3.ui.applyMusic.ApplyMusicFragment"
+            android:name="dsm.android.v3.ui.fragment.applyMusic.ApplyMusicFragment"
             android:label="ApplyMusicFragment">
         <action
                 android:id="@+id/action_applyMusicFragment_to_applyMusicLogFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
             android:id="@+id/applyMusicLogFragment"
-            android:name="dsm.android.v3.ui.applyMusic.ApplyMusicLogFragment"
+            android:name="dsm.android.v3.ui.fragment.applyMusic.ApplyMusicLogFragment"
             android:label="fragment_apply_music_log"
             tools:layout="@layout/fragment_apply_music_log"/>
 </navigation>

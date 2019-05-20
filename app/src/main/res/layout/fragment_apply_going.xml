@@ -7,7 +7,7 @@
 
         <variable
                 name="applyGoingViewModel"
-                type="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOut.ApplyGoingViewModel"/>
 
         <import type="android.arch.lifecycle.MutableLiveData"/>
     </data>

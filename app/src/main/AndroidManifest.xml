@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:name=".util.App"
+            android:name=".presentation.di.app.BaseApp"
             android:allowBackup="true"
             android:icon="@mipmap/dms_logo"
             android:label="@string/app_name"
@@ -13,17 +13,17 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".ui.applyMusic.ApplyMusicDomActivity">
+        <activity android:name=".ui.activity.applyMusic.ApplyMusicDomActivity">
         </activity>
         <activity
-                android:name=".ui.signIn.SignInActivity"
+                android:name=".ui.activity.signIn.SignInActivity"
                 android:label="@string/app_name">
         </activity>
         <activity
-                android:name=".ui.introduceTeam.IntroDeveloperActivity"
+                android:name=".ui.activity.introduceTeam.IntroDeveloperActivity"
                 android:theme="@style/AppTheme"/>
         <activity
-                android:name=".ui.splash.SplashActivity"
+                android:name=".ui.activity.splash.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,25 +31,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"/>
-        <activity android:name=".ui.register.RegisterActivity"/>
+        <activity android:name=".ui.activity.main.MainActivity"/>
+        <activity android:name=".ui.activity.register.RegisterActivity"/>
 
         <activity
-                android:name=".ui.pointLog.PointLogActivity"
+                android:name=".ui.activity.pointLog.PointLogActivity"
                 android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".ui.changePassword.ChangePasswordActivity">
+        <activity android:name=".ui.activity.changePassword.ChangePasswordActivity">
         </activity>
-        <activity android:name=".ui.applyGoingOut.ApplyGoingOutActivity"/>
-        <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingActivity">
+        <activity android:name=".ui.activity.applyGoingOut.ApplyGoingOutActivity"/>
+        <activity android:name=".ui.activity.applyStaying.ApplyStayingActivity">
         </activity>
-        <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogActivity"/>
-        <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocActivity"/>
-        <activity android:name="dsm.android.v3.ui.applyGoingOut.applyGoingEdit.ApplyGoingEditActivity"/>
-        <activity android:name=".ui.applyStaying.ApplyStayingActivity">
+        <activity android:name=".ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity">
         </activity>
-        <activity android:name=".ui.applyExtensionStudy.ApplyExtensionStudyActivity">
-        </activity>
-        <activity android:name=".ui.notice.NoticeActivity"/>
+        <activity android:name=".ui.activity.notice.NoticeActivity"/>
     </application>
 </manifest>

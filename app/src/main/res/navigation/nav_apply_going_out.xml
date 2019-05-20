@@ -6,7 +6,7 @@
             app:startDestination="@id/applyGoingFragment">
     <fragment
             android:id="@+id/applyGoingFragment"
-            android:name="dsm.android.v3.ui.applyGoingOut.applyGoing.ApplyGoingFragment"
+            android:name="dsm.android.v3.ui.fragment.applyGoingOut.ApplyGoingFragment"
             android:label="외출 신청">
         <action
                 android:id="@+id/action_applyGoingFragment_to_applyGoingLogFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
             android:id="@+id/applyGoingLogFragment"
-            android:name="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogFragment"
+            android:name="dsm.android.v3.ui.fragment.applyGoingOutLog.ApplyGoingLogFragment"
             android:label="{goingOut}">
         <action
                 android:id="@+id/action_applyGoingLogFragment_to_applyGoingEditFragment"
@@ -42,10 +42,10 @@
     </fragment>
     <fragment
             android:id="@+id/applyGoingDocFragment"
-            android:name="dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocFragment"
+            android:name="dsm.android.v3.ui.fragment.applyGoingOutDoc.ApplyGoingDocFragment"
             android:label=""/>
     <fragment
             android:id="@+id/applyGoingEditFragment"
-            android:name="dsm.android.v3.ui.applyGoingOut.applyGoingEdit.ApplyGoingEditFragment"
+            android:name="dsm.android.v3.ui.fragment.applyGoingOutEdit.ApplyGoingEditFragment"
             android:label=""/>
 </navigation>

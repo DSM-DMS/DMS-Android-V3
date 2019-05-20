@@ -6,11 +6,11 @@
 
         <variable
                 name="goingLog"
-                type="dsm.android.v3.model.ApplyGoingModel.ApplyGoingDataModel"/>
+                type="dsm.android.v3.domain.entity.ApplyGoingOutModel.ApplyGoingDataModel"/>
 
         <variable
                 name="applyGoingLogViewModel"
-                type="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

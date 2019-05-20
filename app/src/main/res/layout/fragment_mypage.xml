@@ -5,7 +5,7 @@
     <data>
         <variable
             name="MyPageViewModel"
-            type="dsm.android.v3.ui.mypage.MyPageViewModel"/>
+            type="dsm.android.v3.presentation.viewModel.mypage.MyPageViewModel"/>
     </data>
     
     <android.support.constraint.ConstraintLayout

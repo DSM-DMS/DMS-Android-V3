@@ -6,7 +6,7 @@
 
         <variable
                 name="applyGoingDocViewModel"
-                type="dsm.android.v3.ui.applyGoingOut.applyGoingDoc.ApplyGoingDocViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOutDoc.ApplyGoingDocViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

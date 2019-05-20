@@ -7,7 +7,7 @@
 
         <variable
                 name="applyGoingLogViewModel"
-                type="dsm.android.v3.ui.applyGoingOut.applyGoingLog.ApplyGoingLogViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
