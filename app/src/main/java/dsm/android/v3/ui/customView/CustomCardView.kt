@@ -1,4 +1,4 @@
-package dsm.android.v3.ui.CustomView
+package dsm.android.v3.ui.customView
 
 import android.content.Context
 import android.content.res.TypedArray
