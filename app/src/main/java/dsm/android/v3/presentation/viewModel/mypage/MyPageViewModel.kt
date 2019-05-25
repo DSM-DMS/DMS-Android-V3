@@ -2,8 +2,6 @@ package dsm.android.v3.presentation.viewModel.mypage
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import dsm.android.v3.util.*
-import org.jetbrains.anko.doAsync
 import dsm.android.v3.domain.repository.mypage.MyPageRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback

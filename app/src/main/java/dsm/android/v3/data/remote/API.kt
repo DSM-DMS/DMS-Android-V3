@@ -3,7 +3,6 @@ package dsm.android.v3.data.remote
 import retrofit2.http.*
 import com.google.gson.JsonObject
 import dsm.android.v3.domain.entity.*
-import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.domain.entity.NoticeListModel
 import dsm.android.v3.domain.entity.RulesModel
 import io.reactivex.Single

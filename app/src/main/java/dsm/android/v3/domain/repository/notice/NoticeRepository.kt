@@ -2,6 +2,7 @@ package dsm.android.v3.domain.repository.notice
 
 import dsm.android.v3.domain.entity.NoticeDescriptionModel
 import dsm.android.v3.domain.entity.NoticeListModel
+import dsm.android.v3.domain.entity.RulesModel
 import io.reactivex.Single
 import retrofit2.Response
 

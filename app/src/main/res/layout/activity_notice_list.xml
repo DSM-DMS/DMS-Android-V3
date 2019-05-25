@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:id="@+id/notice_list_constraint1">
 
-    <dsm.android.v3.ui.customView.CustomCardView
+    <dsm.android.v3.ui.CustomView.CustomCardView
             android:layout_width="match_parent"
             android:layout_height="118dp"
             android:id="@+id/notice_list_customview"

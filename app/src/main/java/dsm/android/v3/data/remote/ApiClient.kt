@@ -2,7 +2,6 @@ package dsm.android.v3.data.remote
 
 import com.google.gson.JsonObject
 import dsm.android.v3.domain.entity.*
-import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
