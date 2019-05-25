@@ -8,13 +8,13 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.main.meal.MealFragmentViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.meal.MealFragmentViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.main.meal.MealFragment">
+            tools:context=".ui.fragment.meal.MealFragment">
 
         <ImageView
                 android:id="@+id/mealFragment_previous_iv"

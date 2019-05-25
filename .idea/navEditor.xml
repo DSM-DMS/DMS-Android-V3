@@ -3,23 +3,52 @@
   <component name="navEditor-manualLayoutAlgorithm2">
     <option name="myPositions">
       <map>
-        <entry key="navigation_apply_music.xml">
+        <entry key="nav_apply_going_out.xml">
           <value>
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="applyMusicFragment">
+                  <entry key="applyGoingDocFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="applyGoingEditFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="500" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="applyGoingFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="y" value="54" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_applyMusicFragment_to_applyMusicLogFragment">
+                            <entry key="action_applyGoingFragment_to_applyGoingDocFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_applyGoingFragment_to_applyGoingLogFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -29,14 +58,23 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="applyMusicLogFragment">
+                  <entry key="applyGoingLogFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="226" />
-                            <option name="y" value="12" />
+                            <option name="x" value="256" />
+                            <option name="y" value="368" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_applyGoingLogFragment_to_applyGoingEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -46,11 +84,16 @@
             </LayoutPositions>
           </value>
         </entry>
+<<<<<<< HEAD
         <entry key="navigation_main.xml">
+=======
+        <entry key="navigation_apply_music.xml">
+>>>>>>> master
           <value>
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+<<<<<<< HEAD
                   <entry key="mealFragment">
                     <value>
                       <LayoutPositions>
@@ -120,6 +163,14 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_noticeListFragment_to_noticeDescriptionFragment">
+=======
+                  <entry key="applyMusicFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_applyMusicFragment_to_applyMusicLogFragment">
+>>>>>>> master
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -129,6 +180,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+<<<<<<< HEAD
                   <entry key="putInFragment">
                     <value>
                       <LayoutPositions>
@@ -203,6 +255,11 @@
                           </map>
                         </option>
                       </LayoutPositions>
+=======
+                  <entry key="applyMusicLogFragment">
+                    <value>
+                      <LayoutPositions />
+>>>>>>> master
                     </value>
                   </entry>
                 </map>

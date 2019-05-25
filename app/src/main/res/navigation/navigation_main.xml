@@ -26,7 +26,7 @@
             android:label="MyPageFragment"/>
     <fragment
             android:id="@+id/noticeListFragment"
-            android:name="dsm.android.v3.ui.notice.NoticeListFragment"
+            android:name="dsm.android.v3.ui.fragment.notice.NoticeListFragment"
             android:label="NoticeListFragment">
     </fragment>
 </navigation>

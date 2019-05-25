@@ -6,11 +6,11 @@
 
         <variable
                 name="noticeData"
-                type="dsm.android.v3.model.notice.NoticeModel"/>
+                type="dsm.android.v3.domain.entity.NoticeModel"/>
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.notice.NoticeViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.notice.NoticeViewModel"/>
     </data>
 
     <android.support.v7.widget.Api17CardView

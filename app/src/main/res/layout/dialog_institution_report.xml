@@ -5,7 +5,7 @@
     <data>
         <variable
             name="InstitutionReportViewModel"
-            type="dsm.android.v3.ui.institutionReportDialog.InstitutionReportViewModel">
+            type="dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModel">
         </variable>
     </data>
 

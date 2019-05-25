@@ -5,7 +5,7 @@
     <data>
         <variable
             name="BugReportViewModel"
-            type="dsm.android.v3.ui.bugReportDialog.BugReportViewModel">
+            type="dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModel">
         </variable>
     </data>
 

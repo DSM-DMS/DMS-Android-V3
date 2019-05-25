@@ -7,13 +7,13 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.main.putIn.PutInViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.putIn.PutInViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.main.putIn.PutInFragment">
+            tools:context=".ui.fragment.putIn.PutInFragment">
 
 
         <TextView

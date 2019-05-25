@@ -1,12 +1,10 @@
 package dsm.android.v3.connecter
 
-import dsm.android.v3.model.*
 import retrofit2.Call
 import retrofit2.http.*
 import com.google.gson.JsonObject
-import dsm.android.v3.model.notice.NoticeDescriptionModel
-import dsm.android.v3.model.notice.NoticeListModel
-import dsm.android.v3.model.PointLogResponseModel
+import dsm.android.v3.domain.entity.*
+import dsm.android.v3.domain.entity.NoticeDescriptionModel
 
 interface API {
 
@@ -61,7 +59,7 @@ interface API {
 
     @GET("/apply/goingout")
     @Headers("Content-Type: application/json")
-    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingModel>
+    fun getGoingOutInfo(@Header("Authorization") token: String): Call<ApplyGoingOutModel>
 
     @POST("/apply/goingout")
     @Headers("Content-Type: application/json")

@@ -8,7 +8,7 @@
 
         <variable
                 name="vm"
-                type="dsm.android.v3.ui.notice.NoticeViewModel"/>
+                type="dsm.android.v3.presentation.viewModel.notice.NoticeViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
