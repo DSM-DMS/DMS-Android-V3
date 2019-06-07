@@ -1,7 +1,6 @@
 package dsm.android.v3.ui.activity.applyExtensionStudy
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -9,11 +8,7 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityApplyExtensionStudyBinding
-import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepositoryImpl
-import dsm.android.v3.domain.repository.register.RegisterRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModel
 import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionStudyViewModelFactory
 import dsm.android.v3.util.DataBindingActivity

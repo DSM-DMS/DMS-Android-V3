@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivityRegisterBinding
-import dsm.android.v3.domain.repository.register.RegisterRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.register.RegisterViewModelFactory
 import dsm.android.v3.presentation.viewModel.register.RegisterViewModel
 import dsm.android.v3.util.DataBindingActivity

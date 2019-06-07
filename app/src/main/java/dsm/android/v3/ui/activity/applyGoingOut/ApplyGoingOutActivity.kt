@@ -1,7 +1,6 @@
 package dsm.android.v3.ui.activity.applyGoingOut
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.android.support.DaggerAppCompatActivity

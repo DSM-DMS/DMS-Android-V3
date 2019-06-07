@@ -8,14 +8,11 @@ import dsm.android.v3.ui.fragment.meal.MealFragment
 import dsm.android.v3.ui.fragment.putIn.PutInFragment
 import dsm.android.v3.ui.fragment.mypage.MyPageFragment
 import dsm.android.v3.ui.fragment.notice.NoticeFragment
-import io.reactivex.BackpressureStrategy
-import io.reactivex.FlowableSubscriber
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.activity_main.*
-import org.bouncycastle.util.Times
 import org.jetbrains.anko.toast
 
 

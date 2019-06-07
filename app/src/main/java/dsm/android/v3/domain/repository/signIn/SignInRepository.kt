@@ -9,6 +9,4 @@ interface SignInRepository {
     fun signIn(body: Any?): Single<Response<AuthModel>>
 
     fun saveToken(token: String, access: Boolean)
-
-    fun saveDb(id: String, pw: String)
 }

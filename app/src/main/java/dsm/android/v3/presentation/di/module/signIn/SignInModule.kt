@@ -2,7 +2,6 @@ package dsm.android.v3.presentation.di.module.signIn
 
 import dagger.Module
 import dagger.Provides
-import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.repository.signIn.SignInRepository
@@ -14,8 +13,8 @@ import dsm.android.v3.presentation.viewModel.signIn.SignInViewModelFactory
 class SignInModule {
     @ActivityScope
     @Provides
-    fun provideRepository(apiClient: ApiClient, localStorage: LocalStorage, authDao: AuthDao): SignInRepository
-            = SignInRepositoryImpl(apiClient, localStorage, authDao)
+    fun provideRepository(apiClient: ApiClient, localStorage: LocalStorage): SignInRepository
+            = SignInRepositoryImpl(apiClient, localStorage)
 
     @ActivityScope
     @Provides
