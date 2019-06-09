@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import dsm.android.v3.R
-import dsm.android.v3.domain.entity.NoticeModel
+import dsm.android.v3.presentation.model.NoticeModel
 import dsm.android.v3.domain.entity.RulesModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import kotlinx.android.synthetic.main.item_notice.view.*

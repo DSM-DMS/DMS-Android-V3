@@ -45,7 +45,7 @@ class ApiClient(val api: API) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getPointLog(): Single<Response<PointLogResponseModel>> =
+    fun getPointLog(): Single<Response<PointLogListModel>> =
         api.getPointLog()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -55,7 +55,7 @@ class ApiClient(val api: API) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getMap(time: Int, classNum: Int): Single<Response<ExtensionModel>> =
+    fun getMap(time: Int, classNum: Int): Single<Response<ApplyExtensionStudyModel>> =
         api.getMap(time, classNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

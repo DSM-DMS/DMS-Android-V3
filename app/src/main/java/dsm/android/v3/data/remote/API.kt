@@ -34,14 +34,14 @@ interface API {
     fun getRulesDescription(@Path("rule_id") rule_id: String): Single<Response<NoticeDescriptionModel>>
 
     @GET("info/point")
-    fun getPointLog(): Single<Response<PointLogResponseModel>>
+    fun getPointLog(): Single<Response<PointLogListModel>>
 
     @PATCH("account/pw")
     fun changePw(@Body body: Any?): Single<Response<Unit>>
 
     @GET("/apply/extension/map/{time}/{class_num}")
     @Headers("Content-Type: application/json")
-    fun getMap(@Path("time") time: Int, @Path("class_num") classNum: Int): Single<Response<ExtensionModel>>
+    fun getMap(@Path("time") time: Int, @Path("class_num") classNum: Int): Single<Response<ApplyExtensionStudyModel>>
 
     @POST("/apply/extension/{time}")
     @Headers("Content-Type: application/json")

@@ -4,15 +4,12 @@ import android.app.Application
 import android.arch.lifecycle.*
 import android.util.Log
 import android.widget.Toast
-import dsm.android.v3.domain.entity.ApplyMusicDetailModel
+import dsm.android.v3.presentation.model.ApplyMusicDetailModel
 import dsm.android.v3.domain.entity.ApplyMusicModel
 import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ApplyMusicViewModel(val applyMusicRepository: ApplyMusicRepository, val app: Application) : BaseViewModel(), LifecycleCallback {
 
@@ -56,7 +53,11 @@ class ApplyMusicViewModel(val applyMusicRepository: ApplyMusicRepository, val ap
     var selectedIndex = MutableLiveData<Int?>()
 
     val emptyMusicDetailModel =
-        ApplyMusicDetailModel(musicName = "신청곡이 없습니다.", singer = "눌러서 노래를 신청해주세요.", studentName = "신청없음")
+        ApplyMusicDetailModel(
+            musicName = "신청곡이 없습니다.",
+            singer = "눌러서 노래를 신청해주세요.",
+            studentName = "신청없음"
+        )
     val dataSetChangedLiveEvent = SingleLiveEvent<Any>()
 
     val inputMusicLiveData = MutableLiveData<String>()

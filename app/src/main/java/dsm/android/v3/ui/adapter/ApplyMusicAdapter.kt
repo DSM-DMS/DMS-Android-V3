@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.databinding.ItemApplymusicLogBinding
-import dsm.android.v3.domain.entity.ApplyMusicDetailModel
+import dsm.android.v3.presentation.model.ApplyMusicDetailModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel
 
 class ApplyMusicAdapter(val viewModel: ApplyMusicViewModel) :

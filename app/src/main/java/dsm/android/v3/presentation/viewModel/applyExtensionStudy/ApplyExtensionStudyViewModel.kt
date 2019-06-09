@@ -4,14 +4,10 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
 import android.widget.TextView
-import dsm.android.v3.domain.entity.ExtensionModel
 import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExtensionStudyRepository): BaseViewModel(), LifecycleCallback{
 
