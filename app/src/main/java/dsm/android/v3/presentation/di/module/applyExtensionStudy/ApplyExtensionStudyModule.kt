@@ -17,19 +17,19 @@ class ApplyExtensionStudyModule {
 
     @ActivityScope
     @Provides
-    fun provideApplyExtensionStudyDataBase(context: Context) : ApplyExtensionStudyDatabase
+    fun provideDataBase(context: Context) : ApplyExtensionStudyDatabase
             = Room.databaseBuilder(context, ApplyExtensionStudyDatabase::class.java, "extension.db").build()
 
     @ActivityScope
     @Provides
-    fun provideApplyExtensionStudyDao(applyExtensionStudyDatabase: ApplyExtensionStudyDatabase): ApplyExtensionStudyDao
-            = applyExtensionStudyDatabase.getApplyExtensionStudyDao()
+    fun provideDao(database: ApplyExtensionStudyDatabase): ApplyExtensionStudyDao
+            = database.getApplyExtensionStudyDao()
 
 
     @ActivityScope
     @Provides
-    fun provideRepository(apiClient: ApiClient, applyExtensionStudyDao: ApplyExtensionStudyDao): ApplyExtensionStudyRepository
-            = ApplyExtensionStudyRepositoryImpl(apiClient, applyExtensionStudyDao)
+    fun provideRepository(apiClient: ApiClient, dao: ApplyExtensionStudyDao): ApplyExtensionStudyRepository
+            = ApplyExtensionStudyRepositoryImpl(apiClient, dao)
 
     @ActivityScope
     @Provides
