@@ -2,7 +2,7 @@ package dsm.android.v3.domain.repository.signIn
 
 import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.data.remote.ApiClient
-import dsm.android.v3.domain.entity.AuthModel
+import dsm.android.v3.domain.entity.auth.AuthModel
 import io.reactivex.Single
 import retrofit2.Response
 

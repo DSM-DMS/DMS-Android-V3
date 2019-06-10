@@ -2,7 +2,7 @@ package dsm.android.v3.domain.repository.applyMusic
 
 import dsm.android.v3.data.local.dao.ApplyMusicDao
 import dsm.android.v3.data.remote.ApiClient
-import dsm.android.v3.domain.entity.ApplyMusicModel
+import dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Response

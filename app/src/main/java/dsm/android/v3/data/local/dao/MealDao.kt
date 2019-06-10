@@ -4,14 +4,15 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import dsm.android.v3.domain.entity.MealModel
+import dsm.android.v3.domain.entity.meal.MealEntity
+import dsm.android.v3.domain.entity.meal.MealModel
 import io.reactivex.Flowable
 
 @Dao
 interface MealDao {
-    @Query("SELECT * FROM mealmodel")
-    fun getAll(): Flowable<MealModel>
+    @Query("SELECT * FROM mealentity")
+    fun getAll(): Flowable<MealEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg mealModel: MealModel)
+    fun insertAll(vararg mealEntity: MealEntity)
 }

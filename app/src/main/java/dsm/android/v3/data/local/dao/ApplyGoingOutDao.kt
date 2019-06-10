@@ -4,14 +4,14 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 import io.reactivex.Flowable
 
 @Dao
 interface ApplyGoingOutDao {
-    @Query("SELECT * FROM applygoingoutmodel")
-    fun getAll(): Flowable<ApplyGoingOutModel>
+    @Query("SELECT * FROM ApplyGoingDataModel")
+    fun getAll(): Flowable<ApplyGoingOutModel.ApplyGoingDataModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg applyExtensionStudyModels: ApplyGoingOutModel)
+    fun insertAll(vararg apply: ApplyGoingOutModel.ApplyGoingDataModel)
 }

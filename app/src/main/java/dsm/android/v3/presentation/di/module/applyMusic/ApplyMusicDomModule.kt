@@ -20,7 +20,7 @@ import dsm.android.v3.ui.fragment.applyMusic.ApplyMusicFragment
 import dsm.android.v3.ui.fragment.applyMusic.ApplyMusicLogFragment
 
 @Module
-abstract class ApplyMusicModule {
+abstract class ApplyMusicDomModule {
 
     @Module
     companion object {

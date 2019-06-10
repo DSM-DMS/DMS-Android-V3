@@ -2,7 +2,7 @@ package dsm.android.v3.domain.repository.applyGoingOut
 
 import dsm.android.v3.data.local.dao.ApplyGoingOutDao
 import dsm.android.v3.data.remote.ApiClient
-import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Response

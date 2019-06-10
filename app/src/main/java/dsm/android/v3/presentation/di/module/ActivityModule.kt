@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dsm.android.v3.presentation.di.module.applyExtensionStudy.ApplyExtensionStudyModule
 import dsm.android.v3.presentation.di.module.applyGoingOut.ApplyGoingOutModule
-import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicModule
+import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicDomModule
 import dsm.android.v3.presentation.di.module.applyStaying.ApplyStayingModule
 import dsm.android.v3.presentation.di.module.changePassword.ChangePasswordModule
 import dsm.android.v3.presentation.di.module.main.MainModule
@@ -34,7 +34,7 @@ abstract class ActivityModule {
     abstract fun applyExtensionStudyActivity(): ApplyExtensionStudyActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [ApplyMusicModule::class])
+    @ContributesAndroidInjector(modules = [ApplyMusicDomModule::class])
     abstract fun applyMusicDomActivity(): ApplyMusicDomActivity
 
     @ActivityScope

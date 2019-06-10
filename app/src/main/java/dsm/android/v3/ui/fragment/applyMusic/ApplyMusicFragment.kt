@@ -1,7 +1,5 @@
 package dsm.android.v3.ui.fragment.applyMusic
 
-
-import android.app.Application
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -11,12 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.FragmentApplyMusicBinding
-import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel

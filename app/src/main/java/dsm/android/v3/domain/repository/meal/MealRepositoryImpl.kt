@@ -3,7 +3,7 @@ package dsm.android.v3.domain.repository.meal
 import com.google.gson.JsonObject
 import dsm.android.v3.data.local.dao.MealDao
 import dsm.android.v3.data.remote.ApiClient
-import dsm.android.v3.domain.entity.MealModel
+import dsm.android.v3.domain.entity.meal.MealModel
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Response

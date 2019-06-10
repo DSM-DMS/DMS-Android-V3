@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import dsm.android.v3.BR
 import dsm.android.v3.databinding.ItemApplyGoingLogBinding
-import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 import dsm.android.v3.presentation.viewModel.applyGoingOutLog.ApplyGoingLogViewModel
 
 class ApplyGoingLogAdapter(val viewModel: ApplyGoingLogViewModel) :

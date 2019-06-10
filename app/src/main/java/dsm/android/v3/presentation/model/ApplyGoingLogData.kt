@@ -1,6 +1,6 @@
 package dsm.android.v3.presentation.model
 
-import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 
 object ApplyGoingLogData{
 

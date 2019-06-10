@@ -5,9 +5,10 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import dsm.android.v3.data.local.dao.ApplyMusicDao
-import dsm.android.v3.domain.entity.ApplyMusicModel
+import dsm.android.v3.domain.entity.applyMusic.ApplyMusicDetailModel
+import dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel
 
-@Database(entities = arrayOf(ApplyMusicModel::class), version = 1)
+@Database(entities = arrayOf(ApplyMusicDetailModel::class), version = 1)
 abstract class ApplyMusicDatabase: RoomDatabase() {
 
     abstract fun getApplyMusicDao(): ApplyMusicDao

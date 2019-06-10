@@ -1,7 +1,7 @@
 package dsm.android.v3.data.local.dao
 
 import android.arch.persistence.room.*
-import dsm.android.v3.domain.entity.ApplyExtensionStudyModel
+import dsm.android.v3.domain.entity.extensionStudy.ApplyExtensionStudyModel
 import io.reactivex.Flowable
 
 @Dao

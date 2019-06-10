@@ -5,9 +5,9 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import dsm.android.v3.data.local.dao.NoticeDao
-import dsm.android.v3.domain.entity.NoticeListModel
+import dsm.android.v3.domain.entity.notice.NoticeModel
 
-@Database(entities = arrayOf(NoticeListModel::class), version = 1)
+@Database(entities = arrayOf(NoticeModel::class), version = 1)
 abstract class NoticeDatabase: RoomDatabase() {
 
     abstract fun getNoticeDao(): NoticeDao

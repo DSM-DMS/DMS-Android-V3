@@ -5,9 +5,9 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import dsm.android.v3.data.local.dao.PointLogDao
-import dsm.android.v3.domain.entity.PointLogListModel
+import dsm.android.v3.domain.entity.pointLogList.PointLogItemModel
 
-@Database(entities = arrayOf(PointLogListModel::class), version = 1)
+@Database(entities = arrayOf(PointLogItemModel::class), version = 1)
 abstract class PointLogDatabase: RoomDatabase() {
 
     abstract fun getPointLogDao(): PointLogDao

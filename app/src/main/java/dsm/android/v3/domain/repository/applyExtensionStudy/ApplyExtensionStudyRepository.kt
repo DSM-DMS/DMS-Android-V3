@@ -1,6 +1,6 @@
 package dsm.android.v3.domain.repository.applyExtensionStudy
 
-import dsm.android.v3.domain.entity.ApplyExtensionStudyModel
+import dsm.android.v3.domain.entity.extensionStudy.ApplyExtensionStudyModel
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Response

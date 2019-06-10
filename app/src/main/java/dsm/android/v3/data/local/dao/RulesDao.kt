@@ -4,14 +4,15 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import dsm.android.v3.domain.entity.RulesModel
+import dsm.android.v3.domain.entity.notice.NoticeModel
+import dsm.android.v3.domain.entity.rules.RulesModel
 import io.reactivex.Flowable
 
 @Dao
 interface RulesDao {
-    @Query("SELECT * FROM rulesmodel")
-    fun getAll(): Flowable<RulesModel>
+    @Query("SELECT * FROM noticemodel")
+    fun getAll(): Flowable<NoticeModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg rulesModel: RulesModel)
+    fun insertAll(vararg rulesModel: NoticeModel)
 }

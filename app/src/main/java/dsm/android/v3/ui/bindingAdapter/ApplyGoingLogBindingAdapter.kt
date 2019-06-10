@@ -6,7 +6,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.databinding.BindingAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
-import dsm.android.v3.domain.entity.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.ui.adapter.ApplyGoingLogAdapter
 import dsm.android.v3.ui.adapter.ApplyPageAdapter

@@ -4,7 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import dsm.android.v3.domain.entity.ApplyStayingModel
+import dsm.android.v3.domain.entity.applyStaying.ApplyStayingModel
 import io.reactivex.Flowable
 
 @Dao

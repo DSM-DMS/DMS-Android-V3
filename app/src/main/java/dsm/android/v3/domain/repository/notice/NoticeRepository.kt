@@ -1,7 +1,7 @@
 package dsm.android.v3.domain.repository.notice
 
-import dsm.android.v3.domain.entity.NoticeListModel
-import dsm.android.v3.domain.entity.RulesModel
+import dsm.android.v3.domain.entity.notice.NoticeListModel
+import dsm.android.v3.domain.entity.rules.RulesModel
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Flowable
 import io.reactivex.Single

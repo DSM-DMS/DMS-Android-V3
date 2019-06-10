@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import dsm.android.v3.data.local.dao.MyPageInfoDao
-import dsm.android.v3.domain.entity.MyPageInfoModel
+import dsm.android.v3.domain.entity.myPageInfo.MyPageInfoModel
 
 @Database(entities = arrayOf(MyPageInfoModel::class), version = 1)
 abstract class MyPageInfoDatabase: RoomDatabase() {

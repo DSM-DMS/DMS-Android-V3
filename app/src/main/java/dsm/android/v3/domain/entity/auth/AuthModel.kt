@@ -1,4 +1,4 @@
-package dsm.android.v3.domain.entity
+package dsm.android.v3.domain.entity.auth
 
 import com.google.gson.annotations.SerializedName
 
