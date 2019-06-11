@@ -27,5 +27,5 @@ data class ApplyMusicDetailModel(
     val studentName: String = "",
 
     @ColumnInfo(name = "week")
-    val week: Int
+    var week: Int
 )

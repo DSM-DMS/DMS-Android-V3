@@ -1,6 +1,6 @@
 package dsm.android.v3.domain.repository.applyExtensionStudy
 
-import dsm.android.v3.data.local.dao.ApplyExtensionStudyDao
+import dsm.android.v3.data.local.dao.OfflineDao
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.extensionStudy.ApplyExtensionStudyModel
 import io.reactivex.Flowable
@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class ApplyExtensionStudyRepositoryImpl(
     val apiClient: ApiClient,
-    val dao: ApplyExtensionStudyDao): ApplyExtensionStudyRepository {
+    val dao: OfflineDao): ApplyExtensionStudyRepository {
 
     override fun getMap(time: Int, classNum: Int): Single<Response<ApplyExtensionStudyModel>> = apiClient.getMap(time, classNum)
 
@@ -17,8 +17,8 @@ class ApplyExtensionStudyRepositoryImpl(
 
     override fun deleteExtension(time: Int): Single<Response<Unit>> = apiClient.deleteExtension(time)
 
-    override fun loadExtensionMap(): Flowable<ApplyExtensionStudyModel> = dao.getAll()
+    override fun loadExtensionMap(): Single<ArrayList<ApplyExtensionStudyModel>> = dao.getExtensionStudy()
 
-    override fun saveExtensionMap(map: ApplyExtensionStudyModel) = dao.insertAll(map)
+    override fun saveExtensionMap(map: ApplyExtensionStudyModel) = dao.insertExtensionStudy(map)
 
 }

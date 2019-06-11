@@ -25,14 +25,38 @@ class ApplyGoingViewModel(val applyGoingOutRepository: ApplyGoingOutRepository) 
                 add(applyGoingOutRepository.getGoingOutInfo()
                     .subscribe({ response ->
                         when (response.code()) {
-                            200 -> setApplyGoingData(response.body()!!)
+                            200 -> {
+                                for (model in response.body()!!.saturdayList){
+                                    model.week = 0
+                                    applyGoingOutRepository.saveGoingOut(model)
+                                }
+                                for (model in response.body()!!.sundayList) {
+                                    model.week = 1
+                                    applyGoingOutRepository.saveGoingOut(model)
+                                }
+                                for (model in response.body()!!.workdayList) {
+                                    model.week = 2
+                                    applyGoingOutRepository.saveGoingOut(model)
+                                }
+                                setApplyGoingData(response.body()!!)
+                            }
                             204 -> setShortToast("외출신청 정보가 없습니다.")
                             403 -> setShortToast("외출신청 정보 조회 권한이 없습니다.")
                             500 -> setShortToast("로그인이 필요합니다.")
                             else -> setShortToast("오류코드: ${response.code()}")
                         }
                     }, {
-                        setShortToast("오류가 발생했습니다.")
+                        add(
+                            applyGoingOutRepository
+                                .loadGoingOut().map {
+                                    it.forEach {
+                                        if (it.week == 0) ApplyGoingLogData.saturdayItemList.add(it)
+                                        else if (it.week == 1) ApplyGoingLogData.sundayItemList.add(it)
+                                        else ApplyGoingLogData.workdayItemList.add(it)
+                                    }
+                                }.subscribe()
+                        )
+                        setShortToast("네트워크 상태를 확인해주세요.")
                     }))
                 setApplyGoingData(
                     ApplyGoingOutModel(

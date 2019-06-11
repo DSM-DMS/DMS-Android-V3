@@ -1,6 +1,6 @@
 package dsm.android.v3.domain.repository.applyGoingOut
 
-import dsm.android.v3.data.local.dao.ApplyGoingOutDao
+import dsm.android.v3.data.local.dao.OfflineDao
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
 import io.reactivex.Flowable
@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class ApplyGoingOutRepositoryImpl(
     val apiClient: ApiClient,
-    val dao: ApplyGoingOutDao): ApplyGoingOutRepository {
+    val dao: OfflineDao): ApplyGoingOutRepository {
 
     override fun getGoingOutInfo(): Single<Response<ApplyGoingOutModel>> = apiClient.getGoingOutInfo()
 
@@ -19,7 +19,7 @@ class ApplyGoingOutRepositoryImpl(
 
     override fun deleteGoingOut(body: Any?): Single<Response<Unit>> = apiClient.deleteGoingOut(body)
 
-    override fun loadGoingOut(): Flowable<ApplyGoingOutModel> = dao.getAll()
+    override fun loadGoingOut(): Single<ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>> = dao.getGoingOut()
 
-    override fun saveGoingOut(applyGoingOutModel: ApplyGoingOutModel) = dao.insertAll(applyGoingOutModel)
+    override fun saveGoingOut(applyGoingDataModel: ApplyGoingOutModel.ApplyGoingDataModel) = dao.insertGoingOut(applyGoingDataModel)
 }

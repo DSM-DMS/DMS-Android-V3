@@ -1,5 +1,6 @@
 package dsm.android.v3.domain.repository.applyMusic
 
+import dsm.android.v3.domain.entity.applyMusic.ApplyMusicDetailModel
 import dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -12,7 +13,7 @@ interface ApplyMusicRepository {
 
     fun deleteMusic(body: Any?): Single<Response<Unit>>
 
-    fun loadMusic(): Flowable<ApplyMusicModel>
+    fun loadMusic(): Single<ApplyMusicDetailModel>
 
-    fun saveMusic(applyMusicModel: ApplyMusicModel)
+    fun saveMusic(applyMusicDetailModel: Array<ApplyMusicDetailModel>)
 }

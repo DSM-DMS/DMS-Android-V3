@@ -8,7 +8,7 @@ import retrofit2.Response
 interface MyPageRepository {
     fun getBasicInfo(): Single<Response<MyPageInfoModel>>
 
-    fun loadMyPageInfo(): Flowable<MyPageInfoModel>
+    fun loadMyPageInfo(): Single<MyPageInfoModel>
 
     fun saveMyPageInfo(myPageInfoModel: MyPageInfoModel)
 }

@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class NoticeListModel (
     @SerializedName("noticeList")
-    val noticeList : ArrayList<NoticeModel>
+    val noticeList : ArrayList<NoticeEntity>
 )

@@ -10,7 +10,7 @@ interface ApplyStayingRepository {
 
     fun applyStay(body: Any?): Single<Response<Unit>>
 
-    fun loadStaying(): Flowable<ApplyStayingModel>
+    fun loadStaying(): Single<ApplyStayingModel>
 
     fun saveStaying(applyStayingModel: ApplyStayingModel)
 }

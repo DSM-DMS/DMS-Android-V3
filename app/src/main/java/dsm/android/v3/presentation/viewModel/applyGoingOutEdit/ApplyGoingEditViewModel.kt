@@ -66,7 +66,7 @@ class ApplyGoingEditViewModel(val applyGoingOutRepository: ApplyGoingOutReposito
                     }
                 backApplyGoingSingleLiveEvent.call()
             }, {
-                createShortToastSingleLiveEvent.value = "오류가 발생했습니다."
+                createShortToastSingleLiveEvent.value = "네트워크 상태를 확인해주세요."
             }))
         }
     }
@@ -84,7 +84,7 @@ class ApplyGoingEditViewModel(val applyGoingOutRepository: ApplyGoingOutReposito
                     }
                 backApplyGoingSingleLiveEvent.call()
             }, {
-                createShortToastSingleLiveEvent.value = "오류가 발생했습니다."
+                createShortToastSingleLiveEvent.value = "네트워크 상태를 확인해주세요."
             }
         ))
     }

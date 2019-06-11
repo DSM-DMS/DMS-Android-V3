@@ -1,6 +1,8 @@
 package dsm.android.v3.domain.repository.notice
 
+import dsm.android.v3.domain.entity.notice.NoticeEntity
 import dsm.android.v3.domain.entity.notice.NoticeListModel
+import dsm.android.v3.domain.entity.rules.RulesEntity
 import dsm.android.v3.domain.entity.rules.RulesModel
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Flowable
@@ -16,11 +18,11 @@ interface NoticeRepository {
 
     fun getRulesDescription(rule_id: String): Single<Response<NoticeDescriptionModel>>
 
-    fun loadNoticeList(): Flowable<NoticeListModel>
+    fun loadNoticeList(): Single<ArrayList<NoticeEntity>>
 
-    fun loadRulesList(): Flowable<RulesModel>
+    fun loadRulesList(): Single<ArrayList<RulesEntity>>
 
-    fun saveNoticeList(noticeListModel: NoticeListModel)
+    fun saveNoticeList(noticeEntity: NoticeEntity)
 
-    fun saveRulesList(rulesModel: RulesModel)
+    fun saveRulesList(rulesEntity: RulesEntity)
 }

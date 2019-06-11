@@ -4,10 +4,13 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
 import android.widget.TextView
+import dsm.android.v3.domain.entity.extensionStudy.ApplyExtensionStudyModel
 import dsm.android.v3.domain.repository.applyExtensionStudy.ApplyExtensionStudyRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExtensionStudyRepository): BaseViewModel(), LifecycleCallback{
 
@@ -64,6 +67,8 @@ class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExten
         }
     }
 
+    fun saveMap(map: ApplyExtensionStudyModel) = applyExtensionStudyRepository.saveExtensionMap(map)
+
     fun applyExtensionStudyClickBack() = backApplyMenuLiveEvent.call()
 
     fun applyExtensionStudyClickTime(textView: View, time: Int){
@@ -100,7 +105,7 @@ class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExten
                     }
                     loadMap()
                 }, {
-                    toastLiveData.value = "오류가 발생했습니다."
+                    toastLiveData.value = "네트워크 상태를 확인해주세요."
                 }))
         }
     }
@@ -120,7 +125,7 @@ class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExten
                         })
                     loadMap()
                 }, {
-                    toastLiveData.value = "오류가 발생했습니다."
+                    toastLiveData.value = "네트워크 상태를 확인해주세요."
                 }))
         }
     }
@@ -131,12 +136,29 @@ class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExten
                 add(applyExtensionStudyRepository.getMap(time.value!!, classNum.value!!)
                     .subscribe({ response ->
                         when(response.code()){
-                            200 -> drawMapLiveData.value = response.body()!!.map
+                            200 -> {
+                                saveMap(
+                                    ApplyExtensionStudyModel(
+                                        classNum.value!!,
+                                        time.value!!,
+                                        response.body()!!.map
+                                    )
+                                )
+                                drawMapLiveData.value = response.body()!!.map
+                            }
                             403 -> toastLiveData.value = "연장신청 권한이 없습니다."
                             else -> toastLiveData.value = "오류 코드: ${response.code()}"
                         }
                     }, {
-                    toastLiveData.value = "오류가 발생했습니다."
+                        add(applyExtensionStudyRepository
+                                .loadExtensionMap().map {
+                                    it.forEach {
+                                        if (it.time == time.value!! && it.room == classNum.value!!)
+                                            drawMapLiveData.value = it.map
+                                    }
+                                }.subscribe())
+
+                        toastLiveData.value = "네트워크 상태를 확인해주세요."
                 }))
             }
         }
