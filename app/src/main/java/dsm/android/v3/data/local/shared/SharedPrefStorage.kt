@@ -11,8 +11,8 @@ class SharedPrefStorage(val context: Context): LocalStorage {
             it.apply()
         }
 
-    override fun getToken(): String =
-        "Bearer " + getPref(context).getString(getKey(true), "")
+    override fun getToken(isAccess: Boolean): String =
+        "Bearer " + getPref(context).getString(getKey(isAccess), "")
 
     override fun removeToken() =
         getPref(context).edit().let {

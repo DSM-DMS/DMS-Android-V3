@@ -27,37 +27,11 @@ class MainActivity : DaggerAppCompatActivity() {
         }
 
     override fun onBackPressed() {
-        if (navigation.selectedItemId == R.id.navigation_food)
+        if (navigation.selectedItemId == R.id.mealFragment)
             backButtonSubject.onNext(System.currentTimeMillis())
-        else navigation.selectedItemId = R.id.navigation_food
+        else navigation.selectedItemId = R.id.mealFragment
     }
 
-    /*private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        val transaction = supportFragmentManager.beginTransaction()
-        when (item.itemId) {
-            R.id.navigation_food -> {
-                transaction.replace(R.id.main_container, MealFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_submit -> {
-                transaction.replace(R.id.main_container, PutInFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notice -> {
-                transaction.replace(R.id.main_container, NoticeFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_myPage -> {
-                transaction.replace(R.id.main_container, MyPageFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

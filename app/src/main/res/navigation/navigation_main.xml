@@ -6,15 +6,15 @@
 
     <fragment
             android:id="@+id/mealFragment"
-            android:name="dsm.android.v3.ui.main.meal.MealFragment"
+            android:name="dsm.android.v3.ui.fragment.meal.MealFragment"
             android:label="MealFragment"/>
     <fragment
             android:id="@+id/putInFragment"
-            android:name="dsm.android.v3.ui.main.putIn.PutInFragment"
+            android:name="dsm.android.v3.ui.fragment.putIn.PutInFragment"
             android:label="PutInFragment"/>
     <fragment
             android:id="@+id/noticeFragment"
-            android:name="dsm.android.v3.ui.notice.NoticeFragment"
+            android:name="dsm.android.v3.ui.fragment.notice.NoticeFragment"
             android:label="NoticeFragment">
         <action
                 android:id="@+id/action_noticeFragment_to_noticeListFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
             android:id="@+id/myPageFragment"
-            android:name="dsm.android.v3.ui.mypage.MyPageFragment"
+            android:name="dsm.android.v3.ui.fragment.mypage.MyPageFragment"
             android:label="MyPageFragment"/>
     <fragment
             android:id="@+id/noticeListFragment"

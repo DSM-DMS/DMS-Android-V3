@@ -10,15 +10,24 @@ import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
 import dsm.android.v3.ui.adapter.NoticeAdapter
 import dsm.android.v3.databinding.FragmentNoticeListBinding
+import dsm.android.v3.presentation.di.scope.ActivityScope
+import dsm.android.v3.presentation.di.scope.FragmentScope
 import dsm.android.v3.presentation.viewModel.notice.NoticeViewModel
+import dsm.android.v3.presentation.viewModel.notice.NoticeViewModelFactory
 import dsm.android.v3.util.DataBindingFragment
+import javax.inject.Inject
 
+@ActivityScope
 class NoticeListFragment : DataBindingFragment<FragmentNoticeListBinding>() {
 
     override val layoutId: Int
         get() = R.layout.fragment_notice_list
 
-    val viewModel by lazy { ViewModelProviders.of(activity!!)[NoticeViewModel::class.java] }
+    @Inject
+    lateinit var factory: NoticeViewModelFactory
+
+    val viewModel by lazy { ViewModelProviders.of(activity!!, factory)[NoticeViewModel::class.java] }
+    
     val bottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.noticeDescriptionBottomSheet) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -8,7 +8,6 @@ import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicDomModule
 import dsm.android.v3.presentation.di.module.applyStaying.ApplyStayingModule
 import dsm.android.v3.presentation.di.module.changePassword.ChangePasswordModule
 import dsm.android.v3.presentation.di.module.main.MainModule
-import dsm.android.v3.presentation.di.module.notice.NoticeModule
 import dsm.android.v3.presentation.di.module.pointLog.PointLogModule
 import dsm.android.v3.presentation.di.module.register.RegisterModule
 import dsm.android.v3.presentation.di.module.signIn.SignInModule

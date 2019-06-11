@@ -1,4 +1,4 @@
-package dsm.android.v3.presentation.di.module.notice
+package dsm.android.v3.presentation.di.module.main.notice
 
 import dagger.Module
 import dagger.Provides
@@ -8,21 +8,16 @@ import dsm.android.v3.domain.repository.notice.NoticeRepository
 import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
+import dsm.android.v3.presentation.viewModel.notice.NoticeViewModelFactory
 
 @Module
-abstract class NoticeModule {
-
-    @Module
-    companion object {
-        @ActivityScope
-        @JvmStatic
-        @Provides
-        fun provideRepository(apiClient: ApiClient): NoticeRepository
-                = NoticeRepositoryImpl(apiClient)
-    }
-
+class NoticeModule {
 
     @FragmentScope
-    @ContributesAndroidInjector()
-    abstract fun noticeDescriptionFragment(): NoticeDescriptionFragment
+    @Provides
+    fun provideRepository(apiClient: ApiClient): NoticeRepository = NoticeRepositoryImpl(apiClient)
+
+    @FragmentScope
+    @Provides
+    fun provideViewModelRepository(repository: NoticeRepository) = NoticeViewModelFactory(repository)
 }
