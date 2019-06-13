@@ -14,6 +14,7 @@ import dsm.android.v3.domain.repository.meal.MealRepository
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.meal.MealFragmentViewModel
 import dsm.android.v3.util.DataBindingFragment
+import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.find
 import javax.inject.Inject
 
@@ -25,6 +26,8 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
 
     @Inject
     lateinit var mealRepository: MealRepository
+
+    val compsite = CompositeDisposable()
 
     val viewModel by lazy { ViewModelProviders.of(this)[MealFragmentViewModel::class.java] }
 
@@ -38,11 +41,14 @@ class MealFragment : DataBindingFragment<FragmentMealBinding>() {
         viewModel.getMeal()
 
         viewModel.meals.observe(this, Observer {
-            rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!, mealRepository)
+            rootView.find<ViewPager>(R.id.mealFragment_meal_vp).adapter = MealPagerAdapter(it!!, mealRepository, compsite)
         })
 
         return rootView
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        compsite.clear()
+    }
 }
