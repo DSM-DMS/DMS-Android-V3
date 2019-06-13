@@ -12,7 +12,7 @@ interface ApplyExtensionStudyRepository {
 
     fun deleteExtension(time: Int): Single<Response<Unit>>
 
-    fun loadExtensionMap(): Single<ArrayList<ApplyExtensionStudyModel>>
+    fun loadExtensionMap(): Flowable<ApplyExtensionStudyModel>
 
     fun saveExtensionMap(map: ApplyExtensionStudyModel)
 }

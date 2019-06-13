@@ -28,6 +28,6 @@ data class ApplyGoingOutModel(
         val reason: String,
 
         @ColumnInfo(name = "week")
-        var week: Int
+        val week: Int
     )
 }

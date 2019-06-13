@@ -56,8 +56,7 @@ class ApplyMusicViewModel(val applyMusicRepository: ApplyMusicRepository, val ap
         ApplyMusicDetailModel(
             musicName = "신청곡이 없습니다.",
             singer = "눌러서 노래를 신청해주세요.",
-            studentName = "신청없음",
-            week = 0
+            studentName = "신청없음"
         )
     val dataSetChangedLiveEvent = SingleLiveEvent<Any>()
 
@@ -116,10 +115,6 @@ class ApplyMusicViewModel(val applyMusicRepository: ApplyMusicRepository, val ap
             .subscribe({ response ->
                 when (response.code()) {
                     200 -> {
-                            for (model in response.body()!!.mon) {
-                                model.week = 0
-                                applyMusicRepository.saveMusic(model)
-                            }
                         model.value = response.body()
                         pageStatusLiveData.value = pageStatusLiveData.value
                     }

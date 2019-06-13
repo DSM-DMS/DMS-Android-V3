@@ -10,9 +10,6 @@ data class ApplyExtensionStudyModel(
     @PrimaryKey
     val room: Int,
 
-    @ColumnInfo(name = "time")
-    val time: Int,
-
     @ColumnInfo(name = "map")
     @SerializedName("map")
     val map: ArrayList<ArrayList<Any>>

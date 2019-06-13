@@ -1,5 +1,6 @@
 package dsm.android.v3.presentation.di.component
 
+import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

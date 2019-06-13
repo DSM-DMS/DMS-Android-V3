@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class NoticeEntity (
+data class NoticeModel (
     @PrimaryKey
     @SerializedName("id")
     val id : Int,

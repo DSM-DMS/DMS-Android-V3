@@ -9,7 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import dsm.android.v3.R
 import dsm.android.v3.domain.entity.notice.NoticeListModel
-import dsm.android.v3.domain.entity.notice.NoticeEntity
+import dsm.android.v3.domain.entity.notice.NoticeModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import kotlinx.android.synthetic.main.item_notice.view.*
 
@@ -40,7 +40,7 @@ class NoticeRVAdapter(val context : Context, var data : NoticeListModel, var act
             view.setOnClickListener(this)
         }
 
-        fun setData(data : NoticeEntity) {
+        fun setData(data : NoticeModel) {
             with(view) {
                 itemNotice_title_tv.text = data.title
                 itemNotice_date_tv.text = frameDate(data.postDate)

@@ -14,7 +14,7 @@ interface ApplyGoingOutRepository {
 
     fun deleteGoingOut(body: Any?): Single<Response<Unit>>
 
-    fun loadGoingOut(): Single<ArrayList<ApplyGoingOutModel.ApplyGoingDataModel>>
+    fun loadGoingOut(): Flowable<ApplyGoingOutModel>
 
-    fun saveGoingOut(applyGoingDataModel: ApplyGoingOutModel.ApplyGoingDataModel)
+    fun saveGoingOut(applyGoingOutModel: ApplyGoingOutModel)
 }
