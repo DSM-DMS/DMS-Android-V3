@@ -1,10 +1,9 @@
-package dsm.android.v3.domain.entity.applyGoingOut
+package dsm.android.v3.domain.entity
 
-import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class ApplyGoingOutModel(
     @SerializedName("saturday")
     var saturdayList: ArrayList<ApplyGoingDataModel>,
@@ -15,19 +14,14 @@ data class ApplyGoingOutModel(
     @SerializedName("workday")
     var workdayList: ArrayList<ApplyGoingDataModel>
 ) {
-    @Entity
     data class ApplyGoingDataModel(
-        @PrimaryKey
-        @SerializedName("id")
-        val id: Int,
-
         @SerializedName("date")
-        val date: String,
+        var date: String,
+
+        @SerializedName("id")
+        var id: Int,
 
         @SerializedName("reason")
-        val reason: String,
-
-        @ColumnInfo(name = "week")
-        val week: Int
+        var reason: String
     )
 }

@@ -17,7 +17,6 @@ import org.jetbrains.anko.toast
 
 
 class MainActivity : DaggerAppCompatActivity() {
-
     private val backButtonSubject: Subject<Long> =
         BehaviorSubject.createDefault(0L)
             .toSerialized()

@@ -12,7 +12,7 @@
 
         <variable
                 name="musicData"
-                type="dsm.android.v3.domain.entity.applyMusic.ApplyMusicDetailModel"/>
+                type="dsm.android.v3.presentation.model.ApplyMusicDetailModel"/>
 
         <variable
                 name="viewModel"

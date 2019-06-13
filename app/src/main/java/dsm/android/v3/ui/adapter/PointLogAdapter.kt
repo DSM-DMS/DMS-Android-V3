@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dsm.android.v3.R
-import dsm.android.v3.domain.entity.pointLogList.PointLogItemModel
+import dsm.android.v3.presentation.model.PointLogItemModel
 import org.jetbrains.anko.find
 
 class PointLogAdapter(val models: ArrayList<PointLogItemModel>) :

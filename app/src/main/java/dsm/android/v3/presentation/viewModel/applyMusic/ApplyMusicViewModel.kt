@@ -4,8 +4,8 @@ import android.app.Application
 import android.arch.lifecycle.*
 import android.util.Log
 import android.widget.Toast
-import dsm.android.v3.domain.entity.applyMusic.ApplyMusicDetailModel
-import dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel
+import dsm.android.v3.presentation.model.ApplyMusicDetailModel
+import dsm.android.v3.domain.entity.ApplyMusicModel
 import dsm.android.v3.domain.repository.applyMusic.ApplyMusicRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback

@@ -2,16 +2,10 @@ package dsm.android.v3.data.remote
 
 import retrofit2.http.*
 import com.google.gson.JsonObject
+import dsm.android.v3.domain.entity.*
 import dsm.android.v3.presentation.model.NoticeDescriptionModel
-import dsm.android.v3.domain.entity.notice.NoticeListModel
-import dsm.android.v3.domain.entity.rules.RulesModel
-import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
-import dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel
-import dsm.android.v3.domain.entity.applyStaying.ApplyStayingModel
-import dsm.android.v3.domain.entity.auth.AuthModel
-import dsm.android.v3.domain.entity.extensionStudy.ApplyExtensionStudyModel
-import dsm.android.v3.domain.entity.myPageInfo.MyPageInfoModel
-import dsm.android.v3.domain.entity.pointLogList.PointLogListModel
+import dsm.android.v3.domain.entity.NoticeListModel
+import dsm.android.v3.domain.entity.RulesModel
 import io.reactivex.Single
 import retrofit2.Response
 
@@ -101,5 +95,4 @@ interface API {
     @POST("/report/bug/2")
     @Headers("Content-Type: application/json")
     fun reportBug(@Body body: Any?): Single<Response<Unit>>
-
 }

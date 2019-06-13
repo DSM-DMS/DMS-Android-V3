@@ -14,9 +14,9 @@
                 name="viewModel"
                 type="dsm.android.v3.presentation.viewModel.applyMusic.ApplyMusicViewModel"/>
 
-        <import type="dsm.android.v3.domain.entity.applyMusic.ApplyMusicModel"/>
+        <import type="dsm.android.v3.domain.entity.ApplyMusicModel"/>
 
-        <import type="dsm.android.v3.domain.entity.applyMusic.ApplyMusicDetailModel"/>
+        <import type="dsm.android.v3.presentation.model.ApplyMusicDetailModel"/>
 
         <import type="android.view.View"/>
     </data>

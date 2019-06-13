@@ -3,13 +3,16 @@ package dsm.android.v3.presentation.viewModel.applyGoingOut
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
-import dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel
+import dsm.android.v3.domain.entity.ApplyGoingOutModel
 import dsm.android.v3.domain.repository.applyGoingOut.ApplyGoingOutRepository
 import dsm.android.v3.presentation.model.ApplyPagerModel
 import dsm.android.v3.presentation.model.ApplyGoingLogData
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ApplyGoingViewModel(val applyGoingOutRepository: ApplyGoingOutRepository) : BaseViewModel(), LifecycleCallback {
 

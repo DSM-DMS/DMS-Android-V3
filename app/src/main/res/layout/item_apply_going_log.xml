@@ -6,7 +6,7 @@
 
         <variable
                 name="goingLog"
-                type="dsm.android.v3.domain.entity.applyGoingOut.ApplyGoingOutModel"/>
+                type="dsm.android.v3.domain.entity.ApplyGoingOutModel.ApplyGoingDataModel"/>
 
         <variable
                 name="applyGoingLogViewModel"
