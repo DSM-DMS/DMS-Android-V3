@@ -16,15 +16,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class MealPagerAdapter(private val dates: ArrayList<String>, val mealRepository: MealRepository) : PagerAdapter() {
-    val compsite = CompositeDisposable()
+class MealPagerAdapter(private val dates: ArrayList<String>, val mealRepository: MealRepository, val composite: CompositeDisposable) : PagerAdapter() {
 
     override fun getCount() = dates.size
 
-    override fun destroyItem(container: ViewGroup, position: Int, any: Any) {
-        container.removeView(any as View)
-        compsite.clear()
-    }
+    override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
 
     override fun isViewFromObject(p0: View, p1: Any) = p0 == p1
 
@@ -38,7 +34,7 @@ class MealPagerAdapter(private val dates: ArrayList<String>, val mealRepository:
         val lunch = view.find<TextView>(R.id.mealItem_lunch_content_tv)
         val dinner = view.find<TextView>(R.id.mealItem_dinner_content_tv)
 
-        compsite.add(mealRepository.getMeal(date)
+        composite.add(mealRepository.getMeal(date)
             .subscribe({ response ->
                 when (response.code()) {
                     200 -> {
@@ -70,7 +66,6 @@ class MealPagerAdapter(private val dates: ArrayList<String>, val mealRepository:
                 dinner.text = "확인해주세요"
                 notifyDataSetChanged()
             }))
-
         container.addView(view)
         return view
     }

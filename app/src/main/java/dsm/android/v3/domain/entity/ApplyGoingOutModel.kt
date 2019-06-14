@@ -1,7 +1,9 @@
 package dsm.android.v3.domain.entity
 
+import android.arch.persistence.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class ApplyGoingOutModel(
     @SerializedName("saturday")
     var saturdayList: ArrayList<ApplyGoingDataModel>,

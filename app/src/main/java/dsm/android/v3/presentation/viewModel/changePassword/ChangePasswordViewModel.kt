@@ -2,8 +2,6 @@ package dsm.android.v3.presentation.viewModel.changePassword
 
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.MutableLiveData
-import dsm.android.v3.domain.entity.Auth
-import dsm.android.v3.data.local.database.AuthDatabase
 import dsm.android.v3.domain.repository.changePassword.ChangePasswordRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
@@ -48,7 +46,6 @@ class ChangePasswordViewModel(val changePasswordRepository: ChangePasswordReposi
         ).subscribe({ response ->
             when (response.code()) {
                 201 -> {
-                    CoroutineScope(Dispatchers.IO).launch { changePasswordRepository.saveDb(newPassword.value!!) }
                     changeSuccessLiveEvent.call()
                     activityFinishLiveEvent.call()
                 }

@@ -9,15 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
-import dsm.android.v3.data.local.dao.AuthDao
-import dsm.android.v3.data.local.shared.LocalStorage
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogBugReportBinding
-import dsm.android.v3.domain.repository.mypage.MyPageRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
-import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
-import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModel
 import dsm.android.v3.presentation.viewModel.mypage.bugReport.BugReportViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment

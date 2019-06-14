@@ -18,7 +18,7 @@ class LogoutViewModel(val logoutRepository: LogoutRepository): BaseViewModel(){
     fun logoutClickCancel() = exitLogoutEvent.call()
 
     fun logoutClickLogout(view: View) {
-        CoroutineScope(Dispatchers.IO).launch { logoutRepository.logout() }
+        logoutRepository.logout()
         intentToLoginEvent.call()
         toastLiveData.value = "로그아웃 하였습니다."
         exitLogoutEvent.call()

@@ -7,7 +7,8 @@ import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import io.reactivex.Single
 import retrofit2.Response
 
-class NoticeRepositoryImpl(val apiClient: ApiClient): NoticeRepository {
+class NoticeRepositoryImpl(
+    val apiClient: ApiClient): NoticeRepository {
     override fun getNoticeList(): Single<Response<NoticeListModel>> = apiClient.getNoticeList()
 
     override fun getRulesList(): Single<Response<RulesModel>> = apiClient.getRulesList()

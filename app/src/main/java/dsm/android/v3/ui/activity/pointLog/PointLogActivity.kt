@@ -2,22 +2,14 @@ package dsm.android.v3.ui.activity.pointLog
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.ui.adapter.PointLogAdapter
-import dsm.android.v3.domain.entity.PointLogResponseModel
 import dsm.android.v3.domain.repository.pointLog.PointLogRepository
-import dsm.android.v3.domain.repository.pointLog.PointLogRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_point_log.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 class PointLogActivity : DaggerAppCompatActivity() {

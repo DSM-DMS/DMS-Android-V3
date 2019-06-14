@@ -2,29 +2,20 @@ package dsm.android.v3.ui.activity.notice
 
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
-import dsm.android.v3.domain.entity.NoticeListModel
-import dsm.android.v3.domain.entity.RulesModel
 import dsm.android.v3.domain.repository.notice.NoticeRepository
-import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.ui.adapter.NoticeRVAdapter
 import dsm.android.v3.ui.adapter.RulesRvAdpater
 import dsm.android.v3.ui.CustomView.CustomCardView
 import dsm.android.v3.ui.fragment.notice.NoticeDescriptionFragment
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposables
-import io.reactivex.subscribers.DisposableSubscriber
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import org.jetbrains.anko.backgroundColor
-import retrofit2.Response
 import javax.inject.Inject
 
 class NoticeActivity : DaggerAppCompatActivity() {

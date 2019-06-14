@@ -4,8 +4,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import dsm.android.v3.data.local.database.AuthDatabase
 import dsm.android.v3.data.local.shared.LocalStorage
+import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.data.remote.interceptor.SecretHeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,14 +22,13 @@ class NetworkModule {
         private val baseUrl = "https://api.dms.istruly.sexy/"
     }
 
-
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
     @Provides
     @Singleton
-    fun provideSecretHeaderInterceptor(local: LocalStorage, authDatabase: AuthDatabase): SecretHeaderInterceptor = SecretHeaderInterceptor(local, authDatabase)
+    fun provideSecretHeaderInterceptor(local: LocalStorage): SecretHeaderInterceptor = SecretHeaderInterceptor(local)
 
     @Provides
     @Singleton
