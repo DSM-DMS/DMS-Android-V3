@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import io.reactivex.Observable
 
-class SharedPrefStorage(val context: Context): LocalStorage {
+class SharedPrefStorage(val context: Context) : LocalStorage {
     override fun saveToken(token: String, access: Boolean) =
         getPref(context).edit().let {
             it.putString(getKey(access), token)
@@ -20,7 +20,8 @@ class SharedPrefStorage(val context: Context): LocalStorage {
             it.apply()
         }
 
-    private fun getPref(context: Context): SharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+    private fun getPref(context: Context): SharedPreferences =
+        context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
     private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"
 }
