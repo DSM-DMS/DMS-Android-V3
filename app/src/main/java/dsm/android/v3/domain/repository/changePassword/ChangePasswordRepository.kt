@@ -6,6 +6,4 @@ import retrofit2.Response
 
 interface ChangePasswordRepository {
     fun changePw(body: Any?): Single<Response<Unit>>
-
-    fun saveDb(pw: String)
 }

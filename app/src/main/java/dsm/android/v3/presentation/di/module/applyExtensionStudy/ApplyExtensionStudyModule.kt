@@ -10,7 +10,6 @@ import dsm.android.v3.presentation.viewModel.applyExtensionStudy.ApplyExtensionS
 
 @Module
 class ApplyExtensionStudyModule {
-
     @ActivityScope
     @Provides
     fun provideRepository(apiClient: ApiClient): ApplyExtensionStudyRepository

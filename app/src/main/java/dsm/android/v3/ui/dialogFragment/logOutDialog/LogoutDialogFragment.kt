@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dsm.android.v3.R
-import dsm.android.v3.data.local.dao.AuthDao
 import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.DialogLogoutBinding

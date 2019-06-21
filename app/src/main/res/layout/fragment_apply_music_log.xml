@@ -16,7 +16,7 @@
 
         <import type="dsm.android.v3.domain.entity.ApplyMusicModel"/>
 
-        <import type="dsm.android.v3.domain.entity.ApplyMusicDetailModel"/>
+        <import type="dsm.android.v3.presentation.model.ApplyMusicDetailModel"/>
 
         <import type="android.view.View"/>
     </data>

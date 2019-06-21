@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import dsm.android.v3.R
 import dsm.android.v3.databinding.DialogInstitutionReportBinding
 import dsm.android.v3.presentation.di.scope.FragmentScope
-import dsm.android.v3.presentation.viewModel.mypage.MyPageViewModelFactory
 import dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModel
 import dsm.android.v3.presentation.viewModel.mypage.institutionReport.InstitutionReportViewModelFactory
 import dsm.android.v3.util.DataBindingDialogFragment

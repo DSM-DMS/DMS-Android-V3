@@ -5,12 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import dsm.android.v3.R
-import dsm.android.v3.data.local.dao.AuthDao
-import dsm.android.v3.data.local.shared.LocalStorage
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.databinding.ActivitySignInBinding
-import dsm.android.v3.domain.repository.signIn.SignInRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModel
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModelFactory
 import dsm.android.v3.ui.activity.main.MainActivity
