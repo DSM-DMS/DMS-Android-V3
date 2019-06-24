@@ -6,7 +6,7 @@
 
         <variable
                 name="noticeData"
-                type="dsm.android.v3.domain.entity.NoticeModel"/>
+                type="dsm.android.v3.presentation.model.NoticeModel"/>
 
         <variable
                 name="vm"
