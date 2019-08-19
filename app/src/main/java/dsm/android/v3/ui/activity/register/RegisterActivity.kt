@@ -23,7 +23,7 @@ class RegisterActivity : DataBindingActivity<ActivityRegisterBinding>() {
     lateinit var factory: RegisterViewModelFactory
 
     private val viewModel: RegisterViewModel by lazy {
-        ViewModelProviders.of(this).get(RegisterViewModel::class.java)
+        ViewModelProviders.of(this, factory).get(RegisterViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dsm.android.v3.data.local.shared.LocalStorage
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.data.remote.interceptor.SecretHeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,7 +27,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideSecretHeaderInterceptor(local: LocalStorage): SecretHeaderInterceptor = SecretHeaderInterceptor(local)
+    fun provideSecretHeaderInterceptor(local: LocalStorage): SecretHeaderInterceptor =
+        SecretHeaderInterceptor(local)
 
     @Provides
     @Singleton
