@@ -46,6 +46,7 @@ class RegisterViewModel(val registerRepository: RegisterRepository) : BaseViewMo
 
     fun doSignUp() {
         if (registerPw.value == registerPwConfirm.value) {
+            btnColorSet.value = false
             add(registerRepository.signUp(
                 hashMapOf(
                     "uuid" to registerConfirmCode.value,
@@ -59,7 +60,9 @@ class RegisterViewModel(val registerRepository: RegisterRepository) : BaseViewMo
                     205 -> sameIdLiveEvent.call()
                     else -> badNetworkLiveEvent.call()
                 }
+                btnColorSet.value = true
             }, {
+                btnColorSet.value = true
                 badNetworkLiveEvent.call()
             }))
         } else {

@@ -27,8 +27,8 @@ class SignInViewModel(val signInRepository: SignInRepository) : BaseViewModel() 
         addSource(signInPw) { this.value = !signInId.isValueBlank() && !signInPw.isValueBlank() }
     }
 
-
     fun doSignIn() {
+        btnColorSet.value = false
         add(signInRepository.signIn(hashMapOf("id" to signInId.value, "password" to signInPw.value))
             .subscribe({ response ->
                 when (response.code()) {
@@ -40,8 +40,10 @@ class SignInViewModel(val signInRepository: SignInRepository) : BaseViewModel() 
                     204 -> loginFailedLiveEvent.call()
                     else -> networkErrorLiveEvent.call()
                 }
+                btnColorSet.value = true
             }, {
                 networkErrorLiveEvent.call()
+                btnColorSet.value = true
             }))
     }
 
