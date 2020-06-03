@@ -8,9 +8,12 @@ import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivitySignInBinding
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModel
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModelFactory
-import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
 import dsm.android.v3.util.DataBindingActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -26,6 +29,22 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
 
     private val viewModel: SignInViewModel by lazy { ViewModelProviders.of(this, factory).get(SignInViewModel::class.java) }
 
+    private val backButtonSubject: Subject<Long> =
+        BehaviorSubject.createDefault(0L)
+            .toSerialized()
+
+    private val backButtonSubjectDisposable: Disposable = backButtonSubject
+        .buffer(2, 1)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe {
+            if (it[1] - it[0] <= 1500) finishAffinity()
+            else toast("뒤로가기 버튼을 한 번 더 누르시면 종료됩니다.")
+        }
+
+    override fun onBackPressed() {
+        backButtonSubject.onNext(System.currentTimeMillis())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -35,12 +54,16 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
         viewModel.doRegisterLiveEvent.observe(this, Observer { startActivity<RegisterActivity>() })
         viewModel.loginSuccessLiveEvent.observe(this, Observer {
             toast("로그인에 성공하였습니다")
-            startActivity<MainActivity>()
             finish()
         })
 
         AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up).let {
             signIn_constraintLayout_layout.startAnimation(it)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backButtonSubjectDisposable.dispose()
     }
 }

@@ -25,7 +25,7 @@ class MainActivity : DaggerAppCompatActivity() {
         .buffer(2, 1)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe {
-            if (it[1] - it[0] <= 1500) finish()
+            if (it[1] - it[0] <= 1500) finishAffinity()
             else toast("뒤로가기 버튼을 한 번 더 누르시면 종료됩니다.")
         }
 
