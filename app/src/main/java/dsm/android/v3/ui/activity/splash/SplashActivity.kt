@@ -16,9 +16,10 @@ class SplashActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            startActivity<MainActivity>()
             if (repository.getToken()  == "Bearer ")
                 startActivity<SignInActivity>()
+            else
+                startActivity<MainActivity>()
         }
         finish()
     }

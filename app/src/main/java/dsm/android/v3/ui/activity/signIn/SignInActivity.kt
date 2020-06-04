@@ -8,6 +8,7 @@ import dsm.android.v3.R
 import dsm.android.v3.databinding.ActivitySignInBinding
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModel
 import dsm.android.v3.presentation.viewModel.signIn.SignInViewModelFactory
+import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
 import dsm.android.v3.util.DataBindingActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -54,6 +55,7 @@ class SignInActivity : DataBindingActivity<ActivitySignInBinding>() {
         viewModel.doRegisterLiveEvent.observe(this, Observer { startActivity<RegisterActivity>() })
         viewModel.loginSuccessLiveEvent.observe(this, Observer {
             toast("로그인에 성공하였습니다")
+            startActivity<MainActivity>()
             finish()
         })
 
