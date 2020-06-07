@@ -77,7 +77,6 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
                                 is Double -> {
                                     if (seat > 0) {
                                         textView {
-                                            text = seat.toInt().toString()
                                             layoutParams = layoutParam
                                             setTextView(this, seat)
                                             onClick {
@@ -90,7 +89,14 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
                                                 }
                                             }
                                         }
-                                    } else {
+                                    }
+                                    else if (seat == -1) {
+                                        textView {
+                                            setTextView(this, "불가")
+                                            layoutParams = layoutParam
+                                        }
+                                    }
+                                    else {
                                         space { layoutParams = layoutParam }
                                     }
                                 }
@@ -111,8 +117,17 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
     private fun setTextView(textView: TextView, text: Any){
         when(text){
-            is Double -> textView.backgroundResource = R.drawable.radius_circle_gray
-            is String -> textView.backgroundResource = R.drawable.radius_circle_primary
+            is Double -> {
+                textView.text = text.toInt().toString()
+                textView.backgroundResource = R.drawable.radius_circle_gray
+            }
+            is String -> {
+                textView.text = text
+                if (text == "불가")
+                    textView.backgroundResource = R.drawable.radius_circle_dark_gray
+                else
+                    textView.backgroundResource = R.drawable.radius_circle_primary
+            }
         }
         textView.gravity = Gravity.CENTER
         textView.textSizeDimen = R.dimen.typo_body2
