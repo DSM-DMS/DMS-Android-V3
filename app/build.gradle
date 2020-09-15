@@ -14,9 +14,9 @@ android {
         applicationId "dsm.android.v3"
         minSdkVersion 22
         targetSdkVersion 28
-        versionName '2.1'
+        versionName '2.2'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 21
+        versionCode 22
     }
     buildTypes {
         release {

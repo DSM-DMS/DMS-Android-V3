@@ -31,8 +31,8 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
 
         viewModel.clickedClassView.value = applyExtension_gaonsil_tv
         changeTextViewColor(applyExtension_gaonsil_tv)
-        viewModel.clickedTimeView.value = applyExtension_eleven_tv
-        changeTextViewColor(applyExtension_eleven_tv)
+        viewModel.clickedTimeView.value = applyExtension_twelve_tv
+        changeTextViewColor(applyExtension_twelve_tv)
 
         viewModel.backApplyMenuLiveEvent.observe(this, Observer { finish() })
         viewModel.toastLiveData.observe(this, Observer { toast(it!!) })

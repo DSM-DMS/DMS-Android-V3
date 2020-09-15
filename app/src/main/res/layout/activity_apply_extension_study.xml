@@ -51,27 +51,9 @@
                     android:paddingVertical="6dp"
                     android:paddingHorizontal="16dp"/>
 
-            <TextView
-                    android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickTime(view, 11)}"
-                    android:background="@drawable/radius_grayline_view"
-                    android:id="@+id/applyExtension_eleven_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/apply_extension_study_eleven_text"
-                    android:textSize="@dimen/typo_body2"
-                    android:fontFamily="@font/nanumsquarebold"
-                    android:textColor="@color/colorGray400"
-                    app:layout_constraintTop_toBottomOf="@id/applyExtension_close_btn"
-                    app:layout_constraintEnd_toStartOf="@id/applyExtension_twelve_tv"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:paddingVertical="6dp"
-                    android:paddingHorizontal="16dp"/>
-
         <HorizontalScrollView
                 android:id="@+id/applyExtension_location_scrv"
-                app:layout_constraintTop_toBottomOf="@id/applyExtension_eleven_tv"
+                app:layout_constraintTop_toBottomOf="@id/applyExtension_twelve_tv"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -150,7 +132,7 @@
                         android:textColor="@color/colorGray400"
                         android:paddingVertical="6dp"
                         android:paddingHorizontal="16dp"
-                        android:layout_marginHorizontal="8dp"/>
+                        android:layout_marginStart="8dp"/>
 
                 <TextView
                         android:onClick="@{(view)->applyExtensionStudyViewModel.applyExtensionStudyClickClass(view, 6)}"
