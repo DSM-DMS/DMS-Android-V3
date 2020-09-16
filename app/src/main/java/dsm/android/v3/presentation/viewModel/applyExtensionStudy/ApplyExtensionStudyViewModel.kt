@@ -11,7 +11,7 @@ import dsm.android.v3.util.SingleLiveEvent
 
 class ApplyExtensionStudyViewModel(val applyExtensionStudyRepository: ApplyExtensionStudyRepository): BaseViewModel(), LifecycleCallback{
 
-    private val time = MutableLiveData<Int>().apply { value = 11 }
+    private val time = MutableLiveData<Int>().apply { value = 12 }
     private val classNum = MutableLiveData<Int>().apply { value = 1 }
 
     val clickedTimeView = MutableLiveData<View>()
