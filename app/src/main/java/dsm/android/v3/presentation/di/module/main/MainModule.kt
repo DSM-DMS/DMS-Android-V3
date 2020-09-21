@@ -7,6 +7,7 @@ import dsm.android.v3.presentation.di.module.main.institutionReport.InstitutionR
 import dsm.android.v3.presentation.di.module.main.logoutModule.LogoutModule
 import dsm.android.v3.presentation.di.module.main.meal.MealModule
 import dsm.android.v3.presentation.di.module.main.mypage.MyPageModule
+import dsm.android.v3.presentation.di.module.main.notice.NoticeModule
 import dsm.android.v3.presentation.di.module.main.putIn.PutInModule
 import dsm.android.v3.presentation.di.scope.DialogFragmentScope
 import dsm.android.v3.presentation.di.scope.FragmentScope
@@ -15,6 +16,8 @@ import dsm.android.v3.ui.dialogFragment.institutionReportDialog.InstitutionDialo
 import dsm.android.v3.ui.dialogFragment.logOutDialog.LogoutDialogFragment
 import dsm.android.v3.ui.fragment.meal.MealFragment
 import dsm.android.v3.ui.fragment.mypage.MyPageFragment
+import dsm.android.v3.ui.fragment.notice.NoticeFragment
+import dsm.android.v3.ui.fragment.notice.NoticeListFragment
 import dsm.android.v3.ui.fragment.putIn.PutInFragment
 
 @Module
@@ -31,6 +34,14 @@ abstract class MainModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [PutInModule::class])
     abstract fun putInFragment(): PutInFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [NoticeModule::class])
+    abstract fun noticeFragment(): NoticeFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [NoticeModule::class])
+    abstract fun noticeListFragment(): NoticeListFragment
 
     @DialogFragmentScope
     @ContributesAndroidInjector(modules = [BugReportModule::class])

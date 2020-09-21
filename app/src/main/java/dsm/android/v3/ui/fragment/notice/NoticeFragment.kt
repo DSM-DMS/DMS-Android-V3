@@ -1,34 +1,38 @@
 package dsm.android.v3.ui.fragment.notice
 
-import android.content.Intent
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dsm.android.v3.R
-import dsm.android.v3.ui.activity.notice.NoticeActivity
-import dsm.android.v3.ui.CustomView.CustomCardView
+import dsm.android.v3.databinding.FragmentNoticeMainBinding
+import dsm.android.v3.presentation.di.scope.ActivityScope
+import dsm.android.v3.presentation.di.scope.FragmentScope
+import dsm.android.v3.presentation.viewModel.notice.NoticeViewModel
+import dsm.android.v3.presentation.viewModel.notice.NoticeViewModelFactory
+import dsm.android.v3.util.DataBindingFragment
+import javax.inject.Inject
 
-class NoticeFragment : Fragment(){
+@ActivityScope
+class NoticeFragment : DataBindingFragment<FragmentNoticeMainBinding>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override val layoutId: Int
+        get() = R.layout.fragment_notice_main
 
-        val view = inflater!!.inflate(R.layout.fragment_notice_main, container, false) as View
+    @Inject
+    lateinit var factory: NoticeViewModelFactory
 
-        view.findViewById<CustomCardView>(R.id.notice_notice_customview).setOnClickListener {
-            val intent = Intent(context, NoticeActivity::class.java)
-            intent.putExtra("activityType", true)
-            context!!.startActivity(intent)
-        }
+    val viewModel by lazy { ViewModelProviders.of(activity!!, factory)[NoticeViewModel::class.java] }
 
-        view.findViewById<CustomCardView>(R.id.notice_rules_customview).setOnClickListener {
-            val intent = Intent(context, NoticeActivity::class.java)
-            intent.putExtra("activityType", false)
-            context!!.startActivity(intent)
-        }
-
-        return view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        val viewModel = ViewModelProviders.of(activity!!, factory)[NoticeViewModel::class.java]
+        binding.vm = viewModel
+        viewModel.getNoticeListLiveEvent.observe(this, Observer {
+            findNavController().navigate(
+                NoticeFragmentDirections.actionNoticeFragmentToNoticeListFragment()
+            )
+        })
     }
-
 }

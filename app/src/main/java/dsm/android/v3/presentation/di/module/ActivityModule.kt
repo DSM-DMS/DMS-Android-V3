@@ -8,7 +8,6 @@ import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicDomModule
 import dsm.android.v3.presentation.di.module.applyStaying.ApplyStayingModule
 import dsm.android.v3.presentation.di.module.changePassword.ChangePasswordModule
 import dsm.android.v3.presentation.di.module.main.MainModule
-import dsm.android.v3.presentation.di.module.notice.NoticeModule
 import dsm.android.v3.presentation.di.module.pointLog.PointLogModule
 import dsm.android.v3.presentation.di.module.register.RegisterModule
 import dsm.android.v3.presentation.di.module.signIn.SignInModule
@@ -20,7 +19,6 @@ import dsm.android.v3.ui.activity.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.activity.applyStaying.ApplyStayingActivity
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.activity.main.MainActivity
-import dsm.android.v3.ui.activity.notice.NoticeActivity
 import dsm.android.v3.ui.activity.pointLog.PointLogActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
 import dsm.android.v3.ui.activity.signIn.SignInActivity
@@ -52,10 +50,6 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [ChangePasswordModule::class])
     abstract fun changePasswordActivity(): ChangePasswordActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector(modules = [NoticeModule::class])
-    abstract fun noticeActivity(): NoticeActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [PointLogModule::class])

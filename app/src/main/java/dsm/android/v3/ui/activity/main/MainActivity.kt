@@ -1,13 +1,10 @@
 package dsm.android.v3.ui.activity.main
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
-import dsm.android.v3.ui.fragment.meal.MealFragment
-import dsm.android.v3.ui.fragment.putIn.PutInFragment
-import dsm.android.v3.ui.fragment.mypage.MyPageFragment
-import dsm.android.v3.ui.fragment.notice.NoticeFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
@@ -30,48 +27,25 @@ class MainActivity : DaggerAppCompatActivity() {
         }
 
     override fun onBackPressed() {
-        if (navigation.selectedItemId == R.id.navigation_food)
+        if (navigation.selectedItemId == R.id.mealFragment)
             backButtonSubject.onNext(System.currentTimeMillis())
-        else navigation.selectedItemId = R.id.navigation_food
+        else navigation.selectedItemId = R.id.mealFragment
     }
 
-    private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        val transaction = supportFragmentManager.beginTransaction()
-        when (item.itemId) {
-            R.id.navigation_food -> {
-                transaction.replace(R.id.main_container, MealFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_submit -> {
-                transaction.replace(R.id.main_container, PutInFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notice -> {
-                transaction.replace(R.id.main_container, NoticeFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_myPage -> {
-                transaction.replace(R.id.main_container, MyPageFragment())
-                transaction.commit()
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().run {
+        /*supportFragmentManager.beginTransaction().run {
             replace(R.id.main_container, MealFragment())
             commit()
+        }*/
+//        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+        findNavController(R.id.main_container).let {
+            navigation.setupWithNavController(it)
         }
-        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-    }
 
+    }
     override fun onDestroy() {
         super.onDestroy()
         backButtonSubjectDisposable.dispose()
