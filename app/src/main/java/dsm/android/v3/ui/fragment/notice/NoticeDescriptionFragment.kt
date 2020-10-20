@@ -1,7 +1,6 @@
 package dsm.android.v3.ui.fragment.notice
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +9,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import dagger.android.support.DaggerFragment
 import dsm.android.v3.R
-import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.domain.repository.notice.NoticeRepository
-import dsm.android.v3.domain.repository.notice.NoticeRepositoryImpl
-import dsm.android.v3.presentation.di.app.BaseApp
 import dsm.android.v3.presentation.di.scope.ActivityScope
-import dsm.android.v3.presentation.model.NoticeDescriptionModel
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_notice_description.*
-import retrofit2.Call
-import retrofit2.Response
 import javax.inject.Inject
 
 @ActivityScope
@@ -41,13 +34,13 @@ class NoticeDescriptionFragment : DaggerFragment() {
         else getRules(id)
 
         view.findViewById<ImageView>(R.id.notice_description_cancle_iv).setOnClickListener {
-            cancle(noticeActivity)
+            cancel(noticeActivity)
         }
 
         return view
     }
 
-    fun cancle(noticeActivity: NoticeActivity) {
+    fun cancel(noticeActivity: NoticeActivity) {
         noticeActivity.setVisible()
         noticeActivity.type = true
         activity!!.supportFragmentManager.beginTransaction().remove(this).commit()
@@ -94,8 +87,8 @@ class NoticeDescriptionFragment : DaggerFragment() {
     }
 
     fun frameDate(date : String) :String {
-        var day = date.substring(9, 10)
-        var month = date.substring(6,7)
+        var day = date.substring(8, 10)
+        var month = date.substring(5,7)
         var year = date.substring(0, 4)
         return "사감부에서 ${year}년 ${month}월 ${day}일에 게시한 글입니다."
     }

@@ -120,7 +120,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(!check) fragment.cancle(this)
+        if(!check) fragment.cancel(this)
         super.onBackPressed()
     }
 
