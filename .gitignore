@@ -187,3 +187,5 @@ fabric.properties
 app/src/main/java/dsm/android/v3/util/SecretHeaderGenerator.kt
 app/src/main/java/dsm.android.v3.data/remote/interceptor/SecretHeaderInterceptor.kt
 app/src/main/java/dsm/android/v3/data/remote/interceptor/SecretHeaderInterceptor.kt
+
+DMS_KeyStore.jpg
