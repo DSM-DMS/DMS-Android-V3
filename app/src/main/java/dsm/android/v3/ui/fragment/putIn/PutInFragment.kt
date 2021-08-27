@@ -14,6 +14,7 @@ import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.presentation.viewModel.putIn.PutInViewModel
 import dsm.android.v3.ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity
 import dsm.android.v3.ui.activity.applyGoingOut.ApplyGoingOutActivity
+import dsm.android.v3.ui.activity.applyMeal.ApplyMealActivity
 import dsm.android.v3.ui.activity.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.activity.applyStaying.ApplyStayingActivity
 import dsm.android.v3.util.DataBindingFragment
@@ -40,7 +41,7 @@ class PutInFragment : DataBindingFragment<FragmentPutInBinding>() {
             startActivity<ApplyStayingActivity>()
         })
         viewModel.musicLiveEvent.observe(this, Observer {
-            startActivity<ApplyMusicDomActivity>()
+            startActivity<ApplyMealActivity>()//원래Activity:ApplyMusicDomActivity
         })
         viewModel.goingOutLiveEvent.observe(this, Observer {
             startActivity<ApplyGoingOutActivity>()
