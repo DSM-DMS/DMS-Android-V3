@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="" />
+            type="dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -68,6 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            app:pageChange="@={vm.status}"
             app:layout_constraintBottom_toTopOf="@id/apply_meal_btn"
             app:layout_constraintTop_toBottomOf="@+id/apply_meal_explanation_tv" />
 
