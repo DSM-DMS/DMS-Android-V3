@@ -39,6 +39,6 @@ class InstitutionDialogFragment: DataBindingDialogFragment<DialogInstitutionRepo
 
     override fun onStart() {
         super.onStart()
-        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

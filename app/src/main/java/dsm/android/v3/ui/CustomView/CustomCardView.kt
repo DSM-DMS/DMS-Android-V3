@@ -47,7 +47,7 @@ class CustomCardView : FrameLayout {
         val button = typedArray.getResourceId(R.styleable.CustomView_button, R.drawable.ic_arrow_right)
         customview_button_iv.setBackgroundResource(button)
 
-        val title: String = typedArray.getString(R.styleable.CustomView_title)
+        val title: String = typedArray.getString(R.styleable.CustomView_title)!!
         customview_title_tv.text = title
 
         val description = typedArray.getString(R.styleable.CustomView_description)

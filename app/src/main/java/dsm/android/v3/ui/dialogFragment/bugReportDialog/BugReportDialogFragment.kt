@@ -39,6 +39,6 @@ class BugReportDialogFragment: DataBindingDialogFragment<DialogBugReportBinding>
 
     override fun onStart() {
         super.onStart()
-        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

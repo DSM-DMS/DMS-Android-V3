@@ -31,7 +31,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
 
-        val type = intent.extras.get("activityType") as Boolean
+        val type = intent.extras!!.get("activityType") as Boolean
         this.type = type
 
         val customView = notice_list_customview as CustomCardView
@@ -59,7 +59,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
             }, {
-                Log.d("tag", it.message)
+                Log.d("tag", it.message.toString())
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
         ))
@@ -75,7 +75,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
             }, {
-                Log.d("tag",it.message)
+                Log.d("tag",it.message.toString())
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
             }))
     }
