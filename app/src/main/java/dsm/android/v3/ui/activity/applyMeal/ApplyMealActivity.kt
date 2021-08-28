@@ -35,29 +35,29 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_apply_meal)
         setSupportActionBar(apply_meal_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         title = "주말급식 신청"
-        apply_meal_toolbar.setNavigationOnClickListener {
+        binding.applyMealToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
 
-        val viewModel = ViewModelProviders.of(this,factory).get(ApplyMealViewModel::class.java)
-        viewModel.status.observe(this,{
-            if(it==0){
+
+        val viewModel = ViewModelProviders.of(this, factory).get(ApplyMealViewModel::class.java)
+        viewModel.status.observe(this, {
+            if (it == 0) {
                 apply_meal_btn.background = grayBorder
-            }else{
+            } else {
                 apply_meal_btn.background = primaryBorder
             }
         })
-
+        binding.vm = viewModel
         setPager()
     }
 
     private fun setPager() {
-        apply_meal_vp.adapter = ApplyMealAdapter(
+        binding.applyMealVp.adapter = ApplyMealAdapter(
             arrayListOf(
                 ApplyMealPagerModel(
                     "신청대기중",
@@ -81,7 +81,8 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
 
         override fun isViewFromObject(p0: View, p1: Any): Boolean = p0 == p1
 
-        override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
+        override fun destroyItem(container: ViewGroup, position: Int, any: Any) =
+            container.removeView(any as View)
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val layoutInflater = LayoutInflater.from(baseContext)
