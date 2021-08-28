@@ -13,8 +13,11 @@ import org.jetbrains.anko.support.v4.onPageChangeListener
 @BindingAdapter("pageChange")
 fun ViewPager.setPageChange(data: MutableLiveData<Int>) {
     Log.d("MealBindingAdapter", "Page is $currentItem")
-    if (currentItem != data.value)
+    if (currentItem != data.value){
         currentItem = data.value ?: 0
+        data.value = currentItem
+    }
+
 }
 
 @InverseBindingAdapter(attribute = "pageChange")

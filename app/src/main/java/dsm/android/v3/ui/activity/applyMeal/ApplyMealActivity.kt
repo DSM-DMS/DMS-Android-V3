@@ -1,30 +1,57 @@
 package dsm.android.v3.ui.activity.applyMeal
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
+import dsm.android.v3.databinding.ActivityApplyMealBinding
 import dsm.android.v3.presentation.model.ApplyMealPagerModel
+import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModel
+import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModelFactory
+import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_meal.*
-import kotlinx.android.synthetic.main.activity_apply_music_dom.*
 import org.jetbrains.anko.find
+import javax.inject.Inject
 
-class ApplyMealActivity : DaggerAppCompatActivity() {
+class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
+
+    override val layoutId: Int
+        get() = R.layout.activity_apply_meal
+
+    @Inject
+    lateinit var factory: ApplyMealViewModelFactory
+
+    private val grayBorder by lazy {
+        resources.getDrawable(R.drawable.radius_circle_gray)
+    }
+
+    private val primaryBorder by lazy {
+        resources.getDrawable(R.drawable.radius_circle_primary)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_meal)
         setSupportActionBar(apply_meal_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         title = "주말급식 신청"
         apply_meal_toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        val viewModel = ViewModelProviders.of(this,factory).get(ApplyMealViewModel::class.java)
+        viewModel.status.observe(this,{
+            if(it==0){
+                apply_meal_btn.background = grayBorder
+            }else{
+                apply_meal_btn.background = primaryBorder
+            }
+        })
 
         setPager()
     }
@@ -66,4 +93,6 @@ class ApplyMealActivity : DaggerAppCompatActivity() {
         }
 
     }
+
+
 }

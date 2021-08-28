@@ -68,20 +68,21 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            app:pageChange="@={vm.status}"
+            android:clipToPadding="false"
+            android:paddingHorizontal="50dp"
             app:layout_constraintBottom_toTopOf="@id/apply_meal_btn"
-            app:layout_constraintTop_toBottomOf="@+id/apply_meal_explanation_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/apply_meal_explanation_tv"
+            app:pageChange="@={vm.status}" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/apply_meal_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
-            android:background="@drawable/radius_circle_primary"
             android:fontFamily="@font/nanumsquareregular"
             android:gravity="center"
-            android:text="확인"
+            android:text="@string/complete"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/typo_header"
             app:layout_constraintBottom_toBottomOf="parent"

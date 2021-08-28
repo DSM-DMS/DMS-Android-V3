@@ -1,6 +1,5 @@
 package dsm.android.v3.presentation.di.module.applyMeal
 
-import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dsm.android.v3.data.remote.ApiClient
@@ -12,21 +11,16 @@ import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModelFactory
 @Module
 class ApplyMealModule {
 
-    @Module
-    companion object {
         @ActivityScope
-        @JvmStatic
         @Provides
-        fun provideRepository(apiClient: ApiClient): ApplyMealRepositoryImpl =
+        fun provideRepository(apiClient: ApiClient): ApplyMealRepository =
             ApplyMealRepositoryImpl(apiClient)
 
         @ActivityScope
-        @JvmStatic
         @Provides
         fun provideViewModelFactory(
-            repository: ApplyMealRepository,
-            application: Application
+            repository: ApplyMealRepository
         ): ApplyMealViewModelFactory =
-            ApplyMealViewModelFactory(repository, application)
-    }
+            ApplyMealViewModelFactory(repository)
+
 }
