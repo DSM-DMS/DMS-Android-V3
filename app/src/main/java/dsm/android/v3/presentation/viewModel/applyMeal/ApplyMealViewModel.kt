@@ -27,7 +27,8 @@ class ApplyMealViewModel(val applyMealRepository: ApplyMealRepository):BaseViewM
     @SuppressLint("CheckResult")
     fun postStatus(){
         if(status.value !=0){
-            applyMealRepository.applyStatus(hashMapOf("status" to status.value)).subscribe ({ response->
+            val status = status.value?:0+1
+            applyMealRepository.applyStatus(hashMapOf("status" to status)).subscribe ({ response->
                 when(response.code()){
                     200 -> toast.value = "주말급식신청을 완료했습니다."
                     403 -> toast.value = "권한이 없습니다."
