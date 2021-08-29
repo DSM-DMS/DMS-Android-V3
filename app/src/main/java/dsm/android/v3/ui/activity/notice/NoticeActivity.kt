@@ -49,7 +49,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
         }
     }
 
-    private fun getNotice(activity : NoticeActivity) {
+    private fun getNotice(activity: NoticeActivity) {
         composite.add(repository.getNoticeList()
             .subscribe({ response ->
                 val body = response.body()!!
@@ -62,7 +62,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
                 Log.d("tag", it.message.toString())
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
-        ))
+            ))
     }
 
     fun getRules(activity: NoticeActivity) {
@@ -75,9 +75,10 @@ class NoticeActivity : DaggerAppCompatActivity() {
                 notice_list_rv.layoutManager = LinearLayoutManager(applicationContext)
                 notice_list_rv.adapter = adapter
             }, {
-                Log.d("tag",it.message.toString())
+                Log.d("tag", it.message.toString())
                 Toast.makeText(baseContext, "네트워크를 확인해주세요", Toast.LENGTH_SHORT).show()
-            }))
+            })
+        )
     }
 
     var check = true
@@ -86,12 +87,14 @@ class NoticeActivity : DaggerAppCompatActivity() {
         if (check) {
             notice_list_rv.visibility = View.INVISIBLE
             notice_list_customview.visibility = View.INVISIBLE
-            notice_list_constraint1.backgroundColor = ContextCompat.getColor(this, R.color.colorGray300)
+            notice_list_constraint1.backgroundColor =
+                ContextCompat.getColor(this, R.color.colorGray300)
             check = false
         } else {
             notice_list_customview.visibility = View.VISIBLE
             notice_list_rv.visibility = View.VISIBLE
-            notice_list_constraint1.backgroundColor = ContextCompat.getColor(this, R.color.colorWhite)
+            notice_list_constraint1.backgroundColor =
+                ContextCompat.getColor(this, R.color.colorGray100)
             check = true
 
         }
@@ -99,7 +102,7 @@ class NoticeActivity : DaggerAppCompatActivity() {
 
     val fragment = NoticeDescriptionFragment()
 
-    fun createDescription (id : Int, type : Boolean) {
+    fun createDescription(id: Int, type: Boolean) {
         setVisible()
 
         val bundle = Bundle(2)
@@ -114,13 +117,13 @@ class NoticeActivity : DaggerAppCompatActivity() {
         transaction.commit()
     }
 
-    fun frameDate(date : String) :String {
+    fun frameDate(date: String): String {
         var frameDate = date.substring(0, 10)
         return frameDate
     }
 
     override fun onBackPressed() {
-        if(!check) fragment.cancel(this)
+        if (!check) fragment.cancel(this)
         super.onBackPressed()
     }
 
