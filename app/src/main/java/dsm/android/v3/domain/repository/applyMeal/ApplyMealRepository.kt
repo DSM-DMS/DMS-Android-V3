@@ -1,7 +1,11 @@
 package dsm.android.v3.domain.repository.applyMeal
 
-interface ApplyMealRepository {
-    fun getStatus()
+import dsm.android.v3.presentation.model.ApplyMealResponseModel
+import io.reactivex.Single
+import retrofit2.Response
 
-    fun applyStatus()
+interface ApplyMealRepository {
+    fun getStatus(): Single<Response<ApplyMealResponseModel>>
+
+    fun applyStatus(body:Any?): Single<Response<Unit>>
 }

@@ -6,6 +6,7 @@ import dagger.Provides
 import dsm.android.v3.data.remote.API
 import dsm.android.v3.data.remote.ApiClient
 import dsm.android.v3.data.remote.EaesAPI
+import dsm.android.v3.data.remote.EaseApiClient
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -36,5 +37,9 @@ class ApiModule {
         .baseUrl(eaesBaseUrl)
         .client(okHttpClient)
         .build().create(EaesAPI::class.java)
+
+    @Provides
+    @Singleton
+    fun provideEaseApiClient(Api: EaesAPI):EaseApiClient = EaseApiClient(Api)
 
 }

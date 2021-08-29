@@ -15,6 +15,7 @@ import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_meal.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
@@ -52,6 +53,10 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
                 apply_meal_btn.background = primaryBorder
             }
         })
+        viewModel.toast.observe(this,{
+            toast(it.toString())
+        })
+        viewModel.getStatus()
         binding.vm = viewModel
         setPager()
     }
