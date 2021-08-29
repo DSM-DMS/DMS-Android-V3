@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/style_upside_radius"
         android:elevation="12dp"
-        android:backgroundTint="@color/colorWhite"
+        android:backgroundTint="@color/colorGray100"
         >
 
     <ImageView

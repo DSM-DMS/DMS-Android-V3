@@ -140,7 +140,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"/>
-              
+
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.Api17CardView>
 
@@ -167,7 +167,7 @@
                         android:id="@+id/putIn_music_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="기상음악 신청"
+                        android:text="주말급식 신청"
                         android:textSize="18sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -184,13 +184,13 @@
                         android:textSize="@dimen/typo_body1"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/colorGray400"
-                        android:text="아침에 틀 노래를 신청할 수 있습니다."
+                        android:text="주말급식을 신청할 수 있습니다."
                         app:layout_constraintTop_toBottomOf="@+id/putIn_music_title_tv"
                         app:layout_constraintStart_toStartOf="@+id/putIn_music_title_tv"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"/>
-              
+
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.Api17CardView>
 

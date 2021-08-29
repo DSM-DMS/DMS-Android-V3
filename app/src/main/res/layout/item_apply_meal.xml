@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Api17CardView
+        android:id="@+id/item_applyMeal_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:shadowColor="@color/colorPrimary"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/item_meal_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareextrabold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_24" />
+
+            <TextView
+                android:id="@+id/item_meal_explanation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nanumsquareregular"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="10sp"
+                android:textColor="@color/colorGray600"
+                android:textSize="@dimen/typo_subtitle" />
+        </LinearLayout>
+    </android.support.v7.widget.Api17CardView>
+</android.support.constraint.ConstraintLayout>

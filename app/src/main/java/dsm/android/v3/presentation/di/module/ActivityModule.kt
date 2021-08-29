@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dsm.android.v3.presentation.di.module.applyExtensionStudy.ApplyExtensionStudyModule
 import dsm.android.v3.presentation.di.module.applyGoingOut.ApplyGoingOutModule
+import dsm.android.v3.presentation.di.module.applyMeal.ApplyMealModule
 import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicDomModule
 import dsm.android.v3.presentation.di.module.applyStaying.ApplyStayingModule
 import dsm.android.v3.presentation.di.module.changePassword.ChangePasswordModule
@@ -16,6 +17,7 @@ import dsm.android.v3.presentation.di.module.splash.SplashModule
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity
 import dsm.android.v3.ui.activity.applyGoingOut.ApplyGoingOutActivity
+import dsm.android.v3.ui.activity.applyMeal.ApplyMealActivity
 import dsm.android.v3.ui.activity.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.activity.applyStaying.ApplyStayingActivity
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
@@ -36,6 +38,10 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [ApplyMusicDomModule::class])
     abstract fun applyMusicDomActivity(): ApplyMusicDomActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [ApplyMealModule::class])
+    abstract fun applyMealActivity(): ApplyMealActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [ApplyGoingOutModule::class])

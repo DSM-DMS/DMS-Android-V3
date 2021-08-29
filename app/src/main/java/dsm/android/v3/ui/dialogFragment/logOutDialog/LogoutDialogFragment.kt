@@ -50,6 +50,6 @@ class LogoutDialogFragment : DataBindingDialogFragment<DialogLogoutBinding>() {
 
     override fun onStart() {
         super.onStart()
-        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

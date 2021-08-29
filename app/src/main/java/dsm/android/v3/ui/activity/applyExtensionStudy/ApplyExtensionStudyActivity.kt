@@ -131,6 +131,6 @@ class ApplyExtensionStudyActivity: DataBindingActivity<ActivityApplyExtensionStu
         }
         textView.gravity = Gravity.CENTER
         textView.textSizeDimen = R.dimen.typo_body2
-        textView.textColor = ContextCompat.getColor(this, R.color.colorWhite)
+        textView.textColor = ContextCompat.getColor(this, R.color.colorWhiteToBlack)
     }
 }

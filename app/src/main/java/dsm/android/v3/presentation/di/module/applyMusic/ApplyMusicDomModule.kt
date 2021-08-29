@@ -23,14 +23,16 @@ abstract class ApplyMusicDomModule {
         @ActivityScope
         @JvmStatic
         @Provides
-        fun provideRepository(apiClient: ApiClient): ApplyMusicRepository
-                = ApplyMusicRepositoryImpl(apiClient)
+        fun provideRepository(apiClient: ApiClient): ApplyMusicRepository =
+            ApplyMusicRepositoryImpl(apiClient)
 
         @ActivityScope
         @JvmStatic
         @Provides
-        fun provideViewModelFactory(repository: ApplyMusicRepository, application: Application): ApplyMusicViewModelFactory
-                = ApplyMusicViewModelFactory(repository, application)
+        fun provideViewModelFactory(
+            repository: ApplyMusicRepository,
+            application: Application
+        ): ApplyMusicViewModelFactory = ApplyMusicViewModelFactory(repository, application)
 
     }
 
