@@ -16,4 +16,6 @@
     <color name="colorCustomCardView">#525252</color>
 
     <color name="colorMyPageBack">#303030</color>
+
+    <color name="colorWhiteToBlack">#1f1f1f</color>
 </resources>
