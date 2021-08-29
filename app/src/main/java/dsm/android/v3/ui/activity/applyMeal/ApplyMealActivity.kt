@@ -27,11 +27,11 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
     lateinit var factory: ApplyMealViewModelFactory
 
     private val grayBorder by lazy {
-        resources.getDrawable(R.drawable.radius_circle_gray)
+        resources.getDrawable(R.drawable.radius_view_gray_300)
     }
 
     private val primaryBorder by lazy {
-        resources.getDrawable(R.drawable.radius_circle_primary)
+        resources.getDrawable(R.drawable.radius_view_primary)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
