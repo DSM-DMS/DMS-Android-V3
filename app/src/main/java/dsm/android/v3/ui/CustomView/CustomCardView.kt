@@ -62,7 +62,7 @@ class CustomCardView : FrameLayout {
         val descriptionColor = typedArray.getColor(R.styleable.CustomView_descriptionColor, ContextCompat.getColor(context, R.color.colorGray800))
         customview_description_tv.setTextColor(descriptionColor)
 
-        val bgColor = typedArray.getColor(R.styleable.CustomView_backgroundColor, ContextCompat.getColor(context, R.color.colorWhite))
+        val bgColor = typedArray.getColor(R.styleable.CustomView_backgroundColor, ContextCompat.getColor(context, R.color.colorCustomCardView))
         customview_top_cv.setCardBackgroundColor(bgColor)
 
         val imageVisible = typedArray.getBoolean(R.styleable.CustomView_imageVisible, true)

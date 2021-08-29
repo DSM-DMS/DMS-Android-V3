@@ -14,6 +14,10 @@
 
     <color name="colorRed">#ff5454</color>
 
+    <color name="logoWhite">#FFFFFF</color>
+
+    <color name="colorCustomCardView">#FFFFFF</color>
+
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
     <color name="colorGray200">#DFDFDF</color>

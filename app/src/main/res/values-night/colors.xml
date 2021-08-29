@@ -2,6 +2,14 @@
 <resources>
     <color name="bottomNavigation">#006969</color>
 
+    <color name="colorPrimary">#15a3a3</color>
+
     <color name="colorGray900">#ededed</color>
+    <color name="colorGray800">#e8e8e8</color>
     <color name="colorGray700">#e0e0e0</color>
+    <color name="colorGray100">#2e2e2e</color>
+
+    <color name="logoWhite">#d1d1d1</color>
+
+    <color name="colorCustomCardView">#525252</color>
 </resources>
