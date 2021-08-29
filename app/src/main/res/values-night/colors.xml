@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bottomNavigation">#006969</color>
+
+    <color name="colorGray900">#ededed</color>
+    <color name="colorGray700">#e0e0e0</color>
+</resources>
