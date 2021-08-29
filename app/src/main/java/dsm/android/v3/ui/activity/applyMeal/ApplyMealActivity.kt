@@ -2,6 +2,7 @@ package dsm.android.v3.ui.activity.applyMeal
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,9 @@ import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModel
 import dsm.android.v3.presentation.viewModel.applyMeal.ApplyMealViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_apply_meal.*
+import kotlinx.android.synthetic.main.item_apply_meal.view.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 import javax.inject.Inject
 
@@ -25,6 +28,8 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
 
     @Inject
     lateinit var factory: ApplyMealViewModelFactory
+
+    lateinit var viewGroup: ViewGroup
 
     private val grayBorder by lazy {
         resources.getDrawable(R.drawable.radius_view_gray_300)
@@ -53,12 +58,32 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
                 apply_meal_btn.background = primaryBorder
             }
         })
-        viewModel.toast.observe(this,{
+        viewModel.toast.observe(this, {
             toast(it.toString())
+        })
+        viewModel.changeColorLiveEvent.observe(this, {
+            val view = viewGroup.getChildAt(viewModel.status.value!!)
+            changeColor(view)
+            viewModel.selectedView.value = view
+        })
+        viewModel.originalColorLiveEvent.observe(this,  {
+            originalColor(viewModel.selectedView.value!!)
         })
         viewModel.getStatus()
         binding.vm = viewModel
         setPager()
+    }
+
+    private fun changeColor(view: View) {
+        view.item_applyMeal_card.setCardBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary))
+        view.item_meal_title_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
+        view.item_meal_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorWhite)
+    }
+
+    private fun originalColor(view: View) {
+        view.item_applyMeal_card.setCardBackgroundColor(ContextCompat.getColor(this,R.color.colorWhite))
+        view.item_meal_title_tv.textColor = ContextCompat.getColor(this, R.color.colorPrimary)
+        view.item_meal_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorGray600)
     }
 
     private fun setPager() {
@@ -96,6 +121,11 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
             view.find<TextView>(R.id.item_meal_explanation_tv).text = models[position].explanation
             container.addView(view)
             return view
+        }
+
+        override fun startUpdate(container: ViewGroup) {
+            super.startUpdate(container)
+            viewGroup = container
         }
 
     }

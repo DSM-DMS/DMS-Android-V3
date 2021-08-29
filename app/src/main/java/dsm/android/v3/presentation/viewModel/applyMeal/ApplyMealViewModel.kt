@@ -1,13 +1,10 @@
 package dsm.android.v3.presentation.viewModel.applyMeal
 
 import android.annotation.SuppressLint
-import android.app.Application
-import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.MutableLiveData
-import android.widget.Toast
+import android.view.View
 import dsm.android.v3.domain.repository.applyMeal.ApplyMealRepository
 import dsm.android.v3.util.BaseViewModel
-import dsm.android.v3.util.LifecycleCallback
 import dsm.android.v3.util.SingleLiveEvent
 
 class ApplyMealViewModel(val applyMealRepository: ApplyMealRepository):BaseViewModel() {
@@ -15,11 +12,17 @@ class ApplyMealViewModel(val applyMealRepository: ApplyMealRepository):BaseViewM
 
     val toast = SingleLiveEvent<String>()
 
+    val changeColorLiveEvent = SingleLiveEvent<Any>()
+    val originalColorLiveEvent = SingleLiveEvent<Any>()
+
+    val selectedView = MutableLiveData<View>()
+
     @SuppressLint("CheckResult")
     fun getStatus(){
         applyMealRepository.getStatus().subscribe{response->
             if(response.isSuccessful){
-                status.value = response.body()!!.status
+                status.value = (response.body()!!.value)-1
+                setCardViewData()
             }
         }
     }
@@ -27,16 +30,21 @@ class ApplyMealViewModel(val applyMealRepository: ApplyMealRepository):BaseViewM
     @SuppressLint("CheckResult")
     fun postStatus(){
         if(status.value !=0){
-            val status = status.value?:0+1
-            applyMealRepository.applyStatus(hashMapOf("status" to status)).subscribe ({ response->
+            val status = (status.value?:0)+1
+            applyMealRepository.applyStatus(hashMapOf("value" to status)).subscribe ({ response->
                 when(response.code()){
-                    200 -> toast.value = "주말급식신청을 완료했습니다."
+                    200 -> setCardViewData()
                     403 -> toast.value = "권한이 없습니다."
                 }
             },{
                 toast.value = "네트워크 상태를 확인해주세요."
             })
         }
+    }
+
+    private fun setCardViewData(){
+        selectedView.value?.let { originalColorLiveEvent.call() }
+        changeColorLiveEvent.call()
     }
 
 }

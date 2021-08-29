@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v7.widget.Api17CardView
-        app:cardElevation="10dp"
-        android:shadowColor="@color/colorPrimary"
+        android:id="@+id/item_applyMeal_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/item_applyStaying_card"
+        android:shadowColor="@color/colorPrimary"
         app:cardCornerRadius="16dp"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
+
             <TextView
                 android:id="@+id/item_meal_title_tv"
-                android:textSize="@dimen/text_size_24"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/nanumsquareextrabold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareextrabold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_24" />
+
             <TextView
                 android:id="@+id/item_meal_explanation_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/nanumsquareregular"
-                android:textSize="@dimen/typo_subtitle"
-                android:textColor="@color/colorGray600"
                 android:letterSpacing="0.02"
                 android:lineSpacingExtra="10sp"
-                android:layout_marginTop="20dp"/>
+                android:textColor="@color/colorGray600"
+                android:textSize="@dimen/typo_subtitle" />
         </LinearLayout>
     </android.support.v7.widget.Api17CardView>
 </android.support.constraint.ConstraintLayout>
