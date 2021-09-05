@@ -81,7 +81,7 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
     }
 
     private fun originalColor(view: View) {
-        view.item_applyMeal_card.setCardBackgroundColor(ContextCompat.getColor(this,R.color.colorWhite))
+        view.item_applyMeal_card.setCardBackgroundColor(ContextCompat.getColor(this,R.color.colorWhiteToGray))
         view.item_meal_title_tv.textColor = ContextCompat.getColor(this, R.color.colorPrimary)
         view.item_meal_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorGray600)
     }

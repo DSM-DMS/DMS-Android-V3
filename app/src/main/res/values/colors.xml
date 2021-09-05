@@ -22,6 +22,8 @@
 
     <color name="colorWhiteToBlack">#FFFFFF</color>
 
+    <color name="colorWhiteToGray">#FFFFFF</color>
+
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
     <color name="colorGray200">#DFDFDF</color>
