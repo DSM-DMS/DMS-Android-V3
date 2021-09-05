@@ -7,7 +7,7 @@ import dsm.android.v3.domain.repository.applyMeal.ApplyMealRepository
 import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 
-class ApplyMealViewModel(val applyMealRepository: ApplyMealRepository):BaseViewModel() {
+class ApplyMealViewModel(private val applyMealRepository: ApplyMealRepository):BaseViewModel() {
     val status = MutableLiveData<Int>().apply { value = 0 }
 
     val toast = SingleLiveEvent<String>()

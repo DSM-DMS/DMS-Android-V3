@@ -26,6 +26,7 @@ class MyPageViewModel(val myPageRepository: MyPageRepository): BaseViewModel(), 
     val intentPasswordChangeEvent = SingleLiveEvent<Any>()
     val intentMeritHistoryEvent = SingleLiveEvent<Any>()
     val intentIntroDevelopersEvent = SingleLiveEvent<Any>()
+    val intentSettingEvent = SingleLiveEvent<Any>()
 
     override fun apply(event: Lifecycle.Event) {
         when(event){
@@ -77,5 +78,7 @@ class MyPageViewModel(val myPageRepository: MyPageRepository): BaseViewModel(), 
     fun clickEnterMeritHistory() = intentMeritHistoryEvent.call()
 
     fun clickEnterIntroDevelopers() = intentIntroDevelopersEvent.call()
+
+    fun clickSetting() = intentSettingEvent.call()
 
 }
