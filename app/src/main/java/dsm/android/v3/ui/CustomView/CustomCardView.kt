@@ -21,7 +21,11 @@ class CustomCardView : FrameLayout {
         getAttrs(attributeSet)
     }
 
-    constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle) {
+    constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(
+        context,
+        attributeSet,
+        defStyle
+    ) {
         initView()
         getAttrs(attributeSet, defStyle)
     }
@@ -44,7 +48,8 @@ class CustomCardView : FrameLayout {
     }
 
     private fun setTypedArray(typedArray: TypedArray) {
-        val button = typedArray.getResourceId(R.styleable.CustomView_button, R.drawable.ic_arrow_right)
+        val button =
+            typedArray.getResourceId(R.styleable.CustomView_button, R.drawable.ic_arrow_right)
         customview_button_iv.setBackgroundResource(button)
 
         val title: String = typedArray.getString(R.styleable.CustomView_title)!!
@@ -56,17 +61,29 @@ class CustomCardView : FrameLayout {
         val count = typedArray.getInteger(R.styleable.CustomView_count, 0)
         setCustomCount(count)
 
-        val titleColor = typedArray.getColor(R.styleable.CustomView_titleColor, ContextCompat.getColor(context, R.color.colorPrimary))
+        val titleColor = typedArray.getColor(
+            R.styleable.CustomView_titleColor,
+            ContextCompat.getColor(context, R.color.colorPrimary)
+        )
         customview_title_tv.setTextColor(titleColor)
 
-        val descriptionColor = typedArray.getColor(R.styleable.CustomView_descriptionColor, ContextCompat.getColor(context, R.color.colorGray800))
+        val descriptionColor = typedArray.getColor(
+            R.styleable.CustomView_descriptionColor,
+            ContextCompat.getColor(context, R.color.colorGray800)
+        )
         customview_description_tv.setTextColor(descriptionColor)
 
-        val bgColor = typedArray.getColor(R.styleable.CustomView_backgroundColor, ContextCompat.getColor(context, R.color.colorCustomCardView))
+        val bgColor = typedArray.getColor(
+            R.styleable.CustomView_backgroundColor,
+            ContextCompat.getColor(context, R.color.colorCustomCardView)
+        )
         customview_top_cv.setCardBackgroundColor(bgColor)
+        customview_middle_cv.setCardBackgroundColor(bgColor)
+        customview_bottom_cv.setCardBackgroundColor(bgColor)
 
         val imageVisible = typedArray.getBoolean(R.styleable.CustomView_imageVisible, true)
-        if(imageVisible) customview_button_iv.visibility = View.VISIBLE else customview_button_iv.visibility = View.GONE
+        if (imageVisible) customview_button_iv.visibility =
+            View.VISIBLE else customview_button_iv.visibility = View.GONE
 
         typedArray.recycle()
     }
@@ -95,12 +112,12 @@ class CustomCardView : FrameLayout {
         }
     }
 
-    fun setCustomText(title: String, description : String) {
+    fun setCustomText(title: String, description: String) {
         customview_title_tv.text = title
         customview_description_tv.text = description
     }
 
-    fun setCustomImageView(resource : Int) {
+    fun setCustomImageView(resource: Int) {
         customview_button_iv.setBackgroundResource(resource)
     }
 }
