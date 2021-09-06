@@ -1,9 +1,13 @@
 package dsm.android.v3.ui.activity.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatDelegate
 import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.R
+import dsm.android.v3.data.local.shared.LocalStorage
+import dsm.android.v3.ui.activity.setting.SettingActivity
 import dsm.android.v3.ui.fragment.meal.MealFragment
 import dsm.android.v3.ui.fragment.putIn.PutInFragment
 import dsm.android.v3.ui.fragment.mypage.MyPageFragment
@@ -14,6 +18,7 @@ import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -63,6 +68,9 @@ class MainActivity : DaggerAppCompatActivity() {
             false
         }
 
+    @Inject
+    lateinit var localStorage: LocalStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -71,8 +79,37 @@ class MainActivity : DaggerAppCompatActivity() {
             commit()
         }
         navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+
+        val type = localStorage.getInt("darkMode")
+        when (type) {
+            1 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            2 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            else -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+        }
     }
 
+    fun startSettingActivity() {
+        val intent = Intent(this, SettingActivity::class.java)
+        startActivityForResult(intent, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0) {
+            setContentView(R.layout.activity_main)
+            supportFragmentManager.beginTransaction().run {
+                replace(R.id.main_container, MealFragment())
+                commit()
+            }
+            navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

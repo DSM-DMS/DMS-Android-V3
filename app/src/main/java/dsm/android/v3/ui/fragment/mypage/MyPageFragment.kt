@@ -3,6 +3,7 @@ package dsm.android.v3.ui.fragment.mypage
 import android.animation.ValueAnimator
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.view.View
@@ -17,6 +18,7 @@ import dsm.android.v3.ui.dialogFragment.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.dialogFragment.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.activity.introduceTeam.IntroDeveloperActivity
+import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.dialogFragment.logOutDialog.LogoutDialogFragment
 import dsm.android.v3.ui.activity.pointLog.PointLogActivity
 import dsm.android.v3.ui.activity.setting.SettingActivity
@@ -61,7 +63,9 @@ class MyPageFragment : DataBindingFragment<FragmentMypageBinding>() {
         viewModel.intentPasswordChangeEvent.observe(
             this,
             Observer { startActivity<ChangePasswordActivity>() })
-        viewModel.intentSettingEvent.observe(this, { startActivity<SettingActivity>() })
+        viewModel.intentSettingEvent.observe(this, {
+            (activity as MainActivity).startSettingActivity()
+        })
         viewModel.intentQuestionResearchEvent.observe(this, Observer { toast("오픈 준비 중입니다.") })
         viewModel.showBugReportEvent.observe(
             this,

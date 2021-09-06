@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
         <variable
             name="MyPageViewModel"
-            type="dsm.android.v3.presentation.viewModel.mypage.MyPageViewModel" />
+            type="dsm.android.v3.presentation.viewModel.mypage.MyPageViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -18,20 +16,20 @@
             android:id="@+id/mypage_info_lay"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/colorPrimary"
-            android:padding="25dp"
-            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
+            app:layout_constraintVertical_weight="0.3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="0.3">
+            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
+            android:background="@color/colorPrimary"
+            android:padding="25dp">
 
             <TextView
                 android:id="@+id/mypage_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareextrabold"
                 android:text="@={MyPageViewModel.nameText}"
-                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanumsquareextrabold"
                 android:textSize="@dimen/typo_header"
+                android:textColor="@color/colorWhite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,46 +38,46 @@
                 style="?android:textAppearanceSmallInverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nanumsquarebold"
-                android:lineSpacingExtra="1sp"
                 android:text="@={MyPageViewModel.infoText}"
                 android:textSize="@dimen/typo_body2"
+                android:fontFamily="@font/nanumsquarebold"
+                android:lineSpacingExtra="1sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mypage_name_tv" />
+                app:layout_constraintTop_toBottomOf="@id/mypage_name_tv"
+                android:layout_marginTop="8dp"/>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/mypage_func_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
+                app:layout_constraintTop_toBottomOf="@id/mypage_info_tv"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@id/mypage_info_tv">
+                android:layout_marginHorizontal="25dp">
 
                 <LinearLayout
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     android:id="@+id/mypage_error_lay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{()->MyPageViewModel.clickEnterInstitutionReport()}"
                     android:orientation="vertical"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:onClick="@{()->MyPageViewModel.clickEnterInstitutionReport()}">
 
                     <ImageView
+                        android:src="@drawable/ic_round_error_24_px"
                         android:id="@+id/mypage_error_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_round_error_24_px" />
+                        android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:layout_marginTop="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/nanumsquareregular"
+                        android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_error_report"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/text_size_8" />
+                        android:fontFamily="@font/nanumsquareregular"/>
 
                 </LinearLayout>
 
@@ -87,52 +85,52 @@
                     android:id="@+id/mypage_edit_lay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{()->MyPageViewModel.clickEnterQuestionResearch()}"
                     android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:onClick="@{()->MyPageViewModel.clickEnterQuestionResearch()}">
 
                     <ImageView
+                        android:src="@drawable/ic_round_edit_24_px"
                         android:id="@+id/mypage_edit_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_round_edit_24_px" />
+                        android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:layout_marginTop="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/nanumsquareregular"
+                        android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_research"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/text_size_8" />
+                        android:fontFamily="@font/nanumsquareregular"/>
                 </LinearLayout>
 
                 <LinearLayout
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     android:id="@+id/mypage_bug_lay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{()->MyPageViewModel.clickEnterBugReport()}"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside">
+                    android:onClick="@{()->MyPageViewModel.clickEnterBugReport()}">
 
                     <ImageView
+                        android:src="@drawable/ic_round_bug_report_24_px"
                         android:id="@+id/mypage_bug_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_round_bug_report_24_px" />
+                        android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:layout_marginTop="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/nanumsquareregular"
+                        android:textSize="@dimen/text_size_8"
                         android:text="@string/mypage_bug_report"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/text_size_8" />
+                        android:fontFamily="@font/nanumsquareregular"/>
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
 
@@ -141,8 +139,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:onClick="@{()->MyPageViewModel.clickSetting()}"
                 android:padding="10dp"
+                android:onClick="@{()->MyPageViewModel.clickSetting()}"
                 app:layout_constraintBottom_toBottomOf="@+id/mypage_info_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/mypage_name_tv"
@@ -150,99 +148,96 @@
         </android.support.constraint.ConstraintLayout>
 
         <View
-            android:id="@+id/mypage_list_lay"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/colorMyPageBack"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
-            app:layout_constraintVertical_weight="0.6"></View>
+                android:id="@+id/mypage_list_lay"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintVertical_weight="0.6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mypage_info_lay"
+                android:background="@color/colorMyPageBack">
+        </View>
 
         <android.support.v7.widget.Api17CardView
             android:id="@+id/mypage_merit_lay"
+            app:cardCornerRadius="16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:shadowColor="@color/colorPrimary"
-            app:cardBackgroundColor="@color/colorCustomCardView"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            app:layout_constraintEnd_toStartOf="@id/mypage_demerit_lay"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mypage_info_lay">
-
+            app:layout_constraintEnd_toStartOf="@id/mypage_demerit_lay"
+            app:layout_constraintTop_toBottomOf="@id/mypage_info_lay"
+            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
+            android:layout_marginStart="24dp"
+            app:cardBackgroundColor="@color/colorCustomCardView"
+            android:shadowColor="@color/colorPrimary"
+            app:cardElevation="10dp">
             <LinearLayout
+                android:paddingVertical="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingVertical="12dp">
-
+                android:gravity="center">
                 <TextView
                     android:id="@+id/mypage_merit_tv"
+                    android:textColor="@color/colorGray700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="@dimen/text_size_24"
                     android:lineSpacingExtra="3dp"
-                    android:text="@={MyPageViewModel.goodPointText}"
-                    android:textColor="@color/colorGray700"
-                    android:textSize="@dimen/text_size_24" />
+                    android:text="@={MyPageViewModel.goodPointText}"/>
 
                 <TextView
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorGray900"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2dp"
                     android:text="@string/mypage_merit"
-                    android:textColor="@color/colorGray900"
-                    android:textSize="@dimen/typo_body2" />
+                    android:textSize="@dimen/typo_body2"
+                    android:lineSpacingExtra="2dp"/>
             </LinearLayout>
         </android.support.v7.widget.Api17CardView>
 
         <android.support.v7.widget.Api17CardView
-            android:id="@+id/mypage_demerit_lay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:shadowColor="@color/colorPrimary"
-            app:cardBackgroundColor="@color/colorCustomCardView"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/mypage_demerit_lay"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@id/mypage_merit_lay"
-            app:layout_constraintTop_toBottomOf="@id/mypage_info_lay">
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mypage_info_lay"
+            app:layout_constraintBottom_toTopOf="@id/mypage_list_lay"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/colorCustomCardView"
+            android:shadowColor="@color/colorPrimary"
+            app:cardElevation="10dp">
             <LinearLayout
+                android:paddingVertical="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingVertical="12dp">
-
+                android:gravity="center">
                 <TextView
                     android:id="@+id/mypage_demerit_tv"
+                    android:textColor="@color/colorGray700"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumsquarebold"
+                    android:textSize="@dimen/text_size_24"
                     android:lineSpacingExtra="3dp"
-                    android:text="@={MyPageViewModel.badPointText}"
-                    android:textColor="@color/colorGray700"
-                    android:textSize="@dimen/text_size_24" />
+                    android:text="@={MyPageViewModel.badPointText}"/>
 
                 <TextView
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorGray900"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2dp"
                     android:text="@string/mypage_demerit"
-                    android:textColor="@color/colorGray900"
-                    android:textSize="@dimen/typo_body2" />
+                    android:textSize="@dimen/typo_body2"
+                    android:lineSpacingExtra="2dp"/>
             </LinearLayout>
         </android.support.v7.widget.Api17CardView>
 
@@ -250,207 +245,205 @@
             android:id="@+id/mypage_advice_cv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/colorPrimary"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mypage_merit_lay">
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mypage_merit_lay"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="24dp"
+            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardElevation="8dp">
             <TextView
-                android:id="@+id/mypage_advice_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/nanumsquarebold"
-                android:gravity="center"
-                android:lineSpacingExtra="1dp"
+                android:id="@+id/mypage_advice_tv"
                 android:padding="10dp"
-                android:text="@={MyPageViewModel.adviceText}"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/typo_body1" />
+                android:gravity="center"
+                android:textSize="@dimen/typo_body1"
+                android:text="@={MyPageViewModel.adviceText}"
+                android:fontFamily="@font/nanumsquarebold"
+                android:lineSpacingExtra="1dp"/>
         </android.support.v7.widget.CardView>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="22dp"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mypage_advice_cv">
+            app:layout_constraintTop_toBottomOf="@id/mypage_advice_cv"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical">
+                <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_password_change_lay"
+                    android:id="@+id/mypage_logout_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="36dp"
+                    android:onClick="@{()->MyPageViewModel.clickEnterLogout()}">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/mypage_logout_lay"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="@{()->MyPageViewModel.clickEnterLogout()}"
-                android:paddingHorizontal="36dp"
-                app:layout_constraintBottom_toTopOf="@id/mypage_password_change_lay"
-                app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_logout_content_tv"
+                        android:id="@+id/mypage_logout_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:textColor="@color/colorPrimary"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/mypage_logout_title"
+                        android:fontFamily="@font/nanumsquarebold"/>
 
-                <TextView
-                    android:id="@+id/mypage_logout_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquarebold"
-                    android:lineSpacingExtra="2sp"
-                    android:text="@string/mypage_logout_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/typo_subtitle"
-                    app:layout_constraintBottom_toTopOf="@id/mypage_logout_content_tv"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/mypage_logout_content_tv"
+                        app:layout_constraintTop_toBottomOf="@id/mypage_logout_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorGray400"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/mypage_logout_content"
+                        android:fontFamily="@font/nanumsquareregular"/>
 
-                <TextView
-                    android:id="@+id/mypage_logout_content_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2sp"
-                    android:text="@string/mypage_logout_content"
-                    android:textColor="@color/colorGray400"
-                    android:textSize="@dimen/typo_body2"
+                    <ImageView
+                        android:src="@drawable/ic_arrow_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_logout_lay"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_lay"
+                    android:id="@+id/mypage_password_change_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="36dp"
+                    android:onClick="@{()->MyPageViewModel.clickEnterPasswordChange()}">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_password_change_content_tv"
+                        android:id="@+id/mypage_password_change_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:textColor="@color/colorPrimary"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mypage_password_change_title"
+                        android:fontFamily="@font/nanumsquarebold"/>
+
+                    <TextView
+                        android:id="@+id/mypage_password_change_content_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/mypage_password_change_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorGray400"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mypage_password_change_content"
+                        android:fontFamily="@font/nanumsquareregular"/>
+
+                    <ImageView
+                        android:src="@drawable/ic_arrow_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_password_change_lay"
+                    app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_lay"
+                    android:id="@+id/mypage_merit_history_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="36dp"
+                    android:onClick="@{()->MyPageViewModel.clickEnterMeritHistory()}">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_content_tv"
+                        android:id="@+id/mypage_merit_history_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:textColor="@color/colorPrimary"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mypage_merit_history_title"
+                        android:fontFamily="@font/nanumsquarebold"/>
+
+                    <TextView
+                        app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/mypage_merit_history_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorGray400"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mypage_merit_history_content"
+                        android:fontFamily="@font/nanumsquareregular"/>
+
+                    <ImageView
+                        android:src="@drawable/ic_arrow_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_lay"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mypage_logout_tv" />
+                    android:id="@+id/mypage_intro_developers_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="36dp"
+                    android:onClick="@{()->MyPageViewModel.clickEnterIntroDevelopers()}">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_content_tv"
+                        android:id="@+id/mypage_intro_developers_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:textColor="@color/colorPrimary"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/mypage_intro_developers_title"
+                        android:fontFamily="@font/nanumsquarebold"/>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/mypage_password_change_lay"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="@{()->MyPageViewModel.clickEnterPasswordChange()}"
-                android:paddingHorizontal="36dp"
-                app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_lay"
-                app:layout_constraintTop_toBottomOf="@id/mypage_logout_lay">
+                    <TextView
+                        android:id="@+id/mypage_intro_developers_content_tv"
+                        app:layout_constraintTop_toBottomOf="@id/mypage_intro_developers_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/typo_body2"
+                        android:textColor="@color/colorGray400"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mypage_intro_developers_content"
+                        android:fontFamily="@font/nanumsquareregular"/>
 
-                <TextView
-                    android:id="@+id/mypage_password_change_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquarebold"
-                    android:lineSpacingExtra="2dp"
-                    android:text="@string/mypage_password_change_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/typo_subtitle"
-                    app:layout_constraintBottom_toTopOf="@id/mypage_password_change_content_tv"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/mypage_password_change_content_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2dp"
-                    android:text="@string/mypage_password_change_content"
-                    android:textColor="@color/colorGray400"
-                    android:textSize="@dimen/typo_body2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mypage_password_change_tv" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/mypage_merit_history_lay"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="@{()->MyPageViewModel.clickEnterMeritHistory()}"
-                android:paddingHorizontal="36dp"
-                app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_lay"
-                app:layout_constraintTop_toBottomOf="@id/mypage_password_change_lay">
-
-                <TextView
-                    android:id="@+id/mypage_merit_history_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquarebold"
-                    android:lineSpacingExtra="2dp"
-                    android:text="@string/mypage_merit_history_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/typo_subtitle"
-                    app:layout_constraintBottom_toTopOf="@id/mypage_merit_history_content_tv"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/mypage_merit_history_content_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2dp"
-                    android:text="@string/mypage_merit_history_content"
-                    android:textColor="@color/colorGray400"
-                    android:textSize="@dimen/typo_body2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_tv" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/mypage_intro_developers_lay"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="@{()->MyPageViewModel.clickEnterIntroDevelopers()}"
-                android:paddingHorizontal="36dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mypage_merit_history_lay">
-
-                <TextView
-                    android:id="@+id/mypage_intro_developers_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquarebold"
-                    android:lineSpacingExtra="2sp"
-                    android:text="@string/mypage_intro_developers_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/typo_subtitle"
-                    app:layout_constraintBottom_toTopOf="@id/mypage_intro_developers_content_tv"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/mypage_intro_developers_content_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumsquareregular"
-                    android:lineSpacingExtra="2dp"
-                    android:text="@string/mypage_intro_developers_content"
-                    android:textColor="@color/colorGray400"
-                    android:textSize="@dimen/typo_body2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mypage_intro_developers_tv" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+                    <ImageView
+                        android:src="@drawable/ic_arrow_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>
