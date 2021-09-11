@@ -69,7 +69,6 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
         viewModel.originalColorLiveEvent.observe(this,  {
             originalColor(viewModel.selectedView.value!!)
         })
-        viewModel.getStatus()
         binding.vm = viewModel
         setPager()
     }

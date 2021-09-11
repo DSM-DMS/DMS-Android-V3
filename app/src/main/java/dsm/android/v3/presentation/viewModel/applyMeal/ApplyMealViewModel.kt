@@ -31,6 +31,7 @@ class ApplyMealViewModel(private val applyMealRepository: ApplyMealRepository):B
 
     init {
         status.value = 0
+        getStatus()
     }
 
     @SuppressLint("CheckResult")
