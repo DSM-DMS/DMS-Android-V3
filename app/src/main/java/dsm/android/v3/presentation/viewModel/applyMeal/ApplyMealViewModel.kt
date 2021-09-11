@@ -8,7 +8,7 @@ import dsm.android.v3.util.BaseViewModel
 import dsm.android.v3.util.SingleLiveEvent
 
 class ApplyMealViewModel(private val applyMealRepository: ApplyMealRepository):BaseViewModel() {
-    val status = MutableLiveData<Int>().apply { value = 0 }
+    val status = MutableLiveData<Int>()
 
     val toast = SingleLiveEvent<String>()
 
@@ -21,10 +21,16 @@ class ApplyMealViewModel(private val applyMealRepository: ApplyMealRepository):B
     fun getStatus(){
         applyMealRepository.getStatus().subscribe{response->
             if(response.isSuccessful){
-                status.value = (response.body()!!.value)-1
-                setCardViewData()
+                if(response.body()!=null){
+                    status.value = (response.body()!!.value)-1
+                    setCardViewData()
+                }
             }
         }
+    }
+
+    init {
+        status.value = 0
     }
 
     @SuppressLint("CheckResult")

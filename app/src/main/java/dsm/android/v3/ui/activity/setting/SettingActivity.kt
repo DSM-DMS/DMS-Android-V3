@@ -42,7 +42,7 @@ class SettingActivity : DataBindingActivity<ActivitySettingBinding>() {
                     onStart()
                 }
                 else->{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
                     onStart()
                 }
             }
