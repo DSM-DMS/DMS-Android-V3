@@ -68,30 +68,10 @@ class MainActivity : DaggerAppCompatActivity() {
             false
         }
 
-    @Inject
-    lateinit var localStorage: LocalStorage
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().run {
-            replace(R.id.main_container, MealFragment())
-            commit()
-        }
-        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-
-        val type = localStorage.getInt("darkMode")
-        when (type) {
-            1 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-            2 -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
-            else -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            }
-        }
+        setBottomNavigation()
     }
 
     fun startSettingActivity() {
@@ -102,13 +82,18 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0) {
-            setContentView(R.layout.activity_main)
-            supportFragmentManager.beginTransaction().run {
-                replace(R.id.main_container, MealFragment())
-                commit()
-            }
-            navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+            setBottomNavigation()
         }
+    }
+
+    private fun setBottomNavigation() {
+        setContentView(R.layout.activity_main)
+        supportFragmentManager.beginTransaction().run {
+            replace(R.id.main_container, MealFragment())
+            commit()
+        }
+        navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+        navigation.selectedItemId = R.id.navigation_food
     }
 
     override fun onDestroy() {

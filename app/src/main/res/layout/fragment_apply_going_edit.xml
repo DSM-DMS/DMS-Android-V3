@@ -22,7 +22,7 @@
                     android:onClick="@{()->applyGoingEditViewModel.applyGoingEditClickBack()}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_close_gray_24dp"
+                    app:srcCompat="@drawable/ic_close_gray_24dp"
                     android:background="@drawable/radius_close_gray"
                     android:layout_margin="2dp"
                     app:layout_constraintEnd_toEndOf="parent"

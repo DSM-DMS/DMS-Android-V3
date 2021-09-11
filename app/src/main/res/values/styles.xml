@@ -12,12 +12,12 @@
     <style name="MainBottomNavigationViewStyle" parent="Widget.Design.BottomNavigationView">
         <item name="android:textSize">@dimen/bottom_navigation_text_size</item>
     </style>
-    <style name="SplashTheme" parent="AppTheme"><item name="android:background">@drawable/splash</item></style>
+    <style name="SplashTheme" parent="AppTheme"><item name="background">@drawable/splash</item></style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:fontFamily">@font/nanumsquareregular</item>
+        <item name="fontFamily">@font/nanumsquareregular</item>
     </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">

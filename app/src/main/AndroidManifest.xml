@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dsm.android.v3">
+    package="dsm.android.v3"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +13,9 @@
         android:roundIcon="@mipmap/dms_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString">
         <activity
             android:name=".ui.activity.setting.SettingActivity"
             android:exported="true" />

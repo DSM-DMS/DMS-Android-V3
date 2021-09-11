@@ -2,12 +2,13 @@ package dsm.android.v3.ui.activity.setting
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatDelegate
 import dsm.android.v3.R
+import dsm.android.v3.data.local.shared.LocalStorage
 import dsm.android.v3.databinding.ActivitySettingBinding
 import dsm.android.v3.presentation.viewModel.setting.SettingViewModel
 import dsm.android.v3.presentation.viewModel.setting.SettingViewModelFactory
 import dsm.android.v3.util.DataBindingActivity
+import dsm.android.v3.util.ThemeUtil
 import kotlinx.android.synthetic.main.activity_setting.*
 import javax.inject.Inject
 
@@ -18,6 +19,12 @@ class SettingActivity : DataBindingActivity<ActivitySettingBinding>() {
     @Inject
     lateinit var viewModelFactory: SettingViewModelFactory
 
+    @Inject
+    lateinit var localStorage: LocalStorage
+
+    private val themeUtil by lazy {
+        ThemeUtil(localStorage)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(setting_toolbar)
@@ -31,21 +38,11 @@ class SettingActivity : DataBindingActivity<ActivitySettingBinding>() {
             onBackPressed()
         }
 
-        viewModel.type.observe(this,{
-            when(it){
-                1->{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    onStart()
-                }
-                2->{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    onStart()
-                }
-                else->{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
-                    onStart()
-                }
-            }
+        viewModel.type.observe(this, {
+            themeUtil.applyTheme(it ?: 0)
+            recreate()
         })
     }
+
+
 }

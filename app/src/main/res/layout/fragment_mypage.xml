@@ -64,7 +64,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterInstitutionReport()}">
 
                     <ImageView
-                        android:src="@drawable/ic_round_error_24_px"
+                        app:srcCompat="@drawable/ic_round_error_24_px"
                         android:id="@+id/mypage_error_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterQuestionResearch()}">
 
                     <ImageView
-                        android:src="@drawable/ic_round_edit_24_px"
+                        app:srcCompat="@drawable/ic_round_edit_24_px"
                         android:id="@+id/mypage_edit_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                     android:onClick="@{()->MyPageViewModel.clickEnterBugReport()}">
 
                     <ImageView
-                        android:src="@drawable/ic_round_bug_report_24_px"
+                        app:srcCompat="@drawable/ic_round_bug_report_24_px"
                         android:id="@+id/mypage_bug_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -308,7 +308,7 @@
                         android:fontFamily="@font/nanumsquareregular"/>
 
                     <ImageView
-                        android:src="@drawable/ic_arrow_gray"
+                        app:srcCompat="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -351,7 +351,7 @@
                         android:fontFamily="@font/nanumsquareregular"/>
 
                     <ImageView
-                        android:src="@drawable/ic_arrow_gray"
+                        app:srcCompat="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -394,7 +394,7 @@
                         android:fontFamily="@font/nanumsquareregular"/>
 
                     <ImageView
-                        android:src="@drawable/ic_arrow_gray"
+                        app:srcCompat="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -437,7 +437,7 @@
                         android:fontFamily="@font/nanumsquareregular"/>
 
                     <ImageView
-                        android:src="@drawable/ic_arrow_gray"
+                        app:srcCompat="@drawable/ic_arrow_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"

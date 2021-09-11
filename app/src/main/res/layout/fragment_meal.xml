@@ -23,7 +23,7 @@
             android:layout_marginStart="44dp"
             android:onClick="@{() -> vm.previousIndex()}"
             android:padding="5dp"
-            android:src="@drawable/ic_arrow_left"
+            app:srcCompat="@drawable/ic_arrow_left"
             app:layout_constraintBottom_toBottomOf="@+id/mealFragment_week_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mealFragment_date_tv" />
@@ -35,7 +35,7 @@
             android:layout_marginEnd="44dp"
             android:onClick="@{() -> vm.nextIndex()}"
             android:padding="5dp"
-            android:src="@drawable/ic_arrow_right"
+            app:srcCompat="@drawable/ic_arrow_right"
             app:layout_constraintBottom_toBottomOf="@+id/mealFragment_week_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mealFragment_date_tv" />
