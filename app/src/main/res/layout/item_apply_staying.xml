@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.Api17CardView
-        android:id="@+id/item_applyStaying_card"
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorCustomCardBackground"
-        android:shadowColor="@color/colorPrimary"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/item_applyStaying_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareextrabold"
-                android:text="@string/apply_staying_saturday_go_title"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_size_24" />
-
-            <TextView
-                android:id="@+id/item_applyStaying_explanation_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/nanumsquareregular"
-                android:letterSpacing="0.02"
-                android:lineSpacingExtra="10sp"
-                android:text="@string/apply_staying_saturday_go_explanation"
-                android:textColor="@color/colorGray600"
-                android:textSize="@dimen/typo_subtitle" />
-        </LinearLayout>
-    </android.support.v7.widget.Api17CardView>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.Api17CardView
+                app:cardElevation="10dp"
+                android:shadowColor="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/item_applyStaying_card"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+                <TextView
+                        android:id="@+id/item_applyStaying_title_tv"
+                        android:text="@string/apply_staying_saturday_go_title"
+                        android:textSize="@dimen/text_size_24"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/nanumsquareextrabold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/item_applyStaying_explanation_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumsquareregular"
+                        android:textSize="@dimen/typo_subtitle"
+                        android:textColor="@color/colorGray600"
+                        android:letterSpacing="0.02"
+                        android:lineSpacingExtra="10sp"
+                        android:text="@string/apply_staying_saturday_go_explanation"
+                        android:layout_marginTop="20dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.Api17CardView>
 </android.support.constraint.ConstraintLayout>

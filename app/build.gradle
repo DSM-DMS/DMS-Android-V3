@@ -24,7 +24,7 @@ android {
         targetSdkVersion 30
         versionName '3.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 20210911
+        versionCode 20211216
     }
     buildTypes {
         release {
