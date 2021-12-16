@@ -22,9 +22,9 @@ android {
         applicationId "dsm.android.v3"
         minSdkVersion 22
         targetSdkVersion 30
-        versionName '3.0'
+        versionName '3.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 2021091
+        versionCode 20210911
     }
     buildTypes {
         release {
@@ -32,6 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
         enabled = true
     }
