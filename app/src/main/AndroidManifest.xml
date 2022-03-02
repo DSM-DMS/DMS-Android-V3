@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dsm.android.v3"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="dsm.android.v3">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".presentation.di.app.BaseApp"
         android:allowBackup="true"
+        android:appComponentFactory="whateverString"
         android:icon="@mipmap/dms_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/dms_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString">
+        tools:replace="android:appComponentFactory">
         <activity
             android:name=".ui.activity.setting.SettingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.applyMeal.ApplyMealActivity"
-            android:exported="true" />
-        <activity android:name=".ui.activity.applyMusic.ApplyMusicDomActivity" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.applyMusic.ApplyMusicDomActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.signIn.SignInActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.introduceTeam.IntroDeveloperActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.splash.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +45,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.main.MainActivity" />
+        <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.register.RegisterActivity" />
         <activity
             android:name=".ui.activity.pointLog.PointLogActivity"
