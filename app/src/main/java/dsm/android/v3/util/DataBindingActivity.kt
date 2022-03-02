@@ -8,7 +8,6 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import dagger.android.support.DaggerAppCompatActivity
 import dsm.android.v3.presentation.di.app.BaseApp
 
-
 abstract class DataBindingActivity<T : ViewDataBinding> : DaggerAppCompatActivity() {
 
     lateinit var binding: T

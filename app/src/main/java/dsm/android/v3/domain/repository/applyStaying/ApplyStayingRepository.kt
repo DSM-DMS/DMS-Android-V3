@@ -1,7 +1,6 @@
 package dsm.android.v3.domain.repository.applyStaying
 
 import dsm.android.v3.domain.entity.ApplyStayingModel
-import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Response
 

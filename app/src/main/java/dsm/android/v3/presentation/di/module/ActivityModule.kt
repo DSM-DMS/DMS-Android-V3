@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dsm.android.v3.presentation.di.module.applyExtensionStudy.ApplyExtensionStudyModule
 import dsm.android.v3.presentation.di.module.applyGoingOut.ApplyGoingOutModule
+import dsm.android.v3.presentation.di.module.applyMeal.ApplyMealModule
 import dsm.android.v3.presentation.di.module.applyMusic.ApplyMusicDomModule
 import dsm.android.v3.presentation.di.module.applyStaying.ApplyStayingModule
 import dsm.android.v3.presentation.di.module.changePassword.ChangePasswordModule
@@ -11,11 +12,13 @@ import dsm.android.v3.presentation.di.module.main.MainModule
 import dsm.android.v3.presentation.di.module.notice.NoticeModule
 import dsm.android.v3.presentation.di.module.pointLog.PointLogModule
 import dsm.android.v3.presentation.di.module.register.RegisterModule
+import dsm.android.v3.presentation.di.module.setting.SettingModule
 import dsm.android.v3.presentation.di.module.signIn.SignInModule
 import dsm.android.v3.presentation.di.module.splash.SplashModule
 import dsm.android.v3.presentation.di.scope.ActivityScope
 import dsm.android.v3.ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity
 import dsm.android.v3.ui.activity.applyGoingOut.ApplyGoingOutActivity
+import dsm.android.v3.ui.activity.applyMeal.ApplyMealActivity
 import dsm.android.v3.ui.activity.applyMusic.ApplyMusicDomActivity
 import dsm.android.v3.ui.activity.applyStaying.ApplyStayingActivity
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
@@ -23,6 +26,7 @@ import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.activity.notice.NoticeActivity
 import dsm.android.v3.ui.activity.pointLog.PointLogActivity
 import dsm.android.v3.ui.activity.register.RegisterActivity
+import dsm.android.v3.ui.activity.setting.SettingActivity
 import dsm.android.v3.ui.activity.signIn.SignInActivity
 import dsm.android.v3.ui.activity.splash.SplashActivity
 
@@ -36,6 +40,10 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [ApplyMusicDomModule::class])
     abstract fun applyMusicDomActivity(): ApplyMusicDomActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [ApplyMealModule::class])
+    abstract fun applyMealActivity(): ApplyMealActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [ApplyGoingOutModule::class])
@@ -72,4 +80,8 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [SplashModule::class])
     abstract fun splashActivity(): SplashActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [SettingModule::class])
+    abstract fun settingActivity(): SettingActivity
 }

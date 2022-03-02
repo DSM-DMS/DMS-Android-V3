@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dsm.android.v3">
+    package="dsm.android.v3"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name=".presentation.di.app.BaseApp"
-            android:allowBackup="true"
-            android:icon="@mipmap/dms_logo"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/dms_logo_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.applyMusic.ApplyMusicDomActivity">
-        </activity>
+        android:name=".presentation.di.app.BaseApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/dms_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/dms_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString">
         <activity
-                android:name=".ui.activity.signIn.SignInActivity"
-                android:label="@string/app_name">
-        </activity>
+            android:name=".ui.activity.setting.SettingActivity"
+            android:exported="true" />
         <activity
-                android:name=".ui.activity.introduceTeam.IntroDeveloperActivity"
-                android:theme="@style/AppTheme"/>
+            android:name=".ui.activity.applyMeal.ApplyMealActivity"
+            android:exported="true" />
+        <activity android:name=".ui.activity.applyMusic.ApplyMusicDomActivity" />
         <activity
-                android:name=".ui.activity.splash.SplashActivity"
-                android:theme="@style/SplashTheme">
+            android:name=".ui.activity.signIn.SignInActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ui.activity.introduceTeam.IntroDeveloperActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.splash.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.main.MainActivity"/>
-        <activity android:name=".ui.activity.register.RegisterActivity"/>
-
+        <activity android:name=".ui.activity.main.MainActivity" />
+        <activity android:name=".ui.activity.register.RegisterActivity" />
         <activity
-                android:name=".ui.activity.pointLog.PointLogActivity"
-                android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".ui.activity.changePassword.ChangePasswordActivity">
-        </activity>
-        <activity android:name=".ui.activity.applyGoingOut.ApplyGoingOutActivity"/>
-        <activity android:name=".ui.activity.applyStaying.ApplyStayingActivity">
-        </activity>
-        <activity android:name=".ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity">
-        </activity>
-        <activity android:name=".ui.activity.notice.NoticeActivity"/>
+            android:name=".ui.activity.pointLog.PointLogActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.activity.changePassword.ChangePasswordActivity" />
+        <activity android:name=".ui.activity.applyGoingOut.ApplyGoingOutActivity" />
+        <activity android:name=".ui.activity.applyStaying.ApplyStayingActivity" />
+        <activity android:name=".ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity" />
+        <activity android:name=".ui.activity.notice.NoticeActivity" />
     </application>
+
 </manifest>

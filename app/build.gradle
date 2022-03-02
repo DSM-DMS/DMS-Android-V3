@@ -9,14 +9,22 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     compileSdkVersion 30
     defaultConfig {
         applicationId "dsm.android.v3"
         minSdkVersion 22
         targetSdkVersion 30
-        versionName '2.9'
+        versionName '3.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 202108
+        versionCode 20211216
     }
     buildTypes {
         release {
@@ -24,6 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
         enabled = true
     }

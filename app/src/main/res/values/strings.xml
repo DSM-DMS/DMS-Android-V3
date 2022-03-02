@@ -152,6 +152,9 @@
     <string name="apply_music_dialog_music_cancel">취소</string>
     <string name="apply_music_dialog_music_apply">신청</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="apply_meal_title">주말급식을 신청해주세요</string>
+    <string name="apply_meal_explanation">주말에 배식을 받을것인지에 대한 여부를 결정합니다. 주말급식 신청여부는 담임선생님께서 확인하신 후 영양사선생님께 전달되니 신중히 결정해주세요.</string>
+    <string name="complete">확인</string>
+    <string name="screen_theme">화면 테마</string>
 </resources>

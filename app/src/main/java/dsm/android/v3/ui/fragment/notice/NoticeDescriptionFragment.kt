@@ -62,7 +62,7 @@ class NoticeDescriptionFragment : DaggerFragment() {
                     }
                 }
             }, {
-                Log.d("tag", it.message)
+                Log.d("tag", it.message.toString())
             }))
     }
 
@@ -82,7 +82,7 @@ class NoticeDescriptionFragment : DaggerFragment() {
                     }
                 }
             }, {
-                Log.d("tag", it.message)
+                Log.d("tag", it.message.toString())
             }))
     }
 

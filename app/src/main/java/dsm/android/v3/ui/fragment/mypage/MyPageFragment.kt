@@ -3,6 +3,7 @@ package dsm.android.v3.ui.fragment.mypage
 import android.animation.ValueAnimator
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.view.View
@@ -17,14 +18,16 @@ import dsm.android.v3.ui.dialogFragment.bugReportDialog.BugReportDialogFragment
 import dsm.android.v3.ui.activity.changePassword.ChangePasswordActivity
 import dsm.android.v3.ui.dialogFragment.institutionReportDialog.InstitutionDialogFragment
 import dsm.android.v3.ui.activity.introduceTeam.IntroDeveloperActivity
+import dsm.android.v3.ui.activity.main.MainActivity
 import dsm.android.v3.ui.dialogFragment.logOutDialog.LogoutDialogFragment
 import dsm.android.v3.ui.activity.pointLog.PointLogActivity
+import dsm.android.v3.ui.activity.setting.SettingActivity
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
 
 @ActivityScope
-class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
+class MyPageFragment : DataBindingFragment<FragmentMypageBinding>() {
 
     override val layoutId: Int
         get() = dsm.android.v3.R.layout.fragment_mypage
@@ -33,24 +36,46 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
     lateinit var factory: MyPageViewModelFactory
 
     private val fm: FragmentManager? by lazy { fragmentManager }
-    private val logoutDialogFragment: LogoutDialogFragment by  lazy { LogoutDialogFragment() }
+    private val logoutDialogFragment: LogoutDialogFragment by lazy { LogoutDialogFragment() }
     private val bugReportDialogFragment: BugReportDialogFragment by lazy { BugReportDialogFragment() }
     private val institutionDialogFragment: InstitutionDialogFragment by lazy { InstitutionDialogFragment() }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val viewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel::class.java)
 
         viewModel.pointCountAnimatorEvent.observe(this, Observer {
-            startCountAnimation(binding.myPageViewModel!!.goodPoint.value!!, binding.myPageViewModel!!.badPoint.value!!)
+            startCountAnimation(
+                binding.myPageViewModel!!.goodPoint.value!!,
+                binding.myPageViewModel!!.badPoint.value!!
+            )
         })
-        viewModel.intentIntroDevelopersEvent.observe(this, Observer { startActivity<IntroDeveloperActivity>() })
-        viewModel.intentMeritHistoryEvent.observe(this, Observer { startActivity<PointLogActivity>() })
-        viewModel.intentPasswordChangeEvent.observe(this, Observer { startActivity<ChangePasswordActivity>() })
+        viewModel.intentIntroDevelopersEvent.observe(
+            this,
+            Observer { startActivity<IntroDeveloperActivity>() })
+        viewModel.intentMeritHistoryEvent.observe(
+            this,
+            Observer { startActivity<PointLogActivity>() })
+        viewModel.intentPasswordChangeEvent.observe(
+            this,
+            Observer { startActivity<ChangePasswordActivity>() })
+        viewModel.intentSettingEvent.observe(this, {
+            (activity as MainActivity).startSettingActivity()
+        })
         viewModel.intentQuestionResearchEvent.observe(this, Observer { toast("오픈 준비 중입니다.") })
-        viewModel.showBugReportEvent.observe(this, Observer { bugReportDialogFragment.show(fm, "bug") })
-        viewModel.showInstitutionReportEvent.observe(this, Observer { institutionDialogFragment.show(fm, "institution") })
-        viewModel.showLogoutEvent.observe(this, Observer { logoutDialogFragment.show(fm, "logout") })
+        viewModel.showBugReportEvent.observe(
+            this,
+            Observer { bugReportDialogFragment.show(fm, "bug") })
+        viewModel.showInstitutionReportEvent.observe(
+            this,
+            Observer { institutionDialogFragment.show(fm, "institution") })
+        viewModel.showLogoutEvent.observe(
+            this,
+            Observer { logoutDialogFragment.show(fm, "logout") })
 
         binding.myPageViewModel = viewModel
         register(binding.myPageViewModel!!)
@@ -63,8 +88,12 @@ class MyPageFragment:DataBindingFragment<FragmentMypageBinding>() {
         meritAnimator.duration = 1000
         demeritAnimator.duration = 1000
 
-        meritAnimator.addUpdateListener { animation -> binding.myPageViewModel!!.goodPointText.value = animation.animatedValue.toString() }
-        demeritAnimator.addUpdateListener { animation -> binding.myPageViewModel!!.badPointText.value = animation.animatedValue.toString() }
+        meritAnimator.addUpdateListener { animation ->
+            binding.myPageViewModel!!.goodPointText.value = animation.animatedValue.toString()
+        }
+        demeritAnimator.addUpdateListener { animation ->
+            binding.myPageViewModel!!.badPointText.value = animation.animatedValue.toString()
+        }
         meritAnimator.start()
         demeritAnimator.start()
     }

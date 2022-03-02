@@ -62,7 +62,7 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
     }
 
     fun originalColor(view: View){
-        view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+        view.item_applyStaying_card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorWhiteToGray))
         view.item_applyStaying_title_tv.textColor = ContextCompat.getColor(this, R.color.colorPrimary)
         view.item_applyStaying_explanation_tv.textColor = ContextCompat.getColor(this, R.color.colorGray600)
     }
@@ -102,7 +102,7 @@ class ApplyStayingActivity: DataBindingActivity<ActivityApplyStayingBinding>(){
         override fun destroyItem(container: ViewGroup, position: Int, any: Any) = container.removeView(any as View)
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            val layoutInflater = LayoutInflater.from(baseContext)
+            val layoutInflater = LayoutInflater.from(container.context)
             val view = layoutInflater.inflate(R.layout.item_apply_staying, container, false)
             view.find<TextView>(R.id.item_applyStaying_title_tv).text = models[position].week
             view.find<TextView>(R.id.item_applyStaying_explanation_tv).text = models[position].description

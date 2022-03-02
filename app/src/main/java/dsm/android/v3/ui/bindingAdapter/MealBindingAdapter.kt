@@ -11,10 +11,10 @@ import android.util.Log
 import org.jetbrains.anko.support.v4.onPageChangeListener
 
 @BindingAdapter("pageChange")
-fun ViewPager.setPageChange(data: MutableLiveData<Int>) {
+fun ViewPager.setPageChange(data: MutableLiveData<Int>?) {
     Log.d("MealBindingAdapter", "Page is $currentItem")
-    if (currentItem != data.value)
-        currentItem = data.value ?: 0
+    if (currentItem != data?.value)
+        currentItem = data?.value ?: 0
 }
 
 @InverseBindingAdapter(attribute = "pageChange")

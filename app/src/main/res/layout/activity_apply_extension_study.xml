@@ -20,11 +20,11 @@
                 android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_close_gray_24dp"
+                app:srcCompat="@drawable/ic_close_gray_24dp"
                 android:background="@drawable/radius_close_gray"/>
 
         <ImageView
-                android:src="@drawable/ic_logo"
+                app:srcCompat="@drawable/ic_logo"
                 android:id="@+id/applyExtension_logo_imgv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -8,9 +8,23 @@
     <color name="colorTvUnCliked">#9f9f9f</color>
     <color name="colorConstBack">#14000000</color>
 
+    <color name="bottomNavigation">#19b6b6</color>
+
     <color name="colorWhite">#FFFFFF</color>
 
     <color name="colorRed">#ff5454</color>
+
+    <color name="logoWhite">#FFFFFF</color>
+
+    <color name="colorCustomCardView">#FFFFFF</color>
+
+    <color name="colorCustomCardBackground">#FFFFFF</color>
+
+    <color name="colorMyPageBack">#FFFFFF</color>
+
+    <color name="colorWhiteToBlack">#FFFFFF</color>
+
+    <color name="colorWhiteToGray">#FFFFFF</color>
 
     <!-- color for Grayscale-->
     <color name="colorGray100">#FFF</color>
