@@ -1,6 +1,5 @@
 package dsm.android.v3.presentation.viewModel.applyMeal
 
-import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import dsm.android.v3.domain.repository.applyMeal.ApplyMealRepository

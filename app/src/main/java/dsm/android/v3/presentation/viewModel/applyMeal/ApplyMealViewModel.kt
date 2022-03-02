@@ -19,14 +19,16 @@ class ApplyMealViewModel(private val applyMealRepository: ApplyMealRepository) :
 
     @SuppressLint("CheckResult")
     fun getStatus() {
-        applyMealRepository.getStatus().subscribe { response ->
+        applyMealRepository.getStatus().subscribe({ response ->
             if (response.isSuccessful) {
                 if (response.body() != null) {
                     status.value = (response.body()!!.value) - 1
                     setCardViewData()
                 }
             }
-        }
+        }, {
+            toast.value = "네트워크 상태를 확인해주세요."
+        })
     }
 
     init {

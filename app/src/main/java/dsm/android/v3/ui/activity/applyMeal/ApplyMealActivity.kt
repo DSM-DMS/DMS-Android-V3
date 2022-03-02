@@ -51,24 +51,24 @@ class ApplyMealActivity : DataBindingActivity<ActivityApplyMealBinding>() {
 
 
         val viewModel = ViewModelProviders.of(this, factory).get(ApplyMealViewModel::class.java)
-        viewModel.status.observe(this, {
+        viewModel.status.observe(this) {
             if (it == 0) {
                 apply_meal_btn.background = grayBorder
             } else {
                 apply_meal_btn.background = primaryBorder
             }
-        })
-        viewModel.toast.observe(this, {
+        }
+        viewModel.toast.observe(this) {
             toast(it.toString())
-        })
-        viewModel.changeColorLiveEvent.observe(this, {
+        }
+        viewModel.changeColorLiveEvent.observe(this) {
             val view = viewGroup.getChildAt(viewModel.status.value!!)
             changeColor(view)
             viewModel.selectedView.value = view
-        })
-        viewModel.originalColorLiveEvent.observe(this,  {
+        }
+        viewModel.originalColorLiveEvent.observe(this) {
             originalColor(viewModel.selectedView.value!!)
-        })
+        }
         binding.vm = viewModel
         setPager()
     }
