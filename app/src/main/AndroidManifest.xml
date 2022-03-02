@@ -39,15 +39,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.main.MainActivity" />
-        <activity android:name=".ui.activity.register.RegisterActivity" />
+        <activity android:name=".ui.activity.register.RegisterActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.pointLog.PointLogActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".ui.activity.changePassword.ChangePasswordActivity" />
-        <activity android:name=".ui.activity.applyGoingOut.ApplyGoingOutActivity" />
-        <activity android:name=".ui.activity.applyStaying.ApplyStayingActivity" />
-        <activity android:name=".ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity" />
-        <activity android:name=".ui.activity.notice.NoticeActivity" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.changePassword.ChangePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.applyGoingOut.ApplyGoingOutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.applyStaying.ApplyStayingActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.applyExtensionStudy.ApplyExtensionStudyActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.notice.NoticeActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
